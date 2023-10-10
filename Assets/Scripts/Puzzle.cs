@@ -7,64 +7,56 @@ using Random = UnityEngine.Random;
 
 public class Puzzle : MonoBehaviour
 {
-    public List<Pieza> listaPiezas;
-    public List<List<Vector3>> listaCombinaciones;
-    private List<Vector3> posiciones=new List<Vector3>();
-    private List<Vector3> resultado;
-    
+    public List<GameObject> listaPiezas;
+    public List<GameObject> listaAux;
+    public List<Vector3> posiciones;
+
     public GameObject espacio;
+    public GameObject ultimaPieza;
 
-    public GameObject piezaObjective;
-
-    public GameObject selectedObject;
-    public Vector3 previousPosition;
+    private GameObject selectedObject;
+    private Vector3 previousPosition;
     Vector3 offset;
 
     private void Start()
     {
-        int i = listaPiezas.Capacity+2;
-        
-        while (i >= 0)
+        var numbers = new List<int>(9);
+
+        for (int i = 0; i < listaPiezas.Count; i++)
         {
-            var position = new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
-            if (!posiciones.Contains(position))
+            numbers.Add(i);
+        }
+
+        posiciones = new List<Vector3>(9);
+
+        for (int i = 0; i < Mathf.Sqrt(listaPiezas.Count); i++)
+        {
+            for (int j = 0; j < Mathf.Sqrt(listaPiezas.Count); j++)
             {
-                posiciones.Add(position);
-                listaPiezas[i].transform.position = position;
-                i--;
-                if (i == listaPiezas.Capacity + 1)
-                {
-                    posiciones.Add(position);
-                    espacio.transform.position = position;
-                    i--;
-                }
-            }
-            else if (i == listaPiezas.Capacity + 1)
-            {
-                posiciones.Add(position);
-                piezaObjective.transform.position = position;
-                i--;
+                posiciones.Add(new Vector3(1 + 2 * j, 1 + 2 * i, 0));
             }
         }
 
-        bool elegido=false;
-        while (!elegido)
-        {
-            var ranNum = Random.Range(0, listaCombinaciones.Count);
-            if (posiciones.Equals(listaCombinaciones[ranNum]))
-            {
-                elegido = true;
-            }
+        listaAux = new List<GameObject>(listaPiezas);
 
-            resultado = new List<Vector3>(listaCombinaciones[ranNum]);
-            
+        for (int i = 0; i < listaPiezas.Count; i++)
+        {
+            var thisNumber = Random.Range(0, numbers.Count);
+            listaPiezas[i] = listaAux[numbers[thisNumber]];
+            numbers.RemoveAt(thisNumber);
         }
-        
+
+        for (int i = 0; i < listaPiezas.Count; i++)
+        {
+            listaPiezas[i].transform.position = posiciones[i];
+        }
+
         foreach (var pieza in listaPiezas)
         {
-            if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5)
+            if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5 &&
+                pieza.TryGetComponent<Collider2D>(out Collider2D col))
             {
-                pieza.GetComponent<Collider2D>().enabled = true;
+                col.enabled = true;
             }
         }
     }
@@ -95,17 +87,21 @@ public class Puzzle : MonoBehaviour
             {
                 selectedObject.transform.position = espacio.transform.position;
                 espacio.transform.position = previousPosition;
+                (listaPiezas[listaPiezas.IndexOf(selectedObject)], listaPiezas[listaPiezas.IndexOf(espacio)]) = (
+                    listaPiezas[listaPiezas.IndexOf(espacio)], listaPiezas[listaPiezas.IndexOf(selectedObject)]);
 
                 foreach (var pieza in listaPiezas)
                 {
-                    pieza.GetComponent<Collider2D>().enabled = false;
+                    if (pieza.TryGetComponent<Collider2D>(out Collider2D col))
+                        col.enabled = false;
                 }
 
                 foreach (var pieza in listaPiezas)
                 {
-                    if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5)
+                    if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5 &&
+                        pieza.TryGetComponent<Collider2D>(out Collider2D col))
                     {
-                        pieza.GetComponent<Collider2D>().enabled = true;
+                        col.enabled = true;
                     }
                 }
             }
@@ -115,9 +111,21 @@ public class Puzzle : MonoBehaviour
             selectedObject = null;
         }
 
-        if (posiciones.Equals(resultado))
+        bool ganaste=true;
+
+        for (int i = 0; i < listaPiezas.Count; i++)
         {
-            print("Ganaste");
+            if (listaPiezas[i] != listaAux[i])
+            {
+                ganaste = false;
+            }
+        }
+
+        if (ganaste)
+        {
+            print("Has ganado");
+            ganaste = false;
+            ultimaPieza.SetActive(true);
         }
     }
 }

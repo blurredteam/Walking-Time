@@ -2025,6 +2025,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa7d899512ca164988b41988fa99a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energy: {fileID: 0}
+  iconP0: {fileID: 0}
+  iconP1: {fileID: 0}
+  iconP2: {fileID: 0}
+  iconP3: {fileID: 0}
+  _spritesTeam: {fileID: 0}
+  spriteP0: {fileID: 0}
+  spriteP1: {fileID: 0}
+  spriteP2: {fileID: 0}
+  spriteP3: {fileID: 0}
   _firstNode: {fileID: 1340776678}
   _secondNode: {fileID: 540938210}
   _thirdNode: {fileID: 1746140098}

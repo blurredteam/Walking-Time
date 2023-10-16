@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 591454372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af9db76a41c3f940b19f69c6ecbe6f3, type: 3}
+  m_Script: {fileID: 11500000, guid: d0874c5e52894914eba246861b5127bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _pajaroBtn: {fileID: 2121084768}
@@ -2413,13 +2413,13 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300014, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1179495588
 CanvasRenderer:
@@ -2551,7 +2551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253537744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3baaf30a1856d84eb73f2a3c871fdfd, type: 3}
+  m_Script: {fileID: 11500000, guid: cebde971b47ea064ab534cdac361ddb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedBtn0: {fileID: 67322703}
@@ -2560,6 +2560,11 @@ MonoBehaviour:
   _selectedBtn3: {fileID: 777040226}
   _defaultImg: {fileID: 1830658918}
   _totalEnergyTxt: {fileID: 550741210}
+  _teamComp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1255327825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,7 +3644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1966736962
 MonoBehaviour:
   m_ObjectHideFlags: 0

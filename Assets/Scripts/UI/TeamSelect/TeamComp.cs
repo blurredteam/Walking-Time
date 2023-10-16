@@ -24,7 +24,7 @@ public class TeamComp : MonoBehaviour
     private List<bool> _slotAvailable;
     private List<int> _slotCharacterId;
     private List<Button> _slotButtons;
-    private List<Character> _teamComp = new List<Character>() { null, null, null, null};
+    public List<Character> _teamComp = new List<Character>() { null, null, null, null};
 
     private int _totalEnergy = 0;
 

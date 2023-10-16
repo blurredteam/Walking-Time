@@ -21,6 +21,9 @@ public class UI_TeamSelect : MonoBehaviour
 
     private void Continue()
     {
+        var _teamList = TeamComp.instance._teamComp;
+        LevelManager.instance.SetTeam(_teamList);
+
         ScenesManager.instance.UnloadTeamSelect();
     }
 }

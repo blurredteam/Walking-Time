@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 90358979}
   - component: {fileID: 90358978}
+  - component: {fileID: 90358980}
   - component: {fileID: 90358981}
   m_Layer: 0
   m_Name: Pieza 4
@@ -202,12 +203,24 @@ Transform:
   m_GameObject: {fileID: 90358977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &90358980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90358977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &90358981
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141655062}
   - component: {fileID: 141655061}
+  - component: {fileID: 141655063}
   - component: {fileID: 141655064}
   m_Layer: 0
   m_Name: Pieza 2
@@ -332,12 +346,24 @@ Transform:
   m_GameObject: {fileID: 141655060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 0}
+  m_LocalPosition: {x: 2, y: 2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141655063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141655060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &141655064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -393,6 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229312819}
   - component: {fileID: 229312818}
+  - component: {fileID: 229312820}
   - component: {fileID: 229312821}
   m_Layer: 0
   m_Name: Pieza 3
@@ -462,12 +489,24 @@ Transform:
   m_GameObject: {fileID: 229312817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 3, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &229312820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229312817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &229312821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -523,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238634304}
   - component: {fileID: 238634303}
+  - component: {fileID: 238634305}
   - component: {fileID: 238634306}
   m_Layer: 0
   m_Name: Pieza 1
@@ -592,12 +632,24 @@ Transform:
   m_GameObject: {fileID: 238634302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &238634305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238634302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &238634306
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -721,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 493801118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: -2, y: 2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -763,7 +815,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -813,7 +865,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 3.25, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -829,6 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692977942}
   - component: {fileID: 692977941}
+  - component: {fileID: 692977943}
   - component: {fileID: 692977944}
   m_Layer: 0
   m_Name: Pieza 5
@@ -898,12 +951,24 @@ Transform:
   m_GameObject: {fileID: 692977940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 3, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692977943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692977940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &692977944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -959,6 +1024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061540121}
   - component: {fileID: 1061540120}
+  - component: {fileID: 1061540122}
   - component: {fileID: 1061540123}
   m_Layer: 0
   m_Name: Pieza 7
@@ -1028,12 +1094,24 @@ Transform:
   m_GameObject: {fileID: 1061540119}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061540122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061540119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1061540123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1190,6 +1268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412755251}
   - component: {fileID: 1412755250}
+  - component: {fileID: 1412755252}
   - component: {fileID: 1412755253}
   m_Layer: 0
   m_Name: Pieza 6
@@ -1259,12 +1338,24 @@ Transform:
   m_GameObject: {fileID: 1412755249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 5, z: 0}
+  m_LocalPosition: {x: -2, y: -2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1412755252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412755249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1412755253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1320,6 +1411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431078795}
   - component: {fileID: 1431078794}
+  - component: {fileID: 1431078793}
   - component: {fileID: 1431078792}
   m_Layer: 0
   m_Name: Pieza 9
@@ -1373,6 +1465,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1431078793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431078791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &1431078794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1434,7 +1538,7 @@ Transform:
   m_GameObject: {fileID: 1431078791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 2, y: -2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1468,23 +1572,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561862180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b5000e5181fbc4ca4260860caa4334, type: 3}
+  m_Script: {fileID: 11500000, guid: a49bdfe714fafe048b0d5dcfb95197da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   listaPiezas:
-  - {fileID: 493801118}
-  - {fileID: 238634302}
-  - {fileID: 141655060}
-  - {fileID: 229312817}
-  - {fileID: 90358977}
-  - {fileID: 692977940}
-  - {fileID: 1412755249}
-  - {fileID: 1061540119}
-  - {fileID: 2073125748}
-  listaAux: []
-  posiciones: []
+  - {fileID: 2073125751}
+  - {fileID: 1061540122}
+  - {fileID: 1412755252}
+  - {fileID: 229312820}
+  - {fileID: 238634305}
+  - {fileID: 692977943}
+  - {fileID: 141655063}
+  - {fileID: 90358980}
   espacio: {fileID: 493801118}
-  ultimaPieza: {fileID: 0}
+  piezaObjective: {fileID: 0}
+  selectedObject: {fileID: 0}
+  previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1561862182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,6 +1648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073125750}
   - component: {fileID: 2073125749}
+  - component: {fileID: 2073125751}
   - component: {fileID: 2073125752}
   m_Layer: 0
   m_Name: Pieza 8
@@ -1614,12 +1718,24 @@ Transform:
   m_GameObject: {fileID: 2073125748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalPosition: {x: 2, y: -2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2073125751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073125748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3fba1c38da5944ababcd4a98855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2073125752
 BoxCollider2D:
   m_ObjectHideFlags: 0

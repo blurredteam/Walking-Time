@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,19 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
+    [SerializeField] private TextMeshProUGUI energy;
+    [SerializeField] private Image iconP0;
+    [SerializeField] private Image iconP1;
+    [SerializeField] private Image iconP2;
+    [SerializeField] private Image iconP3;
+
+    [SerializeField] private GameObject _spritesTeam;
+    [SerializeField] private Image spriteP0;
+    [SerializeField] private Image spriteP1;
+    [SerializeField] private Image spriteP2;
+    [SerializeField] private Image spriteP3;
+    private bool moving = false;
+
     [SerializeField] private Button _firstNode;
     [SerializeField] private Button _secondNode;
     [SerializeField] private Button _thirdNode;
@@ -17,8 +31,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Button _fifthNode;
     [SerializeField] private Button _sixthNode;
 
+    //Esto es para el efecto de las casillas que se pueden seleccionar
     private ColorBlock cb;
 
+    private List<Character> _teamList;
 
     private void Awake()
     {
@@ -39,44 +55,64 @@ public class LevelManager : MonoBehaviour
         _sixthNode.interactable = false;
     }
 
-    private IEnumerator BtnGlow(Button btn)
+    private void Update()
     {
-        ColorBlock cb = btn.colors;
+        if (!moving) return;
 
-        if(cb.normalColor == Color.white)
-            cb.normalColor = Color.grey;
-        else
-            cb.normalColor = Color.white;
+        var spritesPos = _spritesTeam.transform.position;
+        var spritesObjective = _firstNode.transform.position;
+        _spritesTeam.transform.position = Vector3.MoveTowards(spritesPos, spritesObjective, 1);
 
-        btn.colors = cb;
+        if(spritesPos == spritesObjective) { moving = false; }
+    }
 
-        yield return new WaitForSeconds(1.2f);
+    public void SetTeam(List<Character> team) 
+    {
+        _teamList = team;
 
-        StartCoroutine(BtnGlow(btn));
+        iconP0.sprite = _teamList[0].icon.sprite;
+        iconP1.sprite = _teamList[1].icon.sprite;
+        iconP2.sprite = _teamList[2].icon.sprite;
+        iconP3.sprite = _teamList[3].icon.sprite;
+
+        spriteP0.sprite = _teamList[0].sprite.sprite;
+        spriteP1.sprite = _teamList[1].sprite.sprite;
+        spriteP2.sprite = _teamList[2].sprite.sprite;
+        spriteP3.sprite = _teamList[3].sprite.sprite;
+
+        int energyCount = 0;
+        for(int i = 0; i < _teamList.Count; i++)
+        {
+            energyCount += _teamList[i].energy;
+        }
+        energy.text = energyCount.ToString();
     }
 
     //Se gestionan los nodos de cada nivel del arbol
     // - Se tiene que añadir cada nodo de uno en uno en el nivel que le corresponde
     // - Si en un nivel se quiere añadir un nodo vale con meterlo dentro del metodo de su nivel
-   
+
     private void InitFirstLevelNodes() 
     {
         StartCoroutine(BtnGlow(_firstNode));
 
         _firstNode.onClick.AddListener(delegate { FirstLevelCompleted(_firstNode); });
-        _firstNode.onClick.AddListener(InitSecondLevelNodes);
     }
 
     private void FirstLevelCompleted(Button btn)
     {
         //Recibe el nodo que activa el metodo, para ir guardando el recorrido o marcarlos de alguna forma especial por ejemplo
+        moving = true;
 
         _firstNode.interactable = false;
 
         _firstNode.colors = cb;
 
         _firstNode.onClick.RemoveAllListeners();
+
         StopAllCoroutines();
+
+        InitSecondLevelNodes();
     }
 
     private void InitSecondLevelNodes()
@@ -171,6 +207,22 @@ public class LevelManager : MonoBehaviour
 
         _sixthNode.onClick.RemoveAllListeners();
         StopAllCoroutines();
+    }
+
+    private IEnumerator BtnGlow(Button btn)
+    {
+        ColorBlock cb = btn.colors;
+
+        if (cb.normalColor == Color.white)
+            cb.normalColor = Color.grey;
+        else
+            cb.normalColor = Color.white;
+
+        btn.colors = cb;
+
+        yield return new WaitForSeconds(1.2f);
+
+        StartCoroutine(BtnGlow(btn));
     }
 
 }

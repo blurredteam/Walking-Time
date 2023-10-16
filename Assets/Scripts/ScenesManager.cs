@@ -43,4 +43,10 @@ public class ScenesManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(Scene.TeamSelect.ToString());
     }
 
+    public void PrintActiveScenes()
+    {
+        Debug.Log(SceneManager.sceneCount.ToString());
+        Debug.Log(SceneManager.GetActiveScene().name);
+    }
+
 }

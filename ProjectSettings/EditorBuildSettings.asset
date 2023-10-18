@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 5c72728bb90bf52479767fddb375af36
+  - enabled: 1
+    path: Assets/Scenes/PuzleCuadro.unity
+    guid: 4340fc5af06efd14bbcc5f7dd3369224
   m_configObjects: {}

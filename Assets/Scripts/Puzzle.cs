@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class Puzzle : MonoBehaviour
 {
+    [SerializeField] private Button continueBtn;
+    [SerializeField] private Camera _puzzleCamera;
+
     public List<GameObject> listaPiezas;
     public List<GameObject> listaAux;
     public List<Vector3> posiciones;
@@ -20,6 +23,15 @@ public class Puzzle : MonoBehaviour
 
     private void Start()
     {
+        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+        continueBtn.onClick.AddListener(delegate {
+            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
+        });
+        _puzzleCamera.transform.position += new Vector3(0, -30);
+        //this.gameObject.transform.position += new Vector3(0, -30);
+
+        // ---------------------------------------------
+
         var numbers = new List<int>(9);
 
         for (int i = 0; i < listaPiezas.Count; i++)
@@ -33,7 +45,7 @@ public class Puzzle : MonoBehaviour
         {
             for (int j = 0; j < Mathf.Sqrt(listaPiezas.Count); j++)
             {
-                posiciones.Add(new Vector3(1 + 2 * j, 1 + 2 * i, 0));
+                posiciones.Add(new Vector3(-2+2 * j, -32+2 * i, 0));
             }
         }
 
@@ -64,11 +76,15 @@ public class Puzzle : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition += new Vector3(-3.5f,-30); //Chapuza que estoy HARTOOTAOTOAORAOAOT
+
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Hizo un click: " + mousePosition);
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject)
             {
+                Debug.Log("Incluso overlap y to");
                 selectedObject = targetObject.transform.gameObject;
                 var position = selectedObject.transform.position;
                 previousPosition = new Vector3(position.x, position.y, position.z);

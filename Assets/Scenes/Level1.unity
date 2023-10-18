@@ -1361,7 +1361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1226825471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1688,6 +1688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa7d899512ca164988b41988fa99a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Camera: {fileID: 2049375203}
   energy: {fileID: 336028926}
   iconP0: {fileID: 695678158}
   iconP1: {fileID: 1289070052}
@@ -1698,12 +1699,6 @@ MonoBehaviour:
   spriteP1: {fileID: 2126473597}
   spriteP2: {fileID: 715125473}
   spriteP3: {fileID: 1066056447}
-  _firstNode: {fileID: 1340776678}
-  _secondNode: {fileID: 540938210}
-  _thirdNode: {fileID: 1746140098}
-  _fourthNode: {fileID: 164681087}
-  _fifthNode: {fileID: 1530445541}
-  _sixthNode: {fileID: 320102766}
 --- !u!4 &1421077708
 Transform:
   m_ObjectHideFlags: 0
@@ -1839,6 +1834,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530445539}
   m_CullTransparentMesh: 1
+--- !u!1 &1531376817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531376818}
+  - component: {fileID: 1531376819}
+  m_Layer: 5
+  m_Name: GRID
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1531376818
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531376817}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.00925926, y: 0.00925926, z: 0.00925926}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1531376819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531376817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be00eed51bd45e49823e68bf8ff79dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 12
+  _height: 5
+  _X_spacing: 3
+  _Y_spacing: 1.5
+  _numberOfPaths: 4
+  _tilePrefab: {fileID: -6688048962984194142, guid: 9ada6c8fb6e712a4a92f9d53662f920b, type: 3}
+  _lineRendererPrefab: {fileID: 1470718251129634380, guid: fc84165c3e924b04bacfdb3b2779702d, type: 3}
+  _cam: {fileID: 2049375203}
 --- !u!1 &1746140096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,8 +2320,8 @@ Canvas:
   m_GameObject: {fileID: 1954339323}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 2049375203}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2391,6 +2442,7 @@ GameObject:
   - component: {fileID: 2049375204}
   - component: {fileID: 2049375203}
   - component: {fileID: 2049375202}
+  - component: {fileID: 2049375205}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2472,6 +2524,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049375205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049375201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &2099791692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,6 +2770,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2049375204}
+  - {fileID: 1531376818}
   - {fileID: 1954339327}
   - {fileID: 823650728}
   - {fileID: 1421077708}

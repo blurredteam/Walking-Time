@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +23,7 @@ public class ScenesManager : MonoBehaviour
         MainMenu_Scene,
         TeamSelect,
         Level1,
+        PuzleCuadro,
     }
 
     public void LoadScene(Scene scene)
@@ -31,16 +31,26 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(scene.ToString());
     }
 
-    public void StartNewGame()
+    public void LoadSelected(Scene scene)
     {
-        SceneManager.LoadScene(Scene.Level1.ToString());
-        SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
-    
+        SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
+    }
+
+    public void UnloadTile(Scene scene)
+    {
+        SceneManager.UnloadSceneAsync(scene.ToString());
     }
 
     public void UnloadTeamSelect()
     {
         SceneManager.UnloadSceneAsync(Scene.TeamSelect.ToString());
+    }
+
+    public void StartNewGame()
+    {
+        SceneManager.LoadScene(Scene.Level1.ToString());
+        SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
+    
     }
 
 }

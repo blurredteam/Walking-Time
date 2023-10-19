@@ -25,8 +25,17 @@ public class LlenadoBotella : MonoBehaviour
     public TextMeshProUGUI aguaTexto;
     private int aguaGanada = 0;
 
+    [SerializeField] private Button volverBtn;
+
     private void Start()
     {
+        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+        volverBtn.onClick.AddListener(delegate {
+            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
+            LevelManager.instance.ActivateScene();
+        });
+        // ---------------------------------------------
+
         referencia = 2.62f;//Altura del triángulo rojo
         rotacionInicial = transform.rotation;
         //Para q sea mas probable valores mas bajos si no suele ser demasiado rápido

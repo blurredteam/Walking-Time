@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -11,7 +12,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    [SerializeField] private Camera m_Camera;
+    [SerializeField] private MapCamaraMovement _cameraMovementScript;
+    [SerializeField] private GameObject _gridRef;
 
     [SerializeField] private TextMeshProUGUI energy;
     [SerializeField] private Image iconP0;
@@ -80,9 +82,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    //Reduce la energia total en funcion del coste de viajar a una casilla
     // Tras presionar una casilla, inhabilita las casillas de su misma columna y las pinta 
-    public void UnloadTiles(int position)
+    public void Travel(int position, int energyCost)
     {
+        _gridRef.gameObject.SetActive(false); //enabled= false;
+        _cameraMovementScript.enabled =false;
+
+        teamEnergy -= energyCost;
+
         for (int y = 0; y < _mapHeight; y++)
         {
             if (_map[position, y].selected)
@@ -93,10 +101,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    //Reduce la energia total en funcion del coste de viajar a una casilla
-    public void Travel(int energyCost)
+    public void ActivateScene()
     {
-        teamEnergy -= energyCost;
-        m_Camera.transform.position += new Vector3(3.5f,0);
+        _gridRef.gameObject.SetActive(true);
+        _cameraMovementScript.enabled = true;   
     }
 }

@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rotate : MonoBehaviour
 {
+    [SerializeField] private Camera _puzzleCamera;
+    [SerializeField] private Button _continueBtn;
+
     public Transform objetoCentral; // El objeto alrededor del cual quieres rotar.
     public float velocidadRotacion = 30.0f; // Velocidad de rotación en grados por segundo.
     public float velocidadRotacionPropia = 60.0f;
@@ -15,12 +19,19 @@ public class Rotate : MonoBehaviour
 
     private void Start()
     {
+        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+        _continueBtn.onClick.AddListener(delegate {
+            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
+            LevelManager.instance.ActivateScene();
+        });
+        // ---------------------------------------------
+
         pulsado = false;
     }
 
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = _puzzleCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);

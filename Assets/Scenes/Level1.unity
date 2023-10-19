@@ -1688,7 +1688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa7d899512ca164988b41988fa99a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 2049375203}
+  _cameraMovementScript: {fileID: 2049375206}
+  _gridRef: {fileID: 1531376817}
   energy: {fileID: 336028926}
   iconP0: {fileID: 695678158}
   iconP1: {fileID: 1289070052}
@@ -2443,6 +2444,7 @@ GameObject:
   - component: {fileID: 2049375203}
   - component: {fileID: 2049375202}
   - component: {fileID: 2049375205}
+  - component: {fileID: 2049375206}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2540,6 +2542,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &2049375206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049375201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cffb1233b30454385a12b6e8db8ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraRef: {fileID: 2049375203}
 --- !u!1 &2099791692
 GameObject:
   m_ObjectHideFlags: 0

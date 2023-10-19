@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,13 +8,17 @@ public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager instance;
 
+    // Lista con todos los puzzles
+    public List<string> puzzleScenes = new List<string>() { "PuzleCuadro", "PuzleTimer", "PuzzleFuente" };
+
     private void Awake()
     {
         instance = this;
+
     }
 
     /*
-    -- Lista de todas las escenas del juego 
+    -- Enum de todas las escenas del juego 
     -- Diferenciar entre escenas y pantallas (p.e settings no es una escena, sino una interfaz de la escena Mainmenu)
     */
     public enum Scene
@@ -24,7 +27,8 @@ public class ScenesManager : MonoBehaviour
         TeamSelect,
         Level1,
         PuzleCuadro,
-        PuzzleFuente
+        PuzleTimer,
+        PuzzleFuente,
     }
 
     public void LoadScene(Scene scene)
@@ -32,9 +36,24 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(scene.ToString());
     }
 
-    public void LoadSelected(Scene scene)
+    public void LoadTileScene(int type)
     {
-        SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
+        //SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
+        // Type =0 -> puzzle; =1 -> event; =2 -> bonfire 
+
+        if (type == 0)
+        {
+            LoadPuzzle();
+        }
+        else if (type == 1)
+        {
+            LoadObstacle();
+        }
+        else
+        {
+            LoadBonfire();
+        }
+
     }
 
     public void UnloadTile(Scene scene)
@@ -51,7 +70,15 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
-    
+
     }
+
+    private void LoadPuzzle()
+    {
+        int selectPuzle = Random.Range(0, puzzleScenes.Count);
+        SceneManager.LoadScene(puzzleScenes[selectPuzle], LoadSceneMode.Additive);
+    }
+    private void LoadObstacle() { Debug.Log("casilla evento"); }
+    private void LoadBonfire() { Debug.Log("Casilla hoguera"); }
 
 }

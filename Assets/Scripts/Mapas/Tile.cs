@@ -18,6 +18,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Image _obstacleImage;
     [SerializeField] private Image _puzzleImage;
 
+    private int type;       //El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
     private int position;   //Posicion x de la casilla en el mapa, las primeras es 0, las siguientes 1...
     private int energyCost; //Coste de viajar a la casilla, depende del tipo
 
@@ -62,12 +63,11 @@ public class Tile : MonoBehaviour
     // Añade un listener a cada casilla, tras presionarlo se inhabilita se pinta como presionado y se cargan las siguientes
     public void LoadTile()
     {
-        try { ScenesManager.instance.LoadSelected(_tileSceneString); } catch { Debug.Log("No hay escena todavia"); }
+        ScenesManager.instance.LoadTileScene(type);
 
         _clickEvent.enabled = false;
 
-        LevelManager.instance.Travel(energyCost);
-        LevelManager.instance.UnloadTiles(position);
+        LevelManager.instance.Travel(position, energyCost);
 
         _spriteRenderer.color = Color.red;
 
@@ -89,7 +89,7 @@ public class Tile : MonoBehaviour
     {
         _spriteRenderer.sprite = _puzzleImage.sprite;
 
-        _tileSceneString = ScenesManager.Scene.PuzleCuadro;
+        type = 0;
 
     }
 
@@ -97,14 +97,14 @@ public class Tile : MonoBehaviour
     {
         _spriteRenderer.sprite = _obstacleImage.sprite;
 
-        _tileSceneString = ScenesManager.Scene.PuzleCuadro;
+        type = 0;
     }
 
     private void BonfireTile() 
     {
         _spriteRenderer.sprite = _bonfireImage.sprite;
 
-        _tileSceneString = ScenesManager.Scene.PuzleCuadro;
+        type = 0;
     }
 
 

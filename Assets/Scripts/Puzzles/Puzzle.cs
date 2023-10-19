@@ -26,10 +26,8 @@ public class Puzzle : MonoBehaviour
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         continueBtn.onClick.AddListener(delegate {
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
+            LevelManager.instance.ActivateScene();
         });
-        _puzzleCamera.transform.position += new Vector3(0, -30);
-        //this.gameObject.transform.position += new Vector3(0, -30);
-
         // ---------------------------------------------
 
         var numbers = new List<int>(9);
@@ -45,7 +43,7 @@ public class Puzzle : MonoBehaviour
         {
             for (int j = 0; j < Mathf.Sqrt(listaPiezas.Count); j++)
             {
-                posiciones.Add(new Vector3(-2+2 * j, -32+2 * i, 0));
+                posiciones.Add(new Vector3(-2+2 * j, -2+2 * i, 0));
             }
         }
 
@@ -75,16 +73,13 @@ public class Puzzle : MonoBehaviour
 
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition += new Vector3(-3.5f,-30); //Chapuza que estoy HARTOOTAOTOAORAOAOT
+        Vector3 mousePosition = _puzzleCamera.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Hizo un click: " + mousePosition);
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject)
             {
-                Debug.Log("Incluso overlap y to");
                 selectedObject = targetObject.transform.gameObject;
                 var position = selectedObject.transform.position;
                 previousPosition = new Vector3(position.x, position.y, position.z);

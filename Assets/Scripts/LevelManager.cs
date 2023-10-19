@@ -118,7 +118,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                teamEnergy += 50;
+                teamEnergy += waterRegen;
                 teamWater--;
             }
         }

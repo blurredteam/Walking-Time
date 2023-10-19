@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Camera m_Camera;
 
     [SerializeField] private TextMeshProUGUI energy;
+    [SerializeField] private TextMeshProUGUI water;
     [SerializeField] private Image iconP0;
     [SerializeField] private Image iconP1;
     [SerializeField] private Image iconP2;
@@ -27,6 +28,9 @@ public class LevelManager : MonoBehaviour
 
     private List<Character> _team;
     private int teamEnergy;
+    private int maxEnergy;
+    public int teamWater;
+    private int waterRegen = 50;
 
     public void SetTeam(List<Character> team) { _team = team; HandleTeam(); }
 
@@ -48,6 +52,7 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         energy.text = teamEnergy.ToString();
+        water.text = teamWater.ToString();
     }
 
     public void HandleTeam() 
@@ -66,6 +71,8 @@ public class LevelManager : MonoBehaviour
         {
             teamEnergy += _team[i].energy;
         }
+        maxEnergy = teamEnergy;
+        teamWater = 3;
     }
 
     // Habilita las primeras casillas disponibles al jugador
@@ -98,5 +105,23 @@ public class LevelManager : MonoBehaviour
     {
         teamEnergy -= energyCost;
         m_Camera.transform.position += new Vector3(3.5f,0);
+    }
+
+    public void UsingWater()
+    {
+        if (teamWater > 0)
+        {
+            if ((teamEnergy + waterRegen) >= maxEnergy)
+            {
+                teamEnergy = maxEnergy;
+                teamWater--;
+            }
+            else
+            {
+                teamEnergy += 50;
+                teamWater--;
+            }
+        }
+        
     }
 }

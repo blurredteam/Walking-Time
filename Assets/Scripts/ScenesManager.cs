@@ -24,6 +24,7 @@ public class ScenesManager : MonoBehaviour
         TeamSelect,
         Level1,
         PuzleCuadro,
+        PuzzleFuente
     }
 
     public void LoadScene(Scene scene)

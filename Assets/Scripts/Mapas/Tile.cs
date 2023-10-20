@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    //[SerializeField] public Button _tileBtn;
+
     [SerializeField] public EventTrigger _clickEvent;
     [SerializeField] public SpriteRenderer _spriteRenderer;
-    //[SerializeField] public Image _tileTypeImage;
+
     [SerializeField] private Image _puzzleTypeImage;
     [SerializeField] private Image _obstacleTypeImage;
 
@@ -25,8 +25,6 @@ public class Tile : MonoBehaviour
     public int value { get; set; }
     public bool selected = false;
     public List<Tile> AdyacentList = new List<Tile>();
-
-    private ScenesManager.Scene _tileSceneString;
 
     public void ColorTile(Color color)
     {
@@ -44,24 +42,23 @@ public class Tile : MonoBehaviour
 
         if (random >= 0)
         {
-            energyCost = Random.Range(15, 30);
+            energyCost = Random.Range(30, 50);
             PuzzleTile();
         }
         else if(random < -0.30f)
         {
-            energyCost = Random.Range(30, 50);
+            energyCost = Random.Range(40, 60);
             BonfireTile();
         }
         else
         {
-            energyCost = Random.Range(10, 20);
+            energyCost = Random.Range(30, 40);
             ObstacleTile();
 
         }
     }
 
-    // Añade un listener a cada casilla, tras presionarlo se inhabilita se pinta como presionado y se cargan las siguientes
-    public void LoadTile()
+   public void LoadTile()
     {
         ScenesManager.instance.LoadTileScene(type);
 
@@ -77,11 +74,12 @@ public class Tile : MonoBehaviour
     //Carga las siguientes casillas disponibles en funcion de la lista de adyacencias 
     public void LoadNextTiles()
     {
+        if(AdyacentList.Count <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {
             AdyacentList[i]._clickEvent.enabled = true;
             AdyacentList[i]._spriteRenderer.color = Color.grey;
-
         }
     }
 

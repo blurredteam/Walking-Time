@@ -30,6 +30,7 @@ public class ScenesManager : MonoBehaviour
         PuzleTimer,
         PuzzleFuente,
         Hoguera,
+        EndScene,
     }
 
     public void LoadScene(Scene scene)

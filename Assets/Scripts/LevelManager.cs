@@ -31,13 +31,13 @@ public class LevelManager : MonoBehaviour
     private bool gameStarted = false;
 
     public List<Character> _team;
-    public int teamEnergy;
+    public int teamEnergy = 1;
     public int maxEnergy;
     public int teamWater;
     public int maxWater;
     private int waterRegen = 50;
 
-    public void SetTeam(List<Character> team) { _team = team; HandleTeam(); }
+    public void SetTeam(List<Character> team) { _team = team; teamEnergy = 0; HandleTeam(); }
     public void SetEnergy(int energy) { teamEnergy = energy; }
 
     private Tile[,] _map;
@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
 
     private void CheckEnergy()
     {
-        //if(teamEnergy <= 300) { ScenesManager.instance.LoadScene(ScenesManager.Scene.MainMenu_Scene); }
+        if(teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
     }
 
     public void HandleTeam() 

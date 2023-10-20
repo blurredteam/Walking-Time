@@ -13,7 +13,7 @@ public class LlenadoBotella : MonoBehaviour
     public float amplitudAgitacion = 10.0f;
     public float frecuenciaAgitacion = 2.0f;
     private bool llenando = false;
-    private bool  finLlenado = false;
+    private bool finLlenado = false;
     private float tiempo = 0.0f;
     private float altura;
     private Quaternion rotacionInicial;
@@ -47,15 +47,15 @@ public class LlenadoBotella : MonoBehaviour
             valorMinimo = 0.5f;
             valorMaximo = 2.0f;
         }
-        else if(probabilidad>=0.5f && probabilidad< 0.7f)
+        else if (probabilidad >= 0.5f && probabilidad < 0.7f)
         {
             // 20% de probabilidad de q vaya lento
-            valorMinimo= 0.1f;
-            valorMaximo= 1.0f;
+            valorMinimo = 0.1f;
+            valorMaximo = 1.0f;
         }
         else
         {
-            // 30% de probabilidad de q vaya rapidp
+            // 30% de probabilidad de q vaya rapido
             valorMinimo = 2.0f;
             valorMaximo = 4.0f;
         }
@@ -65,7 +65,7 @@ public class LlenadoBotella : MonoBehaviour
 
     void Update()
     {
-        if (llenando && !finLlenado && altura<=3.2f)//Con límite de altura
+        if (llenando && !finLlenado && altura <= 3.2f)//Con límite de altura
         {
             chorroAgua.SetActive(true);
             // Incrementar la posición en el eje Y para elevar el Sprite
@@ -74,12 +74,12 @@ public class LlenadoBotella : MonoBehaviour
             // Agitar lateralmente con rotación
             tiempo += Time.deltaTime;
             float angulo = amplitudAgitacion * Mathf.Sin(frecuenciaAgitacion * tiempo);
-            transform.rotation = Quaternion.Euler(0, 0, angulo); 
+            transform.rotation = Quaternion.Euler(0, 0, angulo);
         }
         else
         {
             // Cuando no se está elevando, restablecer la rotación
-            transform.rotation = rotacionInicial;          
+            transform.rotation = rotacionInicial;
         }
     }
 
@@ -90,7 +90,7 @@ public class LlenadoBotella : MonoBehaviour
     }
     public void ComenzarLlenado()
     {
-        llenando = true;      
+        llenando = true;
     }
 
     public void DetenerLlenado()
@@ -100,19 +100,36 @@ public class LlenadoBotella : MonoBehaviour
         chorroAgua.SetActive(false);
         panelFinal.SetActive(true);
         aguaTexto.text = aguaGanada.ToString();
-        
+
 
         if (altura >= referencia - 0.1 && altura <= referencia + 0.1)
         {
             aguaTexto.text = "¡GUAU, EN EL BLANCO!\nHAS GANADO 2 USOS DE AGUA";
+            Recompensas(2);
         }
-        else if((altura >= 0.55 && altura < referencia - 0.1) || altura > referencia + 0.1)
+        else if ((altura >= 0.55 && altura < referencia - 0.1) || altura > referencia + 0.1)
         {
             aguaTexto.text = "NO ESTÁ MAL, ALGO ES ALGO\nHAS GANADO 1 USO DE AGUA";
+            Recompensas(1);
         }
         else
         {
             aguaTexto.text = "VAYA... TE HAS QUEDADO CORTO\nESTA VEZ NO GANAS NADA :(";
-        }      
+        }
+    }
+
+    private void Recompensas(int cantAguaGanada)
+    {
+        int maxAgua = LevelManager.instance.maxWater;
+        int agua = LevelManager.instance.teamWater;
+
+        if ((cantAguaGanada + agua) >= maxAgua)
+        {
+            LevelManager.instance.teamWater = maxAgua;
+        }
+        else
+        {
+            LevelManager.instance.teamWater += cantAguaGanada;
+        }
     }
 }

@@ -32,8 +32,9 @@ public class LevelManager : MonoBehaviour
 
     public List<Character> _team;
     public int teamEnergy;
-    private int maxEnergy;
+    public int maxEnergy;
     public int teamWater;
+    public int maxWater;
     private int waterRegen = 50;
 
     public void SetTeam(List<Character> team) { _team = team; HandleTeam(); }
@@ -85,6 +86,7 @@ public class LevelManager : MonoBehaviour
         }
         maxEnergy = teamEnergy;
         teamWater = 3;
+        maxWater = teamWater;
     }
 
     // Habilita las primeras casillas disponibles al jugador

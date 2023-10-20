@@ -29,6 +29,7 @@ public class ScenesManager : MonoBehaviour
         PuzleCuadro,
         PuzleTimer,
         PuzzleFuente,
+        Hoguera,
     }
 
     public void LoadScene(Scene scene)
@@ -81,7 +82,7 @@ public class ScenesManager : MonoBehaviour
     private void LoadObstacle() { Debug.Log("casilla evento"); }
     private void LoadBonfire() 
     {
-        SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
+        SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);
 
         Debug.Log("Casilla hoguera"); 
     }

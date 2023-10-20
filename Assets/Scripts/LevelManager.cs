@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
-    [SerializeField] private TextMeshProUGUI energy;
-    [SerializeField] private TextMeshProUGUI water;
+    [SerializeField] private TextMeshProUGUI energyTxt;
+    [SerializeField] private TextMeshProUGUI waterTxt;
     [SerializeField] private Image iconP0;
     [SerializeField] private Image iconP1;
     [SerializeField] private Image iconP2;
@@ -28,13 +28,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image spriteP2;
     [SerializeField] private Image spriteP3;
 
-    private List<Character> _team;
-    private int teamEnergy;
+    private bool gameStarted = false;
+
+    public List<Character> _team;
+    public int teamEnergy;
     private int maxEnergy;
     public int teamWater;
     private int waterRegen = 50;
 
     public void SetTeam(List<Character> team) { _team = team; HandleTeam(); }
+    public void SetEnergy(int energy) { teamEnergy = energy; }
 
     private Tile[,] _map;
     private List<GameObject> _lines;
@@ -53,8 +56,15 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        energy.text = teamEnergy.ToString();
-        water.text = teamWater.ToString();
+        energyTxt.text = teamEnergy.ToString();
+        waterTxt.text = teamWater.ToString();
+
+        CheckEnergy();
+    }
+
+    private void CheckEnergy()
+    {
+        //if(teamEnergy <= 300) { ScenesManager.instance.LoadScene(ScenesManager.Scene.MainMenu_Scene); }
     }
 
     public void HandleTeam() 
@@ -80,6 +90,8 @@ public class LevelManager : MonoBehaviour
     // Habilita las primeras casillas disponibles al jugador
     private void StartGame()
     {
+        gameStarted = true;
+
         for (int y = 0; y < _mapHeight; y++)
         {
             if (_map[0, y].selected)
@@ -96,7 +108,7 @@ public class LevelManager : MonoBehaviour
         _gridRef.gameObject.SetActive(false); //enabled= false;
         _cameraMovementScript.enabled =false;
 
-        teamEnergy -= energyCost;
+        teamEnergy -= energyCost; // EnergyController.instance.ManageEnergy(energyCost);
 
         for (int y = 0; y < _mapHeight; y++)
         {

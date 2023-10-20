@@ -30,9 +30,11 @@ public class MapCamaraMovement : MonoBehaviour
         }
         else drag = false;
 
-        if(drag) _cameraRef.transform.position = origin - difference;
-    
-        if(Input.GetMouseButton(1))
+        float x = origin.x - difference.x;
+        float z = origin.z - difference.z;
+        if (drag && x > 0 && x < 40) _cameraRef.transform.position = new Vector3(x, 0, z);  //origin - difference;
+
+        if (Input.GetMouseButton(1))
         {
             _cameraRef.transform.position = resetCamera;
         }

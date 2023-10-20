@@ -4,12 +4,17 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
+
+    [SerializeField] private Image characterSprite;
+    [SerializeField] private TextMeshProUGUI characterName;
+    [SerializeField] private TextMeshProUGUI characterDescription;
+    [SerializeField] private TextMeshProUGUI characterEnergy;
 
     //Un boton por cada personaje
     [SerializeField] private Button _pajaroBtn;
@@ -75,10 +80,9 @@ public class CharacterManager : MonoBehaviour
 
     private void BtnHandler(Character character)
     {
-        CharacterInfo_UI.instance.ShowCharacterInfo(character._id);
+        ShowCharacterInfo(character._id);
 
-        if (character.selected == false)
-            TeamComp.instance.SelectCharacter(character._id);
+        if (character.selected == false) TeamComp.instance.SelectCharacter(character._id);
 
         character.selected = true;
     }
@@ -86,5 +90,13 @@ public class CharacterManager : MonoBehaviour
     public void MakeCharacterAvailable(int characterId)
     {
         characterList[characterId].selected = false;
+    }
+
+    public void ShowCharacterInfo(int id)
+    {
+        characterSprite.sprite = characterList[id].sprite.sprite;
+        characterName.text = characterList[id].name;
+        characterDescription.text = characterList[id].desc;
+        characterEnergy.text = characterList[id].energy.ToString();
     }
 }

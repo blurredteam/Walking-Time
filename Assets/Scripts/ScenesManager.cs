@@ -79,6 +79,11 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(puzzleScenes[selectPuzle], LoadSceneMode.Additive);
     }
     private void LoadObstacle() { Debug.Log("casilla evento"); }
-    private void LoadBonfire() { Debug.Log("Casilla hoguera"); }
+    private void LoadBonfire() 
+    {
+        SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
+
+        Debug.Log("Casilla hoguera"); 
+    }
 
 }

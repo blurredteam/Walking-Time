@@ -104,7 +104,7 @@ public class Tile : MonoBehaviour
     {
         _spriteRenderer.sprite = _bonfireImage.sprite;
 
-        type = 0;
+        type = 2;
     }
 
 

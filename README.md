@@ -20,31 +20,31 @@
 
 ### Deployment
 
-* **Scroll Puzzles:*
+* *Scroll Puzzles:**
 Description: Solve intricate scroll puzzles by aligning ancient symbols and unlocking the secrets of time.
 Tips: Pay attention to the symbols and their order to decipher the message hidden within the scrolls.
 
-* **Water Flow Puzzles:*
+* *Water Flow Puzzles:**
 Description: Manipulate the flow of water to progress through levels, using pipes, gates, and valves.
 Tips: Think critically about the water's path and how to channel it efficiently to overcome obstacles.
 
-* **Lock Puzzles:*
+* *Lock Puzzles:**
 Description: Unlock doors and chests by cracking complex lock mechanisms using logic and clues.
 Tips: Examine your surroundings for clues and be patient when figuring out the correct combination.
 
-* **Platform Minigame:*
+* *Platform Minigame:*
 Description: Test your reflexes and agility by navigating intricate platform challenges.
 Tips: Keep an eye on moving platforms, timing your jumps and movements to perfection.
 
-* **Search for Keys:*
+* **Search for Keys:**
 Description: Explore the game world to locate hidden keys, necessary for progressing in your journey.
 Tips: Pay attention to your environment, as keys may be cleverly concealed within the game's world.
 
-* **Reflection Puzzle:*
+* **Reflection Puzzle:**
 Description: Solve intricate mirror puzzles to manipulate light and overcome obstacles.
 Tips: Experiment with the angles of mirrors to direct light beams where you need them.
 
-* **Clickers:*
+* *Clickers:*
 Description: Click and interact with objects, symbols, and mechanisms to uncover hidden elements of the story.
 Tips: Be observant and click on anything that seems interesting; the smallest details can hold crucial clues.
 

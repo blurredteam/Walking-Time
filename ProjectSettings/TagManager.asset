@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Suelo
+  - Salida
   layers:
   - Default
   - TransparentFX

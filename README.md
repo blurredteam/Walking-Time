@@ -2,10 +2,7 @@
 
 “Walking Time!” es un videojuego que nace de la experiencia que supone irte de excursión con un grupo de amigos. Ese sentimiento de explorar un sitio nuevo, pasar un buen rato, ver cómo afrontar lo que sea que vaya a deparar la aventura y conocer un poco más acerca de los demás.
 
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+![alt text]([https://github.com/blurredteam/walking-time-design/blob/main/Diagramas/Portada.PNG])
 
 ### Prerequisites
 

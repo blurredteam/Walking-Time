@@ -19,7 +19,12 @@ public class salida : MonoBehaviour
             panel.SetActive(true);
         }
         //cambio de escenas
+    }
 
-
+    public void SalirDelJuego()
+    {
+        LevelManager.instance.teamEnergy -= 10;
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
+        LevelManager.instance.ActivateScene();
     }
 }

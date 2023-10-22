@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Tilemaps;
+//using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -89,11 +89,13 @@ public class MapGenerator : MonoBehaviour
 
         for (int x = 0; x < _map.Length / _height; x++)
         {
-            for (int y = 0; y < _map.Length / _width; y++) {
-                if (!_map[x, y].selected) {
+            for (int y = 0; y < _map.Length / _width; y++)
+            {
+                if (!_map[x, y].selected)
+                {
                     Destroy(_map[x, y].gameObject); //_map[x, y].ColorTile(Color.clear)
-                }  
-            } 
+                }
+            }
         }
 
         LevelManager.instance.SetMap(_map, _width, _height, _lines);
@@ -150,7 +152,7 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < path.Count - 1; i++)
         {
             if (!path[i].AdyacentList.Contains(path[i + 1])) path[i].AdyacentList.Add(path[i + 1]);
-            var line = Instantiate(_lineRendererPrefab, new Vector3(0,0), Quaternion.identity, this.transform);
+            var line = Instantiate(_lineRendererPrefab, new Vector3(0, 0), Quaternion.identity, this.transform);
             line.SetPosition(0, path[i].transform.position);
             line.SetPosition(1, path[i + 1].transform.position);
             _lines.Add(line.gameObject);

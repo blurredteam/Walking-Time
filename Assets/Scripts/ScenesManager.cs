@@ -9,7 +9,7 @@ public class ScenesManager : MonoBehaviour
     public static ScenesManager instance;
 
     // Lista con todos los puzzles
-    public List<string> puzzleScenes = new List<string>() { "PuzleCuadro", "PuzleTimer", "PuzzleFuente" };
+    public List<string> puzzleScenes = new List<string>() { "PuzleCuadro", "PuzleTimer", "PuzzleFuente", "PuzzleHielo" };
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class ScenesManager : MonoBehaviour
         PuzleCuadro,
         PuzleTimer,
         PuzzleFuente,
+        PuzzleHielo,
         Hoguera,
         EndScene,
     }
@@ -81,11 +82,11 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(puzzleScenes[selectPuzle], LoadSceneMode.Additive);
     }
     private void LoadObstacle() { Debug.Log("casilla evento"); }
-    private void LoadBonfire() 
+    private void LoadBonfire()
     {
         SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);
 
-        Debug.Log("Casilla hoguera"); 
+        Debug.Log("Casilla hoguera");
     }
 
 }

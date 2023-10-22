@@ -9,7 +9,7 @@ public class ScenesManager : MonoBehaviour
     public static ScenesManager instance;
 
     // Lista con todos los puzzles
-    public List<string> puzzleScenes = new List<string>() { "PuzleCuadro", "PuzleTimer", "PuzzleFuente" };
+    public List<string> puzzleScenes = new List<string>() { "PuzleCuadro", "PuzleTimer", "PuzzleFuente", "PuzleSumarFiguras" };
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class ScenesManager : MonoBehaviour
         PuzleCuadro,
         PuzleTimer,
         PuzzleFuente,
+        PuzleSumarFiguras,
     }
 
     public void LoadScene(Scene scene)

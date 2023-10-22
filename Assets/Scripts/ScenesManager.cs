@@ -9,11 +9,12 @@ public class ScenesManager : MonoBehaviour
     public static ScenesManager instance;
 
     // Lista con todos los puzzles
-
-    public List<string> puzzleScenes = new List<string>() { 
-        "PuzleCuadro", "PuzleTimer", "PuzzleFuente", "NivelGeometryDash",
-        "PuzzleFinder", "PuzzleHielo",
+    public List<string> escenasPuzle = new List<string>() {
+        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", 
+        "PuzzleFuente", "NivelGeometryDash",
     };
+
+    private List<int> asd = new List<int>() { 1, 2, 3, 5};
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class ScenesManager : MonoBehaviour
         PuzzleFuente,
         PuzzleFinder,
         NivelGeometryDash,
+        PuzleSumarFiguras,
         PuzzleHielo,
         Hoguera,
         EndScene,
@@ -84,8 +86,9 @@ public class ScenesManager : MonoBehaviour
 
     private void LoadPuzzle()
     {
-        int selectPuzle = Random.Range(0, puzzleScenes.Count);
-        SceneManager.LoadScene(puzzleScenes[selectPuzle], LoadSceneMode.Additive);
+        int selectPuzle = Random.Range(0, escenasPuzle.Count);
+
+        SceneManager.LoadScene(escenasPuzle[selectPuzle], LoadSceneMode.Additive);
     }
     private void LoadObstacle() { Debug.Log("casilla evento"); }
     private void LoadBonfire()

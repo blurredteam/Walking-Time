@@ -8,9 +8,9 @@
 
 ![alt text](https://github.com/blurredteam/walking-time-design/blob/main/Diagramas/Diagrama-Juego.PNG?raw=true)
 
-```
+
 “Walking Time” divide su jugabilidad en dos fases, una de preparación donde se elige un equipo de cuatro aventureros que explorarán la isla de entre un plantel de personajes disponibles y una segunda fase que se corresponderá con avanzar en la isla, resolver puzzles, enfrentar obstáculos y gestionar la energía que tiene nuestro equipo para avanzar.
-```
+
 
 ### Level Flow
 
@@ -48,6 +48,10 @@ Tips: Experiment with the angles of mirrors to direct light beams where you need
 Description: Click and interact with objects, symbols, and mechanisms to uncover hidden elements of the story.
 Tips: Be observant and click on anything that seems interesting; the smallest details can hold crucial clues.
 
+If you win or not in a puzzle consumes your team energy.
+```
+Energía Equipo = [Energía (Miembro 1) + E (M2) + E (M3) + E (M4)] * ?Modificadores 
+```
 ## Built With
 
 * [Unity](https://unity.com/es) - The web from the engine

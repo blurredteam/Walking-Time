@@ -1,12 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -62,7 +55,8 @@ public class MapGenerator : MonoBehaviour
         int xGridPos = 0;
         int yGridPos = 0;
 
-        for (float x = 0; x < _width * (_X_spacing * 1.5f); x += (_X_spacing * 1.5f))
+        // 1. Se genera el grid
+        for (float x = 0; x < _width * _X_spacing; x += _X_spacing)
         {
             for (float y = 0; y < _height * _Y_spacing; y += _Y_spacing)
             {
@@ -71,10 +65,10 @@ public class MapGenerator : MonoBehaviour
                 float offsetY = 4 + offset;
 
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x - offsetX, y - offsetY), Quaternion.identity, this.transform);
-                spawnedTile.name = $"Tile {x / (_X_spacing * 1.5f)} {y / _Y_spacing}";
+                spawnedTile.name = $"Tile {x / (_X_spacing)} {y / _Y_spacing}";
                 spawnedTile.value = (int)(y / _Y_spacing);
 
-                spawnedTile.AssignType(xGridPos, offset); //Se envia el offset como factor aleatorio para el tipo de casilla
+                spawnedTile.AssignType(xGridPos);
 
                 _map[xGridPos, yGridPos] = spawnedTile;
                 yGridPos++;
@@ -84,9 +78,10 @@ public class MapGenerator : MonoBehaviour
             xGridPos++;
         }
 
+        // 2. Se crean caminos aleatorios
         for (int caminoIdx = 0; caminoIdx < _numberOfPaths; caminoIdx++) BuildPath(_map, Color.white);
 
-
+        // 3. Se borran las casillas que sobran
         for (int x = 0; x < _map.Length / _height; x++)
         {
             for (int y = 0; y < _map.Length / _width; y++) {
@@ -96,10 +91,25 @@ public class MapGenerator : MonoBehaviour
             } 
         }
 
-        LevelManager.instance.SetMap(_map, _width, _height, _lines);
+        // 4. Se instancia la casilla final
+        var lastTile = Instantiate(_tilePrefab, new Vector3(_width * (_X_spacing) - 7, 0), Quaternion.identity, this.transform);
+        lastTile.name = $"TileFinal";
+        lastTile._clickEvent.enabled = false;
 
-        //_cam.transform.position = new Vector3(((float)_width/2 - 0.5f)*_spacing, ((float)_height / 2 -0.5f)*_spacing, -10);
-        //_cam.orthographicSize = 5 * _spacing;
+        for (int y = 0; y < _map.Length / _width; y++)
+        {
+            if (_map[_width-1, y].selected)
+            {
+                _map[_width - 1, y].AdyacentList.Add(lastTile);
+                var line = Instantiate(_lineRendererPrefab, new Vector3(0, 0), Quaternion.identity, this.transform);
+                line.SetPosition(0, _map[_width - 1, y].transform.position);
+                line.SetPosition(1,lastTile.transform.position);
+                _lines.Add(line.gameObject);
+            }
+        }
+        
+        // 5. Se asigna el mapa al nivel
+        LevelManager.instance.SetMap(_map, _width, _height);
 
     }
 

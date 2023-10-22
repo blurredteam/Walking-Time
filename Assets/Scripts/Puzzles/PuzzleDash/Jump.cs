@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Jump : MonoBehaviour
 {
@@ -17,8 +18,17 @@ public class Jump : MonoBehaviour
     private float tiempoRestante;
     private bool juegoTerminado = false;
 
+    [SerializeField] Button exitBtn;
+
     private void Start()
     {
+        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+        exitBtn.onClick.AddListener(delegate {
+            ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+            LevelManager.instance.ActivateScene();
+        });
+        // ---------------------------------------------
+
         tiempoRestante = tiempoMaximo;
         ActualizarTextoTiempo();
     }

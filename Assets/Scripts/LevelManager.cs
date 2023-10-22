@@ -28,8 +28,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image spriteP2;
     [SerializeField] private Image spriteP3;
 
-    private bool gameStarted = false;
-
     public List<Character> _team;
     public int teamEnergy = 1;
     public int maxEnergy;
@@ -41,13 +39,12 @@ public class LevelManager : MonoBehaviour
     public void SetEnergy(int energy) { teamEnergy = energy; }
 
     private Tile[,] _map;
-    private List<GameObject> _lines;
     private int _mapWidth;
     private int _mapHeight;
-    public void SetMap(Tile[,] map, int width, int height, List<GameObject> lines) 
+    public void SetMap(Tile[,] map, int width, int height) 
     {
-        _map = map; _mapWidth = width; _mapHeight = height; StartGame();
-        _lines = lines;
+        _map = map; _mapWidth = width; _mapHeight = height; 
+        StartGame();
     }
 
     private void Start()
@@ -92,7 +89,6 @@ public class LevelManager : MonoBehaviour
     // Habilita las primeras casillas disponibles al jugador
     private void StartGame()
     {
-        gameStarted = true;
 
         for (int y = 0; y < _mapHeight; y++)
         {
@@ -105,12 +101,14 @@ public class LevelManager : MonoBehaviour
 
     //Reduce la energia total en funcion del coste de viajar a una casilla
     // Tras presionar una casilla, inhabilita las casillas de su misma columna y las pinta 
-    public void Travel(int position, int energyCost)
+    public void Travel(int position, int energyCost, int tileType)
     {
-        _gridRef.gameObject.SetActive(false); //enabled= false;
+        _gridRef.gameObject.SetActive(false); 
         _cameraMovementScript.enabled =false;
 
-        teamEnergy -= energyCost; // EnergyController.instance.ManageEnergy(energyCost);
+        ScenesManager.instance.LoadTileScene(tileType);
+
+        teamEnergy -= energyCost; 
 
         for (int y = 0; y < _mapHeight; y++)
         {

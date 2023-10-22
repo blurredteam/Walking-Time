@@ -17,6 +17,8 @@ public class Rotate : MonoBehaviour
 
     private bool pulsado;
 
+    private int energiaPerdida = 0;//Si hace mal el puzzle perderá
+
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
@@ -46,6 +48,7 @@ public class Rotate : MonoBehaviour
                 // Asignar una puntuación en función de la distancia
                 int puntuacion = CalcularPuntuacion(distanciaAlObjetivo);
                 Debug.Log("Puntuación: " + puntuacion);
+                
                 pulsado = true;
             }
         }
@@ -66,6 +69,7 @@ public class Rotate : MonoBehaviour
             float anguloRotacionPropia = velocidadRotacionPropia * Time.deltaTime;
             transform.Rotate(Vector3.forward * anguloRotacionPropia);
         }
+       
     }
 
     int CalcularPuntuacion(float distancia)
@@ -74,15 +78,25 @@ public class Rotate : MonoBehaviour
         // Puedes usar una función matemática o establecer rangos de distancia para diferentes puntuaciones.
         if (distancia < 0.5f)
         {
+            CanvasTimer.instance.SetEnergiaPerdida(0);
             return 100;
+            
         }
         else if (distancia < 0.7f)
         {
+            energiaPerdida += 5;
+            LevelManager.instance.teamEnergy -= 5;
+            CanvasTimer.instance.SetEnergiaPerdida(5);
             return 50;
+
         }
         else
         {
+            LevelManager.instance.teamEnergy -= 10;
+            CanvasTimer.instance.SetEnergiaPerdida(10);
             return 10;
         }
     }
+
+    
 }

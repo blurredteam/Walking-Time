@@ -16,66 +16,56 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterDescription;
     [SerializeField] private TextMeshProUGUI characterEnergy;
 
-    //Un boton por cada personaje
-    [SerializeField] private Button _pajaroBtn;
-    [SerializeField] private Button _berenjenoBtn;
-    [SerializeField] private Button _misteriosoBtn;
-    [SerializeField] private Button _ojosBtn;
-    [SerializeField] private Button _characterBtn5;
-
-    private List<Button> _btnList;
-
-    [SerializeField] private Image _pajaroSprite;
-    [SerializeField] private Image _berenjenoSprite;
-    [SerializeField] private Image _misteriosoSprite;
-    [SerializeField] private Image _ojosSprite;
-
-    [SerializeField] private Image _pajaroIcon;
-    [SerializeField] private Image _berenjenoIcon;
-    [SerializeField] private Image _misteriosoIcon;
-    [SerializeField] private Image _ojosIcon;
-
-    private Character _pajaro;
-    private Character _berenjeno;
-    private Character _misterioso;
-    private Character _ojos;
+    //Las 4 listas siguientes necesitan ir en orden del ID del personaje
+    [SerializeField] private List<Button> _btnList;
+    [SerializeField] private List<Image> _spriteList;
+    [SerializeField] private List<Image> _iconList;
 
     public List<Character> characterList;
+    private Japaro _japaro;
+    private Berenjeno _berenjeno;
+    private Finito _finito;   
+    private Mirabel _mirabel;
+    private Fausto _fauno;
+    private Seta _seta;
+    private Chispa _chispa;
 
-    /* -- PERSONAJES IDs --
-    --ID 0 -> pajaro
+    /* 
+    -- PERSONAJES IDs --
+    --ID 0 -> japaro
     --ID 1 -> berenjeno
-    --ID 2 -> misterioso
-    --ID 3 -> ojos
-    --ID 5 -> nadie
+    --ID 2 -> martin
+    --ID 3 -> mirabel
+    --ID 4 -> fauno
+    --ID 5 -> seta
+    --ID 6 -> chispa
     */
 
     private void Awake()
     {
         instance = this;
 
-        string descPajaro = "Hola que tal soy un pajaro";
-        string descBerenjeno = "berenjeno";
-        string descMisterioso = "ey yeye";
-        string descOjos = "O.O";
+        _japaro = new Japaro(_spriteList[0], _iconList[0]);
+        _berenjeno = new Berenjeno(_spriteList[1], _iconList[1]);
+        _finito = new Finito(_spriteList[2], _iconList[2]);
+        _mirabel = new Mirabel(_spriteList[3], _iconList[3]);
+        _fauno= new Fausto(_spriteList[4], _iconList[4]);
+        _seta = new Seta(_spriteList[5], _iconList[5]);
+        _chispa = new Chispa(_spriteList[6], _iconList[6]);
 
-        _pajaro = new Character(0, "pajaro", false, _pajaroSprite, _pajaroIcon, descPajaro, 100);
-        _berenjeno = new Character(1, "berenjeno", false, _berenjenoSprite, _berenjenoIcon, descBerenjeno, 150);
-        _misterioso = new Character(2, "misterioso", false, _misteriosoSprite, _misteriosoIcon, descMisterioso, 50);
-        _ojos = new Character(3, "ojos", false, _ojosSprite, _ojosIcon, descOjos, 50);
-
-        characterList = new List<Character>() { _pajaro, _berenjeno, _misterioso, _ojos};
+        characterList = new List<Character>() { _japaro, _berenjeno, _finito, _mirabel, _fauno, _seta, _chispa };
     }
 
     private void Start()
     {
-        _btnList = new List<Button>() { _pajaroBtn, _berenjenoBtn, _misteriosoBtn, _ojosBtn };
-
-        //Boton de cada personaje, envia su ID al metodo
-        _pajaroBtn.onClick.AddListener(delegate { BtnHandler(_pajaro); });
-        _berenjenoBtn.onClick.AddListener(delegate { BtnHandler(_berenjeno); });
-        _misteriosoBtn.onClick.AddListener(delegate { BtnHandler(_misterioso); });
-        _ojosBtn.onClick.AddListener(delegate { BtnHandler(_ojos); });
+        //Boton de cada personaje
+        _btnList[0].onClick.AddListener(delegate { BtnHandler(_japaro); });
+        _btnList[1].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
+        _btnList[2].onClick.AddListener(delegate { BtnHandler(_finito); });
+        _btnList[3].onClick.AddListener(delegate { BtnHandler(_mirabel); });
+        _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
+        _btnList[5].onClick.AddListener(delegate { BtnHandler(_seta); });
+        _btnList[6].onClick.AddListener(delegate { BtnHandler(_chispa); });
     }
 
     private void BtnHandler(Character character)

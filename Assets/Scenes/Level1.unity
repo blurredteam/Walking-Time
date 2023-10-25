@@ -1566,15 +1566,17 @@ MonoBehaviour:
   _gridRef: {fileID: 1531376817}
   energyTxt: {fileID: 336028926}
   waterTxt: {fileID: 343709810}
-  iconP0: {fileID: 695678158}
-  iconP1: {fileID: 1289070052}
-  iconP2: {fileID: 2099791694}
-  iconP3: {fileID: 2123697778}
+  _icons:
+  - {fileID: 695678158}
+  - {fileID: 1289070052}
+  - {fileID: 2099791694}
+  - {fileID: 2123697778}
   _spritesTeam: {fileID: 1313007915}
-  spriteP0: {fileID: 611705356}
-  spriteP1: {fileID: 2126473597}
-  spriteP2: {fileID: 715125473}
-  spriteP3: {fileID: 1066056447}
+  _sprites:
+  - {fileID: 1066056447}
+  - {fileID: 715125473}
+  - {fileID: 2126473597}
+  - {fileID: 611705356}
   _team: []
   teamEnergy: 1
   maxEnergy: 0

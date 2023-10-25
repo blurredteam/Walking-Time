@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,39 +19,44 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI energyTxt;
     [SerializeField] private TextMeshProUGUI waterTxt;
-    [SerializeField] private Image iconP0;
-    [SerializeField] private Image iconP1;
-    [SerializeField] private Image iconP2;
-    [SerializeField] private Image iconP3;
+    [SerializeField] private List<Image> _icons;
 
     [SerializeField] private GameObject _spritesTeam;
-    [SerializeField] private Image spriteP0;
-    [SerializeField] private Image spriteP1;
-    [SerializeField] private Image spriteP2;
-    [SerializeField] private Image spriteP3;
+    [SerializeField] private List<Image> _sprites;
 
-    public List<Character> _team;
-    public int teamEnergy = 1;
-    public int maxEnergy;
-    public int teamWater;
-    public int maxWater;
+    public List<Character> _team { get; set; } = new List<Character>();
+    public int teamEnergy { get; set; } = 1;
+    public int maxEnergy { get; set; }
+    public int teamWater { get; set; }
+    public int maxWater { get; set; }
+
     private int waterRegen = 50;
 
-    public void SetTeam(List<Character> team) { _team = team; teamEnergy = 0; HandleTeam(); }
-    public void SetEnergy(int energy) { teamEnergy = energy; }
-
-    private Tile[,] _map;
+    public Tile[,] _map { get; set; }
     private int _mapWidth;
     private int _mapHeight;
     public void SetMap(Tile[,] map, int width, int height) 
     {
-        _map = map; _mapWidth = width; _mapHeight = height; 
-        StartGame();
+        _map = map; _mapWidth = width; _mapHeight = height;
+    }
+
+    public void SetTeam(List<Character> team)
+    {
+        this._team = team;
+
+        //Asigna los iconos
+        for (int i = 0; i < _team.Count; i++)
+        {
+            _icons[i].sprite = _team[i].icon.sprite;
+            _sprites[i].sprite = _team[i].sprite.sprite;
+        }
     }
 
     private void Start()
     {
         instance= this;
+
+        maxWater = teamWater;
     }
 
     private void Update()
@@ -65,29 +72,8 @@ public class LevelManager : MonoBehaviour
         if(teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
     }
 
-    public void HandleTeam() 
-    {
-        iconP0.sprite = _team[0].icon.sprite;
-        iconP1.sprite = _team[1].icon.sprite;
-        iconP2.sprite = _team[2].icon.sprite;
-        iconP3.sprite = _team[3].icon.sprite;
-
-        spriteP0.sprite = _team[0].sprite.sprite;
-        spriteP1.sprite = _team[1].sprite.sprite;
-        spriteP2.sprite = _team[2].sprite.sprite;
-        spriteP3.sprite = _team[3].sprite.sprite;
-
-        for(int i = 0; i < _team.Count; i++)
-        {
-            teamEnergy += _team[i].energy;
-        }
-        maxEnergy = teamEnergy;
-        teamWater = 3;
-        maxWater = teamWater;
-    }
-
     // Habilita las primeras casillas disponibles al jugador
-    private void StartGame()
+    public void StartGame()
     {
 
         for (int y = 0; y < _mapHeight; y++)
@@ -137,10 +123,9 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                teamEnergy += waterRegen;
+                teamEnergy += 50;
                 teamWater--;
             }
         }
-        
     }
 }

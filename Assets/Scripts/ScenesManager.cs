@@ -14,8 +14,6 @@ public class ScenesManager : MonoBehaviour
         "PuzzleFuente", "NivelGeometryDash",
     };
 
-    private List<int> asd = new List<int>() { 1, 2, 3, 5};
-
     private void Awake()
     {
         instance = this;

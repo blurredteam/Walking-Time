@@ -33,20 +33,11 @@ public class MapGenerator : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            for (int x = 0; x < _map.Length / _height; x++)
-            {
-                for (int y = 0; y < _map.Length / _width; y++) _map[x, y].ColorTile(Color.clear);
-            }
-
-            for (int i = 0; i < _lines.Count; i++)
-            {
-                Destroy(_lines[i]);
-            }
-
-            for (int j = 0; j < _numberOfPaths; j++)
-            {
-                BuildPath(_map, Color.white);
-            }
+            for (int x = 0; x < _map.Length / _height; x++) 
+                for (int y = 0; y < _map.Length / _width; y++) 
+                    _map[x, y].ColorTile(Color.clear);
+            for (int i = 0; i < _lines.Count; i++) Destroy(_lines[i]);
+            for (int j = 0; j < _numberOfPaths; j++) BuildPath(_map, Color.white);
         }
     }
 

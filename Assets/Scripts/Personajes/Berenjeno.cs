@@ -30,4 +30,18 @@ public class Berenjeno : Character
     {
         TeamComp.instance._teamMaxWater++;
     }
+
+    public override string PuzzleChooseDialogue()
+    {
+        string frase1 = "BERENJENOOOOOOOOOOOOOOOOOOOOOOOOOO";
+        string frase2 = "Vamos a demostrarles quien es la verdura mas dura";
+        string frase3 = "Me hago este puzzle de una hostia";
+        string frase4 = "Soy una berenjena! No veo mal el canibalismo";
+        string frase5 = "Yo antes no era una berenjena... nunca pruebes el fentanilo compañero";
+
+        _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
+
+        int index = Random.Range(0, _frases.Count);
+        return (_frases[index]);
+    }
 }

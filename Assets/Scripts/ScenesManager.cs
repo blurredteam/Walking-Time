@@ -45,18 +45,18 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(scene.ToString());
     }
 
-    public void LoadTileScene(int type)
+    public void LoadTileScene(int type, int index)
     {
         //SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
         // Type =0 -> puzzle; =1 -> event; =2 -> bonfire 
 
         if (type == 0)
         {
-            LoadPuzzle();
+            LoadPuzzle(index);
         }
         else if (type == 1)
         {
-            LoadObstacle();
+            LoadObstacle(index);
         }
         else
         {
@@ -82,13 +82,11 @@ public class ScenesManager : MonoBehaviour
 
     }
 
-    private void LoadPuzzle()
+    private void LoadPuzzle(int index)
     {
-        int selectPuzle = Random.Range(0, escenasPuzle.Count);
-
-        SceneManager.LoadScene(escenasPuzle[selectPuzle], LoadSceneMode.Additive);
+        SceneManager.LoadScene(escenasPuzle[index], LoadSceneMode.Additive);
     }
-    private void LoadObstacle() { Debug.Log("casilla evento"); }
+    private void LoadObstacle(int index) { Debug.Log("casilla evento"); }
     private void LoadBonfire()
     {
         SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);

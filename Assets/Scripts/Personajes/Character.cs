@@ -17,9 +17,13 @@ public class Character : MonoBehaviour
 
     public Tile[,] _map;
     public int _teamMaxWater;
+    public List<string> _frases;
 
     public virtual void Skill() { Debug.Log(name + "; habilidad"); }
 
     //Esta funcion se usa unicamente en hogueras 
     public virtual void RevertSkill() { Debug.Log(name + "; negar habilidad"); }
+
+    //Se usa cuando el jugador se mete en un puzzle
+    public virtual string PuzzleChooseDialogue() { return name.ToString() + ": comentario"; }
 }

@@ -31,4 +31,17 @@ public class Japaro : Character
         float revertEnergy = maxEnergyCopy / 1.2f;
         TeamComp.instance._teamMaxEnergy =  (int) revertEnergy;
     }
+    public override string PuzzleChooseDialogue()
+    {
+        string frase1 = "piopio";
+        string frase2 = "*sonido de pajaro*";
+        string frase3 = "*sonido de pajaro*";
+        string frase4 = "*sonido de pajaro*";
+        string frase5 = "*sonido de* SOC pa* ORR *jaroOOOOO*";
+
+        _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
+
+        int index = Random.Range(0, _frases.Count);
+        return (_frases[index]);
+    }
 }

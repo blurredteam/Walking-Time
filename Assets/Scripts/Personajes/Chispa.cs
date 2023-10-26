@@ -26,4 +26,18 @@ public class Chispa : Character
     {
         base.RevertSkill();
     }
+
+    public override string PuzzleChooseDialogue()
+    {
+        string frase1 = "Yo voy chill por donde me lleve el viento";
+        string frase2 = "Tengo miedo de que Fausto me convierta en porro";
+        string frase3 = "Vamos compañero! Tu puedes!";
+        string frase4 = "El otro dia me saque unos cuartos en la rule";
+        string frase5 = "Berenjeno lo ha pasado mal... no tomeis drogas niños";
+
+        _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
+
+        int index = Random.Range(0, _frases.Count);
+        return (_frases[index]);
+    }
 }

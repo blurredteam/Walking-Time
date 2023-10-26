@@ -57,6 +57,7 @@ public class TeamComp : MonoBehaviour
     {
         if (ready && !bonfireTile)
         {
+            _continueBtn.onClick.RemoveAllListeners();
             _continueBtn.onClick.AddListener(Continue);
             ready = false;
             return;
@@ -134,6 +135,8 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.teamWater = _teamMaxWater;
         LevelManager.instance.maxWater = _teamMaxWater;
 
+        //Esta corrutina esta para visualizar como se van aplicando las hablidades de cada personaje una a una
+        //sobre la energia o el agua del equipo antes de empezar la partida, mostrar visualmente las habilidades
         StartCoroutine(ContinueTimer());
     }
 

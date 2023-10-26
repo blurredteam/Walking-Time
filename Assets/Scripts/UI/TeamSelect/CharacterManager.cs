@@ -34,7 +34,7 @@ public class CharacterManager : MonoBehaviour
     -- PERSONAJES IDs --
     --ID 0 -> japaro
     --ID 1 -> berenjeno
-    --ID 2 -> martin
+    --ID 2 -> finito
     --ID 3 -> mirabel
     --ID 4 -> fauno
     --ID 5 -> seta

@@ -18,9 +18,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private Image _obstacleImage;
     [SerializeField] private Image _puzzleImage;
 
-    private int type;       //El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
-    private int position;   //Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
-    private int energyCost; //Coste de viajar a la casilla, depende del tipo
+    private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
+    private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
+    private int energyCost; // Coste de viajar a la casilla, depende del tipo
+    private int index;      // Indica el puzzle o evento especifico
 
     public int value { get; set; }
     public bool selected = false;
@@ -41,7 +42,7 @@ public class Tile : MonoBehaviour
         this.position = position;
 
         if (random >= 50) PuzzleTile();
-        else if(random < 5) BonfireTile();
+        else if(random <= 5) BonfireTile();
         else ObstacleTile();
     }
 
@@ -49,7 +50,7 @@ public class Tile : MonoBehaviour
     {
         _clickEvent.enabled = false;
 
-        LevelManager.instance.Travel(position, energyCost, type);
+        LevelManager.instance.Travel(position, energyCost, type, index);
 
         _spriteRenderer.color = Color.black;
         LoadNextTiles();
@@ -67,12 +68,18 @@ public class Tile : MonoBehaviour
         }
     }
 
-    private void PuzzleTile() 
+    private void PuzzleTile()
     {
-        energyCost = Random.Range(30, 50);
-        _spriteRenderer.sprite = _puzzleImage.sprite;
-
         type = 0;
+        energyCost = Random.Range(30, 50);
+        var puzzleList = ScenesManager.instance.escenasPuzle;
+        index = Random.Range(0, puzzleList.Count);
+
+        // Aqui falta poner la imagen en funcion de que puzzle es
+        // Se necesitara una lista con las imagenes de cada tipo de puzzle
+        // Quiza refactorizar los puzzles y hacer que todos hereden de una clase base puzzle (?
+        // _spriteRenderer.sprite = _puzzleImages[index].sprite;
+        _spriteRenderer.sprite = _puzzleImage.sprite;
 
     }
 

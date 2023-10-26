@@ -85,14 +85,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    //Reduce la energia total en funcion del coste de viajar a una casilla
-    // Tras presionar una casilla, inhabilita las casillas de su misma columna y las pinta 
-    public void Travel(int position, int energyCost, int tileType)
+    // Carga la escena indicada y reduce la energia total en funcion del coste de viajar a esa casilla
+    // Tambien inhabilita las casillas de su misma columna y las pinta 
+    public void Travel(int position, int energyCost, int tileType, int index)
     {
         _gridRef.gameObject.SetActive(false); 
         _cameraMovementScript.enabled =false;
 
-        ScenesManager.instance.LoadTileScene(tileType);
+        ScenesManager.instance.LoadTileScene(tileType, index);
 
         teamEnergy -= energyCost; 
 
@@ -106,6 +106,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    // Se usa al volver de otra escena (puzzles, eventos, hoguera)
     public void ActivateScene()
     {
         _gridRef.gameObject.SetActive(true);

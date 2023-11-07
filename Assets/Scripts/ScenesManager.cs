@@ -85,6 +85,7 @@ public class ScenesManager : MonoBehaviour
     private void LoadPuzzle(int index)
     {
         SceneManager.LoadScene(escenasPuzle[index], LoadSceneMode.Additive);
+        //SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
     }
     private void LoadObstacle(int index) { Debug.Log("casilla evento"); }
     private void LoadBonfire()

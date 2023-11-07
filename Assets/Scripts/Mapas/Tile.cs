@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEditor.Animations;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
@@ -17,6 +18,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private Image _bonfireImage;
     [SerializeField] private Image _obstacleImage;
     [SerializeField] private Image _puzzleImage;
+
+    //Para animacion de casillas
+    [SerializeField] public Animator animatorTile;
+    [SerializeField] private AnimatorController animationPuzzleImage;
 
     private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
@@ -53,6 +58,7 @@ public class Tile : MonoBehaviour
         LevelManager.instance.Travel(position, energyCost, type, index);
 
         _spriteRenderer.color = Color.black;
+        //animatorTile.runtimeAnimatorController = null;//Desactivamos la anim
         LoadNextTiles();
     }
 
@@ -65,6 +71,17 @@ public class Tile : MonoBehaviour
         {
             AdyacentList[i]._clickEvent.enabled = true;
             AdyacentList[i]._spriteRenderer.color = Color.blue;
+            //if (type == 0)
+            //{
+            //    //Si es puzzle activa su animacion
+            //    AdyacentList[i].animatorTile.runtimeAnimatorController = animationPuzzleImage;
+            //}
+            //else
+            //{
+                
+            //    AdyacentList[i]._spriteRenderer.color = Color.blue;
+            //}
+            
         }
     }
 
@@ -75,12 +92,11 @@ public class Tile : MonoBehaviour
         var puzzleList = ScenesManager.instance.escenasPuzle;
         index = Random.Range(0, puzzleList.Count);
 
-        // Aqui falta poner la imagen en funcion de que puzzle es
-        // Se necesitara una lista con las imagenes de cada tipo de puzzle
-        // Quiza refactorizar los puzzles y hacer que todos hereden de una clase base puzzle (?
-        // _spriteRenderer.sprite = _puzzleImages[index].sprite;
+       
+        //animatorTile = GetComponent<Animator>();
         _spriteRenderer.sprite = _puzzleImage.sprite;
 
+        
     }
 
     private void ObstacleTile() 

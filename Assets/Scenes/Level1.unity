@@ -1577,11 +1577,6 @@ MonoBehaviour:
   - {fileID: 715125473}
   - {fileID: 2126473597}
   - {fileID: 611705356}
-  _team: []
-  teamEnergy: 1
-  maxEnergy: 0
-  teamWater: 0
-  maxWater: 0
 --- !u!4 &1421077708
 Transform:
   m_ObjectHideFlags: 0

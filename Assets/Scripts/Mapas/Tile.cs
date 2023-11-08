@@ -35,6 +35,7 @@ public class Tile : MonoBehaviour
     public void ColorTile(Color color)
     {
         _spriteRenderer.color = color;
+        Debug.Log("Quien te cambio diablo"+color.ToString());
     }
 
     //Asigna el tipo de casilla aleatoriamente en funcion de random 
@@ -58,7 +59,7 @@ public class Tile : MonoBehaviour
         LevelManager.instance.Travel(position, energyCost, type, index);
 
         _spriteRenderer.color = Color.black;
-        //animatorTile.runtimeAnimatorController = null;//Desactivamos la anim
+        animatorTile.runtimeAnimatorController = null;//Desactivamos la anim
         LoadNextTiles();
     }
 
@@ -70,18 +71,12 @@ public class Tile : MonoBehaviour
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {
             AdyacentList[i]._clickEvent.enabled = true;
-            AdyacentList[i]._spriteRenderer.color = Color.blue;
-            //if (type == 0)
-            //{
-            //    //Si es puzzle activa su animacion
-            //    AdyacentList[i].animatorTile.runtimeAnimatorController = animationPuzzleImage;
-            //}
-            //else
-            //{
-                
-            //    AdyacentList[i]._spriteRenderer.color = Color.blue;
-            //}
-            
+            //AdyacentList[i]._spriteRenderer.color = Color.blue;
+         
+            //Si es puzzle activa su animacion
+            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationPuzzleImage; }
+            else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
+           
         }
     }
 
@@ -93,7 +88,7 @@ public class Tile : MonoBehaviour
         index = Random.Range(0, puzzleList.Count);
 
        
-        //animatorTile = GetComponent<Animator>();
+        animatorTile = GetComponent<Animator>();
         _spriteRenderer.sprite = _puzzleImage.sprite;
 
         
@@ -114,4 +109,5 @@ public class Tile : MonoBehaviour
 
         type = 2;
     }
+    
 }

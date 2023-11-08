@@ -102,6 +102,7 @@ public class LevelManager : MonoBehaviour
             {
                 _map[position, y]._clickEvent.enabled = false;
                 _map[position, y]._spriteRenderer.color = Color.grey;
+                _map[position, y].animatorTile.runtimeAnimatorController = null;
             }
         }
     }

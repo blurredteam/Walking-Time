@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 683620354}
   - component: {fileID: 683620356}
   - component: {fileID: 683620355}
+  - component: {fileID: 683620357}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -959,6 +960,14 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!81 &683620357
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683620353}
+  m_Enabled: 1
 --- !u!1 &1151962168
 GameObject:
   m_ObjectHideFlags: 0

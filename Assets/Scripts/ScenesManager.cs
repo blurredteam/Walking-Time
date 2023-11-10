@@ -38,6 +38,7 @@ public class ScenesManager : MonoBehaviour
         PuzzleHielo,
         Hoguera,
         EndScene,
+        EventScene,
     }
 
     public void LoadScene(Scene scene)
@@ -87,7 +88,11 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(escenasPuzle[index], LoadSceneMode.Additive);
         //SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
     }
-    private void LoadObstacle(int index) { Debug.Log("casilla evento"); }
+    private void LoadObstacle(int index) 
+    {
+        SceneManager.LoadScene(Scene.EventScene.ToString(), LoadSceneMode.Additive);
+        Debug.Log("casilla evento"); 
+    }
     private void LoadBonfire()
     {
         SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);

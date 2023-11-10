@@ -99,7 +99,7 @@ public class Tile : MonoBehaviour
         _spriteRenderer.sprite = _obstacleImage.sprite;
         energyCost = Random.Range(30, 40);
 
-        type = 0;
+        type = 1;
     }
 
     private void BonfireTile() 

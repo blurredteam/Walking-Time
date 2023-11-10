@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI energyTxt;
     [SerializeField] private TextMeshProUGUI waterTxt;
+    [SerializeField] private TextMeshProUGUI goldTxt;
     [SerializeField] private List<Image> _icons;
 
     [SerializeField] private GameObject _spritesTeam;
@@ -29,6 +30,8 @@ public class LevelManager : MonoBehaviour
     public int maxEnergy { get; set; }
     public int teamWater { get; set; }
     public int maxWater { get; set; }
+
+    public int gold { get; set; } = 0;
 
     private int waterRegen = 50;
 
@@ -63,6 +66,7 @@ public class LevelManager : MonoBehaviour
     {
         energyTxt.text = teamEnergy.ToString();
         waterTxt.text = teamWater.ToString();
+        goldTxt.text = gold.ToString();
 
         CheckEnergy();
     }

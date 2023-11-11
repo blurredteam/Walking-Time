@@ -110,5 +110,38 @@ public class Jump : MonoBehaviour
         {
             textoTiempo.text = "¡Perdiste!";
         }
+
+        EsperarYRecompensa(ganaste);
+    }
+    
+    private void Recompensas(int cantEnergiaGanada)
+    {
+        int maxEnergia = LevelManager.instance.maxEnergy;
+        int energia = LevelManager.instance.teamEnergy;
+
+        if ((cantEnergiaGanada + energia) >= maxEnergia)
+        {
+            LevelManager.instance.teamEnergy = maxEnergia;
+        }
+        else
+        {
+            LevelManager.instance.teamWater += cantEnergiaGanada;
+        }
+    }
+
+    IEnumerator EsperarYRecompensa(bool ganado)
+    {
+        // Espera durante 3 segundos.
+        yield return new WaitForSeconds(1.5f);
+        if (ganado)
+        {
+            Recompensas(10);
+        }
+        else
+        {
+            Recompensas(-10);
+        }
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+        LevelManager.instance.ActivateScene();
     }
 }

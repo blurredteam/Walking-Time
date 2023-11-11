@@ -21,6 +21,8 @@ public class Puzzle : MonoBehaviour
     private Vector3 previousPosition;
     Vector3 offset;
 
+    public GameObject panFinal;
+
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
@@ -47,14 +49,17 @@ public class Puzzle : MonoBehaviour
             }
         }
 
-        listaAux = new List<GameObject>(listaPiezas);
+        do{
+            listaAux = new List<GameObject>(listaPiezas);
 
-        for (int i = 0; i < listaPiezas.Count; i++)
-        {
-            var thisNumber = Random.Range(0, numbers.Count);
-            listaPiezas[i] = listaAux[numbers[thisNumber]];
-            numbers.RemoveAt(thisNumber);
-        }
+            for (int i = 0; i < listaPiezas.Count; i++)
+            {
+                var thisNumber = Random.Range(0, numbers.Count);
+                listaPiezas[i] = listaAux[numbers[thisNumber]];
+                numbers.RemoveAt(thisNumber);
+            }
+        }while (ListasOrdenadasIgualmente(listaPiezas, listaAux));
+        
 
         for (int i = 0; i < listaPiezas.Count; i++)
         {
@@ -69,6 +74,19 @@ public class Puzzle : MonoBehaviour
                 col.enabled = true;
             }
         }
+    }
+    
+    private bool ListasOrdenadasIgualmente<T>(List<T> lista1, List<T> lista2)
+    {
+        // Comprueba si dos listas están ordenadas igualmente.
+        for (int i = 0; i < lista1.Count; i++)
+        {
+            if (!lista1[i].Equals(lista2[i]))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     void Update()
@@ -128,7 +146,7 @@ public class Puzzle : MonoBehaviour
         {
             if (listaPiezas[i] != listaAux[i])
             {
-                ganaste = false;
+                //ganaste = false;
             }
         }
 
@@ -137,6 +155,30 @@ public class Puzzle : MonoBehaviour
             print("Has ganado");
             ganaste = false;
             ultimaPieza.SetActive(true);
+
+            StartCoroutine(EsperarYRecompensa(true));
         }
+    }
+    
+    private void Recompensas(int oroGanado)
+    {
+            LevelManager.instance.gold += oroGanado;
+    }
+
+    IEnumerator EsperarYRecompensa(bool ganado)
+    {
+        panFinal.SetActive(true);
+        
+        yield return new WaitForSeconds(1.5f);
+        if (ganado)
+        {
+            Recompensas(10);
+        }
+        else
+        {
+            Recompensas(-10);
+        }
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+        LevelManager.instance.ActivateScene();
     }
 }

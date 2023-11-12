@@ -19,6 +19,8 @@ public class Jump : MonoBehaviour
     private bool juegoTerminado = false;
 
     [SerializeField] Button exitBtn;
+    public GameObject panFinal;
+    public TextMeshProUGUI textoFinal;
 
     private void Start()
     {
@@ -101,45 +103,43 @@ public class Jump : MonoBehaviour
     private void JuegoTerminado(bool ganaste)
     {
         juegoTerminado = true;
+        panFinal.SetActive(true);
 
         if (ganaste)
         {
             textoTiempo.text = "¡Ganaste!";
+            textoFinal.text = "Enhorabuena lo has conseguido!!";
         }
         else
         {
             textoTiempo.text = "¡Perdiste!";
+            textoFinal.text = "Una pena, a ver si la próxima te va mejor";
         }
 
-        EsperarYRecompensa(ganaste);
+        StartCoroutine(EsperarYRecompensa(ganaste));
     }
     
-    private void Recompensas(int cantEnergiaGanada)
+    private void Recompensas(int oroGanado)
     {
-        int maxEnergia = LevelManager.instance.maxEnergy;
-        int energia = LevelManager.instance.teamEnergy;
-
-        if ((cantEnergiaGanada + energia) >= maxEnergia)
-        {
-            LevelManager.instance.teamEnergy = maxEnergia;
-        }
-        else
-        {
-            LevelManager.instance.teamWater += cantEnergiaGanada;
-        }
+        LevelManager.instance.gold += oroGanado;
     }
 
     IEnumerator EsperarYRecompensa(bool ganado)
     {
-        // Espera durante 3 segundos.
+        
+        
+        
         yield return new WaitForSeconds(1.5f);
+        
         if (ganado)
         {
             Recompensas(10);
+            
         }
         else
         {
             Recompensas(-10);
+            
         }
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
         LevelManager.instance.ActivateScene();

@@ -146,7 +146,7 @@ public class Puzzle : MonoBehaviour
         {
             if (listaPiezas[i] != listaAux[i])
             {
-                //ganaste = false;
+                ganaste = false;
             }
         }
 
@@ -160,9 +160,14 @@ public class Puzzle : MonoBehaviour
         }
     }
     
-    private void Recompensas(int oroGanado)
+    private void Recompensas(int recompensa)
     {
-            LevelManager.instance.gold += oroGanado;
+        if(recompensa>0)
+            LevelManager.instance.gold += recompensa;
+        else
+        {
+            LevelManager.instance.teamEnergy -= recompensa;
+        }
     }
 
     IEnumerator EsperarYRecompensa(bool ganado)
@@ -178,7 +183,7 @@ public class Puzzle : MonoBehaviour
         {
             Recompensas(-10);
         }
-        ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }
 }

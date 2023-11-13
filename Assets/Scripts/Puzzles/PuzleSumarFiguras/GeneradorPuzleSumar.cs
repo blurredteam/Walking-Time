@@ -16,6 +16,8 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
     Vector3 offset;
 
+    public GameObject panFinal;
+
     void Start()
     {
         int index = Random.Range(0, figuras.Length - 1);
@@ -90,10 +92,40 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
             if (estanColocadas==figuraElegida.piezas.Length && piezasSobrantes == 0)
             {
-                print("Ganaste");
+                StartCoroutine(EsperarYRecompensa(true));
             }
 
             selectedObject = null;
         }
+    }
+    private void Recompensas(int recompensa)
+    {
+        if(recompensa>0)
+            LevelManager.instance.gold += recompensa;
+        else
+        {
+            LevelManager.instance.teamEnergy -= recompensa;
+        }
+    }
+
+    IEnumerator EsperarYRecompensa(bool ganado)
+    {
+        panFinal.SetActive(true);
+        
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        if (ganado)
+        {
+            Recompensas(10);
+            
+        }
+        else
+        {
+            Recompensas(-10);
+            
+        }
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
+        LevelManager.instance.ActivateScene();
     }
 }

@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Seta : Character
 {
-    public Seta(Image sprite, Image icon)
+    public Seta(Image sprite, Image info, Image icon)
     {
         _id = 5;
         name = "Seta";
         selected = false;
         this.sprite = sprite;
+        this.info = info;
         this.icon = icon;
         desc = "Desc";
         energy = 100;

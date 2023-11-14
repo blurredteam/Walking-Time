@@ -49,7 +49,7 @@ public class Hoguera : MonoBehaviour
     public void CambiarEquipo()
     {
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.Hoguera);
-        SceneManager.LoadScene(ScenesManager.Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
+        SceneManager.LoadScene(ScenesManager.Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
     }
 
     public void InicioHoguera()

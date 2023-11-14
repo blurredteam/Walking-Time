@@ -27,7 +27,7 @@ public class ScenesManager : MonoBehaviour
     public enum Scene
     {
         MainMenu_Scene,
-        TeamSelect,
+        SeleccionEquipo,
         Level1,
         PuzleCuadro,
         PuzleTimer,
@@ -73,13 +73,13 @@ public class ScenesManager : MonoBehaviour
 
     public void UnloadTeamSelect()
     {
-        SceneManager.UnloadSceneAsync(Scene.TeamSelect.ToString());
+        SceneManager.UnloadSceneAsync(Scene.SeleccionEquipo.ToString());
     }
 
     public void StartNewGame()
     {
         SceneManager.LoadScene(Scene.Level1.ToString());
-        SceneManager.LoadScene(Scene.TeamSelect.ToString(), LoadSceneMode.Additive);
+        SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
 
     }
 

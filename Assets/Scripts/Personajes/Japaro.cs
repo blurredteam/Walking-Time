@@ -5,19 +5,23 @@ using UnityEngine.UI;
 
 public class Japaro : Character
 {
-    public Japaro(Image sprite, Image icon)
+    public Japaro(Image sprite, Image info, Image icon)
     {
         _id = 0;
         name = "Dr. Japaro";
         selected = false;
         this.sprite = sprite;
+        this.info = info;
         this.icon = icon;
         desc = "Desc";
         energy = 100;
     }
 
+    
+
     private int energyCopy;
     private static float maxEnergyCopy;
+    private Image image;
 
     public override void Skill()
     {

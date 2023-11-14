@@ -80,7 +80,7 @@ public class TeamComp : MonoBehaviour
                 _teamComp[i] = CharacterManager.instance.characterList[characterId];
 
                 _slotCharacterId[i] = characterId;
-                _slotButtons[i].image.sprite = selectedCharacter.sprite.sprite;
+                _slotButtons[i].image.sprite = selectedCharacter.icon.sprite;
 
                 _teamMaxEnergy += selectedCharacter.energy;
                 float currentEnergy = _teamMaxEnergy * energyPercent;

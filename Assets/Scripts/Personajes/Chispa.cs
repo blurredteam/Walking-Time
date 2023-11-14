@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class Chispa : Character
 {
-    public Chispa(Image sprite, Image icon)
+    public Chispa(Image sprite, Image info, Image icon)
     {
         _id = 6;
         name = "Chispa";
         selected = false;
         this.sprite = sprite;
+        this.info = info;
         this.icon = icon;
         desc = "Desc";
         energy = 100;

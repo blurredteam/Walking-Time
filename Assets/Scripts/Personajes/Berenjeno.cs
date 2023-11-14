@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Berenjeno : Character
 {
-    public Berenjeno(Image sprite, Image icon)
+    public Berenjeno(Image sprite, Image info, Image icon)
     {
         _id = 1;
         name = "Berenjeno";
         selected = false;
         this.sprite = sprite;
+        this.info = info;
         this.icon = icon;
         desc = "Berenjeno se despertó en la isla sin saber muy bien donde estaba, confuso y un poco asustado, pero sobre todo confuso. Siempre se ha dicho que las verduras ayudan a crecer sano y fuerte pero no sabía que era tan real hasta que vi a Berenjeno.";
         energy = 150;

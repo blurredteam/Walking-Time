@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Fausto : Character
 {   
-    public Fausto(Image sprite, Image icon)
+    public Fausto(Image sprite, Image info, Image icon)
     {
         _id = 4;
         name = "Fausto";
         selected = false;
         this.sprite = sprite;
+        this.info = info;
         this.icon = icon;
         desc = "Desc";
         energy = 100;

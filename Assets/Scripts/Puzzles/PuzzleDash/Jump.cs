@@ -119,9 +119,14 @@ public class Jump : MonoBehaviour
         StartCoroutine(EsperarYRecompensa(ganaste));
     }
     
-    private void Recompensas(int oroGanado)
+    private void Recompensas(int recompensa)
     {
-        LevelManager.instance.gold += oroGanado;
+        if(recompensa>0)
+            LevelManager.instance.gold += recompensa;
+        else
+        {
+            LevelManager.instance.teamEnergy -= recompensa;
+        }
     }
 
     IEnumerator EsperarYRecompensa(bool ganado)

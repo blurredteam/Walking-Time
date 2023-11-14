@@ -23,7 +23,19 @@ public class salida : MonoBehaviour
 
     public void SalirDelJuego()
     {
-        LevelManager.instance.teamEnergy -= 10;
+        //LevelManager.instance.teamEnergy -= 10;
+        Recompensas(10);
+        
+    }
+    
+    private void Recompensas(int recompensa)
+    {
+        if(recompensa>0)
+            LevelManager.instance.gold += recompensa;
+        else
+        {
+            LevelManager.instance.teamEnergy -= recompensa;
+        }
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
         LevelManager.instance.ActivateScene();
     }

@@ -49,7 +49,7 @@ public class GeneratorObjects : MonoBehaviour
             if (targetObject)
             {
                 textoVictoria.text = "Has ganado";
-                panelFinal.SetActive(true);
+                StartCoroutine(EsperarYRecompensa(true));
             }
             else
             {
@@ -58,16 +58,10 @@ public class GeneratorObjects : MonoBehaviour
                 if (intentos == 0)
                 {
                     textoVictoria.text = "Has Perdido";
-                    panelFinal.SetActive(true);
+                    StartCoroutine(EsperarYRecompensa(false));
                 }
             }
         }
-    }
-
-    public void Ganar()
-    {
-        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
-        LevelManager.instance.ActivateScene();
     }
 
     public void SetEmpezar()
@@ -77,5 +71,36 @@ public class GeneratorObjects : MonoBehaviour
         imagenobjetoAEncontrar.GetComponent<RectTransform>().transform.position = new Vector3(270f, 70f, 0);
         textoExplicativo.GetComponent<RectTransform>().localScale = new Vector3(0.7f, 0.7f, 0f);
         imagenobjetoAEncontrar.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 0);
+    }
+    
+    private void Recompensas(int recompensa)
+    {
+        if(recompensa>0)
+            LevelManager.instance.gold += recompensa;
+        else
+        {
+            LevelManager.instance.teamEnergy -= recompensa;
+        }
+    }
+
+    IEnumerator EsperarYRecompensa(bool ganado)
+    {
+        panelFinal.SetActive(true);
+        
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        if (ganado)
+        {
+            Recompensas(10);
+            
+        }
+        else
+        {
+            Recompensas(-10);
+            
+        }
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
+        LevelManager.instance.ActivateScene();
     }
 }

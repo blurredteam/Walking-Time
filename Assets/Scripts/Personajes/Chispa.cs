@@ -9,7 +9,7 @@ public class Chispa : Character
 {
     public Chispa(Image sprite, Image info, Image icon)
     {
-        _id = 6;
+        _id = 5;
         name = "Chispa";
         selected = false;
         this.sprite = sprite;

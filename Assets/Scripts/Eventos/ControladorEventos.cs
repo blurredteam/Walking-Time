@@ -1,78 +1,76 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using Unity.VisualScripting;
 
 public class ControladorEventos : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI oroTxt;
-    [SerializeField] private TextMeshProUGUI aguaTxt;
-    [SerializeField] private TextMeshProUGUI energiaTxt;
-    [SerializeField] private TextMeshProUGUI eventoTxt;
+    public static ControladorEventos instance;
 
     [SerializeField] private GameObject panelFinal;
     [SerializeField] private GameObject panel;
 
+    [SerializeField] private TextMeshProUGUI _nombreEvento;
+    [SerializeField] private TextMeshProUGUI _eventoTxt;
+    [SerializeField] private TextMeshProUGUI _resultadoTxt;
 
+    [SerializeField] private TextMeshProUGUI _opcion1;
+    [SerializeField] private TextMeshProUGUI _opcion2;
+    [SerializeField] private TextMeshProUGUI _opcion3;
 
-    private int oro;
-    void Update()
+    [SerializeField] private List<Image> _imagenes = new List<Image>();
+
+    private List<Evento> eventos;
+    private int seleccionado;
+
+    private void Awake()
     {
-        oroTxt.text = LevelManager.instance.gold.ToString();
-        aguaTxt.text = LevelManager.instance.teamWater.ToString();
-        energiaTxt.text = LevelManager.instance.teamEnergy.ToString();
+        instance = this;
+
+        ViajeroEvento evento0 = new ViajeroEvento(null);
+        //PiedraMalditaEvento evento1 = new PiedraMalditaEvento(null);
+
+        eventos = new List<Evento>() { evento0 };
     }
-    //Muy provisional todo esto
-    public void botonEvento()
-    {
-        
-        int numEvento = Random.Range(0, 3);
-        switch (numEvento)
-        {
-            case 0:
-                EventoCero();
-                break;
-            case 1:
-                EventoUno();
-                break;
-            case 2:
-                EventoDos();
-                break;
-            default:
-                Debug.Log("Número de evento no manejado.");
-                break;
-        }
-        panelFinal.SetActive(true);
-        panel.SetActive(false);
 
+    private void Start()
+    {
+        seleccionado = Random.Range(0, eventos.Count);
 
-    }
-    private void EventoCero()
-    {
-        eventoTxt.text = "MALA SUERTE. PIERDES 50 DE ENERGÍA.";
-        LevelManager.instance.teamEnergy -= 50;
+        _nombreEvento.text = eventos[seleccionado]._nombre.ToString();
+        _eventoTxt.text = eventos[seleccionado]._eventoTxt.ToString();
 
+        _opcion1.text = eventos[seleccionado]._opcionesList[0].ToString();
+        _opcion2.text = eventos[seleccionado]._opcionesList[1].ToString();
+
+        try { _opcion3.text = eventos[seleccionado]._opcionesList[2].ToString(); }
+        catch { _opcion3.text = "no hay opcion en este botoncito"; } //En vez de este texto deshabilitar el boton
     }
-    private void EventoUno()
+
+    public void Option1()
     {
-        eventoTxt.text = "MALA SUERTE. PIERDES 1 USO DE AGUA.";
-        LevelManager.instance.teamWater -= 1;
+        eventos[0].Option1();
     }
-    private void EventoDos()
+
+    public void Option2()
     {
-        eventoTxt.text = "ESTA VEZ TUVISTE SUERTE... GANAS 20 DE ORO.";
-        LevelManager.instance.gold += 20;
+        eventos[0].Option2();
+    }
+
+    public void Option3()
+    {
+        eventos[0].Option3();
     }
 
     public void SaltarEvento()
     {
         panelFinal.SetActive(true);
         panel.SetActive(false);
-        eventoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 30 DE ORO.";
+        _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 30 DE ORO.";
         LevelManager.instance.gold -= 30;
     }
 

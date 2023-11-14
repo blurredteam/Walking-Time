@@ -7,7 +7,7 @@ public class Japaro : Character
 {
     public Japaro(Image sprite, Image info, Image icon)
     {
-        _id = 0;
+        _id = 1;
         name = "Dr. Japaro";
         selected = false;
         this.sprite = sprite;

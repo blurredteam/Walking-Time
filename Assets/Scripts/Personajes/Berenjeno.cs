@@ -7,7 +7,7 @@ public class Berenjeno : Character
 {
     public Berenjeno(Image sprite, Image info, Image icon)
     {
-        _id = 1;
+        _id = 0;
         name = "Berenjeno";
         selected = false;
         this.sprite = sprite;

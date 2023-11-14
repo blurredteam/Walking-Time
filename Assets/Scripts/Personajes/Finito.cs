@@ -7,7 +7,7 @@ public class Finito : Character
 {
     public Finito(Image sprite, Image icon)
     {
-        _id = 2;
+        _id = -1;
         name = "Finito";
         selected = false;
         this.sprite = sprite;

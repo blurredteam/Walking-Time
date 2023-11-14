@@ -7,7 +7,7 @@ public class Seta : Character
 {
     public Seta(Image sprite, Image info, Image icon)
     {
-        _id = 5;
+        _id = 3;
         name = "Seta";
         selected = false;
         this.sprite = sprite;

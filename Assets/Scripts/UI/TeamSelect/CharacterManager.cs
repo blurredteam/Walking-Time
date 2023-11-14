@@ -18,9 +18,6 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterEnergy;
 
     [SerializeField] private Button showInfo;
-    
-
-
 
     //Las 4 listas siguientes necesitan ir en orden del ID del personaje
     [SerializeField] private List<Button> _btnList;
@@ -50,11 +47,11 @@ public class CharacterManager : MonoBehaviour
     {
         instance = this;
 
-        _japaro = new Japaro(_spriteList[1], _infoList[1], _iconList[1]);
         _berenjeno = new Berenjeno(_spriteList[0], _infoList[0], _iconList[0]);
+        _japaro = new Japaro(_spriteList[1], _infoList[1], _iconList[1]);
         _mirabel = new Mirabel(_spriteList[2], _infoList[2], _iconList[2]);
-        _fauno= new Fausto(_spriteList[4], _infoList[4], _iconList[4]);
         _seta = new Seta(_spriteList[3], _infoList[3], _iconList[3]);
+        _fauno = new Fausto(_spriteList[4], _infoList[4], _iconList[4]);
         _chispa = new Chispa(_spriteList[5], _infoList[5], _iconList[5]);
 
         characterList = new List<Character>() { _berenjeno, _japaro, _mirabel, _seta, _fauno, _chispa };
@@ -66,8 +63,8 @@ public class CharacterManager : MonoBehaviour
         _btnList[0].onClick.AddListener(delegate { BtnHandler(_japaro); });
         _btnList[1].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
         _btnList[2].onClick.AddListener(delegate { BtnHandler(_mirabel); });
-        _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
         _btnList[3].onClick.AddListener(delegate { BtnHandler(_seta); });
+        _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
         _btnList[5].onClick.AddListener(delegate { BtnHandler(_chispa); });
     }
 

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TeamSelect.unity
     guid: 9c63054a8fd67354db3ed7fd43950016
   - enabled: 1
+    path: Assets/Scenes/SeleccionEquipo.unity
+    guid: 7cdb7453dbff8e446b287883d0f7aa3e
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 5c72728bb90bf52479767fddb375af36
   - enabled: 1

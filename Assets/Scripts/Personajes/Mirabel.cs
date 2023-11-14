@@ -7,7 +7,7 @@ public class Mirabel : Character
 {
     public Mirabel(Image sprite, Image info,Image icon)
     {
-        _id = 3;
+        _id = 2;
         name = "Mirabel";
         selected = false;
         this.sprite = sprite;

@@ -30,8 +30,10 @@ public class LevelManager : MonoBehaviour
     public int maxEnergy { get; set; }
     public int teamWater { get; set; }
     public int maxWater { get; set; }
+    public bool cursed { get; set; }
 
     public int gold { get; set; } = 0;
+    int auxGold = 0; //Solo se usa para el evento del medallon maldito
 
     private int waterRegen = 50;
 
@@ -66,7 +68,18 @@ public class LevelManager : MonoBehaviour
     {
         energyTxt.text = teamEnergy.ToString();
         waterTxt.text = teamWater.ToString();
+
+        if (cursed && auxGold == 0) auxGold = gold;
+        if (cursed)
+        {
+            if (gold < auxGold) auxGold = gold;
+            else if (gold > auxGold) gold = auxGold;
+        }
+
         goldTxt.text = gold.ToString();
+
+        if (teamWater > maxWater) teamWater = maxWater;
+        
 
         CheckEnergy();
     }

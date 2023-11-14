@@ -7,27 +7,28 @@ public class PiedraMalditaEvento : Evento
 {
     public PiedraMalditaEvento(Image imagenEvento)
     {
-        _nombre = "Viajero extraviado";
+        _nombre = "Gema maldita";
         _eventImage = imagenEvento;
-        _eventoTxt = "Durante tu aventura os encontráis a un hombre tumbado en\r\nel suelo, muy debilitado. Cuándo os acercáis el hombre\r\nhabla tosiendo y con una voz grave:\r\n– Agua, por favor… Agua.";
+        _eventoTxt = "Encontráis en el suelo un talismán negro que parece brillar\r\nde forma extraña, como un brillo apagado. Parece que vale\r\nmucho oro pero al estar cerca suya te sientes extraño.";
 
-        _opcionesList.Add("1. Darle agua [-1 uso de cantimplora, +100 de oro]");
-        _opcionesList.Add("2.Robarle y dejarlo ahí[+25 de oro - 50 energía]");
+        _opcionesList.Add("1. Coges el extraño medallón y lo llevas durante tu aventura [+200 oro]");
+        _opcionesList.Add("2. Lo dejas en el suelo y continúas.");
 
-        _resultadosList.Add("1. Te acercas al hombre y le das agua de tu cantimplora.\r\n–¡Oh, mil gracias! Tomad un detalle por vuestra ayuda.\r\nEl hombre os da una bolsa con 100 de oro y seguís vuestra\r\naventura.\r\n");
-        _resultadosList.Add("2. Te acercas al hombre, aún tumbado, para ver si podéis\r\nconseguir algo de valor. Encuentras unas monedas, pero el\r\nhombre se retuerce cuando las intentas coger, haciéndote\r\ncaer al suelo. Te levantas magullado y os vais, siguiendo\r\ncon vuestra aventura.\r\n");
+        _resultadosList.Add("1. Tras recoger el medallón y colgártelo del cuello te sientes más pesado al caminar, como si cada moneda pesase lo mismo que una roca. Sientes que no puedes llevar una moneda mas [¡Has sido maldecido por el medallón! No podrás volver a ganar oro hasta gastar todo tu oro actual]");
+        _resultadosList.Add("2. Continuáis vuestro camino mientras miras a la piedra\r\npreciosa, aún en el suelo. Piensas en qué hubiera podido\r\nser si te la hubieras llevado.");
     }
 
     public override void Option1()
     {
-        base.Option1();
+        LevelManager.instance.gold += 200;
+        LevelManager.instance.cursed = true;
+
+        ControladorEventos.instance._resultadoTxt.text = _resultadosList[0].ToString();
+        FinalizarEvento();
     }
     public override void Option2()
     {
-        base.Option2();
-    }
-    public override void Option3()
-    {
-        base.Option3();
+        ControladorEventos.instance._resultadoTxt.text = _resultadosList[1].ToString();
+        FinalizarEvento();
     }
 }

@@ -60,8 +60,8 @@ public class CharacterManager : MonoBehaviour
     private void Start()
     {
         //Boton de cada personaje
-        _btnList[0].onClick.AddListener(delegate { BtnHandler(_japaro); });
-        _btnList[1].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
+        _btnList[0].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
+        _btnList[1].onClick.AddListener(delegate { BtnHandler(_japaro); });
         _btnList[2].onClick.AddListener(delegate { BtnHandler(_mirabel); });
         _btnList[3].onClick.AddListener(delegate { BtnHandler(_seta); });
         _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });

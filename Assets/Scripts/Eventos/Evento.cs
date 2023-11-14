@@ -16,4 +16,10 @@ public class Evento : MonoBehaviour
     public virtual void Option2() { }
     public virtual void Option3() { }
 
+    public void FinalizarEvento() 
+    {
+        ControladorEventos.instance.panelFinal.SetActive(true);
+        ControladorEventos.instance.panel.SetActive(false);
+    }
+
 }

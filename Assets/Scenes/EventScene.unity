@@ -638,6 +638,7 @@ MonoBehaviour:
   _opcion1: {fileID: 964622202}
   _opcion2: {fileID: 1836567291}
   _opcion3: {fileID: 1909808460}
+  _opcionBtn3: {fileID: 79950632}
   _imagenes: []
 --- !u!1 &886594951
 GameObject:
@@ -2346,7 +2347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13060418, y: 0.15262963}
   m_AnchorMax: {x: 0.8615833, y: 0.8612593}
-  m_AnchoredPosition: {x: 7.5, y: -7.5}
+  m_AnchoredPosition: {x: 7.5, y: -114}
   m_SizeDelta: {x: 26.352692, y: 14.603607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1406071537

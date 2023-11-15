@@ -324,6 +324,7 @@ MonoBehaviour:
   _selectedBtn3: {fileID: 634079449}
   _defaultImg: {fileID: 31804589}
   _totalEnergyTxt: {fileID: 1676659510}
+  _totalWaterTxt: {fileID: 460307285}
   _continueBtn: {fileID: 239464200}
   _teamComp:
   - {fileID: 0}
@@ -2210,17 +2211,17 @@ MonoBehaviour:
   - {fileID: 1172795731}
   _spriteList:
   - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
+  - {fileID: 4923014143052759817, guid: a949c18f67a507a45b43e8ca6b8b7e8c, type: 3}
+  - {fileID: 7652453611244901916, guid: 398227211b362c740bf3c932d8041b05, type: 3}
   - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
-  - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
-  - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
-  - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
+  - {fileID: 6623300083929391305, guid: 6135566bda72d7b459ec29be2c73f422, type: 3}
   - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
   _infoList:
   - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
+  - {fileID: 569525203799005845, guid: f80ae9fe3b071b841ad6c2225d11101a, type: 3}
+  - {fileID: 2258803451603032438, guid: fc7b5471c913107439edbe2f6d691021, type: 3}
   - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
-  - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
-  - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
-  - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
+  - {fileID: 6957920381969239896, guid: 21ace60e722419b449df90b0c60561ec, type: 3}
   - {fileID: 8317547413716953413, guid: 07aae32684d32034f9fa56634c56e628, type: 3}
   _iconList:
   - {fileID: 922405044}

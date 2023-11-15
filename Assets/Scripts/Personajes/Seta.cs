@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Seta : Character
 {
-    public Seta(Image sprite, Image info, Image icon)
+    public Seta(Image sprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 3;
         name = "Seta";
         selected = false;
         this.sprite = sprite;
-        this.info = info;
+        this.frontCard = frontCard;
+        this.backCard = backCard;
         this.icon = icon;
         desc = "Desc";
         energy = 100;
@@ -28,11 +29,11 @@ public class Seta : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "...";
-        string frase2 = "...";
-        string frase3 = "Que las setas no hablan joderrr";
-        string frase4 = "...";
-        string frase5 = "...";
+        string frase1 = "JAJAJAJAJ soy una seta";
+        string frase2 = "Mi comida favorita? Rissoto!";
+        string frase3 = "Soy una seta, no se que decir";
+        string frase4 = "Jeje no, no soy comestible jeje";
+        string frase5 = "Que soy una seta AJAJAJAJAJA";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

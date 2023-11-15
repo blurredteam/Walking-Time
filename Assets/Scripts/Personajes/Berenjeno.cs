@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Berenjeno : Character
 {
-    public Berenjeno(Image sprite, Image info, Image icon)
+    public Berenjeno(Image sprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 0;
         name = "Berenjeno";
         selected = false;
         this.sprite = sprite;
-        this.info = info;
+        this.frontCard = frontCard;
+        this.backCard = backCard;
         this.icon = icon;
         desc = "Berenjeno se despertó en la isla sin saber muy bien donde estaba, confuso y un poco asustado, pero sobre todo confuso. Siempre se ha dicho que las verduras ayudan a crecer sano y fuerte pero no sabía que era tan real hasta que vi a Berenjeno.";
         energy = 150;
@@ -34,11 +35,11 @@ public class Berenjeno : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "BERENJENOOOOOOOOOOOOOOOOOOOOOOOOOO";
-        string frase2 = "Vamos a demostrarles quien es la verdura mas dura";
-        string frase3 = "Me hago este puzzle de una hostia";
-        string frase4 = "Soy una berenjena! No veo mal el canibalismo";
-        string frase5 = "Yo antes no era una berenjena... nunca pruebes el fentanilo compañero";
+        string frase1 = "Nadie es más fuerte que yo!";
+        string frase2 = "Vamos a demostrarles quien es la verdura mas dura.";
+        string frase3 = "Uf, este parece complicado compañero...";
+        string frase4 = "Ojala mi mente fuese igual de musculosa que estos brazacos";
+        string frase5 = "Parece que no podré hacer esto de un puñetazo";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

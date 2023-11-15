@@ -27,6 +27,9 @@ public class ControladorEventos : MonoBehaviour
     {
         instance = this;
 
+        LevelManager.instance._fondoNivel.gameObject.SetActive(false);
+        LevelManager.instance._fondoEvento.gameObject.SetActive(true);
+
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
         ViajeroEvento evento0 = new ViajeroEvento(null);
         PiedraMalditaEvento evento1 = new PiedraMalditaEvento(null);
@@ -78,6 +81,9 @@ public class ControladorEventos : MonoBehaviour
 
     public void Salir()
     {
+        LevelManager.instance._fondoNivel.gameObject.SetActive(true);
+        LevelManager.instance._fondoEvento.gameObject.SetActive(false);
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.EventScene);
         LevelManager.instance.ActivateScene();
     }

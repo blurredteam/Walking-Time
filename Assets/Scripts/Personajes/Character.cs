@@ -10,7 +10,8 @@ public class Character : MonoBehaviour
     public string name;
     public bool selected;
     public Image sprite;
-    public Image info;
+    public Image frontCard;
+    public Image backCard;
     public Image icon;
     public string desc;
     public int energy;

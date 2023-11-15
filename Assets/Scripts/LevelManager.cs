@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager.Requests;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,10 +18,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
+    [SerializeField] public SpriteRenderer _fondoNivel;    //Fondo normal del nivel que se mueve
+    [SerializeField] public Image _fondoEvento;             //Fondo empleado en los eventos
+
     [SerializeField] private TextMeshProUGUI energyTxt;
     [SerializeField] private TextMeshProUGUI waterTxt;
     [SerializeField] private TextMeshProUGUI goldTxt;
     [SerializeField] private List<Image> _icons;
+    [SerializeField] private Image _characterCard;
+    private bool cardMoved = false;
 
     [SerializeField] private GameObject _spritesTeam;
     [SerializeField] private List<Image> _sprites;
@@ -55,6 +61,11 @@ public class LevelManager : MonoBehaviour
             _icons[i].sprite = _team[i].icon.sprite;
             _sprites[i].sprite = _team[i].sprite.sprite;
         }
+
+        _icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });
+        _icons[1].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(1); });
+        _icons[2].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(2); });
+        _icons[3].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(3); });
     }
 
     private void Start()
@@ -78,15 +89,13 @@ public class LevelManager : MonoBehaviour
 
         goldTxt.text = gold.ToString();
 
-        if (teamWater > maxWater) teamWater = maxWater;
-        
-
-        CheckEnergy();
+        CheckResources();
     }
 
-    private void CheckEnergy()
+    private void CheckResources()
     {
-        if(teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+        if (teamWater > maxWater) teamWater = maxWater;
+        if (teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
     }
 
     // Habilita las primeras casillas disponibles al jugador
@@ -146,5 +155,56 @@ public class LevelManager : MonoBehaviour
                 teamWater--;
             }
         }
+    }
+
+    private void ShowCharacterCard(int position)
+    {
+        if (cardMoved)
+        {
+            StartCoroutine(ChangeCard(position));
+            return;
+        }
+        cardMoved = true;
+        _characterCard.sprite = _team[position].frontCard.sprite;
+
+        SpriteState btnSprites = new SpriteState();
+        btnSprites.highlightedSprite = _team[position].backCard.sprite;
+        btnSprites.selectedSprite = _team[position].sprite.sprite;
+
+        _characterCard.gameObject.GetComponent<Button>().spriteState = btnSprites;
+        _characterCard.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        _characterCard.gameObject.GetComponent<Button>().onClick.AddListener(HideCard);
+        StartCoroutine(ShowCard());
+    }
+
+    private IEnumerator ShowCard()
+    {
+        while (_characterCard.rectTransform.localPosition.x > 730)
+        {
+            _characterCard.rectTransform.position -= new Vector3(0.1f, 0);
+            yield return null;
+        }
+    }
+
+    private void HideCard()
+    {
+        cardMoved = false;
+        StartCoroutine(HideCardCo());
+    }
+
+    private IEnumerator HideCardCo()
+    {
+        while (_characterCard.rectTransform.localPosition.x < 1600)
+        {
+            _characterCard.rectTransform.position += new Vector3(0.1f, 0);
+            yield return null;
+        }
+    }
+
+    private IEnumerator ChangeCard(int position)
+    {
+        HideCard();
+        yield return new WaitForSeconds(0.4f);
+        ShowCharacterCard(position);
     }
 }

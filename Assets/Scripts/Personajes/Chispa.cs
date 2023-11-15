@@ -7,13 +7,14 @@ using UnityEngine.UI;
 
 public class Chispa : Character
 {
-    public Chispa(Image sprite, Image info, Image icon)
+    public Chispa(Image sprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 5;
         name = "Chispa";
         selected = false;
         this.sprite = sprite;
-        this.info = info;
+        this.frontCard = frontCard;
+        this.backCard = backCard;
         this.icon = icon;
         desc = "Desc";
         energy = 100;
@@ -30,11 +31,11 @@ public class Chispa : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "Yo voy chill por donde me lleve el viento";
-        string frase2 = "Tengo miedo de que Fausto me convierta en porro";
-        string frase3 = "Vamos compañero! Tu puedes!";
-        string frase4 = "El otro dia me saque unos cuartos en la rule";
-        string frase5 = "Berenjeno lo ha pasado mal... no tomeis drogas niños";
+        string frase1 = "Por donde me lleve el viento...";
+        string frase2 = "Dejate llevar... se uno con la naturaleza.";
+        string frase3 = "Despeja tu mente, abre tus chakras, aummmmmmm";
+        string frase4 = "Los pájaros los controla el gobierno";
+        string frase5 = "Todo es contigo uno y un... uno con todo es... como era?";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

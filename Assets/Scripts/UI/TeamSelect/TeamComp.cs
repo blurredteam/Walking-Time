@@ -23,10 +23,10 @@ public class TeamComp : MonoBehaviour
 
     [SerializeField] private Button _continueBtn;
 
-    private List<bool> _slotAvailable;
-    private List<int> _slotCharacterId;
-    private List<Button> _slotButtons;
-    public List<Character> _teamComp = new List<Character>() { null, null, null, null };
+    private List<bool> _slotAvailable;  //Indica si la posicion esta libre o no
+    private List<int> _slotCharacterId; //Indica el ID del personaje de cada posicion (id: -1 si esta vacia)
+    private List<Button> _slotButtons;  //Sirven para desseleccionar personajes
+    public List<Character> _teamComp = new List<Character>() { null, null, null, null }; //Lista de integrantes del equipo
 
     public int _teamMaxEnergy { get; set; }
     public int _teamCurrentEnergy { get; set; }
@@ -35,7 +35,7 @@ public class TeamComp : MonoBehaviour
     private float energyPercent = 1; //Para hoguera
     private bool bonfireTile = false;
 
-    private bool ready { get; set; } = false;
+    //private bool ready { get; set; } = false;
 
     private void Start()
     {
@@ -55,13 +55,29 @@ public class TeamComp : MonoBehaviour
 
     private void Update()
     {
-        if (ready && !bonfireTile)
+        foreach (bool available in _slotAvailable)
         {
-            _continueBtn.onClick.RemoveAllListeners();
-            _continueBtn.onClick.AddListener(Continue);
-            ready = false;
-            return;
+            if (!available) 
+            {
+                //ready = true;
+                _continueBtn.onClick.RemoveAllListeners();
+                _continueBtn.onClick.AddListener(Continue);
+            }
+            else
+            {
+                _continueBtn.onClick.RemoveAllListeners();
+                //ready = false; 
+                break;
+            }
         }
+
+        //if (ready && !bonfireTile)
+        //{
+        //    _continueBtn.onClick.RemoveAllListeners();
+        //    _continueBtn.onClick.AddListener(Continue);
+        //    ready = false;
+        //    return;
+        //}
     }
 
     public void SelectCharacter(int characterId)
@@ -78,6 +94,7 @@ public class TeamComp : MonoBehaviour
                 _slotAvailable[i] = false;
 
                 _teamComp[i] = CharacterManager.instance.characterList[characterId];
+                selectedCharacter.selected = true;
 
                 _slotCharacterId[i] = characterId;
                 _slotButtons[i].image.sprite = selectedCharacter.icon.sprite;
@@ -93,15 +110,9 @@ public class TeamComp : MonoBehaviour
 
             } else if (i == 3 && _slotAvailable[i] == false) 
             {
-                CharacterManager.instance.MakeCharacterAvailable(characterId);
+                selectedCharacter.selected = false;
             }
 
-        }
-
-        foreach (bool x in _slotAvailable)
-        {
-            if (x == false) ready = true;
-            else { ready = false; break; }
         }
     }
 
@@ -111,18 +122,20 @@ public class TeamComp : MonoBehaviour
 
         _slotAvailable[position] = true;
         _slotButtons[position].image.sprite = _defaultImg.sprite;
-        CharacterManager.instance.MakeCharacterAvailable(_slotCharacterId[position]);
 
         _teamMaxEnergy -= _teamComp[position].energy;
         float currentEnergy = _teamMaxEnergy * energyPercent;
         currentEnergy = (int)currentEnergy;
         _totalEnergyTxt.text = currentEnergy.ToString();
 
+        _teamComp[position].selected = false;
         _slotCharacterId[position] = -1;
         _teamComp[position] = null;
     }
     private void Continue()
-    {
+    { 
+        _continueBtn.interactable = false;
+
         Debug.Log("Aplicando habilidades...");
         foreach (Character c in _teamComp)
         {
@@ -141,7 +154,7 @@ public class TeamComp : MonoBehaviour
     }
 
     private IEnumerator ContinueTimer()
-    {
+    { 
         yield return new WaitForSeconds(1);
 
         LevelManager.instance.ActivateScene();

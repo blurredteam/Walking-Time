@@ -12,17 +12,18 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager instance;
 
     [SerializeField] private GameObject characterSprite;
-    [SerializeField] private TextMeshProUGUI characterName;
-    [SerializeField] private TextMeshProUGUI characterDescription;
-    [SerializeField] private TextMeshProUGUI characterLore;
-    [SerializeField] private TextMeshProUGUI characterEnergy;
+    //[SerializeField] private TextMeshProUGUI characterName;
+    //[SerializeField] private TextMeshProUGUI characterDescription;
+    //[SerializeField] private TextMeshProUGUI characterLore;
+    //[SerializeField] private TextMeshProUGUI characterEnergy;
 
     [SerializeField] private Button showInfo;
 
     //Las 4 listas siguientes necesitan ir en orden del ID del personaje
     [SerializeField] private List<Button> _btnList;
     [SerializeField] private List<Image> _spriteList;
-    [SerializeField] private List<Image> _infoList;
+    [SerializeField] private List<Image> _frontCardsList;    //Cartas de los personajes con su info
+    [SerializeField] private List<Image> _backCardsList;
     [SerializeField] private List<Image> _iconList;
 
     public List<Character> characterList;
@@ -47,12 +48,12 @@ public class CharacterManager : MonoBehaviour
     {
         instance = this;
 
-        _berenjeno = new Berenjeno(_spriteList[0], _infoList[0], _iconList[0]);
-        _japaro = new Japaro(_spriteList[1], _infoList[1], _iconList[1]);
-        _mirabel = new Mirabel(_spriteList[2], _infoList[2], _iconList[2]);
-        _seta = new Seta(_spriteList[3], _infoList[3], _iconList[3]);
-        _fauno = new Fausto(_spriteList[4], _infoList[4], _iconList[4]);
-        _chispa = new Chispa(_spriteList[5], _infoList[5], _iconList[5]);
+        _berenjeno = new Berenjeno(_spriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
+        _japaro = new Japaro(_spriteList[1], _frontCardsList[1], _backCardsList[1], _iconList[1]);
+        _mirabel = new Mirabel(_spriteList[2], _frontCardsList[2], _backCardsList[2], _iconList[2]);
+        _seta = new Seta(_spriteList[3], _frontCardsList[3], _backCardsList[3], _iconList[3]);
+        _fauno = new Fausto(_spriteList[4], _frontCardsList[4], _backCardsList[4], _iconList[4]);
+        _chispa = new Chispa(_spriteList[5], _frontCardsList[5], _backCardsList[5], _iconList[5]);
 
         characterList = new List<Character>() { _berenjeno, _japaro, _mirabel, _seta, _fauno, _chispa };
     }
@@ -73,35 +74,26 @@ public class CharacterManager : MonoBehaviour
         ShowCharacter(character._id);
 
         if (character.selected == false) TeamComp.instance.SelectCharacter(character._id);
-
-        character.selected = true;
-    }
-
-    public void MakeCharacterAvailable(int characterId)
-    {
-        characterList[characterId].selected = false;
     }
 
     public void ShowCharacter(int id)
     {
         characterSprite.SetActive(true);
         Image _characterSprite = characterSprite.GetComponent<Image>();
-        _characterSprite.sprite = characterList[id].sprite.sprite;
+        _characterSprite.sprite = characterList[id].frontCard.sprite;
+
         showInfo.onClick.AddListener(delegate { ShowCharacterInfo(id, _characterSprite); });
-        //    characterName.text = characterList[id].name;
-        //    characterDescription.text = characterList[id].desc;
-        //    characterLore.text = characterList[id].desc;
-        //    characterEnergy.text = characterList[id].energy.ToString();
     }
+
     private void ShowCharacterInfo(int id, Image _characterSprite)
     {
-        if (_characterSprite.sprite == characterList[id].info.sprite)
+        if (_characterSprite.sprite == characterList[id].frontCard.sprite)
         {
-            _characterSprite.sprite = characterList[id].sprite.sprite;
+            _characterSprite.sprite = characterList[id].backCard.sprite;
         }
         else
         {
-            _characterSprite.sprite = characterList[id].info.sprite;
+            _characterSprite.sprite = characterList[id].frontCard.sprite;
         }
     }
     

@@ -62,6 +62,7 @@ public class Tile : MonoBehaviour
     public void LoadTile()
     {
         _clickEvent.enabled = false;
+        HideInfo();
 
         LevelManager.instance.Travel(position, energyCost, type, index);
 
@@ -117,7 +118,7 @@ public class Tile : MonoBehaviour
         type = 2;
     }
 
-    private void ShowInfo()
+    public void ShowInfo()
     {
 
         casillaInfo.SetActive(true);

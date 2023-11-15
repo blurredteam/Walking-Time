@@ -20,7 +20,6 @@ public class TeamComp : MonoBehaviour
     [SerializeField] private Image _defaultImg;
 
     [SerializeField] private TextMeshProUGUI _totalEnergyTxt;
-    [SerializeField] private TextMeshProUGUI _totalWaterTxt;
 
     [SerializeField] private Button _continueBtn;
 
@@ -35,8 +34,6 @@ public class TeamComp : MonoBehaviour
     public int _teamCurrentWater { get; set; }
     private float energyPercent = 1; //Para hoguera
     private bool bonfireTile = false;
-
-    private int teamWater = 3;
 
     private bool ready { get; set; } = false;
 
@@ -54,7 +51,6 @@ public class TeamComp : MonoBehaviour
         _slotButtons[1].onClick.AddListener(delegate { RemoveSelected(1); });
         _slotButtons[2].onClick.AddListener(delegate { RemoveSelected(2); });
         _slotButtons[3].onClick.AddListener(delegate { RemoveSelected(3); });
-
     }
 
     private void Update()
@@ -72,11 +68,6 @@ public class TeamComp : MonoBehaviour
     {
         Character selectedCharacter = CharacterManager.instance.characterList[characterId];
         //var charEnergy = CharacterManager.instance.characterList[characterId].energy;
-        //Para quitar un uso de agua si es berenjeno
-        if(characterId == 0) 
-        { 
-            teamWater--;
-        }
 
         foreach (int slot in _slotCharacterId) { if (slot == characterId) return; }
 
@@ -95,7 +86,6 @@ public class TeamComp : MonoBehaviour
                 float currentEnergy = _teamMaxEnergy * energyPercent;
                 currentEnergy = (int)currentEnergy;
                 _totalEnergyTxt.text = currentEnergy.ToString();
-                _totalWaterTxt.text = teamWater.ToString();
 
                 if (bonfireTile) _teamComp[i].Skill();
 

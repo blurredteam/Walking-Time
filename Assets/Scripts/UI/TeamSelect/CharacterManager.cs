@@ -97,14 +97,11 @@ public class CharacterManager : MonoBehaviour
     {
         if (_characterSprite.sprite == characterList[id].info.sprite)
         {
-
             _characterSprite.sprite = characterList[id].sprite.sprite;
-            Debug.Log("q id tengo"+id);
         }
         else
         {
             _characterSprite.sprite = characterList[id].info.sprite;
-            Debug.Log("q id tengo"+id);
         }
     }
     

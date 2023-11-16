@@ -2233,6 +2233,7 @@ MonoBehaviour:
   _selectedBtn3: {fileID: 634079449}
   _defaultImg: {fileID: 8317547413716953413, guid: f72653244f77a204aaaedab8304cd036, type: 3}
   _totalEnergyTxt: {fileID: 1676659510}
+  _totalWaterTxt: {fileID: 460307285}
   _continueBtn: {fileID: 239464200}
   _teamComp:
   - {fileID: 0}

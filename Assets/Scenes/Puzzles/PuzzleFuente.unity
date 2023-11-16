@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.135, y: 0.32266048}
   m_AnchorMax: {x: 0.87500006, y: 0.81983024}
-  m_AnchoredPosition: {x: -0.88238525, y: -2.852295}
+  m_AnchoredPosition: {x: -0.8824463, y: -2.852295}
   m_SizeDelta: {x: 1.7648, y: 31.5865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9231190
@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "MANT\xC9N EL BOT\xD3N PARA LLENAR LA BOTELLA, HAZLO HASTA LA MARCA ROJA,
     SI TE PASAS O TE QUEDAS CORTO RECIBIR\xC1S MENOS AGUA.\nEL AGUA A VECES CAER\xC1
-    M\xC1S R\xC1PIDO Y OTRAS MAS LENTO..."
+    M\xC1S R\xC1PIDO Y OTRAS M\xC1S LENTO..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -666,7 +666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.402, y: 0.006320921}
   m_AnchorMax: {x: 0.60400003, y: 0.19950934}
-  m_AnchoredPosition: {x: -1.5000076, y: 0.099975586}
+  m_AnchoredPosition: {x: -1.5, y: 0.099975586}
   m_SizeDelta: {x: 2.9863968, y: 3.6751022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382409434
@@ -787,7 +787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.402, y: 0.006320921}
   m_AnchorMax: {x: 0.60400003, y: 0.19950934}
-  m_AnchoredPosition: {x: -1.5000076, y: 0.099975586}
+  m_AnchoredPosition: {x: -1.5, y: 0.099975586}
   m_SizeDelta: {x: 2.9863968, y: 3.6751022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392246226
@@ -918,10 +918,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 611720347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.44765192, y: 0.7721339}
-  m_AnchorMax: {x: 0.55111235, y: 0.90086615}
-  m_AnchoredPosition: {x: 5, y: 21.7}
-  m_SizeDelta: {x: 4.1379013, y: 1.1215}
+  m_AnchorMin: {x: 0.4492144, y: 0.794}
+  m_AnchorMax: {x: 0.55527896, y: 0.92200005}
+  m_AnchoredPosition: {x: -0.5, y: -0.30004883}
+  m_SizeDelta: {x: -0.8620987, y: 1.1215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419719607
 MonoBehaviour:
@@ -1269,7 +1269,6 @@ RectTransform:
   - {fileID: 419719605}
   - {fileID: 213284049}
   - {fileID: 1800076744}
-  - {fileID: 2078276944}
   - {fileID: 2062396392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1653,7 +1652,7 @@ Transform:
   m_GameObject: {fileID: 1127025322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.69, y: -5.5684996, z: -0.099700466}
+  m_LocalPosition: {x: 1.69, y: -5.29, z: -0.099700466}
   m_LocalScale: {x: 0.6228538, y: 0.65906096, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1680,6 +1679,7 @@ MonoBehaviour:
   botonLlenar: {fileID: 419719604}
   aguaTexto: {fileID: 471769854}
   volverBtn: {fileID: 382409434}
+  objetivo: {fileID: 1773108264}
 --- !u!212 &1127025325
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1726,7 +1726,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 18.9, y: 14.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2496,74 +2496,6 @@ MonoBehaviour:
   characterSprite: {fileID: 1400761038}
   contenedorTexto: {fileID: 86166337}
   texto: {fileID: 1492181540}
---- !u!1 &2078276943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2078276944}
-  - component: {fileID: 2078276946}
-  - component: {fileID: 2078276945}
-  m_Layer: 5
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2078276944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078276943}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 611720347}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2078276945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078276943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &2078276946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078276943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

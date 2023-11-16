@@ -26,7 +26,7 @@ public class LlenadoBotella : MonoBehaviour
     private int aguaGanada = 0;
 
     [SerializeField] private Button volverBtn;
-
+    [SerializeField] private GameObject objetivo;
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
@@ -36,7 +36,8 @@ public class LlenadoBotella : MonoBehaviour
         });
         // ---------------------------------------------
 
-        referencia = 2.62f;//Altura del triángulo rojo
+        referencia = objetivo.transform.position.y;//Altura del triángulo rojo
+        //Debug.Log(referencia);
         rotacionInicial = transform.rotation;
         //Para q sea mas probable valores mas bajos si no suele ser demasiado rápido
         float probabilidad = Random.value; // Valor aleatorio entre 0 y 1
@@ -65,12 +66,12 @@ public class LlenadoBotella : MonoBehaviour
 
     void Update()
     {
-        if (llenando && !finLlenado && altura <= 3.2f)//Con límite de altura
+        if (llenando && !finLlenado)//Con límite de altura
         {
             chorroAgua.SetActive(true);
             // Incrementar la posición en el eje Y para elevar el Sprite
             transform.position += Vector3.up * velocidadLlenado * Time.deltaTime;
-            altura = transform.position.y + 4.46f;//Añadimos lo ultimo para añadir la diferencia de tamaño
+            altura = transform.position.y+3.072f;//Añadimos lo ultimo para añadir la diferencia de tamaño
             // Agitar lateralmente con rotación
             tiempo += Time.deltaTime;
             float angulo = amplitudAgitacion * Mathf.Sin(frecuenciaAgitacion * tiempo);
@@ -100,14 +101,14 @@ public class LlenadoBotella : MonoBehaviour
         chorroAgua.SetActive(false);
         panelFinal.SetActive(true);
         aguaTexto.text = aguaGanada.ToString();
-
+        //Debug.Log(altura);
 
         if (altura >= referencia - 0.1 && altura <= referencia + 0.1)
         {
             aguaTexto.text = "¡GUAU, EN EL BLANCO!\nHAS GANADO 2 USOS DE AGUA";
             Recompensas(2);
         }
-        else if ((altura >= 0.55 && altura < referencia - 0.1) || altura > referencia + 0.1)
+        else if ((altura >= -1.65 && altura < referencia - 0.1) || altura > referencia + 0.1)
         {
             aguaTexto.text = "NO ESTÁ MAL, ALGO ES ALGO\nHAS GANADO 1 USO DE AGUA";
             Recompensas(1);

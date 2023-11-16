@@ -20,6 +20,7 @@ public class TeamComp : MonoBehaviour
     [SerializeField] private Image _defaultImg;
 
     [SerializeField] private TextMeshProUGUI _totalEnergyTxt;
+    [SerializeField] private TextMeshProUGUI _totalWaterTxt;
 
     [SerializeField] private Button _continueBtn;
 
@@ -31,7 +32,7 @@ public class TeamComp : MonoBehaviour
     public int _teamMaxEnergy { get; set; }
     public int _teamCurrentEnergy { get; set; }
     public int _teamMaxWater { get; set; } = 3;
-    public int _teamCurrentWater { get; set; }
+    public int _teamCurrentWater { get; set; } = 3;
     private float energyPercent = 1; //Para hoguera
     private bool bonfireTile = false;
 
@@ -69,6 +70,7 @@ public class TeamComp : MonoBehaviour
                 //ready = false; 
                 break;
             }
+            _totalWaterTxt.text =_teamCurrentWater.ToString();
         }
 
         //if (ready && !bonfireTile)

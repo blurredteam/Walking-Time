@@ -14,7 +14,7 @@ public class Seta : Character
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;
-        desc = "Desc";
+        skillDesc = "[ESPORAS CURATIVAS]";
         energy = 100;
     }
 

@@ -11,15 +11,11 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
-    [SerializeField] private GameObject characterSprite;
-    //[SerializeField] private TextMeshProUGUI characterName;
-    //[SerializeField] private TextMeshProUGUI characterDescription;
-    //[SerializeField] private TextMeshProUGUI characterLore;
-    //[SerializeField] private TextMeshProUGUI characterEnergy;
+    [SerializeField] private GameObject characterCard;
 
-    [SerializeField] private Button showInfo;
+    [SerializeField] private Button showInfo;   //Boton para darle la vuelta a la carta
 
-    //Las 4 listas siguientes necesitan ir en orden del ID del personaje
+    //Las 5 listas siguientes necesitan ir en orden del ID del personaje
     [SerializeField] private List<Button> _btnList;
     [SerializeField] private List<Image> _spriteList;
     [SerializeField] private List<Image> _frontCardsList;    //Cartas de los personajes con su info
@@ -78,23 +74,20 @@ public class CharacterManager : MonoBehaviour
 
     public void ShowCharacter(int id)
     {
-        characterSprite.SetActive(true);
-        Image _characterSprite = characterSprite.GetComponent<Image>();
-        _characterSprite.sprite = characterList[id].frontCard.sprite;
+        characterCard.SetActive(true);
+        Image _characterCard = characterCard.GetComponent<Image>();
+        _characterCard.sprite = characterList[id].frontCard.sprite;
 
-        showInfo.onClick.AddListener(delegate { ShowCharacterInfo(id, _characterSprite); });
+        showInfo.onClick.RemoveAllListeners();
+        showInfo.onClick.AddListener(delegate { ShowCharacterInfo(id, _characterCard); });
     }
 
-    private void ShowCharacterInfo(int id, Image _characterSprite)
+    private void ShowCharacterInfo(int id, Image _characterCard)
     {
-        if (_characterSprite.sprite == characterList[id].frontCard.sprite)
-        {
-            _characterSprite.sprite = characterList[id].backCard.sprite;
-        }
+        if (_characterCard.sprite == characterList[id].frontCard.sprite)
+            _characterCard.sprite = characterList[id].backCard.sprite;
         else
-        {
-            _characterSprite.sprite = characterList[id].frontCard.sprite;
-        }
+            _characterCard.sprite = characterList[id].frontCard.sprite;
     }
     
 }

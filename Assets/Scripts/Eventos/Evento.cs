@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Evento : MonoBehaviour
+public class Evento
 {
     public string _nombre;
     public Image _eventImage;

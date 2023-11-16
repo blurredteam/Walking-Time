@@ -19,6 +19,8 @@ public class TeamComp : MonoBehaviour
     [SerializeField] private Button _selectedBtn3;
     [SerializeField] private Image _defaultImg;
 
+    [SerializeField] private List<TextMeshProUGUI> _skillsTxt;
+
     [SerializeField] private TextMeshProUGUI _totalEnergyTxt;
     [SerializeField] private TextMeshProUGUI _totalWaterTxt;
 
@@ -32,7 +34,7 @@ public class TeamComp : MonoBehaviour
     public int _teamMaxEnergy { get; set; }
     public int _teamCurrentEnergy { get; set; }
     public int _teamMaxWater { get; set; } = 3;
-    public int _teamCurrentWater { get; set; } = 3;
+    public int _teamCurrentWater { get; set; }
     private float energyPercent = 1; //Para hoguera
     private bool bonfireTile = false;
 
@@ -41,6 +43,8 @@ public class TeamComp : MonoBehaviour
     private void Start()
     {
         instance = this;
+
+        _totalWaterTxt.text = "3";
 
         _slotAvailable = new List<bool>() { true, true, true, true};
         _slotCharacterId = new List<int>() { -1, -1, -1, -1 };
@@ -60,32 +64,20 @@ public class TeamComp : MonoBehaviour
         {
             if (!available) 
             {
-                //ready = true;
                 _continueBtn.onClick.RemoveAllListeners();
                 _continueBtn.onClick.AddListener(Continue);
             }
             else
             {
                 _continueBtn.onClick.RemoveAllListeners();
-                //ready = false; 
                 break;
             }
-            _totalWaterTxt.text =_teamCurrentWater.ToString();
         }
-
-        //if (ready && !bonfireTile)
-        //{
-        //    _continueBtn.onClick.RemoveAllListeners();
-        //    _continueBtn.onClick.AddListener(Continue);
-        //    ready = false;
-        //    return;
-        //}
     }
 
     public void SelectCharacter(int characterId)
     {
         Character selectedCharacter = CharacterManager.instance.characterList[characterId];
-        //var charEnergy = CharacterManager.instance.characterList[characterId].energy;
 
         foreach (int slot in _slotCharacterId) { if (slot == characterId) return; }
 
@@ -100,6 +92,7 @@ public class TeamComp : MonoBehaviour
 
                 _slotCharacterId[i] = characterId;
                 _slotButtons[i].image.sprite = selectedCharacter.icon.sprite;
+                _skillsTxt[i].text = selectedCharacter.skillDesc;
 
                 _teamMaxEnergy += selectedCharacter.energy;
                 float currentEnergy = _teamMaxEnergy * energyPercent;
@@ -124,6 +117,7 @@ public class TeamComp : MonoBehaviour
 
         _slotAvailable[position] = true;
         _slotButtons[position].image.sprite = _defaultImg.sprite;
+        _skillsTxt[position].text = "---";
 
         _teamMaxEnergy -= _teamComp[position].energy;
         float currentEnergy = _teamMaxEnergy * energyPercent;

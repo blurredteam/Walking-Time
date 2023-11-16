@@ -12,7 +12,6 @@ public class Finito : Character
         selected = false;
         this.sprite = sprite;
         this.icon = icon;
-        desc = "Desc";
         energy = 100;
     }
 

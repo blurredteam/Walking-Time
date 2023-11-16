@@ -14,7 +14,7 @@ public class Japaro : Character
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;
-        desc = "Desc";
+        skillDesc = "[PRECAVIDO]";
         energy = 100;
     }
 

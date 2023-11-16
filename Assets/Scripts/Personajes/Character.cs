@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour
+public class Character
 {
     public int _id;
     public string name;
@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     public Image frontCard;
     public Image backCard;
     public Image icon;
-    public string desc;
+    public string skillDesc;
     public int energy;
     public int _teamMaxEnergy;
 

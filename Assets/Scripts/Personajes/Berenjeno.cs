@@ -14,7 +14,7 @@ public class Berenjeno : Character
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;
-        desc = "Berenjeno se despertó en la isla sin saber muy bien donde estaba, confuso y un poco asustado, pero sobre todo confuso. Siempre se ha dicho que las verduras ayudan a crecer sano y fuerte pero no sabía que era tan real hasta que vi a Berenjeno.";
+        skillDesc = "[FORZUDO]";
         energy = 150;
     }
 

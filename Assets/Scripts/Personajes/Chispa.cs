@@ -16,7 +16,7 @@ public class Chispa : Character
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;
-        desc = "Desc";
+        skillDesc = "[CHISPA]";
         energy = 100;
     }
 

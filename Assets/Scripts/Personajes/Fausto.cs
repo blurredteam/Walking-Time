@@ -14,7 +14,7 @@ public class Fausto : Character
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;
-        desc = "Desc";
+        skillDesc = "[TRILERO]";
         energy = 100;
     }
 

@@ -21,8 +21,8 @@ public class TeamComp : MonoBehaviour
 
     [SerializeField] private List<TextMeshProUGUI> _skillsTxt;
 
-    [SerializeField] private TextMeshProUGUI _totalEnergyTxt;
-    [SerializeField] private TextMeshProUGUI _totalWaterTxt;
+    [SerializeField] public TextMeshProUGUI _energyTxt;
+    [SerializeField] public TextMeshProUGUI _waterTxt;
 
     [SerializeField] private Button _continueBtn;
 
@@ -38,13 +38,11 @@ public class TeamComp : MonoBehaviour
     private float energyPercent = 1; //Para hoguera
     private bool bonfireTile = false;
 
-    //private bool ready { get; set; } = false;
-
     private void Start()
     {
         instance = this;
 
-        _totalWaterTxt.text = "3";
+        _waterTxt.text = "3";
 
         _slotAvailable = new List<bool>() { true, true, true, true};
         _slotCharacterId = new List<int>() { -1, -1, -1, -1 };
@@ -60,19 +58,7 @@ public class TeamComp : MonoBehaviour
 
     private void Update()
     {
-        foreach (bool available in _slotAvailable)
-        {
-            if (!available) 
-            {
-                _continueBtn.onClick.RemoveAllListeners();
-                _continueBtn.onClick.AddListener(Continue);
-            }
-            else
-            {
-                _continueBtn.onClick.RemoveAllListeners();
-                break;
-            }
-        }
+        ManageResourceText();
     }
 
     public void SelectCharacter(int characterId)
@@ -95,19 +81,49 @@ public class TeamComp : MonoBehaviour
                 _skillsTxt[i].text = selectedCharacter.skillDesc;
 
                 _teamMaxEnergy += selectedCharacter.energy;
-                float currentEnergy = _teamMaxEnergy * energyPercent;
-                currentEnergy = (int)currentEnergy;
-                _totalEnergyTxt.text = currentEnergy.ToString();
+
+                if (bonfireTile)
+                {
+                    var currentEnergy = selectedCharacter.energy * energyPercent;
+                    _teamCurrentEnergy += (int)currentEnergy;
+                }
 
                 if (bonfireTile) _teamComp[i].Skill();
 
+                ApplySkills();
+                CheckReady();
+
                 break;
 
-            } else if (i == 3 && _slotAvailable[i] == false) 
+            }
+            else if (i == 3 && _slotAvailable[i] == false) 
             {
                 selectedCharacter.selected = false;
             }
+        }
+    }
 
+    private void ApplySkills()
+    {
+        foreach (Character c in _teamComp)
+        {
+            if (c != null)
+            {
+                c._map = LevelManager.instance._map;
+                c.Skill();
+            }
+        }
+    }
+
+    private void CheckReady()
+    {
+        if (bonfireTile) { _continueBtn.onClick.AddListener(ExitBonfire); return; }
+
+        foreach (bool available in _slotAvailable)
+        {
+            if (available) { _continueBtn.onClick.RemoveAllListeners(); break; }
+            _continueBtn.onClick.RemoveAllListeners();
+            _continueBtn.onClick.AddListener(Continue);
         }
     }
 
@@ -115,28 +131,37 @@ public class TeamComp : MonoBehaviour
     {
         if (_slotCharacterId[position] == -1) return;
 
+        _teamMaxEnergy -= _teamComp[position].energy;
+
+        if (bonfireTile)
+        {
+            var currentEnergy = _teamComp[position].energy * energyPercent;
+            _teamCurrentEnergy -= (int)currentEnergy;
+        }
+
+        _teamComp[position].RevertSkill();
+
         _slotAvailable[position] = true;
         _slotButtons[position].image.sprite = _defaultImg.sprite;
-        _skillsTxt[position].text = "---";
-
-        _teamMaxEnergy -= _teamComp[position].energy;
-        float currentEnergy = _teamMaxEnergy * energyPercent;
-        currentEnergy = (int)currentEnergy;
-        _totalEnergyTxt.text = currentEnergy.ToString();
+        _skillsTxt[position].text = " - - - ";
 
         _teamComp[position].selected = false;
         _slotCharacterId[position] = -1;
         _teamComp[position] = null;
+
+        _continueBtn.onClick.RemoveAllListeners();
     }
+
     private void Continue()
     { 
         _continueBtn.interactable = false;
 
-        Debug.Log("Aplicando habilidades...");
-        foreach (Character c in _teamComp)
+        _teamMaxEnergy = 0;
+        foreach(Character c in _teamComp)
         {
-            c._map = LevelManager.instance._map;
-            c.Skill();
+            c._team = _teamComp;
+            if (c.name == "Fausto") c.SkillFinally();
+            _teamMaxEnergy += c.energy;
         }
 
         LevelManager.instance.teamEnergy = _teamMaxEnergy;
@@ -163,7 +188,7 @@ public class TeamComp : MonoBehaviour
     {
         _teamCurrentWater = LevelManager.instance.teamWater;
         _teamCurrentEnergy = LevelManager.instance.teamEnergy;
-        _totalEnergyTxt.text = _teamCurrentEnergy.ToString();
+        _teamMaxWater = LevelManager.instance.maxWater;
 
         // Pone el equipo actual en la seleccion
         for (int i= 0; i < team.Count; i++)
@@ -171,12 +196,13 @@ public class TeamComp : MonoBehaviour
             _slotAvailable[i] = false;
 
             _teamComp[i] = CharacterManager.instance.characterList[team[i]._id];
+            _teamComp[i].skillApplied= true;
 
             _slotCharacterId[i] = team[i]._id;
-            _slotButtons[i].image.sprite = team[i].sprite.sprite;
+            _slotButtons[i].image.sprite = team[i].icon.sprite;
             _teamMaxEnergy += team[i].energy;
         }
-        foreach (Character c in _teamComp) c.Skill();
+        //foreach (Character c in _teamComp) c.Skill();
 
         energyPercent = (float)LevelManager.instance.teamEnergy / (float)_teamMaxEnergy;
 
@@ -189,7 +215,6 @@ public class TeamComp : MonoBehaviour
 
     private void RemoveBonfire(int position)
     {
-        _teamComp[position].RevertSkill();
         RemoveSelected(position);
         foreach (Button btn in _slotButtons) btn.onClick.RemoveAllListeners();
     }
@@ -199,11 +224,39 @@ public class TeamComp : MonoBehaviour
         float teamFinalEnergy = _teamMaxEnergy * energyPercent;
 
         LevelManager.instance.ActivateScene();
-        LevelManager.instance.teamEnergy = (int)teamFinalEnergy;
+        LevelManager.instance.teamEnergy = (int)_teamCurrentEnergy;
+        Debug.Log(LevelManager.instance.teamEnergy + ", " + _teamCurrentEnergy);
         LevelManager.instance.teamWater= _teamCurrentWater;
         LevelManager.instance.maxWater = _teamMaxWater;
         LevelManager.instance.SetTeam(_teamComp);
 
         ScenesManager.instance.UnloadTeamSelect();
+    }
+
+    private void ManageResourceText()
+    {
+        if (bonfireTile)
+        {
+            _energyTxt.text = _teamCurrentEnergy.ToString() + " / " + _teamMaxEnergy.ToString();
+            _waterTxt.text = _teamCurrentWater.ToString() + " / " + _teamMaxWater.ToString();
+        }
+        else
+        {
+            _energyTxt.text = _teamMaxEnergy.ToString();
+            _waterTxt.text = _teamMaxWater.ToString();
+        }
+
+        foreach (Character c in _teamComp)
+        {
+            if (c == null) return;
+            else if (c.name == "Fausto")
+            {
+                if(c.energy == 0)
+                {
+                    _energyTxt.text += "?";
+                    _waterTxt.text += "?";
+                }
+            }
+        }
     }
 }

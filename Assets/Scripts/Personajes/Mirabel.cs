@@ -16,15 +16,24 @@ public class Mirabel : Character
         this.icon = icon;
         skillDesc = "[OBSERVADORA]";
         energy = 100;
+        defaultEnergy= energy;
     }
 
     public override void Skill()
     {
-        base.Skill();
+        if (!skillApplied)
+        {
+            Debug.Log(name + ": Habilidad APLICADA");
+            LevelManager.instance.travelCostModifier = -10;
+            skillApplied= true;
+        }
     }
     public override void RevertSkill()
     {
-        base.RevertSkill();
+        energy= defaultEnergy;
+
+        LevelManager.instance.travelCostModifier = 0;
+        skillApplied = false;
     }
 
     public override string PuzzleChooseDialogue()

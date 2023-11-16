@@ -16,15 +16,24 @@ public class Seta : Character
         this.icon = icon;
         skillDesc = "[ESPORAS CURATIVAS]";
         energy = 100;
+        defaultEnergy = 100;
     }
 
     public override void Skill()
     {
-        base.Skill();
+        if(!skillApplied)
+        {
+            Debug.Log(name + ": Habilidad APLICADA");
+            LevelManager.instance.waterRegen = 75;
+            skillApplied = true;
+        }
     }
     public override void RevertSkill()
     {
-        base.RevertSkill();
+        energy = defaultEnergy;
+
+        LevelManager.instance.waterRegen = 50;
+        skillApplied = false;
     }
 
     public override string PuzzleChooseDialogue()

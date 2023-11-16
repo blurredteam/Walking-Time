@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,16 +16,35 @@ public class Fausto : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[TRILERO]";
-        energy = 100;
+        energy = 0;                 //Para que no se muestre cuanta energia tiene, se aplica en skill
+        defaultEnergy = energy;
     }
 
     public override void Skill()
     {
-        base.Skill();
+        if (!skillApplied)
+        {
+            skillApplied = true;
+        }
     }
     public override void RevertSkill()
     {
-        base.RevertSkill();
+        skillApplied = false;
+    }
+
+    public override void SkillFinally()
+    {
+        energy = Random.Range(30, 120);
+        float aux = energy;
+
+        foreach (Character character in _team) 
+            if (character.name == "Dr. Japaro") aux *= 1.1f;
+
+        energy = (int)aux;
+        
+        var randValue = Random.Range(-100, 100);
+        if(randValue < 0) TeamComp.instance._teamMaxWater++;
+        else TeamComp.instance._teamMaxWater--;
     }
 
     public override string PuzzleChooseDialogue()

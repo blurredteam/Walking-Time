@@ -15,22 +15,35 @@ public class Berenjeno : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[FORZUDO]";
+        skillApplied = false;
         energy = 150;
+        defaultEnergy = energy;
     }
 
     public override void Skill() 
     {
-        if (TeamComp.instance._teamCurrentWater == TeamComp.instance._teamMaxWater)
+        if(!skillApplied) 
         {
-            TeamComp.instance._teamCurrentWater--;
-        }
+            Debug.Log(name + ": Habilidad APLICADA");
+            if (TeamComp.instance._teamCurrentWater == TeamComp.instance._teamMaxWater)
+            {
+                TeamComp.instance._teamCurrentWater--;
+            }
 
-        TeamComp.instance._teamMaxWater--;
+            TeamComp.instance._teamMaxWater--;
+            TeamComp.instance._waterTxt.color = Color.red;
+
+            skillApplied = true;
+        }
     }
 
     public override void RevertSkill()
     {
+        energy = defaultEnergy;
+
         TeamComp.instance._teamMaxWater++;
+        TeamComp.instance._waterTxt.color = Color.black;
+        skillApplied = false;
     }
 
     public override string PuzzleChooseDialogue()

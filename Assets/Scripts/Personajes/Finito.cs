@@ -13,6 +13,7 @@ public class Finito : Character
         this.sprite = sprite;
         this.icon = icon;
         energy = 100;
+        defaultEnergy = energy;
     }
 
     public override void Skill()

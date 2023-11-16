@@ -18,15 +18,18 @@ public class Chispa : Character
         this.icon = icon;
         skillDesc = "[CHISPA]";
         energy = 100;
+        defaultEnergy = energy;
     }
 
     public override void Skill()
     {
-        base.Skill();
+        //base.Skill();
     }
     public override void RevertSkill()
     {
-        base.RevertSkill();
+        energy = defaultEnergy;
+
+        //base.RevertSkill();
     }
 
     public override string PuzzleChooseDialogue()

@@ -36,12 +36,13 @@ public class LevelManager : MonoBehaviour
     public int maxEnergy { get; set; }
     public int teamWater { get; set; }
     public int maxWater { get; set; }
-    public bool cursed { get; set; }
+    public bool cursed { get; set; }    //Si esta activo el jugador no gana oro    
+    public int travelCostModifier { get; set; } = 0;  //Modifica el coste de viajar a casillas (de momento solo en la habilidad de mirabel)
 
     public int gold { get; set; } = 0;
     int auxGold = 0; //Solo se usa para el evento del medallon maldito
 
-    private int waterRegen = 50;
+    public int waterRegen { get; set; } = 50;   // Cuanto energia regenera la cantimplora en cada uso
 
     public Tile[,] _map { get; set; }
     private int _mapWidth;
@@ -120,7 +121,7 @@ public class LevelManager : MonoBehaviour
 
         ScenesManager.instance.LoadTileScene(tileType, index);
 
-        teamEnergy -= energyCost; 
+        teamEnergy -= (energyCost + travelCostModifier); 
 
         for (int y = 0; y < _mapHeight; y++)
         {
@@ -204,7 +205,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator ChangeCard(int position)
     {
         HideCard();
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
         ShowCharacterCard(position);
     }
 }

@@ -2497,8 +2497,8 @@ MonoBehaviour:
   - {fileID: 88074170}
   - {fileID: 1680216186}
   - {fileID: 1670067654}
-  _totalEnergyTxt: {fileID: 1676659510}
-  _totalWaterTxt: {fileID: 460307285}
+  _energyTxt: {fileID: 1676659510}
+  _waterTxt: {fileID: 460307285}
   _continueBtn: {fileID: 239464200}
 --- !u!1 &1670067652
 GameObject:

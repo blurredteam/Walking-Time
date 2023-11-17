@@ -29,6 +29,7 @@ public class LlenadoBotella : MonoBehaviour
     [SerializeField] private GameObject objetivo;
 
     [SerializeField] private AudioClip fondo;
+    [SerializeField] private AudioClip sonidoAgua;
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
@@ -95,11 +96,13 @@ public class LlenadoBotella : MonoBehaviour
     public void ComenzarLlenado()
     {
         llenando = true;
+        AudioManager.instance.PlaySfx(sonidoAgua);
     }
 
     public void DetenerLlenado()
     {
-        llenando = false;
+        AudioManager.instance.StopSfx();
+       llenando = false;
         finLlenado = true;
         chorroAgua.SetActive(false);
         panelFinal.SetActive(true);

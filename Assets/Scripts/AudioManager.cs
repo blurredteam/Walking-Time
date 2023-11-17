@@ -10,8 +10,9 @@ public class AudioManager : MonoBehaviour
   [Header("--------------Audio Source--------------")]
   [SerializeField] private AudioSource musicSrc;
   [SerializeField] private AudioSource sfxSrc;
+    [SerializeField] private AudioSource levelSrc;
 
-  [Header("--------------Audio Clip--------------")]
+    [Header("--------------Audio Clip--------------")]
   public AudioClip backgroundMenu;
   public AudioClip backgroundLevel1;
   public AudioClip buttonMenu;
@@ -26,8 +27,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
   {
         instance = this;
-        musicSrc.clip = backgroundMenu;
-        musicSrc.Play();
+        //levelSrc.clip = backgroundMenu;
+        levelSrc.Play();
   }
 
   public void PlaySfx(AudioClip clip)
@@ -35,15 +36,20 @@ public class AudioManager : MonoBehaviour
     sfxSrc.PlayOneShot(clip);
   }
   
+    public void StopSfx()
+    {
+        sfxSrc.Stop();
+    }
   public void PlayBackMusic(AudioClip clip)
   {
+        levelSrc.Pause();
         musicSrc.clip = clip;
         musicSrc.Play();
     }
     public void PlayAmbient()
     {
-        musicSrc.clip=backgroundLevel1;
-        musicSrc.Play();
+        musicSrc.Stop();
+       levelSrc.Play();
     }
 }
 

@@ -1681,6 +1681,7 @@ MonoBehaviour:
   volverBtn: {fileID: 382409434}
   objetivo: {fileID: 1773108264}
   fondo: {fileID: 8300000, guid: 4e967069a7158254dad9515b1f77ff7a, type: 3}
+  sonidoAgua: {fileID: 8300000, guid: 045e105167e6337419b319eb210425da, type: 3}
 --- !u!212 &1127025325
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -15,8 +15,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    public AudioSource backgroundLevel1;
-    
+   
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
@@ -49,8 +48,11 @@ public class LevelManager : MonoBehaviour
     public Tile[,] _map { get; set; }
     private int _mapWidth;
     private int _mapHeight;
-    
 
+    //Sound
+    [SerializeField] private AudioClip losingEnergy;
+    [SerializeField] private AudioClip usingWater;
+    [SerializeField] private AudioClip noMoreWater;
     public void SetMap(Tile[,] map, int width, int height) 
     {
         _map = map; _mapWidth = width; _mapHeight = height;
@@ -76,9 +78,9 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         instance= this;
-        
+        AudioManager.instance.PlayAmbient();
         maxWater = teamWater;
-        backgroundLevel1.Play();
+       
     }
 
     private void Update()
@@ -126,7 +128,8 @@ public class LevelManager : MonoBehaviour
 
         ScenesManager.instance.LoadTileScene(tileType, index);
 
-        teamEnergy -= (energyCost + travelCostModifier); 
+        teamEnergy -= (energyCost + travelCostModifier);
+        AudioManager.instance.PlaySfx(losingEnergy);
 
         for (int y = 0; y < _mapHeight; y++)
         {
@@ -150,6 +153,7 @@ public class LevelManager : MonoBehaviour
     {
         if (teamWater > 0)
         {
+            AudioManager.instance.PlaySfx(usingWater);
             if ((teamEnergy + waterRegen) >= maxEnergy)
             {
                 teamEnergy = maxEnergy;
@@ -160,6 +164,10 @@ public class LevelManager : MonoBehaviour
                 teamEnergy += 50;
                 teamWater--;
             }
+        }
+        else
+        {
+            AudioManager.instance.PlaySfx(noMoreWater);
         }
     }
 

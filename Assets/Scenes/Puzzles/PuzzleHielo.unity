@@ -1534,6 +1534,7 @@ MonoBehaviour:
   playerBody: {fileID: 0}
   Vel: 5
   volverBtn: {fileID: 2033389299}
+  fondoHielo: {fileID: 8300000, guid: 6d6924fc0e07ae846bb4f2d5ab6421fc, type: 3}
 --- !u!61 &528029771
 BoxCollider2D:
   m_ObjectHideFlags: 0

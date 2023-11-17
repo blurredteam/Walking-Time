@@ -38,5 +38,6 @@ public class salida : MonoBehaviour
         }
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 }

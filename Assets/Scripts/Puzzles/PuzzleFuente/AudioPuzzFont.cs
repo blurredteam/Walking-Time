@@ -5,8 +5,13 @@ using UnityEngine;
 public class AudioPuzzFont : MonoBehaviour
 {
     public AudioSource src;
-    public AudioClip waterSfx, buttonSfx, winSfx, loseSfx;
+    public AudioClip waterSfx, buttonSfx, winSfx, loseSfx, soundTrack;
 
+    private void Start()
+    {
+        src.clip = soundTrack;
+        src.Play();
+    }
     public void waterPlaySfx()
     {
         src.clip = waterSfx;

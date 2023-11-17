@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Button volverBtn;
     GameObject panel;
 
+    [SerializeField] private AudioClip fondoHielo;
+
+
 
     void Start()
     {
@@ -38,10 +41,11 @@ public class PlayerMovement : MonoBehaviour
         {
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
             LevelManager.instance.ActivateScene();
+            AudioManager.instance.PlayAmbient();
         });
         // ---------------------------------------------
 
-
+        AudioManager.instance.PlayBackMusic(fondoHielo);
         player = this.gameObject;
         playerBody = player.GetComponent<Rigidbody2D>();
     }

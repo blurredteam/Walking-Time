@@ -17,15 +17,17 @@ public class AudioManager : MonoBehaviour
   public AudioClip buttonMenu;
   public AudioClip buttonLevel;
   public AudioClip buttonBtwPuzzles;
-  /*public AudioClip sfxIce;
-  public AudioClip sfxCrash;
-  public AudioClip sfxFire;
-  public AudioClip sfxChoseCharacter;
-*/
-  private void Start()
+    /*public AudioClip sfxIce;
+    public AudioClip sfxCrash;
+    public AudioClip sfxFire;
+    public AudioClip sfxChoseCharacter;
+  */
+    public static AudioManager instance;
+    private void Start()
   {
-    musicSrc.clip = backgroundMenu;
-    musicSrc.Play();
+        instance = this;
+        musicSrc.clip = backgroundMenu;
+        musicSrc.Play();
   }
 
   public void PlaySfx(AudioClip clip)
@@ -35,8 +37,14 @@ public class AudioManager : MonoBehaviour
   
   public void PlayBackMusic(AudioClip clip)
   {
-    musicSrc.PlayOneShot(clip);
-  }
+        musicSrc.clip = clip;
+        musicSrc.Play();
+    }
+    public void PlayAmbient()
+    {
+        musicSrc.clip=backgroundLevel1;
+        musicSrc.Play();
+    }
 }
 
 

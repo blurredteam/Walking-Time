@@ -22,15 +22,17 @@ public class Jump : MonoBehaviour
     public GameObject panFinal;
     public TextMeshProUGUI textoFinal;
 
+    [SerializeField] private AudioClip fondo;
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate {
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
+            AudioManager.instance.PlayAmbient();
         });
         // ---------------------------------------------
-
+        AudioManager.instance.PlayBackMusic(fondo); ;
         tiempoRestante = tiempoMaximo;
         ActualizarTextoTiempo();
     }
@@ -148,5 +150,6 @@ public class Jump : MonoBehaviour
         }
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 }

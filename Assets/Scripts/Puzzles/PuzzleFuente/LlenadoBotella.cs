@@ -27,15 +27,18 @@ public class LlenadoBotella : MonoBehaviour
 
     [SerializeField] private Button volverBtn;
     [SerializeField] private GameObject objetivo;
+
+    [SerializeField] private AudioClip fondo;
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         volverBtn.onClick.AddListener(delegate {
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
             LevelManager.instance.ActivateScene();
+            AudioManager.instance.PlayAmbient();
         });
         // ---------------------------------------------
-
+        AudioManager.instance.PlayBackMusic(fondo); ;
         referencia = objetivo.transform.position.y;//Altura del triángulo rojo
         Debug.Log(referencia);
         rotacionInicial = transform.rotation;

@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class TeamComp : MonoBehaviour
 {
     public static TeamComp instance;
-
+    
     [SerializeField] private Button _selectedBtn0;
     [SerializeField] private Button _selectedBtn1;
     [SerializeField] private Button _selectedBtn2;
@@ -41,7 +41,7 @@ public class TeamComp : MonoBehaviour
     private void Start()
     {
         instance = this;
-
+        
         _waterTxt.text = "3";
 
         _slotAvailable = new List<bool>() { true, true, true, true};

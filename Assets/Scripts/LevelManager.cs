@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +15,8 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-
+    public AudioSource backgroundLevel1;
+    
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
@@ -47,6 +49,8 @@ public class LevelManager : MonoBehaviour
     public Tile[,] _map { get; set; }
     private int _mapWidth;
     private int _mapHeight;
+    
+
     public void SetMap(Tile[,] map, int width, int height) 
     {
         _map = map; _mapWidth = width; _mapHeight = height;
@@ -72,8 +76,9 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         instance= this;
-
+        
         maxWater = teamWater;
+        backgroundLevel1.Play();
     }
 
     private void Update()

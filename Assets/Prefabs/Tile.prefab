@@ -70,6 +70,8 @@ MonoBehaviour:
   animationPuzzleImage: {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
   selected: 0
   AdyacentList: []
+  casillaInfo: {fileID: 0}
+  textoInfo: {fileID: 0}
 --- !u!61 &-5686229670561354823
 BoxCollider2D:
   m_ObjectHideFlags: 0

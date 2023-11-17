@@ -12,6 +12,7 @@ using UnityEngine.UI;
 public class Tile : MonoBehaviour
 {
 
+    
     [SerializeField] public EventTrigger _clickEvent;
     [SerializeField] public SpriteRenderer _spriteRenderer;
 
@@ -120,7 +121,7 @@ public class Tile : MonoBehaviour
 
     public void ShowInfo()
     {
-
+        
         casillaInfo.SetActive(true);
         casillaInfo.transform.position = gameObject.transform.position + new Vector3(1.2f, 0.70f, 0f);
 

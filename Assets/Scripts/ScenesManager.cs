@@ -10,7 +10,7 @@ public class ScenesManager : MonoBehaviour
 
     // Lista con todos los puzzles
     public List<string> escenasPuzle = new List<string>() {
-        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", 
+        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer",
         "PuzzleFuente", "NivelGeometryDash",
     };
 
@@ -26,7 +26,7 @@ public class ScenesManager : MonoBehaviour
     */
     public enum Scene
     {
-        MainMenu_Scene,
+        EscenaMenu,
         SeleccionEquipo,
         Level1,
         PuzleCuadro,
@@ -88,10 +88,10 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(escenasPuzle[index], LoadSceneMode.Additive);
         //SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
     }
-    private void LoadObstacle(int index) 
+    private void LoadObstacle(int index)
     {
         SceneManager.LoadScene(Scene.EventScene.ToString(), LoadSceneMode.Additive);
-        Debug.Log("casilla evento"); 
+        Debug.Log("casilla evento");
     }
     private void LoadBonfire()
     {

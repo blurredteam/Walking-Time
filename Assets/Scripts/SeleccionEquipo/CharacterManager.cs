@@ -30,6 +30,11 @@ public class CharacterManager : MonoBehaviour
     private Seta _seta;
     private Chispa _chispa;
 
+    private bool personajeUnlocked = false;
+
+
+
+
     /* 
     -- PERSONAJES IDs --
     --ID 0 -> berenjeno
@@ -52,10 +57,17 @@ public class CharacterManager : MonoBehaviour
         _chispa = new Chispa(_spriteList[5], _frontCardsList[5], _backCardsList[5], _iconList[5]);
 
         characterList = new List<Character>() { _berenjeno, _japaro, _mirabel, _seta, _fauno, _chispa };
+
+
+
     }
 
     private void Start()
     {
+
+        //se llama cuando se inicia la escena de seleccion de personaje para lockear/unlockear a chispa
+        desbloqueaPersonaje();
+
         //Boton de cada personaje
         _btnList[0].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
         _btnList[1].onClick.AddListener(delegate { BtnHandler(_japaro); });
@@ -63,13 +75,17 @@ public class CharacterManager : MonoBehaviour
         _btnList[3].onClick.AddListener(delegate { BtnHandler(_seta); });
         _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
         _btnList[5].onClick.AddListener(delegate { BtnHandler(_chispa); });
+
     }
 
     private void BtnHandler(Character character)
     {
-        ShowCharacter(character._id);
+        if (character.unlocked == true)
+        {
+            ShowCharacter(character._id);
 
-        if (character.selected == false) TeamComp.instance.SelectCharacter(character._id);
+            if (character.selected == false) TeamComp.instance.SelectCharacter(character._id);
+        }
     }
 
     public void ShowCharacter(int id)
@@ -89,5 +105,21 @@ public class CharacterManager : MonoBehaviour
         else
             _characterCard.sprite = characterList[id].frontCard.sprite;
     }
-    
+
+
+    public void desbloqueaPersonaje()
+    {
+        personajeUnlocked = UnlockManager.Instance.PersonajeDesbloqueado;   //recivimos el valor desde el singleton
+
+        if (personajeUnlocked == false)
+        {
+            _chispa.unlocked = false;
+        }
+        else if (personajeUnlocked == true)
+        {
+            _chispa.unlocked = true;
+            Debug.Log("Chispa ha sido desbloqueada correctamente");
+        }
+
+    }
 }

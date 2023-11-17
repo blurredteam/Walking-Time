@@ -33,8 +33,8 @@ public class Tile : MonoBehaviour
     public bool selected = false;
     public List<Tile> AdyacentList = new List<Tile>();
 
-    GameObject casillaInfo;
-    private TextMeshProUGUI textoInfo;
+    public GameObject casillaInfo;
+    public TextMeshProUGUI textoInfo;
 
 
     public void ColorTile(Color color)

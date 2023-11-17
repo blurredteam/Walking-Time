@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -33,8 +34,8 @@ public class MapGenerator : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            for (int x = 0; x < _map.Length / _height; x++) 
-                for (int y = 0; y < _map.Length / _width; y++) 
+            for (int x = 0; x < _map.Length / _height; x++)
+                for (int y = 0; y < _map.Length / _width; y++)
                     _map[x, y].ColorTile(Color.clear);
             for (int i = 0; i < _lines.Count; i++) Destroy(_lines[i]);
             for (int j = 0; j < _numberOfPaths; j++) BuildPath(_map, Color.white);
@@ -91,19 +92,21 @@ public class MapGenerator : MonoBehaviour
         var lastTile = Instantiate(_tilePrefab, new Vector3(_width * (_X_spacing) - 7, 0), Quaternion.identity, this.transform);
         lastTile.name = $"TileFinal";
         lastTile._clickEvent.enabled = false;
+        lastTile.casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
+        lastTile.textoInfo = lastTile.casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
 
         for (int y = 0; y < _map.Length / _width; y++)
         {
-            if (_map[_width-1, y].selected)
+            if (_map[_width - 1, y].selected)
             {
                 _map[_width - 1, y].AdyacentList.Add(lastTile);
                 var line = Instantiate(_lineRendererPrefab, new Vector3(0, 0), Quaternion.identity, this.transform);
                 line.SetPosition(0, _map[_width - 1, y].transform.position);
-                line.SetPosition(1,lastTile.transform.position);
+                line.SetPosition(1, lastTile.transform.position);
                 _lines.Add(line.gameObject);
             }
         }
-        
+
         // 5. Se asigna el mapa al nivel
         LevelManager.instance.SetMap(_map, _width, _height);
 

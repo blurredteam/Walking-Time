@@ -20,6 +20,8 @@ public class Character
 
     public int _teamMaxEnergy;
 
+    public bool unlocked = true; //para los desbloqueables
+
     public Tile[,] _map;
     public List<Character> _team;
     public int _teamMaxWater;

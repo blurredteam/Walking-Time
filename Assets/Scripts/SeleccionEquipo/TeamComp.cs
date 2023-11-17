@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class TeamComp : MonoBehaviour
@@ -35,14 +31,16 @@ public class TeamComp : MonoBehaviour
     public int _teamCurrentEnergy { get; set; }
     public int _teamMaxWater { get; set; } = 3;
     public int _teamCurrentWater { get; set; }
-    private float energyPercent = 1; //Para hoguera
+
+    //Variables para hoguera
     private bool bonfireTile = false;
+    private float energyPercent;     //indica el porcentaje de energia con relacion a la enegia maxima del equipo
 
     private void Start()
     {
         instance = this;
         
-        _waterTxt.text = "3";
+        _waterTxt.text = "3"; //Agua por defecto
 
         _slotAvailable = new List<bool>() { true, true, true, true};
         _slotCharacterId = new List<int>() { -1, -1, -1, -1 };
@@ -65,40 +63,32 @@ public class TeamComp : MonoBehaviour
     {
         Character selectedCharacter = CharacterManager.instance.characterList[characterId];
 
-        foreach (int slot in _slotCharacterId) { if (slot == characterId) return; }
-
         for (int i = 0; i < _slotAvailable.Count; i++)
         {
             if (_slotAvailable[i] == true)
             {
+                //Se gestiona la informacion por pantalla 
                 _slotAvailable[i] = false;
-
-                _teamComp[i] = CharacterManager.instance.characterList[characterId];
-                selectedCharacter.selected = true;
-
                 _slotCharacterId[i] = characterId;
                 _slotButtons[i].image.sprite = selectedCharacter.icon.sprite;
                 _skillsTxt[i].text = selectedCharacter.skillDesc;
-
                 _teamMaxEnergy += selectedCharacter.energy;
 
+                //Se gestiona la informacion del personaje
+                selectedCharacter.selected = true;
+                _teamComp[i] = selectedCharacter;
+
+                //Se gestiona si es hoguera
                 if (bonfireTile)
                 {
-                    var currentEnergy = selectedCharacter.energy * energyPercent;
-                    _teamCurrentEnergy += (int)currentEnergy;
+                    var aux = selectedCharacter.energy * energyPercent;
+                    _teamCurrentEnergy += (int)aux;
                 }
 
-                if (bonfireTile) _teamComp[i].Skill();
-
+                //Se aplican las habilidades* y se comprueba si tiene equipo completo
                 ApplySkills();
                 CheckReady();
-
                 break;
-
-            }
-            else if (i == 3 && _slotAvailable[i] == false) 
-            {
-                selectedCharacter.selected = false;
             }
         }
     }
@@ -129,39 +119,39 @@ public class TeamComp : MonoBehaviour
 
     private void RemoveSelected(int position)
     {
+        //Si se quita un personaje el equipo no esta lleno
+        _continueBtn.onClick.RemoveAllListeners();  
+
         if (_slotCharacterId[position] == -1) return;
 
+        //Se gestiona informacion en pantalla
         _teamMaxEnergy -= _teamComp[position].energy;
-
-        if (bonfireTile)
-        {
-            var currentEnergy = _teamComp[position].energy * energyPercent;
-            _teamCurrentEnergy -= (int)currentEnergy;
-        }
-
-        _teamComp[position].RevertSkill();
-
         _slotAvailable[position] = true;
+        _slotCharacterId[position] = -1;
         _slotButtons[position].image.sprite = _defaultImg.sprite;
         _skillsTxt[position].text = " - - - ";
 
-        _teamComp[position].selected = false;
-        _slotCharacterId[position] = -1;
-        _teamComp[position] = null;
+        //Se gestiona si es hoguera
+        if(bonfireTile)
+        {
+            var aux = _teamComp[position].energy * energyPercent;
+            _teamCurrentEnergy -= (int)aux;
+        }
 
-        _continueBtn.onClick.RemoveAllListeners();
+        //Se gestiona la informacion del personaje y equipo
+        _teamComp[position].RevertSkill();
+        _teamComp[position].selected = false;
+        _teamComp[position] = null;
     }
 
     private void Continue()
     { 
         _continueBtn.interactable = false;
 
-        _teamMaxEnergy = 0;
         foreach(Character c in _teamComp)
         {
             c._team = _teamComp;
-            if (c.name == "Fausto") c.SkillFinally();
-            _teamMaxEnergy += c.energy;
+            c.SkillFinally();           //Para habilidades que se aplican tras elegir el equipo (como Fausto)
         }
 
         LevelManager.instance.teamEnergy = _teamMaxEnergy;
@@ -169,14 +159,13 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.teamWater = _teamMaxWater;
         LevelManager.instance.maxWater = _teamMaxWater;
 
-        //Esta corrutina esta para visualizar como se van aplicando las hablidades de cada personaje una a una
-        //sobre la energia o el agua del equipo antes de empezar la partida, mostrar visualmente las habilidades
         StartCoroutine(ContinueTimer());
     }
 
+    //Sirve para visualizar las habilidades que se aplican al final (SkillFinally)
     private IEnumerator ContinueTimer()
     { 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         LevelManager.instance.ActivateScene();
         LevelManager.instance.SetTeam(_teamComp);
@@ -187,24 +176,25 @@ public class TeamComp : MonoBehaviour
     public void BonfireTile(List<Character> team)
     {
         _teamCurrentWater = LevelManager.instance.teamWater;
-        _teamCurrentEnergy = LevelManager.instance.teamEnergy;
         _teamMaxWater = LevelManager.instance.maxWater;
+        _teamCurrentEnergy = LevelManager.instance.teamEnergy;
+        _teamMaxEnergy= LevelManager.instance.maxEnergy;
+        energyPercent = (float)_teamCurrentEnergy / (float)_teamMaxEnergy;
 
         // Pone el equipo actual en la seleccion
         for (int i= 0; i < team.Count; i++)
         {
+            //Se gestiona info por pantalla
             _slotAvailable[i] = false;
-
-            _teamComp[i] = CharacterManager.instance.characterList[team[i]._id];
-            _teamComp[i].skillApplied= true;
-
             _slotCharacterId[i] = team[i]._id;
             _slotButtons[i].image.sprite = team[i].icon.sprite;
-            _teamMaxEnergy += team[i].energy;
-        }
-        //foreach (Character c in _teamComp) c.Skill();
+            _skillsTxt[i].text = team[i].skillDesc;
 
-        energyPercent = (float)LevelManager.instance.teamEnergy / (float)_teamMaxEnergy;
+            //Se gestiona info del personaje
+            _teamComp[i] = team[i];
+            _teamComp[i].selected = true;
+            _teamComp[i].skillApplied= true;
+        }
 
         _slotButtons[0].onClick.AddListener(delegate { RemoveBonfire(0); });
         _slotButtons[1].onClick.AddListener(delegate { RemoveBonfire(1); });
@@ -221,12 +211,25 @@ public class TeamComp : MonoBehaviour
 
     private void ExitBonfire()
     {
-        float teamFinalEnergy = _teamMaxEnergy * energyPercent;
+        _continueBtn.interactable = false;
+
+        foreach (Character c in _teamComp)
+        {
+            c._team = _teamComp;
+            c.SkillFinally();
+        }
+
+        StartCoroutine(ExitBonfireCo());
+    }
+
+    private IEnumerator ExitBonfireCo()
+    {
+        yield return new WaitForSeconds(2);
 
         LevelManager.instance.ActivateScene();
-        LevelManager.instance.teamEnergy = (int)_teamCurrentEnergy;
-        Debug.Log(LevelManager.instance.teamEnergy + ", " + _teamCurrentEnergy);
-        LevelManager.instance.teamWater= _teamCurrentWater;
+        LevelManager.instance.teamEnergy = _teamCurrentEnergy;
+        LevelManager.instance.maxEnergy = _teamMaxEnergy;
+        LevelManager.instance.teamWater = _teamCurrentWater;
         LevelManager.instance.maxWater = _teamMaxWater;
         LevelManager.instance.SetTeam(_teamComp);
 
@@ -251,7 +254,7 @@ public class TeamComp : MonoBehaviour
             if (c == null) return;
             else if (c.name == "Fausto")
             {
-                if(c.energy == 0)
+                if(c.energy == 0 || (bonfireTile && c.energy == 0))
                 {
                     _energyTxt.text += "?";
                     _waterTxt.text += "?";

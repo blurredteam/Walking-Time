@@ -17,21 +17,21 @@ public class Berenjeno : Character
         skillDesc = "[FORZUDO]";
         skillApplied = false;
         energy = 150;
+        //currentEnergy = energy;
         defaultEnergy = energy;
     }
 
     public override void Skill() 
     {
-        if(!skillApplied) 
+        if (!skillApplied) 
         {
-            Debug.Log(name + ": Habilidad APLICADA");
             if (TeamComp.instance._teamCurrentWater == TeamComp.instance._teamMaxWater)
             {
                 TeamComp.instance._teamCurrentWater--;
             }
 
             TeamComp.instance._teamMaxWater--;
-            TeamComp.instance._waterTxt.color = Color.red;
+            TeamComp.instance._waterTxt.color = new Color(0.7f, 0.1f, 0.2f, 1);
 
             skillApplied = true;
         }

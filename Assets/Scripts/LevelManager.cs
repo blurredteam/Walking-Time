@@ -46,8 +46,8 @@ public class LevelManager : MonoBehaviour
     public int waterRegen { get; set; } = 50;   // Cuanto energia regenera la cantimplora en cada uso
 
     public Tile[,] _map { get; set; }
-    private int _mapWidth;
-    private int _mapHeight;
+    public int _mapWidth { get; set; }
+    public int _mapHeight { get; set; }
 
     //Sound
     [SerializeField] private AudioClip losingEnergy;
@@ -109,14 +109,8 @@ public class LevelManager : MonoBehaviour
     // Habilita las primeras casillas disponibles al jugador
     public void StartGame()
     {
-
         for (int y = 0; y < _mapHeight; y++)
-        {
-            if (_map[0, y].selected)
-            {
-                _map[0, y]._clickEvent.enabled = true;
-            }
-        }
+            if (_map[0, y].selected) _map[0, y]._clickEvent.enabled = true;
     }
 
     // Carga la escena indicada y reduce la energia total en funcion del coste de viajar a esa casilla
@@ -129,6 +123,7 @@ public class LevelManager : MonoBehaviour
         ScenesManager.instance.LoadTileScene(tileType, index);
 
         teamEnergy -= (energyCost + travelCostModifier);
+
         AudioManager.instance.PlaySfx(losingEnergy);
 
         for (int y = 0; y < _mapHeight; y++)
@@ -161,7 +156,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                teamEnergy += 50;
+                teamEnergy += waterRegen;
                 teamWater--;
             }
         }

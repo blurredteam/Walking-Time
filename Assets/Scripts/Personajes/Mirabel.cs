@@ -15,15 +15,15 @@ public class Mirabel : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[OBSERVADORA]";
-        energy = 100;
-        defaultEnergy= energy;
+        energy = 90;
+        //currentEnergy = energy;
+        defaultEnergy = energy;
     }
 
     public override void Skill()
     {
         if (!skillApplied)
         {
-            Debug.Log(name + ": Habilidad APLICADA");
             LevelManager.instance.travelCostModifier = -10;
             skillApplied= true;
         }

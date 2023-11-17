@@ -32,9 +32,6 @@ public class CharacterManager : MonoBehaviour
 
     private bool personajeUnlocked = false;
 
-
-
-
     /* 
     -- PERSONAJES IDs --
     --ID 0 -> berenjeno
@@ -78,12 +75,9 @@ public class CharacterManager : MonoBehaviour
 
     private void BtnHandler(Character character)
     {
-        if (character.unlocked == true)
-        {
-            ShowCharacter(character._id);
+        ShowCharacter(character._id);
 
-            if (character.selected == false) TeamComp.instance.SelectCharacter(character._id);
-        }
+        if (character.unlocked && !character.selected) TeamComp.instance.SelectCharacter(character._id);
     }
 
     public void ShowCharacter(int id)

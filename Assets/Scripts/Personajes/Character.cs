@@ -16,6 +16,7 @@ public class Character
     public string skillDesc;
     public bool skillApplied;
     public int energy;
+    //public int currentEnergy;   //Indica la energia propia del personaje
     public int defaultEnergy;   //Se necesita para la habilidad de japaro
 
     public int _teamMaxEnergy;

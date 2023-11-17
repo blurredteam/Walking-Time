@@ -15,15 +15,15 @@ public class Seta : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[ESPORAS CURATIVAS]";
-        energy = 100;
-        defaultEnergy = 100;
+        energy = 30;
+        //currentEnergy = energy;
+        defaultEnergy = energy;
     }
 
     public override void Skill()
     {
-        if(!skillApplied)
+        if (!skillApplied)
         {
-            Debug.Log(name + ": Habilidad APLICADA");
             LevelManager.instance.waterRegen = 75;
             skillApplied = true;
         }

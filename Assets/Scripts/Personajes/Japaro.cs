@@ -16,23 +16,32 @@ public class Japaro : Character
         this.icon = icon;
         skillDesc = "[PRECAVIDO]";
         skillApplied= false;
-        energy = 100;
+        energy = 60;
+        //currentEnergy = energy;
         defaultEnergy = energy;
     }
 
     public override void Skill()
     {
-        float teamEnergy = 0;
+        energy = defaultEnergy;
 
-        Debug.Log(name + ": Habilidad APLICADA");
+        var enerPer = (float)TeamComp.instance._teamCurrentEnergy / (float)TeamComp.instance._teamMaxEnergy;
+
+        float teamEnergy = 0;
+        float currentEnergy = 0;
+
         foreach (var c in TeamComp.instance._teamComp)
             if (c != null && c.name != "Fausto")
             {
                 float charEnergy = c.defaultEnergy * 1.1f;
                 c.energy = (int)charEnergy;
                 teamEnergy += c.energy;
+
+                float aux = c.energy * enerPer;
+                currentEnergy += (int)aux;
             }
 
+        TeamComp.instance._teamCurrentEnergy = (int)currentEnergy;
         TeamComp.instance._teamMaxEnergy = (int)teamEnergy;
     }
 
@@ -45,10 +54,12 @@ public class Japaro : Character
         foreach (var c in TeamComp.instance._teamComp)
             if (c != null && c.name != this.name)
             {
-                c.energy = c.defaultEnergy;
+                if(c.name != "Fausto") c.energy = c.defaultEnergy;
                 teamEnergy += c.energy;
             }
 
+        var aux = teamEnergy * 0.1f;
+        TeamComp.instance._teamCurrentEnergy -= (int)aux;
         TeamComp.instance._teamMaxEnergy = (int)teamEnergy;
     }
     public override string PuzzleChooseDialogue()

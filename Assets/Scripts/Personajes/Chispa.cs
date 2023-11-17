@@ -17,19 +17,19 @@ public class Chispa : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[CHISPA]";
-        energy = 100;
+        energy = 60;
+        //currentEnergy = energy;
         defaultEnergy = energy;
     }
 
     public override void Skill()
     {
-        //base.Skill();
+        if (!skillApplied) LevelManager.instance.gold += 30;
     }
+
     public override void RevertSkill()
     {
         energy = defaultEnergy;
-
-        //base.RevertSkill();
     }
 
     public override string PuzzleChooseDialogue()

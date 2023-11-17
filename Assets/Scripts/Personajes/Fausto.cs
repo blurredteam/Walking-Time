@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,34 +15,57 @@ public class Fausto : Character
         this.icon = icon;
         skillDesc = "[TRILERO]";
         energy = 0;                 //Para que no se muestre cuanta energia tiene, se aplica en skill
+        //currentEnergy = energy;
         defaultEnergy = energy;
     }
 
-    public override void Skill()
-    {
-        if (!skillApplied)
-        {
-            skillApplied = true;
-        }
-    }
+    private static int waterModi;
+
     public override void RevertSkill()
     {
-        skillApplied = false;
+        if (skillApplied)
+        {
+            skillApplied = false;
+            
+            if (waterModi < 0)
+            {
+                if (TeamComp.instance._teamMaxWater == TeamComp.instance._teamCurrentWater) TeamComp.instance._teamCurrentWater--;
+
+                TeamComp.instance._teamMaxWater--;
+            }
+            else TeamComp.instance._teamMaxWater++;
+        }
     }
 
     public override void SkillFinally()
     {
-        energy = Random.Range(30, 120);
-        float aux = energy;
+        if (!skillApplied)
+        {
+            skillApplied = true;
 
-        foreach (Character character in _team) 
-            if (character.name == "Dr. Japaro") aux *= 1.1f;
+            energy = Random.Range(30, 120);
+            float aux = energy;
 
-        energy = (int)aux;
-        
-        var randValue = Random.Range(-100, 100);
-        if(randValue < 0) TeamComp.instance._teamMaxWater++;
-        else TeamComp.instance._teamMaxWater--;
+            foreach (Character character in _team)
+                if (character.name == "Dr. Japaro") aux *= 1.1f;
+
+            energy = (int)aux;
+
+            float currentTeamEnergy = TeamComp.instance._teamCurrentEnergy;
+            float maxTeamEnergy = TeamComp.instance._teamMaxEnergy;
+
+            float currentEnergy = (currentTeamEnergy / maxTeamEnergy) * energy;
+            TeamComp.instance._teamCurrentEnergy += (int)currentEnergy;
+            TeamComp.instance._teamMaxEnergy += energy;
+
+            waterModi = Random.Range(-100, 100);
+            if (waterModi < 0) TeamComp.instance._teamMaxWater++;
+            else
+            {
+                if (TeamComp.instance._teamMaxWater == TeamComp.instance._teamCurrentWater) TeamComp.instance._teamCurrentWater--;
+                TeamComp.instance._teamMaxWater--;
+            }
+        }
     }
 
     public override string PuzzleChooseDialogue()

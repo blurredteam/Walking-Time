@@ -14,12 +14,13 @@ public class TutorialFunc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        saltarTuto.onClick.AddListener(delegate { SaltarTutorial(); });
+        saltarTuto.onClick.AddListener(delegate { AudioManager.instance.ButtonSound(); SaltarTutorial(); });
 
         for (int i = 0; i < 8; i++)
         {
             int currentIndex = i;
             _btnSiguiente[i].onClick.AddListener(delegate {
+                AudioManager.instance.ButtonSound();
                 _paneles[currentIndex].SetActive(false);
                 _paneles[currentIndex + 1].SetActive(true);
             });
@@ -41,6 +42,7 @@ public class TutorialFunc : MonoBehaviour
         {
             int currentIndex = i;
             _btnAnterior[i].onClick.AddListener(delegate {
+                AudioManager.instance.ButtonSound();
                 _paneles[currentIndex - 1].SetActive(true);
                 _paneles[currentIndex].SetActive(false);
             });

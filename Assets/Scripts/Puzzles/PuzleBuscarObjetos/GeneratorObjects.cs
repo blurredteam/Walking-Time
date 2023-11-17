@@ -28,6 +28,9 @@ public class GeneratorObjects : MonoBehaviour
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate
         {
+            AudioManager.instance.ButtonSound();
+            AudioManager.instance.LoseMusic();
+
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
             LevelManager.instance.ActivateScene();
         });
@@ -57,6 +60,7 @@ public class GeneratorObjects : MonoBehaviour
                 textoIntentos.text = "Intentos restantes: " + intentos;
                 if (intentos == 0)
                 {
+                    AudioManager.instance.LoseMusic();
                     textoVictoria.text = "Has Perdido";
                     StartCoroutine(EsperarYRecompensa(false));
                 }
@@ -92,11 +96,13 @@ public class GeneratorObjects : MonoBehaviour
         
         if (ganado)
         {
+            AudioManager.instance.WinMusic();
             Recompensas(10);
             
         }
         else
         {
+            //AudioManager.instance.LoseMusic();
             Recompensas(-10);
             
         }

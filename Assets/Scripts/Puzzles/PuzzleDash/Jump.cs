@@ -23,10 +23,16 @@ public class Jump : MonoBehaviour
     public TextMeshProUGUI textoFinal;
 
     [SerializeField] private AudioClip fondo;
+    [SerializeField] private AudioClip sonidoSaltar;
+
     private void Start()
     {
+        AudioManager.instance.ButtonSound();
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate {
+            AudioManager.instance.ButtonSound();
+            AudioManager.instance.LoseMusic();
+
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
@@ -73,6 +79,7 @@ public class Jump : MonoBehaviour
 
     void Salta()
     {
+        AudioManager.instance.PlaySfx(sonidoSaltar);
         // Calcula la velocidad en función del tiempo presionado.
         float fuerzaSalto = (tiempoSaltoPresionado / tiempoMaximoSalto) * velocidadMaxima;
 
@@ -109,11 +116,14 @@ public class Jump : MonoBehaviour
 
         if (ganaste)
         {
+            AudioManager.instance.WinMusic();
+
             textoTiempo.text = "¡Ganaste!";
             textoFinal.text = "Enhorabuena lo has conseguido!!";
         }
         else
         {
+            AudioManager.instance.LoseMusic();
             textoTiempo.text = "¡Perdiste!";
             textoFinal.text = "Una pena, a ver si la próxima te va mejor";
         }

@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         volverBtn.onClick.AddListener(delegate
         {
+            AudioManager.instance.ButtonSound();
+            AudioManager.instance.LoseMusic();
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();

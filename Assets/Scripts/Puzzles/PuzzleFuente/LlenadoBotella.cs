@@ -34,6 +34,7 @@ public class LlenadoBotella : MonoBehaviour
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         volverBtn.onClick.AddListener(delegate {
+            AudioManager.instance.ButtonSound();
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
@@ -41,7 +42,7 @@ public class LlenadoBotella : MonoBehaviour
         // ---------------------------------------------
         AudioManager.instance.PlayBackMusic(fondo); ;
         referencia = objetivo.transform.position.y;//Altura del triángulo rojo
-        Debug.Log(referencia);
+        //Debug.Log(referencia);
         rotacionInicial = transform.rotation;
         //Para q sea mas probable valores mas bajos si no suele ser demasiado rápido
         float probabilidad = Random.value; // Valor aleatorio entre 0 y 1
@@ -90,6 +91,7 @@ public class LlenadoBotella : MonoBehaviour
 
     public void ComenzarJuego()
     {
+        AudioManager.instance.ButtonSound();
         panelInicial.SetActive(false);
         botonLlenar.SetActive(true);
     }
@@ -102,25 +104,28 @@ public class LlenadoBotella : MonoBehaviour
     public void DetenerLlenado()
     {
         AudioManager.instance.StopSfx();
-       llenando = false;
+        llenando = false;
         finLlenado = true;
         chorroAgua.SetActive(false);
         panelFinal.SetActive(true);
         aguaTexto.text = aguaGanada.ToString();
-        Debug.Log(altura);
+        //Debug.Log(altura);
 
         if (altura >= referencia - 0.1f && altura <= referencia + 0.1f)
         {
             aguaTexto.text = "¡GUAU, EN EL BLANCO!\nHAS GANADO 2 USOS DE AGUA";
+            AudioManager.instance.WinMusic();
             Recompensas(2);
         }
         else if ((altura >= -2.0f && altura < referencia - 0.1f) || altura > referencia + 0.1f)
         {
+            AudioManager.instance.KindaLoseMusic();
             aguaTexto.text = "NO ESTÁ MAL, ALGO ES ALGO\nHAS GANADO 1 USO DE AGUA";
             Recompensas(1);
         }
         else
         {
+            AudioManager.instance.LoseMusic();
             aguaTexto.text = "VAYA... TE HAS QUEDADO CORTO\nESTA VEZ NO GANAS NADA :(";
         }
     }

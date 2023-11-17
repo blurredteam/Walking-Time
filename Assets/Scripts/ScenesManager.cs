@@ -78,6 +78,7 @@ public class ScenesManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
 

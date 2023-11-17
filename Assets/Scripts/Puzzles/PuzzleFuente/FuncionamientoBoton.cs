@@ -11,7 +11,7 @@ public class FuncionamientoBoton : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public void OnPointerDown(PointerEventData eventData)
     {
-       
+        AudioManager.instance.ButtonSound();
         agua.ComenzarLlenado();
         
     }

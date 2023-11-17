@@ -25,8 +25,12 @@ public class Puzzle : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.ButtonSound();
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         continueBtn.onClick.AddListener(delegate {
+            AudioManager.instance.ButtonSound();
+            AudioManager.instance.LoseMusic();
+
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
             LevelManager.instance.ActivateScene();
         });
@@ -152,6 +156,7 @@ public class Puzzle : MonoBehaviour
 
         if (ganaste)
         {
+            AudioManager.instance.WinMusic();
             print("Has ganado");
             ganaste = false;
             ultimaPieza.SetActive(true);
@@ -177,10 +182,13 @@ public class Puzzle : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         if (ganado)
         {
+            
             Recompensas(10);
         }
         else
         {
+            AudioManager.instance.LoseMusic();
+
             Recompensas(-10);
         }
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);

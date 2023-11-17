@@ -1976,6 +1976,7 @@ MonoBehaviour:
   panFinal: {fileID: 803592563}
   textoFinal: {fileID: 1083786265}
   fondo: {fileID: 8300000, guid: 9369ecf33f9236248bf5c476e9c4f8c5, type: 3}
+  sonidoSaltar: {fileID: 8300000, guid: 94d6f9458c7361142b9b6911a928a39c, type: 3}
 --- !u!1 &2005761441
 GameObject:
   m_ObjectHideFlags: 0

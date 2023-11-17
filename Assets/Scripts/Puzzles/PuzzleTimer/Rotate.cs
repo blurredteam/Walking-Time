@@ -23,6 +23,7 @@ public class Rotate : MonoBehaviour
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         _continueBtn.onClick.AddListener(delegate {
+            AudioManager.instance.ButtonSound();
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
             LevelManager.instance.ActivateScene();
         });

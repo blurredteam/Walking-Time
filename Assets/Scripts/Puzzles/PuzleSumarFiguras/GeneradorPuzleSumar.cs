@@ -27,6 +27,9 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         volverBtn.onClick.AddListener(delegate
         {
+            AudioManager.instance.ButtonSound();
+            AudioManager.instance.LoseMusic();
+
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
             LevelManager.instance.ActivateScene();
         });
@@ -117,11 +120,13 @@ public class GeneradorPuzleSumar : MonoBehaviour
         
         if (ganado)
         {
+            AudioManager.instance.WinMusic();
             Recompensas(10);
             
         }
         else
         {
+            AudioManager.instance.LoseMusic();
             Recompensas(-10);
             
         }

@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,10 @@ using UnityEngine.UI;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager instance;
+
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     // Lista con todos los puzzles
     public List<string> escenasPuzle = new List<string>() {
@@ -45,7 +50,6 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene.ToString());
     }
-
     public void LoadTileScene(int type, int index)
     {
         //SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
@@ -78,10 +82,21 @@ public class ScenesManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        StartCoroutine(StartNewGameTransition());
+        
+        // SceneManager.LoadScene(Scene.Level1.ToString());
+        // SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+
+    }
+    
+    IEnumerator StartNewGameTransition()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
         
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
-
     }
 
     private void LoadPuzzle(int index)
@@ -100,5 +115,7 @@ public class ScenesManager : MonoBehaviour
 
         Debug.Log("Casilla hoguera");
     }
+    
+    
 
 }

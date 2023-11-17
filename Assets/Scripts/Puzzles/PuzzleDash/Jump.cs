@@ -24,7 +24,10 @@ public class Jump : MonoBehaviour
 
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
+    
+    public Animator transition;
 
+    public float transitionTime = 1f;
     private void Start()
     {
         AudioManager.instance.ButtonSound();
@@ -33,6 +36,7 @@ public class Jump : MonoBehaviour
             AudioManager.instance.ButtonSound();
             AudioManager.instance.LoseMusic();
 
+            LevelManager.instance.teamEnergy -= 10;
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
@@ -158,6 +162,9 @@ public class Jump : MonoBehaviour
             Recompensas(-10);
             
         }
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();

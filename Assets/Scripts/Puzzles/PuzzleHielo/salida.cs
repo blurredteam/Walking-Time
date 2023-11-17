@@ -5,6 +5,10 @@ using UnityEngine;
 public class salida : MonoBehaviour
 {
     public GameObject panel;
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     void Start()
     {
@@ -34,8 +38,12 @@ public class salida : MonoBehaviour
     
     private void Recompensas(int recompensa)
     {
-        if (recompensa > 0)
-        {
+        StartCoroutine(EsperarYRecompensa(recompensa));
+    }
+    
+    IEnumerator EsperarYRecompensa(int recompensa)
+    {
+        if(recompensa>0){
             AudioManager.instance.WinMusic();
             LevelManager.instance.gold += recompensa;
         }
@@ -44,6 +52,9 @@ public class salida : MonoBehaviour
             AudioManager.instance.LoseMusic();
             LevelManager.instance.teamEnergy -= recompensa;
         }
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();

@@ -21,7 +21,7 @@ public class LlenadoBotella : MonoBehaviour
     public GameObject panelInicial;
     public GameObject panelFinal;
     public GameObject botonLlenar;
-    private float referencia;//El limite donde se ganará el máximo de agua
+    private float referencia;//El limite donde se ganarï¿½ el mï¿½ximo de agua
     public TextMeshProUGUI aguaTexto;
     private int aguaGanada = 0;
 
@@ -30,21 +30,24 @@ public class LlenadoBotella : MonoBehaviour
 
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoAgua;
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        volverBtn.onClick.AddListener(delegate {
-            AudioManager.instance.ButtonSound();
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
-            LevelManager.instance.ActivateScene();
-            AudioManager.instance.PlayAmbient();
+
+        volverBtn.onClick.AddListener(delegate
+        {
+            StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
         AudioManager.instance.PlayBackMusic(fondo); ;
-        referencia = objetivo.transform.position.y;//Altura del triángulo rojo
-        //Debug.Log(referencia);
+        referencia = objetivo.transform.position.y;//Altura del triï¿½ngulo rojo
+        Debug.Log(referencia);
         rotacionInicial = transform.rotation;
-        //Para q sea mas probable valores mas bajos si no suele ser demasiado rápido
+        //Para q sea mas probable valores mas bajos si no suele ser demasiado rï¿½pido
         float probabilidad = Random.value; // Valor aleatorio entre 0 y 1
 
         if (probabilidad < 0.5f)
@@ -68,23 +71,34 @@ public class LlenadoBotella : MonoBehaviour
 
         velocidadLlenado = Random.Range(valorMinimo, valorMaximo);
     }
+    
+    IEnumerator EsperarYSalir()
+    {
+        AudioManager.instance.ButtonSound();
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
+        LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
+    }
 
     void Update()
     {
-        if (llenando && !finLlenado)//Con límite de altura
+        if (llenando && !finLlenado)//Con lï¿½mite de altura
         {
             chorroAgua.SetActive(true);
-            // Incrementar la posición en el eje Y para elevar el Sprite
+            // Incrementar la posiciï¿½n en el eje Y para elevar el Sprite
             transform.position += Vector3.up * velocidadLlenado * Time.deltaTime;
-            altura = transform.position.y+3.6683866f;//Añadimos lo ultimo para añadir la diferencia de tamaño
-            // Agitar lateralmente con rotación
+            altura = transform.position.y+3.6683866f;//Aï¿½adimos lo ultimo para aï¿½adir la diferencia de tamaï¿½o
+            // Agitar lateralmente con rotaciï¿½n
             tiempo += Time.deltaTime;
             float angulo = amplitudAgitacion * Mathf.Sin(frecuenciaAgitacion * tiempo);
             transform.rotation = Quaternion.Euler(0, 0, angulo);
         }
         else
         {
-            // Cuando no se está elevando, restablecer la rotación
+            // Cuando no se estï¿½ elevando, restablecer la rotaciï¿½n
             transform.rotation = rotacionInicial;
         }
     }
@@ -113,14 +127,14 @@ public class LlenadoBotella : MonoBehaviour
 
         if (altura >= referencia - 0.1f && altura <= referencia + 0.1f)
         {
-            aguaTexto.text = "¡GUAU, EN EL BLANCO!\nHAS GANADO 2 USOS DE AGUA";
+            aguaTexto.text = "ï¿½GUAU, EN EL BLANCO!\nHAS GANADO 2 USOS DE AGUA";
             AudioManager.instance.WinMusic();
             Recompensas(2);
         }
         else if ((altura >= -2.0f && altura < referencia - 0.1f) || altura > referencia + 0.1f)
         {
             AudioManager.instance.KindaLoseMusic();
-            aguaTexto.text = "NO ESTÁ MAL, ALGO ES ALGO\nHAS GANADO 1 USO DE AGUA";
+            aguaTexto.text = "NO ESTï¿½ MAL, ALGO ES ALGO\nHAS GANADO 1 USO DE AGUA";
             Recompensas(1);
         }
         else
@@ -144,4 +158,6 @@ public class LlenadoBotella : MonoBehaviour
             LevelManager.instance.teamWater += cantAguaGanada;
         }
     }
+    
+    
 }

@@ -18,18 +18,30 @@ public class Rotate : MonoBehaviour
     private bool pulsado;
 
     private int energiaPerdida = 0;//Si hace mal el puzzle perderá
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         _continueBtn.onClick.AddListener(delegate {
-            AudioManager.instance.ButtonSound();
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
-            LevelManager.instance.ActivateScene();
+            StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
 
         pulsado = false;
+    }
+    
+    IEnumerator EsperarYSalir()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        AudioManager.instance.ButtonSound();
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
+        LevelManager.instance.ActivateScene();
     }
 
     void Update()

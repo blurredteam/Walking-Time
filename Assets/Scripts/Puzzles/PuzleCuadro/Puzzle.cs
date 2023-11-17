@@ -22,17 +22,17 @@ public class Puzzle : MonoBehaviour
     Vector3 offset;
 
     public GameObject panFinal;
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     private void Start()
     {
         AudioManager.instance.ButtonSound();
-        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        continueBtn.onClick.AddListener(delegate {
-            AudioManager.instance.ButtonSound();
-            AudioManager.instance.LoseMusic();
-
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
-            LevelManager.instance.ActivateScene();
+        continueBtn.onClick.AddListener(delegate
+        {
+            StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
 
@@ -78,6 +78,19 @@ public class Puzzle : MonoBehaviour
                 col.enabled = true;
             }
         }
+    }
+    
+    IEnumerator EsperarYSalir()
+    {
+        AudioManager.instance.ButtonSound();
+        AudioManager.instance.LoseMusic();
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        
+        LevelManager.instance.teamEnergy -= 10;
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
+        LevelManager.instance.ActivateScene();
     }
     
     private bool ListasOrdenadasIgualmente<T>(List<T> lista1, List<T> lista2)
@@ -191,6 +204,10 @@ public class Puzzle : MonoBehaviour
 
             Recompensas(-10);
         }
+        
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }

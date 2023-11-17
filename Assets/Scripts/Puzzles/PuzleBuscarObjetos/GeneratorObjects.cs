@@ -22,22 +22,34 @@ public class GeneratorObjects : MonoBehaviour
     public GameObject panelFinal;
 
     public int intentos = 3;
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate
         {
-            AudioManager.instance.ButtonSound();
-            AudioManager.instance.LoseMusic();
-
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
-            LevelManager.instance.ActivateScene();
+            StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
         textoIntentos.text = "Intentos restantes: " + intentos;
         textoVictoria.text = "";
         objetoAEncontrar.transform.position = arrayPos[Random.Range(0, arrayPos.Count)];
+    }
+    IEnumerator EsperarYSalir()
+    {
+        AudioManager.instance.ButtonSound();
+        AudioManager.instance.LoseMusic();
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        
+        LevelManager.instance.teamEnergy -= 10;
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
+        LevelManager.instance.ActivateScene();
     }
 
     // Update is called once per frame
@@ -106,6 +118,10 @@ public class GeneratorObjects : MonoBehaviour
             Recompensas(-10);
             
         }
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
     }

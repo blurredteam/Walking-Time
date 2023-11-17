@@ -17,6 +17,10 @@ public class GeneradorPuzleSumar : MonoBehaviour
     Vector3 offset;
 
     public GameObject panFinal;
+    
+    public Animator transition;
+
+    public float transitionTime = 1f;
 
     void Start()
     {
@@ -27,12 +31,21 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         volverBtn.onClick.AddListener(delegate
         {
-            AudioManager.instance.ButtonSound();
-            AudioManager.instance.LoseMusic();
-
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
-            LevelManager.instance.ActivateScene();
+            StartCoroutine(EsperarYSalir());
         });
+    }
+    
+    IEnumerator EsperarYSalir()
+    {
+        AudioManager.instance.ButtonSound();
+        AudioManager.instance.LoseMusic();
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        
+        LevelManager.instance.teamEnergy -= 10;
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
+        LevelManager.instance.ActivateScene();
     }
 
     private void Update()
@@ -130,6 +143,9 @@ public class GeneradorPuzleSumar : MonoBehaviour
             Recompensas(-10);
             
         }
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
     }

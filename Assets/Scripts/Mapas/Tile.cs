@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEditor.Animations;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
@@ -23,7 +23,8 @@ public class Tile : MonoBehaviour
 
     //Para animacion de casillas
     [SerializeField] public Animator animatorTile;
-    [SerializeField] private AnimatorController animationPuzzleImage;
+    [SerializeField] private RuntimeAnimatorController animationPuzzleImage;
+    
 
     private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...

@@ -11,10 +11,16 @@ public class TutorialFunc : MonoBehaviour
     [SerializeField] private List<Button> _btnSiguiente;
     [SerializeField] private List<Button> _btnAnterior;
     [SerializeField] private Button saltarTuto;
+    public Transitioner transition;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        saltarTuto.onClick.AddListener(delegate { AudioManager.instance.ButtonSound(); SaltarTutorial(); });
+        saltarTuto.onClick.AddListener(delegate { AudioManager.instance.ButtonSound(); DoFadeTransition();});
 
         for (int i = 0; i < 8; i++)
         {
@@ -54,6 +60,19 @@ public class TutorialFunc : MonoBehaviour
     private void SaltarTutorial()
     {
         panelTuto.SetActive(false);
+    }
+    
+    public void DoFadeTransition()
+    {
+        StartCoroutine(DoFadeTransitionCo());
+    }
+    
+    IEnumerator DoFadeTransitionCo()
+    {
+        transition.DoTransitionOnce();
+        yield return new WaitForSeconds(1f);
+        SaltarTutorial();
+        transition.DoTransitionOnce();
     }
 
 }

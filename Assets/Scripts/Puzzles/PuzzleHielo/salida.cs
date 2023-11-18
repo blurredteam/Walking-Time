@@ -6,9 +6,13 @@ public class salida : MonoBehaviour
 {
     public GameObject panel;
     
-    public Animator transition;
-
+    public Transitioner transition;
     public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     void Start()
     {
@@ -52,9 +56,10 @@ public class salida : MonoBehaviour
             AudioManager.instance.LoseMusic();
             LevelManager.instance.teamEnergy -= recompensa;
         }
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();

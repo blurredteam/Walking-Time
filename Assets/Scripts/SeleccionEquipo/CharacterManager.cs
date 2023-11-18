@@ -41,9 +41,13 @@ public class CharacterManager : MonoBehaviour
     --ID 4 -> fauno
     --ID 5 -> chispa
     */
+    
+    public Transitioner transition;
 
     private void Awake()
     {
+        transition = ScenesManager.instance.transitioner;
+    
         instance = this;
 
         _berenjeno = new Berenjeno(_spriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
@@ -79,6 +83,18 @@ public class CharacterManager : MonoBehaviour
         }
 
 
+    }
+
+    public void DoFadeTransition()
+    {
+        StartCoroutine(DoFadeTransitionCo());
+    }
+
+    IEnumerator DoFadeTransitionCo()
+    {
+        transition.DoTransitionOnce();
+        yield return new WaitForSeconds(2f);
+        transition.DoTransitionOnce();
     }
 
     private void BtnHandler(Character character)

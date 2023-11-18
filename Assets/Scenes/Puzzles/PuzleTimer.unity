@@ -174,7 +174,7 @@ MonoBehaviour:
   velocidadRotacion: 80
   velocidadRotacionPropia: 80
   puntoObjetivo: {fileID: 1318984888}
-  transition: {fileID: 819430529}
+  transition: {fileID: 0}
   transitionTime: 1
 --- !u!212 &491403274
 SpriteRenderer:
@@ -415,7 +415,7 @@ MonoBehaviour:
   velocidadRotacion: 30
   velocidadRotacionPropia: 30
   puntoObjetivo: {fileID: 1820531859}
-  transition: {fileID: 819430529}
+  transition: {fileID: 0}
   transitionTime: 1
 --- !u!212 &541426336
 SpriteRenderer:
@@ -999,108 +999,6 @@ RectTransform:
   m_AnchoredPosition: {x: -6.563965, y: -2.8709717}
   m_SizeDelta: {x: 0.54797363, y: 14.127991}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &819430528
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 108915919061273162, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_Name
-      value: Crossfade
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282710981591194711, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
---- !u!95 &819430529 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6382704578343926754, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
-  m_PrefabInstance: {fileID: 819430528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &848214768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2343,7 @@ MonoBehaviour:
   velocidadRotacion: 60
   velocidadRotacionPropia: 60
   puntoObjetivo: {fileID: 587780977}
-  transition: {fileID: 819430529}
+  transition: {fileID: 0}
   transitionTime: 1
 --- !u!212 &1882445175
 SpriteRenderer:
@@ -2777,4 +2675,3 @@ SceneRoots:
   - {fileID: 921711373}
   - {fileID: 1003079290}
   - {fileID: 1659484095}
-  - {fileID: 819430528}

@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 2013386904}
   transitionTime: 1
+  transitioner: {fileID: 1522122251}
   escenasPuzle:
   - PuzzleFinder
   - PuzleSumarFiguras
@@ -1288,6 +1289,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437361578}
   m_CullTransparentMesh: 1
+--- !u!1 &1522122246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 108915919061273162, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
+  m_PrefabInstance: {fileID: 8234941638971147372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1522122251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522122246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809e6fa76f16b54799ba2cbacaea03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 2013386904}
 --- !u!95 &2013386904 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6382704578343926754, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
@@ -1532,7 +1551,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 108915919061273162, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1522122251}
   m_SourcePrefab: {fileID: 100100000, guid: 31520f0ab1e1ded478b454e31a213d27, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -31,9 +31,13 @@ public class LlenadoBotella : MonoBehaviour
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoAgua;
     
-    public Animator transition;
-
+    public Transitioner transition;
     public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
@@ -75,9 +79,10 @@ public class LlenadoBotella : MonoBehaviour
     IEnumerator EsperarYSalir()
     {
         AudioManager.instance.ButtonSound();
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFuente);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();

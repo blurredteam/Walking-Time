@@ -19,9 +19,13 @@ public class Rotate : MonoBehaviour
 
     private int energiaPerdida = 0;//Si hace mal el puzzle perderá
     
-    public Animator transition;
-
+    public Transitioner transition;
     public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     private void Start()
     {
@@ -36,9 +40,10 @@ public class Rotate : MonoBehaviour
     
     IEnumerator EsperarYSalir()
     {
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         AudioManager.instance.ButtonSound();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
         LevelManager.instance.ActivateScene();

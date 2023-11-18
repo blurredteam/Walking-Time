@@ -18,9 +18,13 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
     public GameObject panFinal;
     
-    public Animator transition;
-
+    public Transitioner transition;
     public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     void Start()
     {
@@ -39,10 +43,11 @@ public class GeneradorPuzleSumar : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         
+        transition.DoTransitionOnce();
         LevelManager.instance.teamEnergy -= 10;
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
@@ -143,9 +148,10 @@ public class GeneradorPuzleSumar : MonoBehaviour
             Recompensas(-10);
             
         }
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
     }

@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioManager.instance.ButtonSound();
             AudioManager.instance.LoseMusic();
+            LevelManager.instance.teamEnergy -= 10;
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();

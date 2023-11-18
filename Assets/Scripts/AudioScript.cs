@@ -17,5 +17,7 @@ public class AudioScript : MonoBehaviour
     {
         src.clip = sfxContinue;
         src.Play();   
+        
+        
     }
 }

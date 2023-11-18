@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +12,8 @@ public class ScenesManager : MonoBehaviour
 
     public float transitionTime = 1f;
 
+    public Transitioner transitioner;
+
     // Lista con todos los puzzles
     public List<string> puzzleScenes = new List<string>()
     {
@@ -24,7 +25,10 @@ public class ScenesManager : MonoBehaviour
         instance = this;
     }
 
-    // Enum de todas las escenas del juego 
+    /*
+    -- Enum de todas las escenas del juego
+    -- Diferenciar entre escenas y pantallas (p.e settings no es una escena, sino una interfaz de la escena Mainmenu)
+    */
     public enum Scene
     {
         EscenaMenu,
@@ -46,6 +50,7 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene.ToString());
     }
+
     public void LoadTileScene(int type, int index)
     {
         //SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
@@ -55,7 +60,6 @@ public class ScenesManager : MonoBehaviour
         else if (type == 1) LoadObstacle(index);
         else if(type == 2) LoadBonfire();
         else if(type == 3) LoadWater();
-
     }
 
     public void UnloadTile(Scene scene)
@@ -72,25 +76,28 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(StartNewGameTransition());
     }
-    
+
     IEnumerator StartNewGameTransition()
     {
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-        
+
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+        transitioner.DoTransitionOnce();
     }
 
     private void LoadPuzzle(int index)
     {
         SceneManager.LoadScene(puzzleScenes[index], LoadSceneMode.Additive);
     }
+
     private void LoadObstacle(int index)
     {
         SceneManager.LoadScene(Scene.EventScene.ToString(), LoadSceneMode.Additive);
     }
+
     private void LoadBonfire()
     {
         SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);

@@ -35,6 +35,8 @@ public class TeamComp : MonoBehaviour
     //Variables para hoguera
     private bool bonfireTile = false;
     private float energyPercent;     //indica el porcentaje de energia con relacion a la enegia maxima del equipo
+    
+    
 
     private void Start()
     {
@@ -171,6 +173,7 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.StartGame();
         ScenesManager.instance.UnloadTeamSelect();
+        
     }
 
     public void BonfireTile(List<Character> team)

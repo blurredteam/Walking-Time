@@ -48,6 +48,13 @@ public class LevelManager : MonoBehaviour
     public Tile[,] _map { get; set; }
     public int _mapWidth { get; set; }
     public int _mapHeight { get; set; }
+    
+    public Transitioner transition;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     //Sound
     [SerializeField] private AudioClip losingEnergy;
@@ -100,6 +107,19 @@ public class LevelManager : MonoBehaviour
         CheckResources();
     }
 
+    public void DoFadeTransition(int tileType, int index)
+    {
+        StartCoroutine(DoFadeTransitionCo(tileType, index));
+    }
+    
+    IEnumerator DoFadeTransitionCo(int tileType, int index)
+    {
+        transition.DoTransitionOnce();
+        yield return new WaitForSeconds(1f);
+        ScenesManager.instance.LoadTileScene(tileType, index);
+        transition.DoTransitionOnce();
+    }
+
     private void CheckResources()
     {
         if (teamWater > maxWater) teamWater = maxWater;
@@ -119,8 +139,13 @@ public class LevelManager : MonoBehaviour
     {
         _gridRef.gameObject.SetActive(false); 
         _cameraMovementScript.enabled =false;
-
-        ScenesManager.instance.LoadTileScene(tileType, index);
+        if (tileType != 1)
+        {
+            DoFadeTransition(tileType,index);
+        }else
+        {
+            ScenesManager.instance.LoadTileScene(tileType, index);
+        }
 
         teamEnergy -= (energyCost + travelCostModifier);
 

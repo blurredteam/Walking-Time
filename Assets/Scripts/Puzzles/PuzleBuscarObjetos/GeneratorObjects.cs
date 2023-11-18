@@ -23,9 +23,13 @@ public class GeneratorObjects : MonoBehaviour
 
     public int intentos = 3;
     
-    public Animator transition;
-
+    public Transitioner transition;
     public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     void Start()
     {
@@ -43,11 +47,12 @@ public class GeneratorObjects : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         
         LevelManager.instance.teamEnergy -= 10;
+        transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
     }
@@ -118,9 +123,10 @@ public class GeneratorObjects : MonoBehaviour
             Recompensas(-10);
             
         }
-        transition.SetTrigger("Start");
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();

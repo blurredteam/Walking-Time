@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -9,6 +10,8 @@ public class Puzzle : MonoBehaviour
 {
     [SerializeField] private Button continueBtn;
     [SerializeField] private Camera _puzzleCamera;
+
+    [SerializeField] private AudioClip fondo;
 
     public List<GameObject> listaPiezas;
     public List<GameObject> listaAux;
@@ -34,6 +37,7 @@ public class Puzzle : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.ButtonSound();
+        AudioManager.instance.PlayBackMusic(fondo);
         continueBtn.onClick.AddListener(delegate
         {
             StartCoroutine(EsperarYSalir());
@@ -88,6 +92,7 @@ public class Puzzle : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
+        AudioManager.instance.PlayAmbient();
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
@@ -214,6 +219,7 @@ public class Puzzle : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
         transition.DoTransitionOnce();
+        AudioManager.instance.PlayAmbient();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }

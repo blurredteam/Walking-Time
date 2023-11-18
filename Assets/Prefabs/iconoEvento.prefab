@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4184550209165623656}
   - component: {fileID: 5028095612828987990}
   m_Layer: 5
-  m_Name: iconoObstaculo
+  m_Name: iconoEvento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300052, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35531594664ecd14ebab2200b875bb17, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -38,7 +38,7 @@ public class Jump : MonoBehaviour
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate {
             AudioManager.instance.ButtonSound();
-            AudioManager.instance.LoseMusic();
+            //AudioManager.instance.LoseMusic();
 
             LevelManager.instance.teamEnergy -= 10;
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);

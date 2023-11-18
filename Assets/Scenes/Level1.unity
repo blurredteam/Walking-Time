@@ -1305,7 +1305,7 @@ GameObject:
   - component: {fileID: 244463240}
   - component: {fileID: 244463241}
   m_Layer: 0
-  m_Name: Casilla_Drag&Drop_F1
+  m_Name: CasillaEvento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,7 +1367,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7c21ebc4cbbef614a82a957ab9f746ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35531594664ecd14ebab2200b875bb17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1388,7 +1388,7 @@ Animator:
   m_GameObject: {fileID: 244463238}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36c9e16dbb53e9b4ca20bcc95d76663b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2790,7 +2790,7 @@ GameObject:
   - component: {fileID: 408157533}
   - component: {fileID: 408157534}
   m_Layer: 0
-  m_Name: Casilla_Drag&Drop_F1
+  m_Name: CasillaHoguera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2873,7 +2873,7 @@ Animator:
   m_GameObject: {fileID: 408157531}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4c4691407bb251649b59505411966975, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4193,7 +4193,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7c21ebc4cbbef614a82a957ab9f746ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb8212fe06d797b48a105105bb5a5532, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4214,7 +4214,7 @@ Animator:
   m_GameObject: {fileID: 700274315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: a2bf772551732904ba5569ac7387fde2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5362,6 +5362,7 @@ MonoBehaviour:
   - {fileID: 822900369}
   - {fileID: 243270836}
   saltarTuto: {fileID: 358234850}
+  transition: {fileID: 0}
 --- !u!1 &1165366765
 GameObject:
   m_ObjectHideFlags: 0
@@ -6957,7 +6958,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58.3
+  m_fontSize: 55.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7589,7 +7590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1711633766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8557,7 +8558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1930244632
 RectTransform:
   m_ObjectHideFlags: 0

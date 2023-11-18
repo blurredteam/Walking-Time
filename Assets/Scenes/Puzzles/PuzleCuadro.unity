@@ -2657,6 +2657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continueBtn: {fileID: 2041481559}
   _puzzleCamera: {fileID: 519420031}
+  fondo: {fileID: 8300000, guid: e02e374ae461ce44fa8aecd4c6a85f27, type: 3}
   listaPiezas:
   - {fileID: 493801118}
   - {fileID: 238634302}

@@ -21,7 +21,9 @@ public class Tile : MonoBehaviour
 
     //Para animacion de casillas
     [SerializeField] public Animator animatorTile;
-    [SerializeField] private RuntimeAnimatorController animationPuzzleImage;
+    [SerializeField] private RuntimeAnimatorController animationEvent;
+    [SerializeField] private RuntimeAnimatorController animationFire;
+    [SerializeField] private List<RuntimeAnimatorController> _animationPuzzle;
 
     public int type;        // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
@@ -36,6 +38,10 @@ public class Tile : MonoBehaviour
     public TextMeshProUGUI textoInfo;
     public MovimientoJugador spritesJugador;
 
+    private void Start()
+    {
+        animatorTile = GetComponent<Animator>();
+    }
     public void ColorTile(Color color)
     {
         _spriteRenderer.color = color;
@@ -80,7 +86,9 @@ public class Tile : MonoBehaviour
             AdyacentList[i]._clickEvent.enabled = true;
 
             //Animacion de las siguientes casillas
-            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationPuzzleImage; }
+            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[index]; }
+            else if (AdyacentList[i].type == 2) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationFire; }
+            else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent; }
             else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
 
         }
@@ -93,7 +101,7 @@ public class Tile : MonoBehaviour
         var puzzleList = ScenesManager.instance.puzzleScenes;
         index = Random.Range(0, puzzleList.Count);
 
-        animatorTile = GetComponent<Animator>();
+        
         _spriteRenderer.sprite = _puzzleImage.sprite;
     }
 

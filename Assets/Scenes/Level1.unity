@@ -4193,7 +4193,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: eb8212fe06d797b48a105105bb5a5532, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f19955d86a5b32744be3663e83b64db0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4214,7 +4214,7 @@ Animator:
   m_GameObject: {fileID: 700274315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a2bf772551732904ba5569ac7387fde2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3250adadba4557e4fa2abf226609e8b1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5380,7 +5380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1165366766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6181,7 +6181,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.9
+  m_fontSize: 49.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7066,7 +7066,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e0d43b7c4668c8843a3c11c4f83f244c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cd0df423b8477f49ab4650fd231274c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7796,7 +7796,7 @@ GameObject:
   - component: {fileID: 1787245925}
   - component: {fileID: 1787245926}
   m_Layer: 0
-  m_Name: Casilla_Drag&Drop_F1
+  m_Name: CasillaFuente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7858,7 +7858,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7c21ebc4cbbef614a82a957ab9f746ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba41e373f6ab5664589984db0981c890, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7879,7 +7879,7 @@ Animator:
   m_GameObject: {fileID: 1787245923}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d984aa54375d224d96d224fe91bacd0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8558,7 +8558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1930244632
 RectTransform:
   m_ObjectHideFlags: 0

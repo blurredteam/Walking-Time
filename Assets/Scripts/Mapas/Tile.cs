@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     [SerializeField] public Animator animatorTile;
     [SerializeField] private RuntimeAnimatorController animationEvent;
     [SerializeField] private RuntimeAnimatorController animationFire;
+    [SerializeField] private RuntimeAnimatorController animationWater;
     [SerializeField] private List<RuntimeAnimatorController> _animationPuzzle;
 
     public int type;        // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
@@ -88,7 +89,8 @@ public class Tile : MonoBehaviour
             //Animacion de las siguientes casillas
             if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[index]; }
             else if (AdyacentList[i].type == 2) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationFire; }
-            else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent; }
+            else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent ; }
+            else if (AdyacentList[i].type == 3) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent; }
             else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
 
         }

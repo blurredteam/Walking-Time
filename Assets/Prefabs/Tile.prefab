@@ -70,12 +70,13 @@ MonoBehaviour:
   animatorTile: {fileID: 8851896025456918137}
   animationEvent: {fileID: 9100000, guid: 36c9e16dbb53e9b4ca20bcc95d76663b, type: 2}
   animationFire: {fileID: 9100000, guid: 4c4691407bb251649b59505411966975, type: 2}
+  animationWater: {fileID: 9100000, guid: 7d984aa54375d224d96d224fe91bacd0, type: 2}
   _animationPuzzle:
   - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
   - {fileID: 9100000, guid: a2bf772551732904ba5569ac7387fde2, type: 2}
   - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
   - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
-  - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  - {fileID: 9100000, guid: 3250adadba4557e4fa2abf226609e8b1, type: 2}
   - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
   type: 0
   selected: 0

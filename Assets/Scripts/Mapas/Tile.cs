@@ -6,13 +6,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
 
-    
+
     [SerializeField] public EventTrigger _clickEvent;
     [SerializeField] public SpriteRenderer _spriteRenderer;
 
@@ -24,7 +23,7 @@ public class Tile : MonoBehaviour
     //Para animacion de casillas
     [SerializeField] public Animator animatorTile;
     [SerializeField] private RuntimeAnimatorController animationPuzzleImage;
-    
+
 
     private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
@@ -37,6 +36,7 @@ public class Tile : MonoBehaviour
 
     public GameObject casillaInfo;
     public TextMeshProUGUI textoInfo;
+    public MovimientoJugador spritesJugador;
 
 
     public void ColorTile(Color color)
@@ -53,6 +53,7 @@ public class Tile : MonoBehaviour
 
         casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
         textoInfo = casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
+        spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>();  // Asegurar que coincide con el nombre en el editor
 
         this.position = position;
 
@@ -61,6 +62,11 @@ public class Tile : MonoBehaviour
         else ObstacleTile();
     }
 
+    public void MovimientoPreCarga()
+    {
+        spritesJugador.MoverJugador(transform.position, this);  //para el movimiento de los sprites de una casilla a otra
+        //spritesJugador.movimientoCompleto += () => LoadTile(); //solo se llama cuando el movimiento se haya completado
+    }
     public void LoadTile()
     {
         _clickEvent.enabled = false;
@@ -122,7 +128,7 @@ public class Tile : MonoBehaviour
 
     public void ShowInfo()
     {
-        
+
         casillaInfo.SetActive(true);
         casillaInfo.transform.position = gameObject.transform.position + new Vector3(1.2f, 0.70f, 0f);
 

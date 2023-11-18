@@ -72,6 +72,7 @@ MonoBehaviour:
   AdyacentList: []
   casillaInfo: {fileID: 0}
   textoInfo: {fileID: 0}
+  spritesJugador: {fileID: 0}
 --- !u!61 &-5686229670561354823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -6688048962984194142}
           m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-          m_MethodName: LoadTile
+          m_MethodName: MovimientoPreCarga
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

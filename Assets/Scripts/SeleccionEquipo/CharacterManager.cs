@@ -10,7 +10,7 @@ using TMPro;
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
-    
+
     [SerializeField] private GameObject characterCard;
 
     [SerializeField] private Button showInfo;   //Boton para darle la vuelta a la carta
@@ -45,7 +45,7 @@ public class CharacterManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+
         _berenjeno = new Berenjeno(_spriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
         _japaro = new Japaro(_spriteList[1], _frontCardsList[1], _backCardsList[1], _iconList[1]);
         _mirabel = new Mirabel(_spriteList[2], _frontCardsList[2], _backCardsList[2], _iconList[2]);
@@ -69,13 +69,21 @@ public class CharacterManager : MonoBehaviour
         _btnList[3].onClick.AddListener(delegate { BtnHandler(_seta); });
         _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
         _btnList[5].onClick.AddListener(delegate { BtnHandler(_chispa); });
-        
+
+        for (int i = 0; i < _btnList.Count; i++)
+        {
+            if (characterList[i].unlocked == false)
+            {
+                _btnList[i].GetComponent<Image>().color = new Color32(126, 126, 126, 255);
+            }
+        }
+
 
     }
 
     private void BtnHandler(Character character)
     {
-        ShowCharacter(character._id);
+        if (character.unlocked) ShowCharacter(character._id);
 
         if (character.unlocked && !character.selected) TeamComp.instance.SelectCharacter(character._id);
     }

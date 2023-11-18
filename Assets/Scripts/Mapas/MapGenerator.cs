@@ -92,8 +92,10 @@ public class MapGenerator : MonoBehaviour
         var lastTile = Instantiate(_tilePrefab, new Vector3(_width * (_X_spacing) - 7, 0), Quaternion.identity, this.transform);
         lastTile.name = $"TileFinal";
         lastTile._clickEvent.enabled = false;
+
         lastTile.casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
         lastTile.textoInfo = lastTile.casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
+        lastTile.spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>();  // Asegurar que coincide con el nombre en el editor
 
         for (int y = 0; y < _map.Length / _width; y++)
         {

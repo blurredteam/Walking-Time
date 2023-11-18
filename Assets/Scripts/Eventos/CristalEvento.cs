@@ -9,15 +9,26 @@ public class CristalEvento : Evento
     {
         _nombre = "Cristales del futuro";
         _eventImage = imagenEvento;
-        _eventoTxt = "En la cueva aparecen unos extraños brillos de colores\r\nreflejados en la pared. Al acercaros veis que son cristales\r\nde vivos colores, azul, rojo, amarillo… y que parpadean,\r\ncomo instando a que los toques. Decides tocar los cristales\r\npero… ¿En qué orden?\r\n";
+        _eventoTxt = "En la cueva aparecen unos extraños brillos de colores reflejados en la pared." +
+            " Al acercaros veis que son cristales de vivos colores, azul, rojo, amarillo… y que parpadean," +
+            "como instando a que los toques. Decides tocar los cristales pero… ¿En qué orden?";
 
         _opcionesList.Add("1. Amarillo primero. [+30 de oro, -15 de energía]");
         _opcionesList.Add("2.Azul primero. [+1 de agua, -40 energía]");
         _opcionesList.Add("3. Rojo primero. [+15 de energía, -30 de oro]");
 
-        _resultadosList.Add("1. Al tocar el cristal amarillo, sientes cómo algo fluye dentro\r\nde tí, concretamente de tu bolsa de monedas. De repente te\r\nmareas y caes al suelo inconsciente. Cuando el equipo te\r\nreanima miras tu bolsa y ¡hay más monedas que antes! Por\r\nlo menos el mal trago ha merecido la pena.\r\n");
-        _resultadosList.Add("2. Cuando tocas el cristal azul un cansancio enorme se\r\napodera de ti, mientras observas cómo tu cantimplora\r\ncomienza a rellenarse sola. Cuando se rellena, sientes que\r\nel malestar acaba y valoras cómo la cantimplora está más\r\nllena que antes, quizá la necesites en un futuro.");
-        _resultadosList.Add("3. Tocas primero el cristal rojo. De repente un poder que\r\nnunca habías sentido se apodera de ti y sientes cómo\r\npodrías llevar en peso a todo tu equipo si fuera necesario.\r\nMientras disfrutas de tu estado eufórico te das cuenta de\r\nque tu bolsa de oro se encuentra más vacía. ¿Es cosa de\r\nesta fuerza repentina que pesa tan poco o hay menos oro\r\nque antes?");
+        _resultadosList.Add("1. Al tocar el cristal amarillo, sientes cómo algo fluye dentro de tí, concretamente " +
+            "de tu bolsa de monedas. De repente te mareas y caes al suelo inconsciente. " +
+            "Cuando el equipo te reanima miras tu bolsa y ¡hay más monedas que antes! " +
+            "Por lo menos el mal trago ha merecido la pena.");
+        _resultadosList.Add("2. Cuando tocas el cristal azul un cansancio enorme se apodera de ti, " +
+            "mientras observas cómo tu cantimplora comienza a rellenarse sola. Cuando se rellena, " +
+            "sientes que el malestar acaba y valoras cómo la cantimplora está más llena que antes, " +
+            "quizá la necesites en un futuro.");
+        _resultadosList.Add("3. Tocas primero el cristal rojo. De repente un poder que nunca habías sentido se " +
+            "apodera de ti y sientes cómo podrías llevar en peso a todo tu equipo si fuera necesario.Mientras " +
+            "disfrutas de tu estado eufórico te das cuenta de que tu bolsa de oro se encuentra más vacía. " +
+            "¿Es cosa de esta fuerza repentina que pesa tan poco o hay menos oro que antes?");
     }
 
     public override void Option1()

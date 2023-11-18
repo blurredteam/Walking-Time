@@ -9,15 +9,21 @@ public class PozoEvento : Evento
     {
         _nombre = "Pozo subterráneo";
         _eventImage = imagenEvento;
-        _eventoTxt = "Cuando andáis, se escucha un ruido de agua deslizándose\r\npor la piedra, al rebuscar un poco más… ¡Encontráis un\r\npozo tras una fina grieta!\r\n";
+        _eventoTxt = "Cuando andáis, se escucha un ruido de agua deslizándose por la piedra, " +
+            "al rebuscar un poco más… ¡Encontráis un pozo tras una fina grieta!";
 
-        _opcionesList.Add("1. Coger agua de la grieta [Rellenar un uso de la\r\ncantimplora.");
-        _opcionesList.Add("2. [Solo disponible si tenéis un personaje con la\r\nhabilidad “Forzudo”] Le pides a Berenjeno que\r\nreviente la pared. [Rellenáis todos los usos de la\r\ncantimplora]\r\n");
-        _opcionesList.Add("3. Pides un deseo y ¿tiras un poco de oro a la grieta?\r\n[-15 de oro]\r\n");
+        _opcionesList.Add("1. Coger agua de la grieta [Rellenar un uso de la cantimplora.");
+        _opcionesList.Add("2. [“Forzudo”] Le pides a Berenjeno que reviente la pared. [+max Agua]");
+        _opcionesList.Add("3. Pides un deseo y ¿tiras un poco de oro a la grieta? [-15 de oro]");
 
-        _resultadosList.Add("1. La grieta es muy estrecha y sólo os deja meter un brazo\r\ndentro por lo que sólo podéis rellenar un uso de la\r\ncantimplora. Continuáis vuestro camino con la cantimplora\r\nun poco más llena.\r\n");
-        _resultadosList.Add("2. Le explicas a Berenjeno lo que tiene que hacer, este, al\r\nver que hay un manantial de agua no se lo piensa dos\r\nveces, de un simple puñetazo la grieta se ensancha y\r\naprovecháis para rellenar la cantimplora entera. Berenjeno\r\nestá muy contento de servir al grupo y de poder darse una\r\nducha.\r\n");
-        _resultadosList.Add("3. Aunque el equipo te mira algo raro propones tirar unas\r\nmonedas y pedir un deseo. Al hacerlo ves que… ¿No pasa\r\nnada? Pues claro, es una grieta no un pozo de los deseos,\r\nqué iba a pasar. Os marcháis cabizbajos tras haber perdido\r\ndinero de forma tonta.\r\n");
+        _resultadosList.Add("1. La grieta es muy estrecha y sólo os deja meter un brazo dentro por lo que sólo podéis " +
+            "rellenar un uso de la cantimplora. Continuáis vuestro camino con la cantimplora un poco más llena.");
+        _resultadosList.Add("2. Le explicas a Berenjeno lo que tiene que hacer, este, al ver que hay un manantial de agua" +
+            " no se lo piensa dos veces, de un simple puñetazo la grieta se ensancha y aprovecháis para rellenar" +
+            " la cantimplora entera. Berenjeno está muy contento de servir al grupo y de poder darse una ducha.");
+        _resultadosList.Add("3. Aunque el equipo te mira algo raro propones tirar unas monedas y pedir un deseo. " +
+            "Al hacerlo ves que… ¿No pasa nada? Pues claro, es una grieta no un pozo de los deseos, qué iba a pasar." +
+            " Os marcháis cabizbajos tras haber perdido dinero de forma tonta.");
     }
 
     public override void Option1()

@@ -73,10 +73,13 @@ public class ControladorEventos : MonoBehaviour
 
     public void SaltarEvento()
     {
-        panelFinal.SetActive(true);
-        panel.SetActive(false);
-        _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 30 DE ORO.";
-        if(LevelManager.instance.gold > 30) LevelManager.instance.gold -= 30;
+        if (LevelManager.instance.gold >= 20) 
+        {
+            LevelManager.instance.gold -= 20;
+            panelFinal.SetActive(true);
+            panel.SetActive(false);
+            _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 20 DE ORO.";
+        }
     }
 
     public void Salir()

@@ -14,21 +14,17 @@ public class ScenesManager : MonoBehaviour
     public float transitionTime = 1f;
 
     // Lista con todos los puzzles
-    public List<string> escenasPuzle = new List<string>() {
-        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer",
-        "PuzzleFuente", "NivelGeometryDash",
+    public List<string> puzzleScenes = new List<string>()
+    {
+        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", "NivelGeometryDash"
     };
 
     private void Awake()
     {
         instance = this;
-
     }
 
-    /*
-    -- Enum de todas las escenas del juego 
-    -- Diferenciar entre escenas y pantallas (p.e settings no es una escena, sino una interfaz de la escena Mainmenu)
-    */
+    // Enum de todas las escenas del juego 
     public enum Scene
     {
         EscenaMenu,
@@ -53,20 +49,12 @@ public class ScenesManager : MonoBehaviour
     public void LoadTileScene(int type, int index)
     {
         //SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
-        // Type =0 -> puzzle; =1 -> event; =2 -> bonfire 
+        // Type =0 -> puzzle; =1 -> event; =2 -> bonfire; =3 -> fuente
 
-        if (type == 0)
-        {
-            LoadPuzzle(index);
-        }
-        else if (type == 1)
-        {
-            LoadObstacle(index);
-        }
-        else
-        {
-            LoadBonfire();
-        }
+        if (type == 0) LoadPuzzle(index);
+        else if (type == 1) LoadObstacle(index);
+        else if(type == 2) LoadBonfire();
+        else if(type == 3) LoadWater();
 
     }
 
@@ -83,10 +71,6 @@ public class ScenesManager : MonoBehaviour
     public void StartNewGame()
     {
         StartCoroutine(StartNewGameTransition());
-        
-        // SceneManager.LoadScene(Scene.Level1.ToString());
-        // SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
-
     }
     
     IEnumerator StartNewGameTransition()
@@ -101,21 +85,19 @@ public class ScenesManager : MonoBehaviour
 
     private void LoadPuzzle(int index)
     {
-        SceneManager.LoadScene(escenasPuzle[index], LoadSceneMode.Additive);
-        //SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
+        SceneManager.LoadScene(puzzleScenes[index], LoadSceneMode.Additive);
     }
     private void LoadObstacle(int index)
     {
         SceneManager.LoadScene(Scene.EventScene.ToString(), LoadSceneMode.Additive);
-        Debug.Log("casilla evento");
     }
     private void LoadBonfire()
     {
         SceneManager.LoadScene(Scene.Hoguera.ToString(), LoadSceneMode.Additive);
-
-        Debug.Log("Casilla hoguera");
     }
-    
-    
+    private void LoadWater()
+    {
+        SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
+    }
 
 }

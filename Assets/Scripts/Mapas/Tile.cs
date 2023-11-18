@@ -10,8 +10,6 @@ using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-
-
     [SerializeField] public EventTrigger _clickEvent;
     [SerializeField] public SpriteRenderer _spriteRenderer;
 
@@ -19,13 +17,13 @@ public class Tile : MonoBehaviour
     [SerializeField] private Image _bonfireImage;
     [SerializeField] private Image _obstacleImage;
     [SerializeField] private Image _puzzleImage;
+    [SerializeField] private Image _waterImage;
 
     //Para animacion de casillas
     [SerializeField] public Animator animatorTile;
     [SerializeField] private RuntimeAnimatorController animationPuzzleImage;
 
-
-    private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera
+    private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
     private int energyCost; // Coste de viajar a la casilla, depende del tipo
     private int index;      // Indica el puzzle o evento especifico
@@ -38,7 +36,6 @@ public class Tile : MonoBehaviour
     public TextMeshProUGUI textoInfo;
     public MovimientoJugador spritesJugador;
 
-
     public void ColorTile(Color color)
     {
         _spriteRenderer.color = color;
@@ -48,25 +45,20 @@ public class Tile : MonoBehaviour
     //Ademas, empiezan todas sin ser interactuables ya que eso se gestiona mas adelante al empezar la partida desde LevelManager
     public void AssignType(int position)
     {
-        int random = Random.Range(0, 100);
+        this.position = position;
         _clickEvent.enabled = false;
 
         casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
         textoInfo = casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
-        spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>();  // Asegurar que coincide con el nombre en el editor
+        spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>(); 
 
-        this.position = position;
-
-        if (random >= 50) PuzzleTile();
-        else if (random <= 5) BonfireTile();
+        int random = Random.Range(0, 100);
+        if (random >= 45) PuzzleTile();
+        else if (random <= 4) BonfireTile();
+        else if (random > 5 && random < 12) WaterTile();
         else ObstacleTile();
     }
 
-    public void MovimientoPreCarga()
-    {
-        spritesJugador.MoverJugador(transform.position, this);  //para el movimiento de los sprites de una casilla a otra
-        //spritesJugador.movimientoCompleto += () => LoadTile(); //solo se llama cuando el movimiento se haya completado
-    }
     public void LoadTile()
     {
         _clickEvent.enabled = false;
@@ -87,9 +79,8 @@ public class Tile : MonoBehaviour
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {
             AdyacentList[i]._clickEvent.enabled = true;
-            //AdyacentList[i]._spriteRenderer.color = Color.blue;
 
-            //Si es puzzle activa su animacion
+            //Animacion de las siguientes casillas
             if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationPuzzleImage; }
             else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
 
@@ -100,14 +91,11 @@ public class Tile : MonoBehaviour
     {
         type = 0;
         energyCost = Random.Range(30, 50);
-        var puzzleList = ScenesManager.instance.escenasPuzle;
+        var puzzleList = ScenesManager.instance.puzzleScenes;
         index = Random.Range(0, puzzleList.Count);
-
 
         animatorTile = GetComponent<Animator>();
         _spriteRenderer.sprite = _puzzleImage.sprite;
-
-
     }
 
     private void ObstacleTile()
@@ -126,6 +114,14 @@ public class Tile : MonoBehaviour
         type = 2;
     }
 
+    private void WaterTile()
+    {
+        _spriteRenderer.sprite = _waterImage.sprite;
+        energyCost = Random.Range(10, 30);
+
+        type = 3;
+    }
+
     public void ShowInfo()
     {
 
@@ -134,19 +130,11 @@ public class Tile : MonoBehaviour
 
         if (_clickEvent.enabled == true)
         {
-
-            if (type == 0)
-            {
-                textoInfo.text = "Tipo: Puzzle\n Coste: " + this.energyCost;
-            }
-            if (type == 1)
-            {
-                textoInfo.text = "Tipo: Evento\n Coste: " + this.energyCost;
-            }
-            if (type == 2)
-            {
-                textoInfo.text = "Tipo: Hogera\n Coste: " + this.energyCost;
-            }
+            textoInfo.text = "Coste: " + energyCost;
+            //if (type == 0) textoInfo.text = "Tipo: Puzzle\n Coste: " + this.energyCost;
+            //else if (type == 1) textoInfo.text = "Tipo: Evento\n Coste: " + this.energyCost;
+            //else if (type == 2) textoInfo.text = "Tipo: Hogera\n Coste: " + this.energyCost;
+            //else if(type == 3) textoInfo.text = "Tipo: Fuente\n Coste: " + this.energyCost;
         }
 
     }
@@ -154,6 +142,11 @@ public class Tile : MonoBehaviour
     public void HideInfo()
     {
         casillaInfo.SetActive(false);
+    }
+
+    public void MovimientoPreCarga()
+    {
+        spritesJugador.MoverJugador(transform.position, this);  //para el movimiento de los sprites de una casilla a otra
     }
 
 }

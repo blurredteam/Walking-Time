@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
-    [SerializeField] public SpriteRenderer _fondoNivel;    //Fondo normal del nivel que se mueve
+    [SerializeField] public SpriteRenderer _fondoNivel;     //Fondo normal del nivel que se mueve
     [SerializeField] public Image _fondoEvento;             //Fondo empleado en los eventos
 
     [SerializeField] private TextMeshProUGUI energyTxt;
@@ -87,21 +87,12 @@ public class LevelManager : MonoBehaviour
         instance= this;
         AudioManager.instance.PlayAmbient();
         maxWater = teamWater;
-       
     }
 
     private void Update()
     {
         energyTxt.text = teamEnergy.ToString();
         waterTxt.text = teamWater.ToString();
-
-        if (cursed && auxGold == 0) auxGold = gold;
-        if (cursed)
-        {
-            if (gold < auxGold) auxGold = gold;
-            else if (gold > auxGold) gold = auxGold;
-        }
-
         goldTxt.text = gold.ToString();
 
         CheckResources();
@@ -122,7 +113,15 @@ public class LevelManager : MonoBehaviour
 
     private void CheckResources()
     {
+        if (cursed && auxGold == 0) auxGold = gold;
+        if (cursed)
+        {
+            if (gold <= auxGold) auxGold = gold;
+            else if (gold > auxGold) gold = auxGold;
+        }
+
         if (teamWater > maxWater) teamWater = maxWater;
+
         if (teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
     }
 
@@ -133,23 +132,23 @@ public class LevelManager : MonoBehaviour
             if (_map[0, y].selected) _map[0, y]._clickEvent.enabled = true;
     }
 
+    // Se ejecuta antes de cargar la escena de la casilla a la que se viaja
+    public void PreTravel(int energyCost)
+    {
+        _cameraMovementScript.enabled = false;
+        teamEnergy -= (energyCost + travelCostModifier);
+        AudioManager.instance.PlaySfx(losingEnergy);
+    }
+
     // Carga la escena indicada y reduce la energia total en funcion del coste de viajar a esa casilla
     // Tambien inhabilita las casillas de su misma columna y las pinta 
-    public void Travel(int position, int energyCost, int tileType, int index)
+    public void Travel(int position, int tileType, int index)
     {
         _gridRef.gameObject.SetActive(false); 
         _cameraMovementScript.enabled =false;
-        if (tileType != 1)
-        {
-            DoFadeTransition(tileType,index);
-        }else
-        {
-            ScenesManager.instance.LoadTileScene(tileType, index);
-        }
 
-        teamEnergy -= (energyCost + travelCostModifier);
-
-        AudioManager.instance.PlaySfx(losingEnergy);
+        if (tileType != 1) DoFadeTransition(tileType,index); 
+        else ScenesManager.instance.LoadTileScene(tileType, index);
 
         for (int y = 0; y < _mapHeight; y++)
         {

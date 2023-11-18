@@ -6,19 +6,35 @@ using UnityEngine.UI;
 public class EndScene : MonoBehaviour
 {
     [SerializeField] private Button _menuBtn;
-    //public CharacterManager instance;
+    [SerializeField] private Image _victoryImage;
+    [SerializeField] private Image _defeatImage;
 
+    private int _finalEnergy;
 
     private void Start()
     {
         _menuBtn.onClick.AddListener(delegate { ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu); });
 
+        _finalEnergy = LevelManager.instance.teamEnergy;
+
+        if (_finalEnergy > 0) Victory();
+        else Defeat();
+    }
+
+    private void Victory()
+    {
+        Debug.Log("GANASTE");
+
         unlockCharacters();     //cuando se alcanza la escena final se desbloquea automaticamente a chispa
+    }
+
+    private void Defeat()
+    {
+        Debug.Log("PERDISTE");
     }
 
     public void unlockCharacters()
     {
         UnlockManager.Instance.PersonajeDesbloqueado = true;
-
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7028165312307389423}
   - component: {fileID: 1470718251129634380}
+  - component: {fileID: 1548127541437539008}
   m_Layer: 5
   m_Name: Line
   m_TagString: Untagged
@@ -101,8 +102,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.7075472, g: 0.6023182, b: 0.48393556, a: 0.43137255}
-      key1: {r: 0.6886792, g: 0.50103027, b: 0.373576, a: 0.92941177}
+      key0: {r: 0.81542224, g: 0.8396226, b: 0.29703632, a: 1}
+      key1: {r: 0.81542224, g: 0.8396226, b: 0.29703632, a: 1}
       key2: {r: 0.5660378, g: 0.28988457, b: 0.08276967, a: 0}
       key3: {r: 0.5660378, g: 0.28988457, b: 0.08276967, a: 0}
       key4: {r: 0.5660378, g: 0.28988457, b: 0.08276967, a: 0}
@@ -117,7 +118,7 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 193
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -125,14 +126,14 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 3
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -140,3 +141,11 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!222 &1548127541437539008
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975881338263862135}
+  m_CullTransparentMesh: 1

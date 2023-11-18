@@ -64,7 +64,7 @@ public class Tile : MonoBehaviour
         _clickEvent.enabled = false;
         HideInfo();
 
-        LevelManager.instance.Travel(position, energyCost, type, index);
+        LevelManager.instance.Travel(position, type, index);
 
         _spriteRenderer.color = Color.black;
         animatorTile.runtimeAnimatorController = null;//Desactivamos la anim
@@ -124,19 +124,15 @@ public class Tile : MonoBehaviour
 
     public void ShowInfo()
     {
-
         casillaInfo.SetActive(true);
         casillaInfo.transform.position = gameObject.transform.position + new Vector3(1.2f, 0.70f, 0f);
 
-        if (_clickEvent.enabled == true)
-        {
-            textoInfo.text = "Coste: " + energyCost;
-            //if (type == 0) textoInfo.text = "Tipo: Puzzle\n Coste: " + this.energyCost;
-            //else if (type == 1) textoInfo.text = "Tipo: Evento\n Coste: " + this.energyCost;
-            //else if (type == 2) textoInfo.text = "Tipo: Hogera\n Coste: " + this.energyCost;
-            //else if(type == 3) textoInfo.text = "Tipo: Fuente\n Coste: " + this.energyCost;
-        }
+        if (_clickEvent.enabled == true) textoInfo.text = "Coste: " + energyCost; 
 
+        //if (type == 0) textoInfo.text = "Tipo: Puzzle\n Coste: " + this.energyCost;
+        //else if (type == 1) textoInfo.text = "Tipo: Evento\n Coste: " + this.energyCost;
+        //else if (type == 2) textoInfo.text = "Tipo: Hogera\n Coste: " + this.energyCost;
+        //else if(type == 3) textoInfo.text = "Tipo: Fuente\n Coste: " + this.energyCost;
     }
 
     public void HideInfo()
@@ -144,8 +140,10 @@ public class Tile : MonoBehaviour
         casillaInfo.SetActive(false);
     }
 
+    // Se llama al clickar sobre una casilla
     public void MovimientoPreCarga()
     {
+        LevelManager.instance.PreTravel(energyCost);
         spritesJugador.MoverJugador(transform.position, this);  //para el movimiento de los sprites de una casilla a otra
     }
 

@@ -83,15 +83,16 @@ public class MapGenerator : MonoBehaviour
             {
                 if (!_map[x, y].selected)
                 {
-                    Destroy(_map[x, y].gameObject); //_map[x, y].ColorTile(Color.clear)
+                    Destroy(_map[x, y].gameObject); 
                 }
             }
         }
 
         // 4. Se instancia la casilla final
-        var lastTile = Instantiate(_tilePrefab, new Vector3(_width * (_X_spacing) - 7, 0), Quaternion.identity, this.transform);
+        var lastTile = Instantiate(_tilePrefab, new Vector3(_width * _X_spacing - 7, 0), Quaternion.identity, this.transform);
         lastTile.name = $"TileFinal";
         lastTile._clickEvent.enabled = false;
+        lastTile.type = 100;
 
         lastTile.casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
         lastTile.textoInfo = lastTile.casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
@@ -111,7 +112,6 @@ public class MapGenerator : MonoBehaviour
 
         // 5. Se asigna el mapa al nivel
         LevelManager.instance.SetMap(_map, _width, _height);
-
     }
 
     //Genera un camino aleatorio en funcion de seed y offset

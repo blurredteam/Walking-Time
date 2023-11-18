@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
         _gridRef.gameObject.SetActive(false); 
         _cameraMovementScript.enabled =false;
 
-        if (tileType != 1) DoFadeTransition(tileType,index); 
+        if (tileType != 1 && tileType != 100) DoFadeTransition(tileType, index);
         else ScenesManager.instance.LoadTileScene(tileType, index);
 
         for (int y = 0; y < _mapHeight; y++)

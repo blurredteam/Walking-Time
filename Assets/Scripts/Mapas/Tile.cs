@@ -23,10 +23,10 @@ public class Tile : MonoBehaviour
     [SerializeField] public Animator animatorTile;
     [SerializeField] private RuntimeAnimatorController animationPuzzleImage;
 
-    private int type;       // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
+    public int type;        // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
     private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
     private int energyCost; // Coste de viajar a la casilla, depende del tipo
-    private int index;      // Indica el puzzle o evento especifico
+    private int index;       // Indica el puzzle o evento especifico
 
     public int value { get; set; }
     public bool selected = false;
@@ -61,7 +61,6 @@ public class Tile : MonoBehaviour
 
     public void LoadTile()
     {
-        _clickEvent.enabled = false;
         HideInfo();
 
         LevelManager.instance.Travel(position, type, index);
@@ -137,12 +136,13 @@ public class Tile : MonoBehaviour
 
     public void HideInfo()
     {
-        casillaInfo.SetActive(false);
+        try { casillaInfo.SetActive(false); } catch { Debug.Log("Fallo este del pop up"); }
     }
 
     // Se llama al clickar sobre una casilla
     public void MovimientoPreCarga()
     {
+        _clickEvent.enabled = false;
         LevelManager.instance.PreTravel(energyCost);
         spritesJugador.MoverJugador(transform.position, this);  //para el movimiento de los sprites de una casilla a otra
     }

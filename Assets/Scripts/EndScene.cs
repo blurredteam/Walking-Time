@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class EndScene : MonoBehaviour
     [SerializeField] private Button _menuBtn;
     [SerializeField] private Image _victoryImage;
     [SerializeField] private Image _defeatImage;
+    [SerializeField] private TextMeshProUGUI _finalText;
 
     private int _finalEnergy;
 
@@ -23,14 +25,16 @@ public class EndScene : MonoBehaviour
 
     private void Victory()
     {
-        Debug.Log("GANASTE");
+        _victoryImage.gameObject.SetActive(true);
+        _finalText.text = "LLegaste a tu destino!";
 
         unlockCharacters();     //cuando se alcanza la escena final se desbloquea automaticamente a chispa
     }
 
     private void Defeat()
     {
-        Debug.Log("PERDISTE");
+        _defeatImage.gameObject.SetActive(true);
+        _finalText.text = "Faltaron fuerzas...";
     }
 
     public void unlockCharacters()

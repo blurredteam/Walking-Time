@@ -33,7 +33,6 @@ public class MovimientoJugador : MonoBehaviour
     }
     public void MoverJugador(Vector3 posicionCasilla, Tile casilla)
     {
-
         posicionInicial = transform.position;
         posicionFinal = posicionCasilla;
         casillaObjetivo = casilla;

@@ -2147,6 +2147,7 @@ MonoBehaviour:
   rueda2: {fileID: 541426333}
   rueda3: {fileID: 491403271}
   textoFinal: {fileID: 782038255}
+  fondo: {fileID: 8300000, guid: c5d8c7045fa24f843b732e8fa3df3964, type: 3}
 --- !u!1 &1740662221
 GameObject:
   m_ObjectHideFlags: 0

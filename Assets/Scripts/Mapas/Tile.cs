@@ -87,7 +87,7 @@ public class Tile : MonoBehaviour
             AdyacentList[i]._clickEvent.enabled = true;
 
             //Animacion de las siguientes casillas
-            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[index]; }
+            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[AdyacentList[i].index]; }
             else if (AdyacentList[i].type == 2) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationFire; }
             else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent ; }
             else if (AdyacentList[i].type == 3) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent; }

@@ -121,6 +121,7 @@ public class TeamComp : MonoBehaviour
 
     private void RemoveSelected(int position)
     {
+        AudioManager.instance.ButtonSound3();
         //Si se quita un personaje el equipo no esta lleno
         _continueBtn.onClick.RemoveAllListeners();  
 
@@ -147,7 +148,8 @@ public class TeamComp : MonoBehaviour
     }
 
     private void Continue()
-    { 
+    {
+        AudioManager.instance.ButtonSound();
         _continueBtn.interactable = false;
 
         foreach(Character c in _teamComp)
@@ -214,6 +216,7 @@ public class TeamComp : MonoBehaviour
 
     private void ExitBonfire()
     {
+        AudioManager.instance.ButtonSound();
         _continueBtn.interactable = false;
 
         foreach (Character c in _teamComp)

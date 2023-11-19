@@ -67,12 +67,12 @@ public class CharacterManager : MonoBehaviour
         desbloqueaPersonaje();
 
         //Boton de cada personaje
-        _btnList[0].onClick.AddListener(delegate { BtnHandler(_berenjeno); });
-        _btnList[1].onClick.AddListener(delegate { BtnHandler(_japaro); });
-        _btnList[2].onClick.AddListener(delegate { BtnHandler(_mirabel); });
-        _btnList[3].onClick.AddListener(delegate { BtnHandler(_seta); });
-        _btnList[4].onClick.AddListener(delegate { BtnHandler(_fauno); });
-        _btnList[5].onClick.AddListener(delegate { BtnHandler(_chispa); });
+        _btnList[0].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_berenjeno); });
+        _btnList[1].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_japaro); });
+        _btnList[2].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_mirabel); });
+        _btnList[3].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_seta); });
+        _btnList[4].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_fauno); });
+        _btnList[5].onClick.AddListener(delegate { BlockedSound(); BtnHandler(_chispa); });
 
         for (int i = 0; i < _btnList.Count; i++)
         {
@@ -111,7 +111,7 @@ public class CharacterManager : MonoBehaviour
         _characterCard.sprite = characterList[id].frontCard.sprite;
 
         showInfo.onClick.RemoveAllListeners();
-        showInfo.onClick.AddListener(delegate { ShowCharacterInfo(id, _characterCard); });
+        showInfo.onClick.AddListener(delegate { AudioManager.instance.ButtonSound4(); ShowCharacterInfo(id, _characterCard); });
     }
 
     private void ShowCharacterInfo(int id, Image _characterCard)
@@ -137,5 +137,17 @@ public class CharacterManager : MonoBehaviour
             Debug.Log("Chispa ha sido desbloqueada correctamente");
         }
 
+    }
+
+    private void BlockedSound()
+    {
+        if (_chispa.unlocked)
+        {
+            AudioManager.instance.ButtonSound2();
+        }
+        else
+        {
+            AudioManager.instance.ButtonSoundBlock();
+        }
     }
 }

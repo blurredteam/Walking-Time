@@ -14,6 +14,8 @@ public class CanvasTimer : MonoBehaviour
     [SerializeField] private GameObject rueda2;
     [SerializeField] private GameObject rueda3;
     [SerializeField] private TextMeshProUGUI textoFinal;
+    [SerializeField] private AudioClip fondo;
+
     private int energiaPerdida = 0;
     private int puzzleTerminado = 0;
 
@@ -23,6 +25,7 @@ public class CanvasTimer : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        AudioManager.instance.PlayBackMusic(fondo);
 
     }
 
@@ -33,6 +36,7 @@ public class CanvasTimer : MonoBehaviour
     }
     public void Empezar()
     {
+        AudioManager.instance.ButtonSound();
         panelInicio.SetActive(false);   
         rueda1.SetActive(true);
         rueda2.SetActive(true);

@@ -40,13 +40,15 @@ public class Rotate : MonoBehaviour
     
     IEnumerator EsperarYSalir()
     {
+        AudioManager.instance.ButtonSound();
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         transition.DoTransitionOnce();
-        AudioManager.instance.ButtonSound();
+        
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 
     void Update()
@@ -54,6 +56,7 @@ public class Rotate : MonoBehaviour
         Vector3 mousePosition = _puzzleCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
+            AudioManager.instance.ButtonSound2();
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject&& targetObject.transform==gameObject.transform.parent)
             {

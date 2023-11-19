@@ -48,7 +48,7 @@ public class salida : MonoBehaviour
     IEnumerator EsperarYRecompensa(int recompensa)
     {
         if(recompensa>0){
-            AudioManager.instance.WinMusic();
+            //AudioManager.instance.WinMusic();
             LevelManager.instance.gold += recompensa;
         }
         else

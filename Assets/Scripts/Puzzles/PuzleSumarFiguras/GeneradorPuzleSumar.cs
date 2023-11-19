@@ -21,6 +21,8 @@ public class GeneradorPuzleSumar : MonoBehaviour
     public Transitioner transition;
     public float transitionTime = 1f;
 
+    [SerializeField] private AudioClip fondo;
+
     private void Awake()
     {
         transition = ScenesManager.instance.transitioner;
@@ -28,6 +30,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
     void Start()
     {
+        AudioManager.instance.PlayBackMusic(fondo);
         int index = Random.Range(0, figuras.Length - 1);
         figuras[index].gameObject.SetActive(true);
 
@@ -35,6 +38,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         volverBtn.onClick.AddListener(delegate
         {
+            AudioManager.instance.ButtonSound();
             StartCoroutine(EsperarYSalir());
         });
     }
@@ -51,6 +55,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
         LevelManager.instance.teamEnergy -= 10;
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 
     private void Update()
@@ -59,6 +64,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            AudioManager.instance.ButtonSound3();
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject && targetObject.gameObject.layer==7)
             {
@@ -154,5 +160,6 @@ public class GeneradorPuzleSumar : MonoBehaviour
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 }

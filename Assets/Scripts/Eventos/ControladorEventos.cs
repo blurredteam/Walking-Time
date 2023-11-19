@@ -58,21 +58,25 @@ public class ControladorEventos : MonoBehaviour
     // En funcion de que opcion se elija 
     public void Option1()
     {
+        AudioManager.instance.ButtonSound();
         eventos[seleccionado].Option1();
     }
 
     public void Option2()
     {
+        AudioManager.instance.ButtonSound();
         eventos[seleccionado].Option2();
     }
 
     public void Option3()
     {
+        AudioManager.instance.ButtonSound();
         eventos[seleccionado].Option3();
     }
 
     public void SaltarEvento()
     {
+        AudioManager.instance.ButtonSound();
         if (LevelManager.instance.gold >= 20) 
         {
             LevelManager.instance.gold -= 20;

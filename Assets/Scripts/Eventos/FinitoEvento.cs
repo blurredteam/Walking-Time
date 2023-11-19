@@ -15,8 +15,8 @@ public class FinitoEvento : Evento
             "Como habéis decidido pasar por mi cueva tenéis que pagar… ¡una multa por venir sin avisar!\r\n" +
             "Mirando al equipo, te aferras al bolsón de oro de tu cinturón. En ese momento…";
 
-        _opcionesList.Add("1. Decides coger la bolsa y pagar, temes lo que Finito pueda hacer si se enfada. [-Todo tu oro]");
-        _opcionesList.Add("2. Coges todas vuestras cosas y empezáis a correr a lo loco. [-50 de energía]");
+        _opcionesList.Add("1. Decides coger la bolsa y pagar, temes lo que Finito pueda hacer si se enfada.");
+        _opcionesList.Add("2. Coges todas vuestras cosas y empezáis a correr a lo loco.");
 
         _resultadosList.Add("1. Finito sonríe al ver las monedas de oro salir de la bolsa." +
             "\r\n– Mil gracias aventureros, ¡que lo paséis bien paseando por mis dominios! JA JA JA JA JA\r\n" +
@@ -27,7 +27,7 @@ public class FinitoEvento : Evento
             " a toda velocidad por la caverna! Aunque Finito parece que no os persigue, escucháis su " +
             "voz retumbar por la cueva.\r\n–JA JA JA JA JA, ¡ME DEBÉIS PAGAR!\r\n" +
             "El sprint para huir de aquella situación os ha cansado un poco pero parece que podéis continuar. " +
-            "Te preguntas si encontraréis a Finito otra vez antes de acabar vuestra aventura.");
+            "Te preguntas si encontraréis a Finito otra vez antes de acabar vuestra aventura.\n[-50 de energía]");
     }
 
     public override void Option1()

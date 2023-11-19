@@ -40,13 +40,14 @@ public class Jump : MonoBehaviour
             AudioManager.instance.ButtonSound();
             //AudioManager.instance.LoseMusic();
 
-            LevelManager.instance.teamEnergy -= 10;
+            LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
+            LevelManager.instance.expEnergy+=1;
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
         });
         // ---------------------------------------------
-        AudioManager.instance.PlayBackMusic(fondo); ;
+        AudioManager.instance.PlayBackMusic(fondo); 
         tiempoRestante = tiempoMaximo;
         ActualizarTextoTiempo();
     }
@@ -107,7 +108,9 @@ public class Jump : MonoBehaviour
         }
         else
         {
-            JuegoTerminado(false);
+            if(!juegoTerminado){
+                JuegoTerminado(false);
+            }
         }
     }
     

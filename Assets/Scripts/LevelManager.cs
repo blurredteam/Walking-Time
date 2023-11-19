@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public int maxEnergy { get; set; }
     public int teamWater { get; set; }
     public int maxWater { get; set; }
+    public int expEnergy { get; set; }
     public bool cursed { get; set; }    //Si esta activo el jugador no gana oro    
     public int travelCostModifier { get; set; } = 0;  //Modifica el coste de viajar a casillas (de momento solo en la habilidad de mirabel)
 
@@ -87,6 +88,7 @@ public class LevelManager : MonoBehaviour
         instance= this;
         AudioManager.instance.PlayAmbient();
         maxWater = teamWater;
+        expEnergy = 1;
     }
 
     private void Update()

@@ -93,12 +93,14 @@ public class Puzzle : MonoBehaviour
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
         AudioManager.instance.PlayAmbient();
+        continueBtn.enabled = false;
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        
+        continueBtn.enabled = true;
         transition.DoTransitionOnce();
-        LevelManager.instance.teamEnergy -= 10;
+        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy+=1;
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }

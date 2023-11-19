@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class salida : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class salida : MonoBehaviour
     
     public Transitioner transition;
     public float transitionTime = 1f;
+    [SerializeField] private Button continueBtn;
 
     private void Awake()
     {
@@ -31,12 +34,20 @@ public class salida : MonoBehaviour
         //cambio de escenas
     }
 
-    public void SalirDelJuego()
+    public void SalirDelJuegoVictoria()
     {
         AudioManager.instance.ButtonSound();
         
         //LevelManager.instance.teamEnergy -= 10;
         Recompensas(10);
+        
+    }
+    public void SalirDelJuegoDerrota()
+    {
+        AudioManager.instance.ButtonSound();
+        
+        //LevelManager.instance.teamEnergy -= 10;
+        Recompensas(-10);
         
     }
     
@@ -54,11 +65,14 @@ public class salida : MonoBehaviour
         else
         {
             AudioManager.instance.LoseMusic();
-            LevelManager.instance.teamEnergy -= recompensa;
+            LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
+            LevelManager.instance.expEnergy+=1;
         }
+        continueBtn.enabled = false;
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        continueBtn.enabled = true;
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
         LevelManager.instance.ActivateScene();

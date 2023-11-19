@@ -47,12 +47,15 @@ public class GeneradorPuzleSumar : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
+        volverBtn.enabled = false;
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         
+        volverBtn.enabled = true;
         transition.DoTransitionOnce();
-        LevelManager.instance.teamEnergy -= 10;
+        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy+=1;
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
@@ -83,7 +86,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
         {
             if (selectedObject.GetComponent<Collider2D>().OverlapPoint(figuraElegida.transform.position))
             {
-                selectedObject.transform.position = figuraElegida.transform.position;
+                selectedObject.transform.position = figuraElegida.transform.position-new Vector3(0.1f,0.07f);
                 
                 foreach (var pieza in figuraElegida.piezas)
                 {

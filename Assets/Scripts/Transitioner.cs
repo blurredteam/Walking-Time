@@ -25,7 +25,7 @@ public class Transitioner : MonoBehaviour
     IEnumerator EsperarYSalir()
     {
         transition.SetTrigger("Start");
-
+    
         yield return new WaitForSeconds(1);
         
         transition.SetTrigger("Start");

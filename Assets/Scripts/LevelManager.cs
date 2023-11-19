@@ -100,19 +100,6 @@ public class LevelManager : MonoBehaviour
         CheckResources();
     }
 
-    public void DoFadeTransition(int tileType, int index)
-    {
-        StartCoroutine(DoFadeTransitionCo(tileType, index));
-    }
-    
-    IEnumerator DoFadeTransitionCo(int tileType, int index)
-    {
-        transition.DoTransitionOnce();
-        yield return new WaitForSeconds(1f);
-        ScenesManager.instance.LoadTileScene(tileType, index);
-        transition.DoTransitionOnce();
-    }
-
     private void CheckResources()
     {
         if (cursed && auxGold == 0) auxGold = gold;
@@ -241,5 +228,18 @@ public class LevelManager : MonoBehaviour
         HideCard();
         yield return new WaitForSeconds(0.3f);
         ShowCharacterCard(position);
+    }
+
+    public void DoFadeTransition(int tileType, int index)
+    {
+        StartCoroutine(DoFadeTransitionCo(tileType, index));
+    }
+
+    IEnumerator DoFadeTransitionCo(int tileType, int index)
+    {
+        transition.DoTransitionOnce();
+        yield return new WaitForSeconds(1f);
+        ScenesManager.instance.LoadTileScene(tileType, index);
+        transition.DoTransitionOnce();
     }
 }

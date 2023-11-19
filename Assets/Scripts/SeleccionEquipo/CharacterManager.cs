@@ -65,7 +65,7 @@ public class CharacterManager : MonoBehaviour
     {
 
         //se llama cuando se inicia la escena de seleccion de personaje para lockear/unlockear a chispa
-        desbloqueaPersonaje();
+        DesbloqueaPersonaje();
 
         //Boton de cada personaje
         _btnList[0].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); BtnHandler(_berenjeno); });
@@ -85,25 +85,10 @@ public class CharacterManager : MonoBehaviour
 
 
     }
-
-    public void DoFadeTransition()
-    {
-        StartCoroutine(DoFadeTransitionCo());
-    }
-
-    IEnumerator DoFadeTransitionCo()
-    {
-        //continueButon.enabled = false;
-        transition.DoTransitionOnce();
-        
-        yield return new WaitForSeconds(2f);
-        //continueButon.enabled = true;
-        transition.DoTransitionOnce();
-    }
-
+    
     private void BtnHandler(Character character)
     {
-        if (character.unlocked) ShowCharacter(character._id);
+        ShowCharacter(character._id);
 
         if (character.unlocked && !character.selected) TeamComp.instance.SelectCharacter(character._id);
     }
@@ -127,7 +112,7 @@ public class CharacterManager : MonoBehaviour
     }
 
 
-    public void desbloqueaPersonaje()
+    public void DesbloqueaPersonaje()
     {
         personajeUnlocked = UnlockManager.Instance.PersonajeDesbloqueado;   //recivimos el valor desde el singleton
 

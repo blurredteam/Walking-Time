@@ -149,6 +149,8 @@ public class TeamComp : MonoBehaviour
 
     private void Continue()
     {
+        foreach (Button b in _slotButtons) b.interactable = false;
+
         AudioManager.instance.ButtonSound();
         _continueBtn.interactable = false;
 
@@ -162,20 +164,21 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.maxEnergy = _teamMaxEnergy;
         LevelManager.instance.teamWater = _teamMaxWater;
         LevelManager.instance.maxWater = _teamMaxWater;
-
+        
         StartCoroutine(ContinueTimer());
     }
 
     //Sirve para visualizar las habilidades que se aplican al final (SkillFinally)
     private IEnumerator ContinueTimer()
     { 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1); // En este primer yield se visualizan las habilidades (por implementar)
+        CharacterManager.instance.transition.DoTransitionTwice();
+        yield return new WaitForSeconds(1);
 
         LevelManager.instance.ActivateScene();
         LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.StartGame();
         ScenesManager.instance.UnloadTeamSelect();
-        
     }
 
     public void BonfireTile(List<Character> team)

@@ -27,26 +27,19 @@ public class PuzzleDialogue : MonoBehaviour
 
     private IEnumerator AnimateDialogue()
     {
-        float moveTime = 0.45f;
-        
-        while(moveTime > 0)
+        while (contenedor.transform.localPosition.y < 0)
         {
-            moveTime -= Time.deltaTime;
-            contenedor.transform.position += new Vector3(0, 2);
+            contenedor.transform.localPosition += new Vector3(0, 1.5f);
             yield return null;
         }
-
         contenedorTexto.SetActive(true);
 
         yield return new WaitForSeconds(2);
 
         contenedorTexto.SetActive(false);
-
-        float moveBackTime = 0.45f;
-        while (moveBackTime > 0)
+        while (contenedor.transform.localPosition.y > -400)
         {
-            moveBackTime -= Time.deltaTime;
-            contenedor.transform.position -= new Vector3(0, 2);
+            contenedor.transform.localPosition -= new Vector3(0, 1.5f);
             yield return null;
         }
     }

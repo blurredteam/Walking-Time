@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class TeamComp : MonoBehaviour
@@ -199,6 +200,8 @@ public class TeamComp : MonoBehaviour
             _skillsTxt[i].text = team[i].skillDesc;
 
             //Se gestiona info del personaje
+            CharacterManager.instance.characterList[team[i]._id].selected = true;
+            CharacterManager.instance.characterList[team[i]._id].skillApplied = true;
             _teamComp[i] = team[i];
             _teamComp[i].selected = true;
             _teamComp[i].skillApplied= true;

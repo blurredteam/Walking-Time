@@ -35,19 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
-        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        volverBtn.onClick.AddListener(delegate
-        {
-            AudioManager.instance.ButtonSound();
-            AudioManager.instance.LoseMusic();
-            LevelManager.instance.teamEnergy -= 10;
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleHielo);
-            LevelManager.instance.ActivateScene();
-            AudioManager.instance.PlayAmbient();
-        });
-        // ---------------------------------------------
-
         AudioManager.instance.PlayBackMusic(fondoHielo);
         player = this.gameObject;
         playerBody = player.GetComponent<Rigidbody2D>();

@@ -25,7 +25,7 @@ public class Jump : MonoBehaviour
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
     
-    public Transitioner transition;
+    private Transitioner transition;
     public float transitionTime = 1f;
 
     private void Awake()
@@ -154,8 +154,6 @@ public class Jump : MonoBehaviour
 
     IEnumerator EsperarYRecompensa(bool ganado)
     {
-        
-        
         
         yield return new WaitForSeconds(1.5f);
         

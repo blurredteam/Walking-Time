@@ -72,7 +72,6 @@ public class AudioManager : MonoBehaviour
     public void WinMusic()
     {
         int idx = UnityEngine.Random.Range(0, _winSound.Count);
-        Debug.Log(idx);
         PlaySfx(_winSound[idx]);
 
     }
@@ -80,7 +79,6 @@ public class AudioManager : MonoBehaviour
     public void LoseMusic()
     {
         int idx = UnityEngine.Random.Range(0, _loseSound.Count);
-        Debug.Log(idx);
         PlaySfx(_loseSound[idx]);
     }
 

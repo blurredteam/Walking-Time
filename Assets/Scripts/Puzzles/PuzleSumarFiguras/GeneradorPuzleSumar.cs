@@ -47,12 +47,12 @@ public class GeneradorPuzleSumar : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
-        volverBtn.enabled = false;
+        volverBtn.gameObject.SetActive(false);
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         
-        volverBtn.enabled = true;
+        volverBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy+=1;
@@ -141,6 +141,8 @@ public class GeneradorPuzleSumar : MonoBehaviour
     IEnumerator EsperarYRecompensa(bool ganado)
     {
         panFinal.SetActive(true);
+        volverBtn.gameObject.SetActive(false);
+        transition.DoTransitionOnce();
         
         
         yield return new WaitForSeconds(1.5f);
@@ -157,9 +159,11 @@ public class GeneradorPuzleSumar : MonoBehaviour
             Recompensas(-10);
             
         }
-        transition.DoTransitionOnce();
+        
 
         yield return new WaitForSeconds(transitionTime);
+        
+        volverBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();

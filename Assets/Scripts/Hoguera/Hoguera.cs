@@ -19,6 +19,14 @@ public class Hoguera : MonoBehaviour
     [SerializeField] private Image iconP3;
 
     private int eneryRegen = 100;
+    
+    public Transitioner transition;
+    public float transitionTime = 1f;
+
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     private void Start()
     {
@@ -43,7 +51,18 @@ public class Hoguera : MonoBehaviour
         {
             LevelManager.instance.teamEnergy += eneryRegen;
         }
+
+        StartCoroutine(Esperar());
+    }
+    
+    IEnumerator Esperar()
+    {
+        
+        transition.DoTransitionOnce();
+
+        yield return new WaitForSeconds(transitionTime);
         panelFinal.SetActive(true);
+        transition.DoTransitionOnce();
     }
 
     public void CambiarEquipo()
@@ -58,10 +77,20 @@ public class Hoguera : MonoBehaviour
     }
     public void SalirDelJuego()
     {
+        StartCoroutine(EsperarYSalir());
+
+
+    }
+    
+    IEnumerator EsperarYSalir()
+    {
         
+        transition.DoTransitionOnce();
+
+        yield return new WaitForSeconds(transitionTime);
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.Hoguera);
         LevelManager.instance.ActivateScene();
-        
+        transition.DoTransitionOnce();
     }
 
 }

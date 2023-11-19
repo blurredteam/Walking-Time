@@ -11,6 +11,8 @@ public class GeneratorObjects : MonoBehaviour
     public GameObject objetoAEncontrar;
     public List<Vector3> arrayPos;
     private bool empezar = false;
+    public GameObject[] figuras;
+    private GameObject figuraElegida;
 
     [SerializeField] private Camera _puzzleCamera;
     [SerializeField] private Button exitBtn;
@@ -20,6 +22,8 @@ public class GeneratorObjects : MonoBehaviour
     public GameObject textoExplicativo;
     public GameObject imagenobjetoAEncontrar;
     public GameObject panelFinal;
+
+    public Image imagenFiguraUI;
 
     public int intentos = 3;
     
@@ -41,17 +45,22 @@ public class GeneratorObjects : MonoBehaviour
         // ---------------------------------------------
         textoIntentos.text = "Intentos restantes: " + intentos;
         textoVictoria.text = "";
-        objetoAEncontrar.transform.position = arrayPos[Random.Range(0, arrayPos.Count)];
+        int index = Random.Range(0, figuras.Length - 1);
+        figuras[index].gameObject.SetActive(true);
+
+        figuraElegida = figuras[index];
+        imagenFiguraUI.gameObject.SetActive(true);
+        imagenFiguraUI.sprite = figuraElegida.GetComponent<SpriteRenderer>().sprite;
     }
     IEnumerator EsperarYSalir()
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
-        exitBtn.enabled = false;
+        exitBtn.gameObject.SetActive(false);
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        exitBtn.enabled = true;
+        exitBtn.gameObject.SetActive(true);
         
         LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy+=1;
@@ -110,7 +119,7 @@ public class GeneratorObjects : MonoBehaviour
     IEnumerator EsperarYRecompensa(bool ganado)
     {
         panelFinal.SetActive(true);
-        
+        exitBtn.gameObject.SetActive(false);
         
         yield return new WaitForSeconds(1.5f);
         
@@ -126,9 +135,11 @@ public class GeneratorObjects : MonoBehaviour
             Recompensas(-10);
             
         }
+        
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        exitBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);

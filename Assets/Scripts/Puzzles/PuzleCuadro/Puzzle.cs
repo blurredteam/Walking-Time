@@ -90,14 +90,16 @@ public class Puzzle : MonoBehaviour
     
     IEnumerator EsperarYSalir()
     {
+        continueBtn.gameObject.SetActive(false);
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
         AudioManager.instance.PlayAmbient();
-        continueBtn.enabled = false;
+        
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        continueBtn.enabled = true;
+        
+        continueBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy+=1;
@@ -203,6 +205,7 @@ public class Puzzle : MonoBehaviour
     IEnumerator EsperarYRecompensa(bool ganado)
     {
         panFinal.SetActive(true);
+        continueBtn.gameObject.SetActive(false);
         
         yield return new WaitForSeconds(1.5f);
         if (ganado)
@@ -217,9 +220,12 @@ public class Puzzle : MonoBehaviour
             Recompensas(-10);
         }
         
+        
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        
+        continueBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         AudioManager.instance.PlayAmbient();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);

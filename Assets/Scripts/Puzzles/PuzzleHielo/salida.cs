@@ -26,7 +26,6 @@ public class salida : MonoBehaviour
             AudioManager.instance.WinMusic();
             panel.SetActive(true);
             botonSalir1.SetActive(false);
-            
         }
     }
 

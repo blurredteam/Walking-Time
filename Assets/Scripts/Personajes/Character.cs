@@ -10,6 +10,7 @@ public class Character
     public string name;
     public bool selected;
     public Image sprite;
+    public Image altSprite;
     public Image frontCard;
     public Image backCard;
     public Image icon;

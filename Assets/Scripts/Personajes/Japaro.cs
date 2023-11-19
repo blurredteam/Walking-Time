@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Japaro : Character
 {
-    public Japaro(Image sprite, Image frontCard, Image backCard, Image icon)
+    public Japaro(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 1;
         name = "Dr. Japaro";
         selected = false;
         this.sprite = sprite;
+        this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;

@@ -19,7 +19,7 @@ public class PuzzleDialogue : MonoBehaviour
         _team = LevelManager.instance._team;
     
         int selectCharacter = Random.Range(0, _team.Count);
-        characterSprite.sprite = _team[selectCharacter].sprite.sprite;
+        characterSprite.sprite = _team[selectCharacter].altSprite.sprite;
         texto.text = _team[selectCharacter].PuzzleChooseDialogue();
 
         StartCoroutine(AnimateDialogue());

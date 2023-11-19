@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
     //Las 5 listas siguientes necesitan ir en orden del ID del personaje
     [SerializeField] private List<Button> _btnList;
     [SerializeField] private List<Image> _spriteList;
+    [SerializeField] private List<Image> _altSpriteList;
     [SerializeField] private List<Image> _frontCardsList;    //Cartas de los personajes con su info
     [SerializeField] private List<Image> _backCardsList;
     [SerializeField] private List<Image> _iconList;
@@ -51,12 +52,12 @@ public class CharacterManager : MonoBehaviour
     
         instance = this;
 
-        _berenjeno = new Berenjeno(_spriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
-        _japaro = new Japaro(_spriteList[1], _frontCardsList[1], _backCardsList[1], _iconList[1]);
-        _mirabel = new Mirabel(_spriteList[2], _frontCardsList[2], _backCardsList[2], _iconList[2]);
-        _seta = new Seta(_spriteList[3], _frontCardsList[3], _backCardsList[3], _iconList[3]);
-        _fauno = new Fausto(_spriteList[4], _frontCardsList[4], _backCardsList[4], _iconList[4]);
-        _chispa = new Chispa(_spriteList[5], _frontCardsList[5], _backCardsList[5], _iconList[5]);
+        _berenjeno = new Berenjeno(_spriteList[0], _altSpriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
+        _japaro = new Japaro(_spriteList[1], _altSpriteList[1], _frontCardsList[1], _backCardsList[1], _iconList[1]);
+        _mirabel = new Mirabel(_spriteList[2], _altSpriteList[2], _frontCardsList[2], _backCardsList[2], _iconList[2]);
+        _seta = new Seta(_spriteList[3], _altSpriteList[3], _frontCardsList[3], _backCardsList[3], _iconList[3]);
+        _fauno = new Fausto(_spriteList[4], _altSpriteList[4], _frontCardsList[4], _backCardsList[4], _iconList[4]);
+        _chispa = new Chispa(_spriteList[5], _altSpriteList[5], _frontCardsList[5], _backCardsList[5], _iconList[5]);
 
         characterList = new List<Character>() { _berenjeno, _japaro, _mirabel, _seta, _fauno, _chispa };
     }

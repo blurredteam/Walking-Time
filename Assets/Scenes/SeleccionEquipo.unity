@@ -1046,6 +1046,13 @@ MonoBehaviour:
   - {fileID: 8317547413716953413, guid: 4f837abc585c39e42bfa9cf644ce1157, type: 3}
   - {fileID: 8317547413716953413, guid: e95ef2cd6a893754eb1d6e11f5ce4ec2, type: 3}
   - {fileID: 8317547413716953413, guid: e98c69bb1e648374495f8e0b72ef0e6d, type: 3}
+  _altSpriteList:
+  - {fileID: 8317547413716953413, guid: 838f78beeddc0f94387a63227ad96f24, type: 3}
+  - {fileID: 8317547413716953413, guid: 7a653dafc9ce3ca4e938535eb73ca94a, type: 3}
+  - {fileID: 8317547413716953413, guid: 6b6497f6575264947bef831ec2a29619, type: 3}
+  - {fileID: 8317547413716953413, guid: cfbe6624cbab8d241adb0c714b6c5aab, type: 3}
+  - {fileID: 8317547413716953413, guid: 0aa6675301fe39946b188c07ad211d35, type: 3}
+  - {fileID: 8317547413716953413, guid: 3e3dfbb663f94bd47aa2d814a600c16b, type: 3}
   _frontCardsList:
   - {fileID: 2549645115241126553, guid: 7e447dbc581068f41b16d120f0af6bed, type: 3}
   - {fileID: 2215727752138996153, guid: 67e4d0f8dd25f1c42b8c663e1c0b9ee2, type: 3}

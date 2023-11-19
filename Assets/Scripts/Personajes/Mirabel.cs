@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Mirabel : Character
 {
-    public Mirabel(Image sprite, Image frontCard, Image backCard, Image icon)
+    public Mirabel(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 2;
         name = "Mirabel";
         selected = false;
         this.sprite = sprite;
+        this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;

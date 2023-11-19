@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Berenjeno : Character
 {
-    public Berenjeno(Image sprite, Image frontCard, Image backCard, Image icon)
+    public Berenjeno(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 0;
         name = "Berenjeno";
         selected = false;
         this.sprite = sprite;
+        this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;

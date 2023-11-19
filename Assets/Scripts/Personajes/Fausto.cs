@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class Fausto : Character
 {   
-    public Fausto(Image sprite, Image frontCard, Image backCard, Image icon)
+    public Fausto(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
     {
         _id = 4;
         name = "Fausto";
         selected = false;
         this.sprite = sprite;
+        this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
         this.icon = icon;

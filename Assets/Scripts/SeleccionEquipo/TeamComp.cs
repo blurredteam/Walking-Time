@@ -222,6 +222,7 @@ public class TeamComp : MonoBehaviour
 
     private void ExitBonfire()
     {
+        foreach (Button b in _slotButtons) b.interactable = false;
         AudioManager.instance.ButtonSound();
         _continueBtn.interactable = false;
 

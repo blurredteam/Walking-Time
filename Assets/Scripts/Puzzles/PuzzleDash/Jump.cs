@@ -136,7 +136,7 @@ public class Jump : MonoBehaviour
         {
             AudioManager.instance.LoseMusic();
             textoTiempo.text = "¡Perdiste!";
-            textoFinal.text = "Una pena, a ver si la próxima te va mejor";
+            textoFinal.text = "Una pena, a ver si la próxima te va mejor. Pierdes 10 de energía.";
         }
 
         StartCoroutine(EsperarYRecompensa(ganaste));

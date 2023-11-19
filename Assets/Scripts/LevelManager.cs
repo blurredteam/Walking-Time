@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
     public int gold { get; set; } = 0;
     int auxGold = 0; //Solo se usa para el evento del medallon maldito
 
-    public int waterRegen { get; set; } = 50;   // Cuanto energia regenera la cantimplora en cada uso
+    public int waterRegen { get; set; } = 40;   // Cuanto energia regenera la cantimplora en cada uso
 
     public Tile[,] _map { get; set; }
     public int _mapWidth { get; set; }

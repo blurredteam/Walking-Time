@@ -4579,7 +4579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &868824771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7640,7 +7640,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\xC9STE ES EL AGUA, SIRVE PARA REPONER ENERG\xCDA.\nPARA USARLA PULSA
-    SOBRE EL RECURSO DEL INTERFAZ.\nSE PUEDE REPONER AGUA EN LAS FUENTES."
+    SOBRE EL RECURSO DEL INTERFAZ.\nSE PUEDE REPONER AGUA EN LAS FUENTES. SU USO
+    TE RECUPERA 40 DE ENERG\xCDA."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -24,7 +24,7 @@ public class Seta : Character
     {
         if (!skillApplied)
         {
-            LevelManager.instance.waterRegen = 75;
+            LevelManager.instance.waterRegen = 60;
             skillApplied = true;
         }
     }
@@ -32,7 +32,7 @@ public class Seta : Character
     {
         energy = defaultEnergy;
 
-        LevelManager.instance.waterRegen = 50;
+        LevelManager.instance.waterRegen = 40;
         skillApplied = false;
     }
 

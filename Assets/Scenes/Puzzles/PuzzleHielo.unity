@@ -496,9 +496,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1574254385}
+  botonSalir1: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 1
-  continueBtn: {fileID: 0}
+  continueBtn: {fileID: 94201412}
 --- !u!1 &126958191
 GameObject:
   m_ObjectHideFlags: 0

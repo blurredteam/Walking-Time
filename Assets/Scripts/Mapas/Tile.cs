@@ -90,7 +90,7 @@ public class Tile : MonoBehaviour
             if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[AdyacentList[i].index]; }
             else if (AdyacentList[i].type == 2) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationFire; }
             else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent ; }
-            else if (AdyacentList[i].type == 3) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent; }
+            else if (AdyacentList[i].type == 3) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationWater; }
             else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
 
         }

@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _spritesTeam;
     [SerializeField] private List<Image> _sprites;
 
+    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private TextMeshProUGUI infoTxt;
     public List<Character> _team { get; set; } = new List<Character>();
     public int teamEnergy { get; set; } = 1;
     public int maxEnergy { get; set; }
@@ -125,8 +127,13 @@ public class LevelManager : MonoBehaviour
     public void PreTravel(int energyCost)
     {
         _cameraMovementScript.enabled = false;
+         
         teamEnergy -= (energyCost + travelCostModifier);
+
         AudioManager.instance.PlaySfx(losingEnergy);
+        infoPanel.SetActive(true);
+        infoTxt.text = "HAS PERDIDO "+ (energyCost + travelCostModifier)+" DE ENERGÍA";
+        StartCoroutine(EsperarInfo());
     }
 
     // Carga la escena indicada y reduce la energia total en funcion del coste de viajar a esa casilla
@@ -166,16 +173,23 @@ public class LevelManager : MonoBehaviour
             {
                 teamEnergy = maxEnergy;
                 teamWater--;
+                
             }
             else
             {
                 teamEnergy += waterRegen;
                 teamWater--;
             }
+            infoPanel.SetActive(true);
+            infoTxt.text = "HAS USADO AGUA";
+            StartCoroutine(EsperarInfo());
         }
         else
         {
+            infoPanel.SetActive(true);
+            infoTxt.text = "NO TE QUEDA AGUA";
             AudioManager.instance.PlaySfx(noMoreWater);
+            StartCoroutine(EsperarInfo());
         }
     }
 
@@ -241,5 +255,12 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
+    }
+    private IEnumerator EsperarInfo()
+    {
+       
+        yield return new WaitForSeconds(2);
+
+        infoPanel.SetActive(false);
     }
 }

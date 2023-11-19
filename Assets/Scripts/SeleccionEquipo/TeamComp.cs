@@ -271,4 +271,10 @@ public class TeamComp : MonoBehaviour
             }
         }
     }
+
+    //Para el boton del tuto
+    public void ButtonTuto()
+    {
+        AudioManager.instance.ButtonSound();
+    }
 }

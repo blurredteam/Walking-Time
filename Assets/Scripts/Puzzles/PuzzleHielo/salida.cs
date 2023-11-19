@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class salida : MonoBehaviour
 {
     public GameObject panel;
+    public GameObject botonSalir1;
     
     public Transitioner transition;
     public float transitionTime = 1f;
@@ -29,6 +30,7 @@ public class salida : MonoBehaviour
         {
             AudioManager.instance.WinMusic();
             panel.SetActive(true);
+            botonSalir1.SetActive(false);
             
         }
         //cambio de escenas
@@ -45,7 +47,7 @@ public class salida : MonoBehaviour
     public void SalirDelJuegoDerrota()
     {
         AudioManager.instance.ButtonSound();
-        
+        AudioManager.instance.LoseMusic();
         //LevelManager.instance.teamEnergy -= 10;
         Recompensas(-10);
         
@@ -64,7 +66,7 @@ public class salida : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.LoseMusic();
+            
             LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
             LevelManager.instance.expEnergy+=1;
         }

@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
 
         AudioManager.instance.PlaySfx(losingEnergy);
         infoPanel.SetActive(true);
-        infoTxt.text = "HAS PERDIDO "+ (energyCost + travelCostModifier)+" DE ENERGÍA";
+        infoTxt.text = "-"+ (energyCost + travelCostModifier)+" ENERGÍA";
         StartCoroutine(EsperarInfo());
     }
 
@@ -181,13 +181,13 @@ public class LevelManager : MonoBehaviour
                 teamWater--;
             }
             infoPanel.SetActive(true);
-            infoTxt.text = "HAS USADO AGUA";
+            infoTxt.text = "-1 AGUA";
             StartCoroutine(EsperarInfo());
         }
         else
         {
             infoPanel.SetActive(true);
-            infoTxt.text = "NO TE QUEDA AGUA";
+            infoTxt.text = "NO QUEDA AGUA!";
             AudioManager.instance.PlaySfx(noMoreWater);
             StartCoroutine(EsperarInfo());
         }

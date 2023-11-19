@@ -421,9 +421,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 530e6b31a39c3f44b8627438b16dd8d4, type: 3}
   - {fileID: 8300000, guid: 359b04f902612d545b870cedb9ff1d8c, type: 3}
   - {fileID: 8300000, guid: 17ff2bd4fc6df52469e883bd97aae71a, type: 3}
+  - {fileID: 8300000, guid: bdc2418356a50784abc57a15b6cbfeb5, type: 3}
   _loseSound:
-  - {fileID: 8300000, guid: 14003f72af33b804da69f5ac524a1fa7, type: 3}
+  - {fileID: 8300000, guid: a2c26baa7188dab409ca902149c2ba69, type: 3}
   - {fileID: 8300000, guid: 24c198555d6272149848fe2c603813fe, type: 3}
+  - {fileID: 8300000, guid: c942865e85619cf46af195a68fc938ca, type: 3}
   kindaLoseSound: {fileID: 8300000, guid: c6976811d9a6fb941944dade9dab8fcc, type: 3}
   _buttonSound: {fileID: 8300000, guid: b0a135c19dbc2cc49909a2a583d55719, type: 3}
   _buttonSound2: {fileID: 8300000, guid: cad11a4481c77fe4aabeb5563cb0bd6c, type: 3}

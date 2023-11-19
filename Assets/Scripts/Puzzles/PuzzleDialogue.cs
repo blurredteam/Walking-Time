@@ -34,7 +34,7 @@ public class PuzzleDialogue : MonoBehaviour
         }
         contenedorTexto.SetActive(true);
 
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(4f);
 
         contenedorTexto.SetActive(false);
         while (contenedor.transform.localPosition.x > -300)

@@ -130,7 +130,7 @@ public class Jump : MonoBehaviour
             AudioManager.instance.WinMusic();
 
             textoTiempo.text = "¡Ganaste!";
-            textoFinal.text = "Enhorabuena lo has conseguido!!";
+            textoFinal.text = "Enhorabuena lo has conseguido! Ganas 10 de oro";
         }
         else
         {

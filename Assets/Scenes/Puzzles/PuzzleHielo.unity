@@ -571,6 +571,7 @@ MonoBehaviour:
   panel: {fileID: 1574254385}
   transition: {fileID: 0}
   transitionTime: 1
+  continueBtn: {fileID: 1153234155}
 --- !u!1 &126958191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,7 +2620,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121675475}
         m_TargetAssemblyTypeName: salida, Assembly-CSharp
-        m_MethodName: SalirDelJuego
+        m_MethodName: SalirDelJuegoDerrota
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4748,7 +4749,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121675475}
         m_TargetAssemblyTypeName: salida, Assembly-CSharp
-        m_MethodName: SalirDelJuego
+        m_MethodName: SalirDelJuegoVictoria
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -47,11 +47,14 @@ public class GeneratorObjects : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
+        exitBtn.enabled = false;
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
+        exitBtn.enabled = true;
         
-        LevelManager.instance.teamEnergy -= 10;
+        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy+=1;
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();

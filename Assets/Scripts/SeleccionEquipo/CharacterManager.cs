@@ -43,6 +43,7 @@ public class CharacterManager : MonoBehaviour
     */
     
     public Transitioner transition;
+    //[SerializeField] private Button continueButon; 
 
     private void Awake()
     {
@@ -92,8 +93,11 @@ public class CharacterManager : MonoBehaviour
 
     IEnumerator DoFadeTransitionCo()
     {
+        //continueButon.enabled = false;
         transition.DoTransitionOnce();
+        
         yield return new WaitForSeconds(2f);
+        //continueButon.enabled = true;
         transition.DoTransitionOnce();
     }
 

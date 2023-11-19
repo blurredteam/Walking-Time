@@ -20,7 +20,7 @@ public class TutorialFunc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        saltarTuto.onClick.AddListener(delegate { AudioManager.instance.ButtonSound(); DoFadeTransition();});
+        saltarTuto.onClick.AddListener(delegate { AudioManager.instance.ButtonSound(); SaltarTutorial();});
 
         for (int i = 0; i < 8; i++)
         {
@@ -50,17 +50,17 @@ public class TutorialFunc : MonoBehaviour
         panelTuto.SetActive(false);
     }
     
-    public void DoFadeTransition()
-    {
-        StartCoroutine(DoFadeTransitionCo());
-    }
-    
-    IEnumerator DoFadeTransitionCo()
-    {
-        transition.DoTransitionOnce();
-        yield return new WaitForSeconds(1f);
-        SaltarTutorial();
-        transition.DoTransitionOnce();
-    }
+    // public void DoFadeTransition()
+    // {
+    //     StartCoroutine(DoFadeTransitionCo());
+    // }
+    //
+    // IEnumerator DoFadeTransitionCo()
+    // {
+    //     transition.DoTransitionOnce();
+    //     yield return new WaitForSeconds(1f);
+    //     SaltarTutorial();
+    //     transition.DoTransitionOnce();
+    // }
 
 }

@@ -74,7 +74,7 @@ MonoBehaviour:
   _animationPuzzle:
   - {fileID: 9100000, guid: 68fff26636ce3eb4eaa87712937280a0, type: 2}
   - {fileID: 9100000, guid: a2bf772551732904ba5569ac7387fde2, type: 2}
-  - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
+  - {fileID: 9100000, guid: f3e00f4eaaf9c9040af6d6fb702731dd, type: 2}
   - {fileID: 9100000, guid: 5e9080a3ceed10a499fe6c5814d575bc, type: 2}
   - {fileID: 9100000, guid: 3250adadba4557e4fa2abf226609e8b1, type: 2}
   - {fileID: 9100000, guid: b1bad269c12ce3f459172fcea1241ea4, type: 2}

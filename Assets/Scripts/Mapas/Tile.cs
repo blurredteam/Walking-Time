@@ -27,9 +27,9 @@ public class Tile : MonoBehaviour
     [SerializeField] private List<RuntimeAnimatorController> _animationPuzzle;
 
     public int type;        // El tipo de casilla, 0=puzzle; 1=evento; 2=hoguera: 3=fuente
-    private int position;   // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
+    public int position;    // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
     private int energyCost; // Coste de viajar a la casilla, depende del tipo
-    private int index;       // Indica el puzzle o evento especifico
+    private int index;      // Indica el puzzle o evento especifico
 
     public int value { get; set; }
     public bool selected = false;
@@ -43,27 +43,30 @@ public class Tile : MonoBehaviour
     {
         animatorTile = GetComponent<Animator>();
     }
-    public void ColorTile(Color color)
-    {
-        _spriteRenderer.color = color;
-    }
 
     //Asigna el tipo de casilla aleatoriamente en funcion de random 
     //Ademas, empiezan todas sin ser interactuables ya que eso se gestiona mas adelante al empezar la partida desde LevelManager
     public void AssignType(int position)
     {
         this.position = position;
-        _clickEvent.enabled = false;
-
-        casillaInfo = GameObject.Find("CasillaInfo");       // Asegurar que coincide con el nombre en el editor
-        textoInfo = casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
-        spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>(); 
+        SetTileInfo();
 
         int random = Random.Range(0, 100);
         if (random >= 45) PuzzleTile();
         else if (random <= 4) BonfireTile();
         else if (random > 5 && random < 12) WaterTile();
         else ObstacleTile();
+    }
+
+    public void SetTileInfo()
+    {
+        casillaInfo = GameObject.Find("CasillaInfo");      
+        textoInfo = casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
+        spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>();
+
+        _clickEvent.enabled = false;
+        _spriteRenderer.sprite = _bonfireImage.sprite; // Imagen/animacion casilla final
+        if (position != 0) animatorTile.enabled = false;
     }
 
     public void LoadTile()
@@ -85,14 +88,7 @@ public class Tile : MonoBehaviour
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {
             AdyacentList[i]._clickEvent.enabled = true;
-
-            //Animacion de las siguientes casillas
-            if (AdyacentList[i].type == 0) { AdyacentList[i].animatorTile.runtimeAnimatorController = _animationPuzzle[AdyacentList[i].index]; }
-            else if (AdyacentList[i].type == 2) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationFire; }
-            else if (AdyacentList[i].type == 1) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationEvent ; }
-            else if (AdyacentList[i].type == 3) { AdyacentList[i].animatorTile.runtimeAnimatorController = animationWater; }
-            else { AdyacentList[i]._spriteRenderer.color = Color.blue; }
-
+            AdyacentList[i].animatorTile.enabled = true;
         }
     }
 
@@ -103,32 +99,35 @@ public class Tile : MonoBehaviour
         var puzzleList = ScenesManager.instance.puzzleScenes;
         index = Random.Range(0, puzzleList.Count);
 
-        
         _spriteRenderer.sprite = _puzzleImage.sprite;
+        animatorTile.runtimeAnimatorController = _animationPuzzle[index];
     }
 
     private void ObstacleTile()
     {
-        _spriteRenderer.sprite = _obstacleImage.sprite;
+        type = 1;
         energyCost = Random.Range(30, 40);
 
-        type = 1;
+        _spriteRenderer.sprite = _obstacleImage.sprite;
+        animatorTile.runtimeAnimatorController = animationEvent;
     }
 
     private void BonfireTile()
     {
-        _spriteRenderer.sprite = _bonfireImage.sprite;
+        type = 2;
         energyCost = Random.Range(40, 60);
 
-        type = 2;
+        _spriteRenderer.sprite = _bonfireImage.sprite;
+        animatorTile.runtimeAnimatorController = animationFire;
     }
 
     private void WaterTile()
     {
-        _spriteRenderer.sprite = _waterImage.sprite;
+        type = 3;
         energyCost = Random.Range(10, 30);
 
-        type = 3;
+        _spriteRenderer.sprite = _waterImage.sprite;
+        animatorTile.runtimeAnimatorController = animationWater;
     }
 
     public void ShowInfo()

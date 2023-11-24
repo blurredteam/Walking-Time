@@ -67,6 +67,7 @@ MonoBehaviour:
   _obstacleImage: {fileID: 5028095612828987990, guid: 378fd573b8361cf4c987a98488f1356a, type: 3}
   _puzzleImage: {fileID: 1100399361933692054, guid: c7ec662d99f146149b0df0ade307328a, type: 3}
   _waterImage: {fileID: 1100399361933692054, guid: eddde5f9717b6ae4fb56e59ceeebdd62, type: 3}
+  _finalImage: {fileID: 1100399361933692054, guid: 0fefa07c8e4e6484ab6e6d63ce0f8414, type: 3}
   animatorTile: {fileID: 8851896025456918137}
   animationEvent: {fileID: 9100000, guid: 36c9e16dbb53e9b4ca20bcc95d76663b, type: 2}
   animationFire: {fileID: 9100000, guid: 4c4691407bb251649b59505411966975, type: 2}

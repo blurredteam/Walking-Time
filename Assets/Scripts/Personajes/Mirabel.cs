@@ -16,7 +16,7 @@ public class Mirabel : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[OBSERVADORA]";
-        energy = 90;
+        energy = 100;
         //currentEnergy = energy;
         defaultEnergy = energy;
     }

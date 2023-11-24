@@ -79,10 +79,10 @@ public class LevelManager : MonoBehaviour
             _sprites[i].sprite = _team[i].sprite.sprite;
         }
 
-        _icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });
-        _icons[1].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(1); });
-        _icons[2].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(2); });
-        _icons[3].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(3); });
+        //_icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });
+        //_icons[1].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(1); });
+        //_icons[2].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(2); });
+        //_icons[3].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(3); });
     }
 
     private void Start()
@@ -95,8 +95,8 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        energyTxt.text = teamEnergy.ToString();
-        waterTxt.text = teamWater.ToString();
+        energyTxt.text = teamEnergy.ToString() + "/" + maxEnergy.ToString();
+        waterTxt.text = teamWater.ToString() + "/" + maxWater.ToString();
         goldTxt.text = gold.ToString();
 
         CheckResources();
@@ -193,56 +193,56 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void ShowCharacterCard(int position)
-    {
-        if (cardMoved)
-        {
-            StartCoroutine(ChangeCard(position));
-            return;
-        }
-        cardMoved = true;
-        _characterCard.sprite = _team[position].frontCard.sprite;
+    //private void ShowCharacterCard(int position)
+    //{
+    //    if (cardMoved)
+    //    {
+    //        StartCoroutine(ChangeCard(position));
+    //        return;
+    //    }
+    //    cardMoved = true;
+    //    _characterCard.sprite = _team[position].frontCard.sprite;
 
-        SpriteState btnSprites = new SpriteState();
-        btnSprites.highlightedSprite = _team[position].backCard.sprite;
-        btnSprites.selectedSprite = _team[position].sprite.sprite;
+    //    SpriteState btnSprites = new SpriteState();
+    //    btnSprites.highlightedSprite = _team[position].backCard.sprite;
+    //    btnSprites.selectedSprite = _team[position].sprite.sprite;
 
-        _characterCard.gameObject.GetComponent<Button>().spriteState = btnSprites;
-        _characterCard.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-        _characterCard.gameObject.GetComponent<Button>().onClick.AddListener(HideCard);
-        StartCoroutine(ShowCard());
-    }
+    //    _characterCard.gameObject.GetComponent<Button>().spriteState = btnSprites;
+    //    _characterCard.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+    //    _characterCard.gameObject.GetComponent<Button>().onClick.AddListener(HideCard);
+    //    StartCoroutine(ShowCard());
+    //}
 
-    private IEnumerator ShowCard()
-    {
-        while (_characterCard.rectTransform.localPosition.x > 730)
-        {
-            _characterCard.rectTransform.position -= new Vector3(0.1f, 0);
-            yield return null;
-        }
-    }
+    //private IEnumerator ShowCard()
+    //{
+    //    while (_characterCard.rectTransform.localPosition.x > 730)
+    //    {
+    //        _characterCard.rectTransform.position -= new Vector3(0.1f, 0);
+    //        yield return null;
+    //    }
+    //}
 
-    private void HideCard()
-    {
-        cardMoved = false;
-        StartCoroutine(HideCardCo());
-    }
+    //private void HideCard()
+    //{
+    //    cardMoved = false;
+    //    StartCoroutine(HideCardCo());
+    //}
 
-    private IEnumerator HideCardCo()
-    {
-        while (_characterCard.rectTransform.localPosition.x < 1600)
-        {
-            _characterCard.rectTransform.position += new Vector3(0.1f, 0);
-            yield return null;
-        }
-    }
+    //private IEnumerator HideCardCo()
+    //{
+    //    while (_characterCard.rectTransform.localPosition.x < 1600)
+    //    {
+    //        _characterCard.rectTransform.position += new Vector3(0.1f, 0);
+    //        yield return null;
+    //    }
+    //}
 
-    private IEnumerator ChangeCard(int position)
-    {
-        HideCard();
-        yield return new WaitForSeconds(0.3f);
-        ShowCharacterCard(position);
-    }
+    //private IEnumerator ChangeCard(int position)
+    //{
+    //    HideCard();
+    //    yield return new WaitForSeconds(0.3f);
+    //    ShowCharacterCard(position);
+    //}
 
     public void DoFadeTransition(int tileType, int index)
     {
@@ -256,11 +256,10 @@ public class LevelManager : MonoBehaviour
         ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
     }
+
     private IEnumerator EsperarInfo()
     {
-       
         yield return new WaitForSeconds(2);
-
         infoPanel.SetActive(false);
     }
 }

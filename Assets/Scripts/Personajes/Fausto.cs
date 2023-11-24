@@ -44,13 +44,14 @@ public class Fausto : Character
         {
             skillApplied = true;
 
-            energy = Random.Range(30, 120);
+            energy = Random.Range(40, 120);
             float aux = energy;
 
             foreach (Character character in _team)
                 if (character.name == "Dr. Japaro") aux *= 1.1f;
 
             energy = (int)aux;
+            defaultEnergy = energy;
 
             float currentTeamEnergy = TeamComp.instance._teamCurrentEnergy;
             float maxTeamEnergy = TeamComp.instance._teamMaxEnergy;

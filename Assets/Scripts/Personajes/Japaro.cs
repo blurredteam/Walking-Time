@@ -17,7 +17,7 @@ public class Japaro : Character
         this.icon = icon;
         skillDesc = "[PRECAVIDO]";
         skillApplied= false;
-        energy = 60;
+        energy = 80;
         //currentEnergy = energy;
         defaultEnergy = energy;
     }
@@ -32,7 +32,7 @@ public class Japaro : Character
         float currentEnergy = 0;
 
         foreach (var c in TeamComp.instance._teamComp)
-            if (c != null && c.name != "Fausto")
+            if (c != null) // && c.name != "Fausto"
             {
                 float charEnergy = c.defaultEnergy * 1.1f;
                 c.energy = (int)charEnergy;

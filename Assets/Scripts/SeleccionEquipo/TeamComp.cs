@@ -91,6 +91,7 @@ public class TeamComp : MonoBehaviour
                 //Se aplican las habilidades* y se comprueba si tiene equipo completo
                 ApplySkills();
                 CheckReady();
+
                 break;
             }
         }

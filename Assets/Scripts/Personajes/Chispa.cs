@@ -18,7 +18,7 @@ public class Chispa : Character
         this.backCard = backCard;
         this.icon = icon;
         skillDesc = "[CHISPA]";
-        energy = 60;
+        energy = 80;
         //currentEnergy = energy;
         defaultEnergy = energy;
     }

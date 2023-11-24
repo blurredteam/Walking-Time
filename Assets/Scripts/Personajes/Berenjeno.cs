@@ -17,7 +17,7 @@ public class Berenjeno : Character
         this.icon = icon;
         skillDesc = "[FORZUDO]";
         skillApplied = false;
-        energy = 150;
+        energy = 140;
         //currentEnergy = energy;
         defaultEnergy = energy;
     }
@@ -27,9 +27,7 @@ public class Berenjeno : Character
         if (!skillApplied) 
         {
             if (TeamComp.instance._teamCurrentWater == TeamComp.instance._teamMaxWater)
-            {
                 TeamComp.instance._teamCurrentWater--;
-            }
 
             TeamComp.instance._teamMaxWater--;
             TeamComp.instance._waterTxt.color = new Color(0.7f, 0.1f, 0.2f, 1);

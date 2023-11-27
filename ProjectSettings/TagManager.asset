@@ -8,6 +8,8 @@ TagManager:
   - Salida
   - Audio
   - Obstaculo
+  - Gota
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fondo
+    uniqueID: 4096388251
+    locked: 0
+  - name: Suelo
+    uniqueID: 2311221897
+    locked: 0
+  - name: Gotas
+    uniqueID: 2510591803
+    locked: 0
+  - name: RecogeGotas
+    uniqueID: 1628670367
+    locked: 0
+  - name: GUI
+    uniqueID: 3993315913
     locked: 0

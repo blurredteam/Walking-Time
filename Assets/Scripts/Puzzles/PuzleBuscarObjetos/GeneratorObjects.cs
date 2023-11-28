@@ -20,20 +20,23 @@ public class GeneratorObjects : MonoBehaviour
     public TextMeshProUGUI textoVictoria;
     public TextMeshProUGUI textoIntentos;
     public GameObject textoExplicativo;
-    public GameObject imagenobjetoAEncontrar;
+    
     public GameObject panelFinal;
 
     public Image imagenFiguraUI;
+    public Image imagenobjetoAEncontrar;
 
     public int intentos = 3;
     
     public Transitioner transition;
     public float transitionTime = 1f;
+    
+    public RectTransform canvasRectTransform;
 
-    private void Awake()
-    {
-        transition = ScenesManager.instance.transitioner;
-    }
+    // private void Awake()
+    // {
+    //     transition = ScenesManager.instance.transitioner;
+    // }
 
     void Start()
     {
@@ -49,8 +52,19 @@ public class GeneratorObjects : MonoBehaviour
         figuras[index].gameObject.SetActive(true);
 
         figuraElegida = figuras[index];
-        imagenFiguraUI.gameObject.SetActive(true);
-        imagenFiguraUI.sprite = figuraElegida.GetComponent<SpriteRenderer>().sprite;
+        
+
+        // Calcula la posición absoluta en función de la posición relativa.
+        Vector2 posicionAbsoluta = new Vector2(
+            figuraElegida.GetComponent<RectTransform>().anchoredPosition.x * canvasRectTransform.rect.width,
+            figuraElegida.GetComponent<RectTransform>().anchoredPosition.y * canvasRectTransform.rect.height
+        );
+
+        // Establece la posición del objeto en el Canvas.
+        figuraElegida.GetComponent<RectTransform>().anchoredPosition = posicionAbsoluta;
+        //imagenFiguraUI.gameObject.SetActive(true);
+        imagenFiguraUI.sprite = figuraElegida.GetComponent<Image>().sprite;
+        imagenobjetoAEncontrar.sprite = imagenFiguraUI.sprite;
     }
     IEnumerator EsperarYSalir()
     {
@@ -100,10 +114,8 @@ public class GeneratorObjects : MonoBehaviour
     public void SetEmpezar()
     {
         empezar = true;
-        textoExplicativo.GetComponent<RectTransform>().transform.position = new Vector3(120f, 70f, 0f);
-        imagenobjetoAEncontrar.GetComponent<RectTransform>().transform.position = new Vector3(270f, 70f, 0);
-        textoExplicativo.GetComponent<RectTransform>().localScale = new Vector3(0.7f, 0.7f, 0f);
-        imagenobjetoAEncontrar.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 0);
+        textoExplicativo.SetActive(true);
+        imagenFiguraUI.gameObject.SetActive(true);
     }
     
     private void Recompensas(int recompensa)

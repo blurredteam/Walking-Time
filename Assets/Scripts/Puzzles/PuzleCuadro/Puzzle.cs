@@ -80,7 +80,7 @@ public class Puzzle : MonoBehaviour
 
         foreach (var pieza in listaPiezas)
         {
-            if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5 &&
+            if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 3 &&
                 pieza.TryGetComponent<Collider2D>(out Collider2D col))
             {
                 col.enabled = true;
@@ -158,7 +158,7 @@ public class Puzzle : MonoBehaviour
 
                 foreach (var pieza in listaPiezas)
                 {
-                    if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 2.5 &&
+                    if (Vector3.Distance(espacio.transform.position, pieza.transform.position) < 3 &&
                         pieza.TryGetComponent<Collider2D>(out Collider2D col))
                     {
                         col.enabled = true;

@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
 
         AudioManager.instance.PlaySfx(losingEnergy);
         infoPanel.SetActive(true);
-        infoTxt.text = "-"+ (energyCost + travelCostModifier)+" ENERGÕA";
+        infoTxt.text = "-"+ (energyCost + travelCostModifier)+" ENERG√çA";
         StartCoroutine(EsperarInfo());
     }
 

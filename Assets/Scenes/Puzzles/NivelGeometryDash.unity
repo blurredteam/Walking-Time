@@ -1829,7 +1829,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640316633}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a16b064c32dec74288a29bc05acb034, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ecbaf779409e9941baa568cb50c110d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMaxima: 8
@@ -1841,7 +1841,6 @@ MonoBehaviour:
   textoFinal: {fileID: 1083786265}
   fondo: {fileID: 8300000, guid: 9369ecf33f9236248bf5c476e9c4f8c5, type: 3}
   sonidoSaltar: {fileID: 8300000, guid: 94d6f9458c7361142b9b6911a928a39c, type: 3}
-  transitionTime: 1
 --- !u!1 &2005761441
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,12 +14,28 @@ public class GeneradorObstaculos : MonoBehaviour
 
     IEnumerator GenerarObstaculos()
     {
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, 0f);
+        bool spawnArriba = false;
         while (true) 
         {
-            Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, 0f);
-            prefabObstaculo.transform.localScale=new Vector3(1,Random.Range(1, 3),1);
-            Instantiate(prefabObstaculo, spawnPosition, Quaternion.identity, transform);
-            yield return new WaitForSeconds(Random.Range(1.45f, 2.0f));
+            prefabObstaculo.transform.localScale = new Vector3(1, Random.Range(1, 3), 1);
+            if(Random.Range(1,4)<3 || spawnArriba)
+            {
+                
+                prefabObstaculo.GetComponent<Rigidbody2D>().gravityScale = 1;
+                spawnPosition.y = transform.position.y;
+                Instantiate(prefabObstaculo, spawnPosition, Quaternion.identity, transform);
+                spawnArriba = false;
+                yield return new WaitForSeconds(Random.Range(1.45f, 1.6f));
+            }
+            else
+            {
+                prefabObstaculo.GetComponent<Rigidbody2D>().gravityScale = 0;
+                spawnPosition.y = -0.5f;
+                Instantiate(prefabObstaculo, spawnPosition, Quaternion.identity, transform);
+                spawnArriba = true;
+                yield return new WaitForSeconds(Random.Range(1f, 1.5f));
+            }
         }
     }
 }

@@ -148,11 +148,11 @@ public class GeneratorObjects : MonoBehaviour
             
         }
         
-        transition.DoTransitionOnce();
+        //transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         exitBtn.gameObject.SetActive(true);
-        transition.DoTransitionOnce();
+        //transition.DoTransitionOnce();
         
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();

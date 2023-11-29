@@ -264,7 +264,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "De las grietas de la cueva brota agua fresca, rec\xF3gela. Pero ten cuidado,
+    de las mismas grietas brota tambi\xE9n una sustancia verde muy peligrosa que
+    contaminar\xE1 tu agua, ev\xEDtala."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -291,7 +293,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 56.2
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1496,13 +1498,16 @@ MonoBehaviour:
   venenoTexto: {fileID: 1639352957}
   timer: {fileID: 482567361}
   textoFinal: {fileID: 1761767463}
+  panelInfo: {fileID: 1994648853}
   panelInicio: {fileID: 1478228862}
   panelFinal: {fileID: 1858446960}
   gotaAgua: {fileID: 8300000, guid: a059a3624df6e38499ba8cbb56bfe8dc, type: 3}
   venenoAudio: {fileID: 8300000, guid: a9a6a4c484361ce4b99d5efe12fc4e79, type: 3}
+  volverBtn: {fileID: 343825095}
   gotasRecogidas: 0
   venenoRecogido: 0
   gotasTotales: 0
+  transitionTime: 1
 --- !u!212 &1313009269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2582,7 +2587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1994648854
 RectTransform:
   m_ObjectHideFlags: 0

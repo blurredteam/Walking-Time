@@ -14,15 +14,25 @@ public class ScenesManager : MonoBehaviour
 
     public Transitioner transitioner;
 
+    private int nextWaterPuzzle;
+    private int lastPuzzle;
+
     // Lista con todos los puzzles
     public List<string> puzzleScenes = new List<string>()
     {
         "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", "NivelGeometryDash"
     };
 
+    public List<string> waterScenes = new List<string>()
+    {
+        "PuzzleFuente", "PuzzleGotas"
+    };
+
     private void Awake()
     {
         instance = this;
+        nextWaterPuzzle = Random.Range(0, 2);
+        Debug.Log(nextWaterPuzzle);
     }
 
     /*
@@ -44,6 +54,7 @@ public class ScenesManager : MonoBehaviour
         Hoguera,
         EndScene,
         EventScene,
+        PuzzleGotas,
     }
 
     public void LoadScene(Scene scene)
@@ -104,7 +115,11 @@ public class ScenesManager : MonoBehaviour
     }
     private void LoadWater()
     {
-        SceneManager.LoadScene(Scene.PuzzleFuente.ToString(), LoadSceneMode.Additive);
+        //Si lo queremos aleatorio:
+        nextWaterPuzzle = Random.Range(0, 2);
+        SceneManager.LoadScene(waterScenes[nextWaterPuzzle], LoadSceneMode.Additive);
+        if (nextWaterPuzzle == 0) { nextWaterPuzzle = 1; }
+        else { nextWaterPuzzle = 0; }
     }
 
 }

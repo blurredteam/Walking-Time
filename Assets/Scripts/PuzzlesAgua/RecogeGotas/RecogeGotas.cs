@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class RecogeGotas : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoFinal;
 
     [SerializeField]
+    private GameObject panelInfo;
+    [SerializeField]
     private GameObject panelInicio;
     [SerializeField]
     private GameObject panelFinal;
@@ -25,11 +28,16 @@ public class RecogeGotas : MonoBehaviour
     [SerializeField] private AudioClip gotaAgua;
     [SerializeField] private AudioClip venenoAudio;
 
+    [SerializeField] private Button volverBtn;
+
     public int gotasRecogidas = 0;
     public int venenoRecogido = 0;
 
     public int gotasTotales = 0;
     private float tiempoRestante = 20f; // Tiempo inicial de cuenta regresiva
+
+    private Transitioner transition;
+    public float transitionTime = 1f;
 
     //private int direccion = 1;
     private bool movimientoEmpezado = false;
@@ -39,13 +47,17 @@ public class RecogeGotas : MonoBehaviour
 
     private void Awake()
     {
+        transition = ScenesManager.instance.transitioner;
         if (instance == null)
             instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        volverBtn.onClick.AddListener(delegate
+        {
+            StartCoroutine(EsperarYSalir());
+        });
     }
     // Update is called once per frame
     void Update()
@@ -115,19 +127,73 @@ public class RecogeGotas : MonoBehaviour
     }
     public void EmpezarJuego()
     {
+        AudioManager.instance.ButtonSound();
         panelInicio.SetActive(false);
+        panelInfo.SetActive(true);
         movimientoEmpezado = true;
     }
     private void FinalJuego()
     {
         movimientoEmpezado = false;
         panelFinal.SetActive(true);
+        panelInfo.SetActive(false);
         textoFinal.text = "DE TODO LO CAÍDO HAS RECOGIDO " + gotasRecogidas + " GOTAS DE AGUA DE LAS " + gotasTotales + " POSIBLES Y " + venenoRecogido + " GOTAS DE VENENO.";
         Recompensas();
     }
     private void Recompensas()
     {
+        int aguaMinima = gotasTotales - Mathf.RoundToInt(gotasTotales / 3);//Si consigue el 66% de las gotas consigue un uso
+        if((gotasRecogidas==gotasTotales) && (venenoRecogido == 0))
+        {
+            textoFinal.text = "ENHORABUENA, HAS RECOGIDO TODAS LAS GOTAS POSIBLES DE AGUA LIMPIA. ¡GANAS 2 USOS DE AGUA!";
+            AudioManager.instance.WinMusic();
+            AguaGanada(2);
 
+        }
+        else if(venenoRecogido > 0)
+        {
+            textoFinal.text = "VAYA... HAS MEZCLADO TU AGUA CON VENENO, HAS CONTAMINADO TODA TU AGUA POR LO QUE DEBES TIRARLA.";
+            AudioManager.instance.LoseMusic();
+            LevelManager.instance.teamWater = 0;
+        }
+        else if(gotasRecogidas >= aguaMinima)
+        {
+            textoFinal.text = "HAS CONSEGUIDO AGUA SUFICIENTE PARA RECUPERAR UN USO DE AGUA PERO PODRÍAS RECOGER MÁS.";
+            AudioManager.instance.KindaLoseMusic();
+            AguaGanada(1);
+        }
+        else
+        {
+            textoFinal.text = "VAYA... NO HAS CONSEGUIDO RECOGER SUFICIENTE AGUA.";
+            AudioManager.instance.LoseMusic();
+        }
+    }
+
+    private void AguaGanada(int cantAguaGanada)
+    {
+        int maxAgua = LevelManager.instance.maxWater;
+        int agua = LevelManager.instance.teamWater;
+
+        if ((cantAguaGanada + agua) >= maxAgua)
+        {
+            LevelManager.instance.teamWater = maxAgua;
+        }
+        else
+        {
+            LevelManager.instance.teamWater += cantAguaGanada;
+        }
+    }
+
+    IEnumerator EsperarYSalir()
+    {
+        AudioManager.instance.ButtonSound();
+        transition.DoTransitionOnce();
+
+        yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleGotas);
+        LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 }
     

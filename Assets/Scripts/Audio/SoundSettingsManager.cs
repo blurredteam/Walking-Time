@@ -15,8 +15,8 @@ public class SoundSettingsManager : MonoBehaviour
     [SerializeField] private Slider SFXSlider;
     [SerializeField] private Slider ButtonsSlider;
     [SerializeField] private Slider SoundtrackSlider;
-    [SerializeField] private Slider Level1Slider;
-    [SerializeField] private Slider MainMenuSlider;
+    [SerializeField] private Slider BackgroundSlider;
+
 
 
     void Start()
@@ -41,16 +41,12 @@ public class SoundSettingsManager : MonoBehaviour
             LoadSoundtrack();
         }
         else { SetSoundtrackVolume(); }
-        if (PlayerPrefs.HasKey("level1Vol"))
+        if (PlayerPrefs.HasKey("backgroundVol"))
         {
             LoadLevel1();
         }
-        else { SetLevel1Volume(); }
-        if (PlayerPrefs.HasKey("mainmenuVol"))
-        {
-            LoadMainMenu();
-        }
-        else { SetMainMenuVolume(); }
+        else { SetBackgroundVolume(); }
+
     }
 
     public void LoadMaster()
@@ -75,14 +71,10 @@ public class SoundSettingsManager : MonoBehaviour
     }
     public void LoadLevel1()
     {
-        Level1Slider.value = PlayerPrefs.GetFloat("level1Vol");
-        SetLevel1Volume();
+        BackgroundSlider.value = PlayerPrefs.GetFloat("backgroundVol");
+        SetBackgroundVolume();
     }
-    public void LoadMainMenu()
-    {
-        MainMenuSlider.value = PlayerPrefs.GetFloat("mainmenuVol");
-        SetMainMenuVolume();
-    }
+
 
     public void SetMasterVolume()
     {
@@ -108,18 +100,13 @@ public class SoundSettingsManager : MonoBehaviour
         Mixer.SetFloat("SoundtrackVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("soundtrackVol", volume);
     }
-    public void SetLevel1Volume()
+    public void SetBackgroundVolume()
     {
-        float volume = Level1Slider.value;
-        Mixer.SetFloat("Level1Volume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("level1Vol", volume);
+        float volume = BackgroundSlider.value;
+        Mixer.SetFloat("BackgroundVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("backgroundVol", volume);
     }
-    public void SetMainMenuVolume()
-    {
-        float volume = MainMenuSlider.value;
-        Mixer.SetFloat("MainMenuVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("mainmenuVol", volume);
-    }
+
 
 
 

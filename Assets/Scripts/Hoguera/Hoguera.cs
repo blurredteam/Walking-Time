@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,12 @@ public class Hoguera : MonoBehaviour
     [SerializeField] private Image iconP2;
     [SerializeField] private Image iconP3;
 
+    //Objetos
+    [SerializeField] private List<Button> objectIcons;
+    [SerializeField] private GameObject panelQuitarObjeto;
+    [SerializeField] private TextMeshProUGUI textoAviso;
+    [SerializeField] private Button _confirmarBtn;
+
     private int eneryRegen = 100;
     
     public Transitioner transition;
@@ -25,7 +32,39 @@ public class Hoguera : MonoBehaviour
 
     private void Awake()
     {
+        for (int i = 0; i < objectIcons.Count; i++)
+        {
+            objectIcons[i].image.sprite = LevelManager.instance._eventObjects[i].sprite;
+            if(objectIcons[i].image.sprite != null) objectIcons[i].gameObject.SetActive(true);
+        }
+
+        objectIcons[0].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[0], 0); });
+        objectIcons[1].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[1], 1); });
+        objectIcons[2].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[2], 2); });
+        objectIcons[3].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[3], 3); });
+
         transition = ScenesManager.instance.transitioner;
+    }
+
+    private void Warning(Evento e, int index)
+    {
+        panelQuitarObjeto.SetActive(true);
+        textoAviso.text = LevelManager.instance.removedEvents[index]._avisoQuitarObj;
+
+        _confirmarBtn.onClick.RemoveAllListeners();
+        _confirmarBtn.onClick.AddListener(delegate { RemoveObject(e, index); });
+    }
+
+    private void RemoveObject(Evento e, int index)
+    {
+        Debug.Log("ELIMINADO: " + e._nombre);
+        objectIcons[index].gameObject.SetActive(false);
+        objectIcons[index].image.sprite = null;
+
+        LevelManager.instance.removedEvents[index].RemoveEventoObj();
+        LevelManager.instance.removedEvents[index] = null;
+        LevelManager.instance._eventObjects[index].gameObject.SetActive(false);
+        LevelManager.instance._eventObjects[index].sprite = null;
     }
 
     private void Start()

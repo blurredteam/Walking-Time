@@ -8,12 +8,13 @@ public class PozoEvento : Evento
     public PozoEvento(Image imagenEvento)
     {
         _nombre = "Pozo subterráneo";
+        index = 3;
         _eventImage = imagenEvento;
         _eventoTxt = "Cuando andáis, se escucha un ruido de agua deslizándose por la piedra, " +
             "al rebuscar un poco más… ¡Encontráis un pozo tras una fina grieta!";
 
         _opcionesList.Add("1. Coger agua de la grieta.");
-        _opcionesList.Add("2. [“Forzudo”] Le pides a Berenjeno que reviente la pared.");
+        _opcionesList.Add("2. [Forzudo] Le pides a Berenjeno que reviente la pared.");
         _opcionesList.Add("3. Pides un deseo y ¿tiras un poco de oro a la grieta?");
 
         _resultadosList.Add("1. La grieta es muy estrecha y sólo os deja meter un brazo dentro por lo que sólo podéis " +

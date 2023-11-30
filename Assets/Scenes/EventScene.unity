@@ -380,7 +380,11 @@ MonoBehaviour:
   _opcion1: {fileID: 964622202}
   _opcion2: {fileID: 1836567291}
   _opcion3: {fileID: 1909808460}
-  _imagenes: []
+  _eventImages: []
+  _eventObjects:
+  - {fileID: 1802608512224493458, guid: 1385813d67cb0c34999933af49b4fc70, type: 3}
+  - {fileID: 5842688583726818339, guid: 83bc24b72dec11641ac43b5f1b28c5a6, type: 3}
+  - {fileID: 3083059026958100050, guid: d42bf0325fd9378428757e9a77c79c66, type: 3}
 --- !u!1 &886594951
 GameObject:
   m_ObjectHideFlags: 0

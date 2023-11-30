@@ -8,6 +8,7 @@ public class CristalEvento : Evento
     public CristalEvento(Image imagenEvento)
     {
         _nombre = "Cristales del futuro";
+        index = 4;
         _eventImage = imagenEvento;
         _eventoTxt = "En la cueva aparecen unos extraños brillos de colores reflejados en la pared." +
             " Al acercaros veis que son cristales de vivos colores, azul, rojo, amarillo… y que parpadean," +

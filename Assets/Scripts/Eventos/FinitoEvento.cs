@@ -8,6 +8,7 @@ public class FinitoEvento : Evento
     public FinitoEvento(Image imagenEvento)
     {
         _nombre = "Extraño disfrazado";
+        index = 2;
         _eventImage = imagenEvento;
         _eventoTxt = "Durante el camino un ruido extraño retumba por la caverna," +
             "parece una especie de risa…\r\n– JA JA JA JA JA\r\nUna alargada criatura se balancea desde el techo boca abajo, " +

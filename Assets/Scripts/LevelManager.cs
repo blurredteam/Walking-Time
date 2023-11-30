@@ -26,8 +26,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI waterTxt;
     [SerializeField] private TextMeshProUGUI goldTxt;
     [SerializeField] private List<Image> _icons;
-    [SerializeField] private Image _characterCard;
-    private bool cardMoved = false;
+
+    [SerializeField] public List<Image> _eventObjects; //Lista de objetos que se pueden conseguir en eventos
+    public List<Evento> removedEvents = new List<Evento>() { null, null, null, null };
+
+    //[SerializeField] private Image _characterCard;
+    //private bool cardMoved = false;
 
     [SerializeField] private GameObject _spritesTeam;
     [SerializeField] private List<Image> _sprites;
@@ -36,7 +40,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI infoTxt;
     public List<Character> _team { get; set; } = new List<Character>();
     public int teamEnergy { get; set; } = 1;
-    public int maxEnergy { get; set; }
+    public int maxEnergy { get; set; } = 1;
     public int teamWater { get; set; }
     public int maxWater { get; set; }
     public int expEnergy { get; set; }
@@ -100,9 +104,18 @@ public class LevelManager : MonoBehaviour
         goldTxt.text = gold.ToString();
 
         CheckResources();
+        CheckObjects();
     }
 
     private void CheckResources()
+    {
+        if(teamWater > maxWater) teamWater = maxWater;
+        if(teamEnergy > maxEnergy) teamEnergy = maxEnergy;
+
+        if (teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+    }
+
+    private void CheckObjects()
     {
         if (cursed && auxGold == 0) auxGold = gold;
         if (cursed)
@@ -110,10 +123,22 @@ public class LevelManager : MonoBehaviour
             if (gold <= auxGold) auxGold = gold;
             else if (gold > auxGold) gold = auxGold;
         }
+    }
 
-        if (teamWater > maxWater) teamWater = maxWater;
+    public void AddObject(Evento e, Image objectIcon)
+    {
+        for (int i = 0; i < _eventObjects.Count; i++)
+        {
+            if (!_eventObjects[i].IsActive())
+            {
+                removedEvents[i] = e;
+                _eventObjects[i].sprite = objectIcon.sprite;
+                _eventObjects[i].gameObject.SetActive(true);
+                return;
+            }
+        }
 
-        if (teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+        Debug.Log("No caben mas objetos!");
     }
 
     // Habilita las primeras casillas disponibles al jugador
@@ -132,7 +157,7 @@ public class LevelManager : MonoBehaviour
 
         AudioManager.instance.PlaySfx(losingEnergy);
         infoPanel.SetActive(true);
-        infoTxt.text = "-"+ (energyCost + travelCostModifier)+" ENERGÍA";
+        infoTxt.text = "-"+ energyCost + " + " + travelCostModifier +" ENERGÍA";
         StartCoroutine(EsperarInfo());
     }
 

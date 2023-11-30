@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class ControladorEventos : MonoBehaviour
 {
@@ -11,17 +12,20 @@ public class ControladorEventos : MonoBehaviour
     [SerializeField] public GameObject panel;
 
     [SerializeField] private TextMeshProUGUI _nombreEvento;
-    [SerializeField] private TextMeshProUGUI _eventoTxt;
+    [SerializeField] public TextMeshProUGUI _eventoTxt;
     [SerializeField] public TextMeshProUGUI _resultadoTxt;
 
-    [SerializeField] private TextMeshProUGUI _opcion1;
-    [SerializeField] private TextMeshProUGUI _opcion2;
-    [SerializeField] private TextMeshProUGUI _opcion3;
+    [SerializeField] public TextMeshProUGUI _opcion1;
+    [SerializeField] public TextMeshProUGUI _opcion2;
+    [SerializeField] public TextMeshProUGUI _opcion3;
 
-    [SerializeField] private List<Image> _imagenes = new List<Image>();
+    [SerializeField] private List<Image> _eventImages;
+    [SerializeField] private List<Image> _eventObjects;
 
     private List<Evento> eventos;
     private int seleccionado;       
+
+    private static int previousSelected;
 
     private void Awake()
     {
@@ -32,18 +36,38 @@ public class ControladorEventos : MonoBehaviour
 
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
         ViajeroEvento evento0 = new ViajeroEvento(null);
-        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(null);
+        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(null, _eventObjects[0]);
         FinitoEvento evento2 = new FinitoEvento(null);
         PozoEvento evento3 = new PozoEvento(null);
         CristalEvento evento4 = new CristalEvento(null);
+        LamentoEvento evento5 = new LamentoEvento(null, _eventObjects[1]);
+        BotellaEvento evento6 = new BotellaEvento(null, _eventObjects[2]);
 
-        eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4 };
+        eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6 };
+        
+        //1.1 Se quitan los eventos que ya no se pueden jugar
+        var removedEvents = LevelManager.instance.removedEvents;
+        for(int i = 0; i < removedEvents.Count; i++)
+        {
+            for(int j = 0; j < eventos.Count; j++)
+            {
+                if (removedEvents[i] == null || eventos[j] == null) break;
+                if (removedEvents[i]._nombre == eventos[j]._nombre) eventos.Remove(eventos[j]);
+            }
+        }
+    }
+
+    public void RemoveEvent(Evento e, Image eventObecjt)
+    {
+        LevelManager.instance.AddObject(e, eventObecjt);
     }
 
     private void Start()
     {
         //2. Se selecciona un evento aleatorio
         seleccionado = Random.Range(0, eventos.Count);
+        while(seleccionado == previousSelected) Random.Range(0, eventos.Count);
+        previousSelected = seleccionado;
 
         //3. Se asignan la informacion del evento
         _nombreEvento.text = eventos[seleccionado]._nombre.ToString();

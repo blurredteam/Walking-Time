@@ -8,6 +8,7 @@ public class ViajeroEvento : Evento
     public ViajeroEvento(Image imagenEvento)
     {
         _nombre = "Viajero extraviado";
+        index = 0;
         _eventImage = imagenEvento;
         _eventoTxt = "Durante tu aventura os encontráis a un hombre tumbado en el suelo, muy debilitado. " +
             "Cuándo os acercáis el hombre habla tosiendo y con una voz grave:\r\n– Agua, por favor… Agua.";

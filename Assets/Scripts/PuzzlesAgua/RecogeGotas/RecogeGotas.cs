@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class RecogeGotas : MonoBehaviour
     [SerializeField]
     private GameObject panelFinal;
 
+    [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip gotaAgua;
     [SerializeField] private AudioClip venenoAudio;
 
@@ -128,6 +130,7 @@ public class RecogeGotas : MonoBehaviour
     public void EmpezarJuego()
     {
         AudioManager.instance.ButtonSound();
+        AudioManager.instance.PlayBackMusic(fondo);
         panelInicio.SetActive(false);
         panelInfo.SetActive(true);
         movimientoEmpezado = true;

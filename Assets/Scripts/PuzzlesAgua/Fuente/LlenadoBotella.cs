@@ -47,8 +47,8 @@ public class LlenadoBotella : MonoBehaviour
             StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
-        AudioManager.instance.PlayBackMusic(fondo); 
-        referencia = objetivo.transform.position.y;//Altura del tri�ngulo rojo
+        AudioManager.instance.PlayBackMusic(fondo);
+        referencia = objetivo.transform.position.y;//Altura del triangulo rojo
         Debug.Log(referencia);
         rotacionInicial = transform.rotation;
         //Para q sea mas probable valores mas bajos si no suele ser demasiado r�pido

@@ -34,20 +34,21 @@ public class JumpFijo : MonoBehaviour
     // }
     private void Start()
     {
-        // AudioManager.instance.ButtonSound();
-        // // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        // exitBtn.onClick.AddListener(delegate {
-        //     AudioManager.instance.ButtonSound();
-        //     //AudioManager.instance.LoseMusic();
-        //
-        //     LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
-        //     LevelManager.instance.expEnergy+=1;
-        //     ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
-        //     LevelManager.instance.ActivateScene();
-        //     AudioManager.instance.PlayAmbient();
-        // });
-        // // ---------------------------------------------
-        // AudioManager.instance.PlayBackMusic(fondo); 
+         AudioManager.instance.ButtonSound();
+        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+        exitBtn.onClick.AddListener(delegate
+        {
+            AudioManager.instance.ButtonSound();
+            //AudioManager.instance.LoseMusic();
+
+            LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
+            LevelManager.instance.expEnergy += 1;
+            ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+            LevelManager.instance.ActivateScene();
+            AudioManager.instance.PlayAmbient();
+        });
+        // ---------------------------------------------
+        AudioManager.instance.PlayBackMusic(fondo);
         tiempoRestante = tiempoMaximo;
         ActualizarTextoTiempo();
     }
@@ -88,7 +89,7 @@ public class JumpFijo : MonoBehaviour
 
     void Salta()
     {
-        //AudioManager.instance.PlaySfx(sonidoSaltar);
+        AudioManager.instance.PlaySfx(sonidoSaltar);
         // Calcula la velocidad en función del tiempo presionado.
         float fuerzaSalto = velocidadMaxima;
 

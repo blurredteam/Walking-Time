@@ -30,7 +30,7 @@ public class TopoEvento : Evento
 
     public override void Option1()
     {
-        if(LevelManager.instance.gold >= 0)
+        if(LevelManager.instance.gold >= 25)
         {
             ControladorEventos.instance.RemoveEvent(this, objectIcon);
             LevelManager.instance.gold -= 25;

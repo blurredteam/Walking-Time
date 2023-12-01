@@ -25,7 +25,7 @@ public class Mirabel : Character
     {
         if (!skillApplied)
         {
-            LevelManager.instance.travelCostModifier = -10;
+            LevelManager.instance.travelCostModifier -= 10;
             skillApplied= true;
         }
     }
@@ -33,7 +33,7 @@ public class Mirabel : Character
     {
         energy= defaultEnergy;
 
-        LevelManager.instance.travelCostModifier = 0;
+        LevelManager.instance.travelCostModifier += 10;
         skillApplied = false;
     }
 

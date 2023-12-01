@@ -119,7 +119,7 @@ public class LamentoEvento : Evento
         ControladorEventos.instance.RemoveEvent(this, objectIcon);
         LevelManager.instance.teamEnergy -= 20;
         LevelManager.instance.maxWater++;
-        LevelManager.instance.travelCostModifier -= 10;
+        LevelManager.instance.travelCostModifier += 10;
         ControladorEventos.instance._resultadoTxt.text = p2res3;
         FinalizarEvento();
     }
@@ -133,7 +133,7 @@ public class LamentoEvento : Evento
 
     public override void RemoveEventoObj()
     {
-        LevelManager.instance.travelCostModifier += 10;
+        LevelManager.instance.travelCostModifier -= 10;
         LevelManager.instance.maxWater--;
 
         LevelManager.instance.teamEnergy += 30;

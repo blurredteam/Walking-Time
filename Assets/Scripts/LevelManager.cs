@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI energyTxt;
     [SerializeField] private TextMeshProUGUI waterTxt;
     [SerializeField] private TextMeshProUGUI goldTxt;
+    [SerializeField] private TextMeshProUGUI travelCostTxt;
     [SerializeField] private List<Image> _icons;
 
     [SerializeField] public List<Image> _eventObjects; //Lista de objetos que se pueden conseguir en eventos
@@ -102,6 +103,7 @@ public class LevelManager : MonoBehaviour
         energyTxt.text = teamEnergy.ToString() + "/" + maxEnergy.ToString();
         waterTxt.text = teamWater.ToString() + "/" + maxWater.ToString();
         goldTxt.text = gold.ToString();
+        travelCostTxt.text = travelCostModifier.ToString();
 
         CheckResources();
         CheckObjects();
@@ -157,7 +159,7 @@ public class LevelManager : MonoBehaviour
 
         AudioManager.instance.PlaySfx(losingEnergy);
         infoPanel.SetActive(true);
-        infoTxt.text = "-"+ energyCost + " + " + travelCostModifier +" ENERGÍA";
+        infoTxt.text = "-"+ (energyCost + travelCostModifier) + " ENERGÍA";
         StartCoroutine(EsperarInfo());
     }
 

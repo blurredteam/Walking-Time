@@ -37,7 +37,7 @@ public class BotellaEvento : Evento
         ControladorEventos.instance.RemoveEvent(this, objectIcon);
 
         LevelManager.instance.maxWater = 10;
-        LevelManager.instance.travelCostModifier -= 20;
+        LevelManager.instance.travelCostModifier += 20;
 
         ControladorEventos.instance._resultadoTxt.text = _resultadosList[0].ToString();
         FinalizarEvento();
@@ -51,6 +51,7 @@ public class BotellaEvento : Evento
 
     public override void RemoveEventoObj()
     {
+        LevelManager.instance.travelCostModifier -= 20;
         LevelManager.instance.maxWater = 1;
     }
 }

@@ -20,6 +20,7 @@ public class LucierEvento : Evento
         _opcionesList.Add("Apreciais la belleza de las luciérnagas y seguis caminando.");
         _opcionesList.Add("[Mirabel] Le pides a mirabel que revele el camino.");
         _opcionesList.Add("[Seta] Le preguntas a Seta si puede hacer algo.");
+        _opcionesList.Add("[-20 oro] Pagais a un guía para que os lleve por el camino.");
 
         _resultadosList.Add("Las luciérnagas son realemente increibles, seguís admirandolas un rato, " +
             "pero debeis seguir por el sendero. Caminar a oscuras por una cueva no es ideal, " +
@@ -32,6 +33,9 @@ public class LucierEvento : Evento
             "podrán guiarles sin problema por el camino. Las luciérnagas parecen desbiarse un poco del tramo, " +
             "pero tras seguirlas un rato descubrís que os han guiado hacía un manantial secreto " +
             "antes de seguir con la ruta, recuperais fuerzas y seguís el camino. [+1 agua]");
+        _resultadosList.Add("Gatotoga, un gato con una excelente visión nocturna, os guía sin problemas por el" +
+            " camino, llegais rápido a vuestro destino. Una vez allí gatotoga os mira de forma amenazante, " +
+            "le dais rapidamente el dinero, quien sabe de lo que es capaz... Seguís por el sendero.");
     }
 
     public override void Option1()
@@ -67,5 +71,14 @@ public class LucierEvento : Evento
                 return;
             }
         }
+    }
+
+    public override void Option4()
+    {
+        if (LevelManager.instance.gold < 20) return;
+
+        LevelManager.instance.gold -= 20; 
+        ControladorEventos.instance._resultadoTxt.text = _resultadosList[3].ToString();
+        FinalizarEvento();
     }
 }

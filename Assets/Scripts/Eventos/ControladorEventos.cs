@@ -17,7 +17,8 @@ public class ControladorEventos : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI _opcion1;
     [SerializeField] public TextMeshProUGUI _opcion2;
-    [SerializeField] public TextMeshProUGUI _opcion3;
+    [SerializeField] public TextMeshProUGUI _opcion3; 
+    [SerializeField] public TextMeshProUGUI _opcion4;
 
     [SerializeField] private List<Image> _eventImages;
     [SerializeField] private List<Image> _eventObjects;
@@ -30,9 +31,6 @@ public class ControladorEventos : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        LevelManager.instance._fondoNivel.gameObject.SetActive(false);
-        LevelManager.instance._fondoEvento.gameObject.SetActive(true);
 
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
         ViajeroEvento evento0 = new ViajeroEvento(null);
@@ -78,7 +76,10 @@ public class ControladorEventos : MonoBehaviour
         _opcion1.text = eventos[seleccionado]._opcionesList[0].ToString();
         _opcion2.text = eventos[seleccionado]._opcionesList[1].ToString();
         try { _opcion3.text = eventos[seleccionado]._opcionesList[2].ToString(); }
-        catch { _opcion3.GetComponentInParent<Button>().gameObject.SetActive(false); } 
+        catch { _opcion3.GetComponentInParent<Button>().gameObject.SetActive(false); }
+
+        try { _opcion4.text = eventos[seleccionado]._opcionesList[3].ToString(); }
+        catch { _opcion4.GetComponentInParent<Button>().gameObject.SetActive(false); }
     }
 
     // En funcion de que opcion se elija 
@@ -100,23 +101,26 @@ public class ControladorEventos : MonoBehaviour
         eventos[seleccionado].Option3();
     }
 
-    public void SaltarEvento()
+    public void Option4()
     {
         AudioManager.instance.ButtonSound();
-        if (LevelManager.instance.gold >= 20) 
-        {
-            LevelManager.instance.gold -= 20;
-            panelFinal.SetActive(true);
-            panel.SetActive(false);
-            _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 20 DE ORO.";
-        }
+        eventos[seleccionado].Option4();
     }
+
+    //public void SaltarEvento()
+    //{
+    //    AudioManager.instance.ButtonSound();
+    //    if (LevelManager.instance.gold >= 20) 
+    //    {
+    //        LevelManager.instance.gold -= 20;
+    //        panelFinal.SetActive(true);
+    //        panel.SetActive(false);
+    //        _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 20 DE ORO.";
+    //    }
+    //}
 
     public void Salir()
     {
-        LevelManager.instance._fondoNivel.gameObject.SetActive(true);
-        LevelManager.instance._fondoEvento.gameObject.SetActive(false);
-
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.EventScene);
         LevelManager.instance.ActivateScene();
     }

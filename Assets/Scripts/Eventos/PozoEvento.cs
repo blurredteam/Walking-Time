@@ -47,10 +47,6 @@ public class PozoEvento : Evento
                 return;
             }
         }
-
-        Debug.Log("No tienes al beren");
-        //Hacer algo que indique que puedes elegir esa opcion
-        //Poner el boton en rojo o algo asi
     }
     public override void Option3()
     {

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class BotellaEvento : Evento
 {
     private List<Character> team = LevelManager.instance._team;
-    private Image objectIcon;
 
     public BotellaEvento(Image imagenEvento, Image objectIcon)
     {
@@ -14,6 +13,7 @@ public class BotellaEvento : Evento
         index = 6;
         _eventImage = imagenEvento;
         this.objectIcon= objectIcon;
+        objectDescription = "[Botella épica] \n[max agua = 10, +20 coste de viajar]";
         _avisoQuitarObj = $"{team[0]} piensa que la botella pesa demasiado como para seguir cargándola, pero lo único que teneis para" +
             " reemplazarlo es un frasco roto que habeis encontrado por el camino. ¿Seguro que quieres dejar la" +
             " botella?";

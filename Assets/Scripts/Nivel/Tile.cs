@@ -52,9 +52,9 @@ public class Tile : MonoBehaviour
         SetTileInfo();
 
         int random = Random.Range(0, 100);
-        //if (random >= 45) PuzzleTile();
-        if (random <= 20) BonfireTile();
-        //else if (random > 5 && random < 12) WaterTile();
+        if (random >= 45) PuzzleTile();
+        else if (random <= 4) BonfireTile();
+        else if (random > 5 && random < 12) WaterTile();
         else ObstacleTile();
     }
 

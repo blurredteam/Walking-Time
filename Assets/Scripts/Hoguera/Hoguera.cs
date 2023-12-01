@@ -57,7 +57,6 @@ public class Hoguera : MonoBehaviour
 
     private void RemoveObject(Evento e, int index)
     {
-        Debug.Log("ELIMINADO: " + e._nombre);
         objectIcons[index].gameObject.SetActive(false);
         objectIcons[index].image.sprite = null;
 

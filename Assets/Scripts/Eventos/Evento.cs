@@ -13,10 +13,13 @@ public class Evento
     public List<string> _opcionesList = new List<string>();
     public List<string> _resultadosList = new List<string>();
     public string _avisoQuitarObj;
+    public Image objectIcon;
+    public string objectDescription;
 
     public virtual void Option1() { }
     public virtual void Option2() { }
     public virtual void Option3() { }
+    public virtual void Option4() { }
 
     public virtual void RemoveEventoObj() { }   //Se usa solo en hogueras, quita el objeto con consecuencias
 

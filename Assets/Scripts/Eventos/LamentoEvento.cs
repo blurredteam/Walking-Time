@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class LamentoEvento : Evento
 {
-    private Image objectIcon;
     public LamentoEvento(Image imagenEvento, Image objectIcon)
     {
         _nombre = "Roca lamentosa";
         index = 5;
         _eventImage = imagenEvento;
         this.objectIcon = objectIcon;
+        objectDescription = "[Jardinera experta] \n[+1 max agua, +10 coste de viajar]";
         _avisoQuitarObj = "Por fin en un lugar seguro, contemplais la opción de dejar a la jardinera aqui. Perdereis" +
             " su compañia, pero os prometió recompensaron con unos deliciosos calabacines.";
         _eventoTxt = "Avanzais por la cueva siguiendo las marcas dejados por otros aventureros, " +
@@ -52,7 +52,7 @@ public class LamentoEvento : Evento
     private string p2res3 = "No podeís abandonar a una persona en apuros, decidís cargarla hasta un lugar más seguro." +
         " Cargar con ella os costará mas energía, sin embargo, una vez recupera la conciencia descubrís que es una " +
         "jardinera profesional, experta en calabacines, con bastos conocimientos sobre la humedad de la cueva. " +
-        "[+1 max agua, +10 coste de viajar]";
+        "[-20 energía, +1 max agua, +10 coste de viajar]";
 
     public override void Option1()
     {
@@ -128,7 +128,7 @@ public class LamentoEvento : Evento
     {
         ControladorEventos.instance._opcion1.text = "[PRECAVIDO, -1 agua] Pedir a Dr. Jáparo que sane a la aventurera";
         ControladorEventos.instance._opcion2.text = "[-2 agua] Dar una buena parte de vuestra agua";
-        ControladorEventos.instance._opcion3.text = "[-20 energía] Cargarla hasta un lugar seguro";
+        ControladorEventos.instance._opcion3.text = "Cargarla hasta un lugar seguro";
     }
 
     public override void RemoveEventoObj()

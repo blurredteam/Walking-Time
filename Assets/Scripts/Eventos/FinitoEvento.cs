@@ -16,8 +16,8 @@ public class FinitoEvento : Evento
             "Como habéis decidido pasar por mi cueva tenéis que pagar… ¡una multa por venir sin avisar!\r\n" +
             "Mirando al equipo, te aferras al bolsón de oro de tu cinturón. En ese momento…";
 
-        _opcionesList.Add("1. Decides coger la bolsa y pagar, temes lo que Finito pueda hacer si se enfada.");
-        _opcionesList.Add("2. Coges todas vuestras cosas y empezáis a correr a lo loco.");
+        _opcionesList.Add("[-todo tu oro] Decides coger la bolsa y pagar, temes lo que Finito pueda hacer si se enfada.");
+        _opcionesList.Add("Coges todas vuestras cosas y empezáis a correr a lo loco.");
 
         _resultadosList.Add("1. Finito sonríe al ver las monedas de oro salir de la bolsa." +
             "\r\n– Mil gracias aventureros, ¡que lo paséis bien paseando por mis dominios! JA JA JA JA JA\r\n" +

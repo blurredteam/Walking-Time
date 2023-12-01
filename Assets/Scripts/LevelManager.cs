@@ -19,37 +19,25 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
-    [SerializeField] public SpriteRenderer _fondoNivel;     //Fondo normal del nivel que se mueve
-    [SerializeField] public Image _fondoEvento;             //Fondo empleado en los eventos
-
-    [SerializeField] private TextMeshProUGUI energyTxt;
-    [SerializeField] private TextMeshProUGUI waterTxt;
-    [SerializeField] private TextMeshProUGUI goldTxt;
-    [SerializeField] private TextMeshProUGUI travelCostTxt;
     [SerializeField] private List<Image> _icons;
 
     [SerializeField] public List<Image> _eventObjects; //Lista de objetos que se pueden conseguir en eventos
     public List<Evento> removedEvents = new List<Evento>() { null, null, null, null };
 
-    //[SerializeField] private Image _characterCard;
-    //private bool cardMoved = false;
-
     [SerializeField] private GameObject _spritesTeam;
     [SerializeField] private List<Image> _sprites;
-
-    [SerializeField] private GameObject infoPanel;
-    [SerializeField] private TextMeshProUGUI infoTxt;
     public List<Character> _team { get; set; } = new List<Character>();
     public int teamEnergy { get; set; } = 1;
     public int maxEnergy { get; set; } = 1;
     public int teamWater { get; set; }
     public int maxWater { get; set; }
     public int expEnergy { get; set; }
-    public bool cursed { get; set; }    //Si esta activo el jugador no gana oro    
     public int travelCostModifier { get; set; } = 0;  //Modifica el coste de viajar a casillas (de momento solo en la habilidad de mirabel)
-
     public int gold { get; set; } = 0;
-    int auxGold = 0; //Solo se usa para el evento del medallon maldito
+
+    // Variables para evento de medallon maldito
+    public int auxGold = 0; 
+    public bool cursed;     //Si esta activo el jugador no gana oro    
 
     public int waterRegen { get; set; } = 40;   // Cuanto energia regenera la cantimplora en cada uso
 
@@ -100,11 +88,6 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        energyTxt.text = teamEnergy.ToString() + "/" + maxEnergy.ToString();
-        waterTxt.text = teamWater.ToString() + "/" + maxWater.ToString();
-        goldTxt.text = gold.ToString();
-        travelCostTxt.text = travelCostModifier.ToString();
-
         CheckResources();
         CheckObjects();
     }
@@ -119,7 +102,6 @@ public class LevelManager : MonoBehaviour
 
     private void CheckObjects()
     {
-        if (cursed && auxGold == 0) auxGold = gold;
         if (cursed)
         {
             if (gold <= auxGold) auxGold = gold;
@@ -158,19 +140,19 @@ public class LevelManager : MonoBehaviour
         teamEnergy -= (energyCost + travelCostModifier);
 
         AudioManager.instance.PlaySfx(losingEnergy);
-        infoPanel.SetActive(true);
-        infoTxt.text = "-"+ (energyCost + travelCostModifier) + " ENERGÍA";
-        StartCoroutine(EsperarInfo());
+        Level_UI.instance.HandleEnergyUI(energyCost + travelCostModifier);
     }
 
     // Carga la escena indicada y reduce la energia total en funcion del coste de viajar a esa casilla
     // Tambien inhabilita las casillas de su misma columna y las pinta 
     public void Travel(int position, int tileType, int index)
     {
-        _gridRef.gameObject.SetActive(false); 
-        _cameraMovementScript.enabled =false;
-
-        if (tileType != 1 && tileType != 100) DoFadeTransition(tileType, index);
+        if (tileType != 1 && tileType != 100) //Evento o casilla final
+        {
+            _gridRef.gameObject.SetActive(false);
+            DoFadeTransition(tileType, index);
+            _cameraMovementScript.enabled = false;
+        } 
         else ScenesManager.instance.LoadTileScene(tileType, index);
 
         for (int y = 0; y < _mapHeight; y++)
@@ -193,31 +175,17 @@ public class LevelManager : MonoBehaviour
 
     public void UsingWater()
     {
-        if (teamWater > 0)
+        if(teamWater == 0)
         {
-            AudioManager.instance.PlaySfx(usingWater);
-            if ((teamEnergy + waterRegen) >= maxEnergy)
-            {
-                teamEnergy = maxEnergy;
-                teamWater--;
-                
-            }
-            else
-            {
-                teamEnergy += waterRegen;
-                teamWater--;
-            }
-            infoPanel.SetActive(true);
-            infoTxt.text = "-1 AGUA";
-            StartCoroutine(EsperarInfo());
-        }
-        else
-        {
-            infoPanel.SetActive(true);
-            infoTxt.text = "NO QUEDA AGUA!";
             AudioManager.instance.PlaySfx(noMoreWater);
-            StartCoroutine(EsperarInfo());
+            Level_UI.instance.HandleWaterUI(0);
+            return;
         }
+
+        AudioManager.instance.PlaySfx(usingWater);
+        teamEnergy += waterRegen;
+        teamWater--;
+        Level_UI.instance.HandleWaterUI(1);
     }
 
     //private void ShowCharacterCard(int position)
@@ -282,11 +250,5 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
-    }
-
-    private IEnumerator EsperarInfo()
-    {
-        yield return new WaitForSeconds(2);
-        infoPanel.SetActive(false);
     }
 }

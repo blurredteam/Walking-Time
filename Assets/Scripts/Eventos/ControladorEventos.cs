@@ -42,8 +42,10 @@ public class ControladorEventos : MonoBehaviour
         CristalEvento evento4 = new CristalEvento(null);
         LamentoEvento evento5 = new LamentoEvento(null, _eventObjects[1]);
         BotellaEvento evento6 = new BotellaEvento(null, _eventObjects[2]);
+        LucierEvento evento7 = new LucierEvento(null);
+        TopoEvento evento8 = new TopoEvento(null, _eventObjects[3]);
 
-        eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6 };
+        eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
         
         //1.1 Se quitan los eventos que ya no se pueden jugar
         var removedEvents = LevelManager.instance.removedEvents;
@@ -66,7 +68,7 @@ public class ControladorEventos : MonoBehaviour
     {
         //2. Se selecciona un evento aleatorio
         seleccionado = Random.Range(0, eventos.Count);
-        while(seleccionado == previousSelected) Random.Range(0, eventos.Count);
+        while(seleccionado == previousSelected) seleccionado = Random.Range(0, eventos.Count);
         previousSelected = seleccionado;
 
         //3. Se asignan la informacion del evento

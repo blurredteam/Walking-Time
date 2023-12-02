@@ -115,11 +115,13 @@ public class LamentoEvento : Evento
             FinalizarEvento();
             return;
         }
-
-        ControladorEventos.instance.RemoveEvent(this, objectIcon);
+        
         LevelManager.instance.teamEnergy -= 20;
         LevelManager.instance.maxWater++;
         LevelManager.instance.travelCostModifier += 10;
+
+        LevelManager.instance.AddObject(this, objectIcon);
+
         ControladorEventos.instance._resultadoTxt.text = p2res3;
         FinalizarEvento();
     }

@@ -37,9 +37,10 @@ public class TopoEvento : Evento
     {
         if(LevelManager.instance.gold >= 25)
         {
-            ControladorEventos.instance.RemoveEvent(this, objectIcon);
             LevelManager.instance.gold -= 25;
             LevelManager.instance.travelCostModifier -= 10;
+
+            LevelManager.instance.AddObject(this, objectIcon);
 
             ControladorEventos.instance._resultadoTxt.text = _resultadosList[0].ToString();
             FinalizarEvento();

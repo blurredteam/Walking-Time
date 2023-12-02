@@ -83,7 +83,8 @@ public class Tile : MonoBehaviour
     //Carga las siguientes casillas disponibles en funcion de la lista de adyacencias 
     public void LoadNextTiles()
     {
-        if (AdyacentList.Count <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+        //if (AdyacentList.Count <= 0) ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); 
+        if (AdyacentList.Count <= 0) ScenesManager.instance.LoadNextLevel();
 
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {

@@ -39,8 +39,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private void Start()
   {
-        instance = this;
-        //levelSrc.clip = backgroundMenu;
+        instance = this; 
+        DontDestroyOnLoad(gameObject);
+
         levelSrc.Play();
   }
 
@@ -57,15 +58,15 @@ public class AudioManager : MonoBehaviour
     {
         sfxSrc.Stop();
     }
-  public void PlayBackMusic(AudioClip clip)
-  {
+    public void PlayBackMusic(AudioClip clip)
+    {
         levelSrc.Pause();
         musicSrc.clip = clip;
         musicSrc.Play();
     }
     public void PlayAmbient()
     {
-        musicSrc.Stop();
+       musicSrc.Stop();
        levelSrc.Play();
     }
 

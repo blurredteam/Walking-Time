@@ -49,6 +49,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        //DontDestroyOnLoad(gameObject);
         transition = ScenesManager.instance.transitioner;
     }
 
@@ -68,8 +70,12 @@ public class LevelManager : MonoBehaviour
         //Asigna los iconos
         for (int i = 0; i < _team.Count; i++)
         {
-            _icons[i].sprite = _team[i].icon.sprite;
-            _sprites[i].sprite = _team[i].sprite.sprite;
+            try
+            {
+                _icons[i].sprite = _team[i].icon.sprite;
+                _sprites[i].sprite = _team[i].sprite.sprite;
+            }
+            catch { Debug.Log("tampoco"); }
         }
 
         //_icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });
@@ -80,7 +86,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        instance= this;
         AudioManager.instance.PlayAmbient();
         maxWater = teamWater;
         expEnergy = 1;
@@ -97,7 +102,7 @@ public class LevelManager : MonoBehaviour
         if(teamWater > maxWater) teamWater = maxWater;
         if(teamEnergy > maxEnergy) teamEnergy = maxEnergy;
 
-        if (teamEnergy <= 0) { ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); }
+        if (teamEnergy <= 0) ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); 
     }
 
     private void CheckObjects()
@@ -109,6 +114,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    //Se ejecuta desde ciertos eventos, añade un objeto a la mochila y elimina el evento mientras se tenga el objeto
     public void AddObject(Evento e, Image objectIcon)
     {
         for (int i = 0; i < _eventObjects.Count; i++)
@@ -169,8 +175,13 @@ public class LevelManager : MonoBehaviour
     // Se usa al volver de otra escena (puzzles, eventos, hoguera)
     public void ActivateScene()
     {
-        _gridRef.gameObject.SetActive(true);
-        _cameraMovementScript.enabled = true;   
+        try 
+        {
+            _gridRef.gameObject.SetActive(true);
+            _cameraMovementScript.enabled = true;
+        }
+        catch { Debug.Log("Nope"); }
+         
     }
 
     public void UsingWater()

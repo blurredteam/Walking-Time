@@ -29,11 +29,11 @@ public class PiedraMalditaEvento : Evento
 
     public override void Option1()
     {
-        ControladorEventos.instance.RemoveEvent(this, objectIcon);
-
         LevelManager.instance.gold += 40;
         LevelManager.instance.auxGold = LevelManager.instance.gold;
         LevelManager.instance.cursed = true;
+
+        LevelManager.instance.AddObject(this, objectIcon);
 
         ControladorEventos.instance._resultadoTxt.text = _resultadosList[0].ToString();
         FinalizarEvento();

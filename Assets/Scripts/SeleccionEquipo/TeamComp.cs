@@ -34,7 +34,7 @@ public class TeamComp : MonoBehaviour
     public int _teamCurrentWater { get; set; }
 
     //Variables para hoguera
-    private bool bonfireTile = false;
+    public bool bonfireTile = false;
     private float energyPercent;     //indica el porcentaje de energia con relacion a la enegia maxima del equipo
     
     

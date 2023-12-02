@@ -44,6 +44,7 @@ public class ScenesManager : MonoBehaviour
         EscenaMenu,
         SeleccionEquipo,
         Level1,
+        Level2,
         PuzleCuadro,
         PuzleTimer,
         PuzzleFuente,
@@ -55,6 +56,21 @@ public class ScenesManager : MonoBehaviour
         EndScene,
         EventScene,
         PuzzleGotas,
+    }
+
+    public void LoadNextLevel()
+    {
+        if(SceneManager.GetActiveScene().name == "Level1")
+        {
+            //Objetos y personajes
+
+            var team = LevelManager.instance._team;
+
+            SceneManager.LoadScene(Scene.Level2.ToString());
+            LevelManager.instance.SetTeam(team);
+            
+            //SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive); 
+        }
     }
 
     public void LoadScene(Scene scene)

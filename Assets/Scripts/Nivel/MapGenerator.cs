@@ -160,6 +160,7 @@ public class MapGenerator : MonoBehaviour
             line.SetPosition(1, new Vector3(path[i+1].transform.position.x, path[i+1].transform.position.y + _lineOffset));
             _lines.Add(line.gameObject);
 
+            // Lineas que van a las primeras casillas
             if (path[i].position == 0)
             {
                 var originLine = Instantiate(_lineRendererPrefab, new Vector3(0, 0), Quaternion.identity, this.transform);

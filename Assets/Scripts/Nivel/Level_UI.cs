@@ -55,6 +55,7 @@ public class Level_UI : MonoBehaviour
         travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
     }
 
+    // Coge informacion del level manager y la muestra en la pantalla de objetos y stats
     private void SetEventObjects()
     {
         List<Evento> events = LevelManager.instance.removedEvents;

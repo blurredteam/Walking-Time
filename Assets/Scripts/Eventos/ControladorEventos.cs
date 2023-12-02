@@ -57,11 +57,6 @@ public class ControladorEventos : MonoBehaviour
         }
     }
 
-    public void RemoveEvent(Evento e, Image eventObecjt)
-    {
-        LevelManager.instance.AddObject(e, eventObecjt);
-    }
-
     private void Start()
     {
         //2. Se selecciona un evento aleatorio

@@ -12,14 +12,16 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSrc;
     [SerializeField] private AudioSource sfxSrc;
     [SerializeField] private AudioSource buttonSfxSrc;
+    [SerializeField] private AudioSource menuSrc;
     [SerializeField] private AudioSource levelSrc;
+    
 
     [Header("--------------Audio Clip--------------")]
     public AudioClip backgroundMenu;
+    public AudioClip backgroundSelection;
     public AudioClip backgroundLevel1;
-    public AudioClip buttonMenu;
-    public AudioClip buttonLevel;
-    public AudioClip buttonBtwPuzzles;
+    public AudioClip backgroundLevel2;
+
 
     [Header("--------------Win/Lose Sounds--------------")]
     [SerializeField] private List<AudioClip> _winSound;
@@ -38,13 +40,16 @@ public class AudioManager : MonoBehaviour
     */
     public static AudioManager instance;
     private void Start()
-  {
+    {
         instance = this; 
         DontDestroyOnLoad(gameObject);
-
-        levelSrc.Play();
-  }
-
+        //menuSrc.Play();
+        //levelSrc.Play();
+    }
+    public void StopMenuMusic()
+    {
+        menuSrc.Stop();
+    }
     public void PlaySfx(AudioClip clip)
     {
        sfxSrc.PlayOneShot(clip);
@@ -111,6 +116,20 @@ public class AudioManager : MonoBehaviour
     public void ButtonSoundBlock()
     {
         PlaySfx(_buttonSoundBlock);
+    }
+    public void OnLevel1()
+    {
+        levelSrc.clip = backgroundLevel1;
+        levelSrc.Play();
+    }
+    public void OnLevel2()
+    {
+        levelSrc.clip = backgroundLevel2;
+        levelSrc.Play();
+    }
+    public void OnSelection()
+    {
+        PlayBackMusic(backgroundSelection);
     }
 }
 

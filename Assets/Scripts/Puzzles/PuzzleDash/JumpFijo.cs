@@ -10,7 +10,7 @@ public class JumpFijo : MonoBehaviour
     public float velocidadMaxima = 10.0f; // Velocidad máxima en el eje Y.
     public float tiempoMaximoSalto = 2.0f; // Tiempo máximo de salto.
 
-    private float tiempoSaltoPresionado = 0.0f;
+    //private float tiempoSaltoPresionado = 0.0f;
     private bool enElSuelo = true;
     
     public TextMeshProUGUI  textoTiempo;

@@ -26,11 +26,13 @@ public class MovimientoGotas : MonoBehaviour
         {
             if (this.CompareTag("Gota")) { RecogeGotas.instance.gotasTotales++; }
             Debug.Log("Comió suelo");
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         if (collision.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
     }

@@ -1,9 +1,10 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class Rotate : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class Rotate : MonoBehaviour
     [SerializeField] private Button _continueBtn;
 
     public Transform objetoCentral; // El objeto alrededor del cual quieres rotar.
-    public float velocidadRotacion = 30.0f; // Velocidad de rotación en grados por segundo.
-    public float velocidadRotacionPropia = 60.0f;
+    [SerializeField] private int velocidadRotacion; // Velocidad de rotación en grados por segundo.
+    [SerializeField] private int velocidadRotacionPropia;
     public Transform puntoObjetivo;
 
     private bool pulsado;
@@ -25,6 +26,10 @@ public class Rotate : MonoBehaviour
     private void Awake()
     {
         transition = ScenesManager.instance.transitioner;
+        int velocidad = Random.Range(50, 200);
+        velocidadRotacion = velocidad;
+        velocidadRotacionPropia = velocidad;
+
     }
 
     private void Start()
@@ -40,7 +45,7 @@ public class Rotate : MonoBehaviour
     
     IEnumerator EsperarYSalir()
     {
-        AudioManager.instance.ButtonSound();
+        //AudioManager.instance.ButtonSound();
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);

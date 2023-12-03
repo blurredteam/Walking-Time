@@ -181,10 +181,12 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.StartGame();
         ScenesManager.instance.UnloadTeamSelect();
+        AudioManager.instance.OnLevel1();
     }
 
     public void BonfireTile(List<Character> team)
     {
+        AudioManager.instance.OnSelection();
         _teamCurrentWater = LevelManager.instance.teamWater;
         _teamMaxWater = LevelManager.instance.maxWater;
         _teamCurrentEnergy = LevelManager.instance.teamEnergy;
@@ -248,6 +250,7 @@ public class TeamComp : MonoBehaviour
         LevelManager.instance.SetTeam(_teamComp);
 
         ScenesManager.instance.UnloadTeamSelect();
+        AudioManager.instance.PlayAmbient();
     }
 
     private void ManageResourceText()

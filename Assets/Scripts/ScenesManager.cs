@@ -67,6 +67,7 @@ public class ScenesManager : MonoBehaviour
             var team = LevelManager.instance._team;
 
             SceneManager.LoadScene(Scene.Level2.ToString());
+            AudioManager.instance.OnLevel2();
             LevelManager.instance.SetTeam(team);
             
             //SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive); 
@@ -113,6 +114,7 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
         transitioner.DoTransitionOnce();
+        AudioManager.instance.PlayAmbient();
     }
 
     private void LoadPuzzle(int index)

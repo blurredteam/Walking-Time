@@ -11,14 +11,16 @@ public class ControladorEventos : MonoBehaviour
     [SerializeField] public GameObject panelFinal;
     [SerializeField] public GameObject panel;
 
+    [SerializeField] public GameObject eventoMain;
     [SerializeField] private TextMeshProUGUI _nombreEvento;
     [SerializeField] public TextMeshProUGUI _eventoTxt;
-    [SerializeField] public TextMeshProUGUI _resultadoTxt;
-
     [SerializeField] public TextMeshProUGUI _opcion1;
     [SerializeField] public TextMeshProUGUI _opcion2;
-    [SerializeField] public TextMeshProUGUI _opcion3; 
+    [SerializeField] public TextMeshProUGUI _opcion3;
     [SerializeField] public TextMeshProUGUI _opcion4;
+
+    [SerializeField] public GameObject eventoResul;
+    [SerializeField] public TextMeshProUGUI _resultadoTxt;
 
     [SerializeField] private List<Image> _eventImages;
     [SerializeField] private List<Image> _eventObjects;
@@ -101,18 +103,6 @@ public class ControladorEventos : MonoBehaviour
         AudioManager.instance.ButtonSound();
         eventos[seleccionado].Option4();
     }
-
-    //public void SaltarEvento()
-    //{
-    //    AudioManager.instance.ButtonSound();
-    //    if (LevelManager.instance.gold >= 20) 
-    //    {
-    //        LevelManager.instance.gold -= 20;
-    //        panelFinal.SetActive(true);
-    //        panel.SetActive(false);
-    //        _resultadoTxt.text = "TE HAS SALTADO EL EVENTO A CAMBIO DE 20 DE ORO.";
-    //    }
-    //}
 
     public void Salir()
     {

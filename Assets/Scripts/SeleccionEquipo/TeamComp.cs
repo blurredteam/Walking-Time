@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
@@ -49,7 +50,7 @@ public class TeamComp : MonoBehaviour
         _slotCharacterId = new List<int>() { -1, -1, -1, -1 };
         _slotButtons = new List<Button>() { _selectedBtn0, _selectedBtn1, _selectedBtn2, _selectedBtn3 };
 
-        if (LevelManager.instance._team.Count > 0) { BonfireTile(LevelManager.instance._team); bonfireTile = true; return; }
+        if (GameManager.instance.team.Count > 0) { BonfireTile(GameManager.instance.team); bonfireTile = true; return; }
 
         _slotButtons[0].onClick.AddListener(delegate { RemoveSelected(0); });
         _slotButtons[1].onClick.AddListener(delegate { RemoveSelected(1); });
@@ -60,6 +61,7 @@ public class TeamComp : MonoBehaviour
     private void Update()
     {
         ManageResourceText();
+        CheckReady();
     }
 
     public void SelectCharacter(int characterId)
@@ -85,12 +87,15 @@ public class TeamComp : MonoBehaviour
                 if (bonfireTile)
                 {
                     var aux = selectedCharacter.energy * energyPercent;
-                    _teamCurrentEnergy += (int)aux;
+                    _teamCurrentEnergy += (int)aux; 
+                }
+                else
+                {
+                    _teamCurrentEnergy = _teamMaxEnergy;
+                    _teamCurrentWater = _teamMaxWater;
                 }
 
-                //Se aplican las habilidades* y se comprueba si tiene equipo completo
                 ApplySkills();
-                CheckReady();
 
                 break;
             }
@@ -106,18 +111,6 @@ public class TeamComp : MonoBehaviour
                 c._map = LevelManager.instance._map;
                 c.Skill();
             }
-        }
-    }
-
-    private void CheckReady()
-    {
-        if (bonfireTile) { _continueBtn.onClick.AddListener(ExitBonfire); return; }
-
-        foreach (bool available in _slotAvailable)
-        {
-            if (available) { _continueBtn.onClick.RemoveAllListeners(); break; }
-            _continueBtn.onClick.RemoveAllListeners();
-            _continueBtn.onClick.AddListener(Continue);
         }
     }
 
@@ -139,6 +132,7 @@ public class TeamComp : MonoBehaviour
         //Se gestiona si es hoguera
         if(bonfireTile)
         {
+            foreach (Button btn in _slotButtons) btn.onClick.RemoveAllListeners();
             var aux = _teamComp[position].energy * energyPercent;
             _teamCurrentEnergy -= (int)aux;
         }
@@ -149,52 +143,17 @@ public class TeamComp : MonoBehaviour
         _teamComp[position] = null;
     }
 
-    private void Continue()
-    {
-        foreach (Button b in _slotButtons) b.interactable = false;
-
-        AudioManager.instance.ButtonSound();
-        _continueBtn.interactable = false;
-
-        foreach(Character c in _teamComp)
-        {
-            c._team = _teamComp;
-            c.SkillFinally();           //Para habilidades que se aplican tras elegir el equipo (como Fausto)
-        }
-
-        LevelManager.instance.teamEnergy = _teamMaxEnergy;
-        LevelManager.instance.maxEnergy = _teamMaxEnergy;
-        LevelManager.instance.teamWater = _teamMaxWater;
-        LevelManager.instance.maxWater = _teamMaxWater;
-        
-        StartCoroutine(ContinueTimer());
-    }
-
-    //Sirve para visualizar las habilidades que se aplican al final (SkillFinally)
-    private IEnumerator ContinueTimer()
-    { 
-        yield return new WaitForSeconds(1); // En este primer yield se visualizan las habilidades (por implementar)
-        CharacterManager.instance.transition.DoTransitionTwice();
-        yield return new WaitForSeconds(1);
-
-        LevelManager.instance.ActivateScene();
-        LevelManager.instance.SetTeam(_teamComp);
-        LevelManager.instance.StartGame();
-        ScenesManager.instance.UnloadTeamSelect();
-        AudioManager.instance.OnLevel1();
-    }
-
     public void BonfireTile(List<Character> team)
     {
         AudioManager.instance.OnSelection();
-        _teamCurrentWater = LevelManager.instance.teamWater;
-        _teamMaxWater = LevelManager.instance.maxWater;
-        _teamCurrentEnergy = LevelManager.instance.teamEnergy;
-        _teamMaxEnergy= LevelManager.instance.maxEnergy;
+        _teamCurrentWater = GameManager.instance.water;
+        _teamMaxWater = GameManager.instance.maxWater;
+        _teamCurrentEnergy = GameManager.instance.energy;
+        _teamMaxEnergy = GameManager.instance.maxEnergy;
         energyPercent = (float)_teamCurrentEnergy / (float)_teamMaxEnergy;
 
         // Pone el equipo actual en la seleccion
-        for (int i= 0; i < team.Count; i++)
+        for (int i = 0; i < team.Count; i++)
         {
             //Se gestiona info por pantalla
             _slotAvailable[i] = false;
@@ -207,23 +166,16 @@ public class TeamComp : MonoBehaviour
             CharacterManager.instance.characterList[team[i]._id].skillApplied = true;
             _teamComp[i] = team[i];
             _teamComp[i].selected = true;
-            _teamComp[i].skillApplied= true;
+            _teamComp[i].skillApplied = true;
         }
 
-        _slotButtons[0].onClick.AddListener(delegate { RemoveBonfire(0); });
-        _slotButtons[1].onClick.AddListener(delegate { RemoveBonfire(1); });
-        _slotButtons[2].onClick.AddListener(delegate { RemoveBonfire(2); });
-        _slotButtons[3].onClick.AddListener(delegate { RemoveBonfire(3); });
-        _continueBtn.onClick.AddListener(ExitBonfire);
+        _slotButtons[0].onClick.AddListener(delegate { RemoveSelected(0); });
+        _slotButtons[1].onClick.AddListener(delegate { RemoveSelected(1); });
+        _slotButtons[2].onClick.AddListener(delegate { RemoveSelected(2); });
+        _slotButtons[3].onClick.AddListener(delegate { RemoveSelected(3); });
     }
 
-    private void RemoveBonfire(int position)
-    {
-        RemoveSelected(position);
-        foreach (Button btn in _slotButtons) btn.onClick.RemoveAllListeners();
-    }
-
-    private void ExitBonfire()
+    private void Continue()
     {
         foreach (Button b in _slotButtons) b.interactable = false;
         AudioManager.instance.ButtonSound();
@@ -232,33 +184,38 @@ public class TeamComp : MonoBehaviour
         foreach (Character c in _teamComp)
         {
             c._team = _teamComp;
-            c.SkillFinally();
+            c.SkillFinally();           //Para habilidades que se aplican tras elegir el equipo (como Fausto)
         }
-
-        StartCoroutine(ExitBonfireCo());
+        
+        StartCoroutine(ContinueTimer());
     }
 
-    private IEnumerator ExitBonfireCo()
+    //Sirve para visualizar las habilidades que se aplican al final (SkillFinally)
+    private IEnumerator ContinueTimer()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1); // En este primer yield se visualizan las habilidades (por implementar)
+        CharacterManager.instance.transition.DoTransitionTwice();
+        yield return new WaitForSeconds(1);
 
-        LevelManager.instance.ActivateScene();
+        LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.teamEnergy = _teamCurrentEnergy;
         LevelManager.instance.maxEnergy = _teamMaxEnergy;
         LevelManager.instance.teamWater = _teamCurrentWater;
         LevelManager.instance.maxWater = _teamMaxWater;
-        LevelManager.instance.SetTeam(_teamComp);
+        LevelManager.instance.StartGame();
+        LevelManager.instance.ActivateScene();
 
         ScenesManager.instance.UnloadTeamSelect();
-        AudioManager.instance.PlayAmbient();
+
+        AudioManager.instance.OnLevel1();
     }
 
     private void ManageResourceText()
     {
         if (bonfireTile)
         {
-            _energyTxt.text = _teamCurrentEnergy.ToString() + " / " + _teamMaxEnergy.ToString();
-            _waterTxt.text = _teamCurrentWater.ToString() + " / " + _teamMaxWater.ToString();
+            _energyTxt.text = _teamCurrentEnergy.ToString() + "/" + _teamMaxEnergy.ToString();
+            _waterTxt.text = _teamCurrentWater.ToString() + "/" + _teamMaxWater.ToString();
         }
         else
         {
@@ -278,6 +235,21 @@ public class TeamComp : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void CheckReady()
+    {
+        foreach (bool available in _slotAvailable)
+        {
+            if (available)
+            {
+                _continueBtn.onClick.RemoveAllListeners();
+                return;
+            }
+        }
+
+        _continueBtn.onClick.RemoveAllListeners();
+        _continueBtn.onClick.AddListener(Continue);
     }
 
     //Para el boton del tuto

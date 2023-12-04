@@ -44,7 +44,7 @@ public class MovimientoJugador : MonoBehaviour
         moviendose = true;
         previoPrimerMov = false;
         float tiempoInicio = Time.time;
-        float distancia = Vector3.Distance(posicionInicial, posicionFinal);
+        //float distancia = Vector3.Distance(posicionInicial, posicionFinal);
 
         while (transform.position != posicionFinal)
         {

@@ -46,6 +46,38 @@ public class Hoguera : MonoBehaviour
         transition = ScenesManager.instance.transitioner;
     }
 
+    private void Start()
+    {
+        iconP0.sprite = LevelManager.instance._team[0].icon.sprite;
+        iconP1.sprite = LevelManager.instance._team[1].icon.sprite;
+        iconP2.sprite = LevelManager.instance._team[2].icon.sprite;
+        iconP3.sprite = LevelManager.instance._team[3].icon.sprite;
+    }
+    private void Update()
+    {
+        energy.text = LevelManager.instance.teamEnergy.ToString();
+        water.text = LevelManager.instance.teamWater.ToString();
+    }
+    public void RecargarEnergia()
+    {
+        if ((LevelManager.instance.teamEnergy + eneryRegen) >= LevelManager.instance.maxEnergy)
+        {
+            LevelManager.instance.teamEnergy = LevelManager.instance.maxEnergy;
+        }
+        else
+        {
+            LevelManager.instance.teamEnergy += eneryRegen;
+        }
+
+        StartCoroutine(Esperar());
+    }
+
+    public void CambiarEquipo()
+    {
+        ScenesManager.instance.UnloadTile(ScenesManager.Scene.Hoguera);
+        SceneManager.LoadScene(ScenesManager.Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+    }
+
     private void Warning(Evento e, int index)
     {
         panelQuitarObjeto.SetActive(true);
@@ -66,33 +98,6 @@ public class Hoguera : MonoBehaviour
         LevelManager.instance._eventObjects[index].sprite = null;
     }
 
-    private void Start()
-    {
-        iconP0.sprite = LevelManager.instance._team[0].icon.sprite;
-        iconP1.sprite = LevelManager.instance._team[1].icon.sprite;
-        iconP2.sprite = LevelManager.instance._team[2].icon.sprite;
-        iconP3.sprite = LevelManager.instance._team[3].icon.sprite;
-    }
-    private void Update()
-    {
-        energy.text = LevelManager.instance.teamEnergy.ToString();
-        water.text = LevelManager.instance.teamWater.ToString();
-        
-    }
-    public void RecargarEnergia()
-    {
-        if ((LevelManager.instance.teamEnergy + eneryRegen) >= LevelManager.instance.maxEnergy)
-        {
-            LevelManager.instance.teamEnergy = LevelManager.instance.maxEnergy;
-        }
-        else
-        {
-            LevelManager.instance.teamEnergy += eneryRegen;
-        }
-
-        StartCoroutine(Esperar());
-    }
-    
     IEnumerator Esperar()
     {
         
@@ -102,13 +107,6 @@ public class Hoguera : MonoBehaviour
         panelFinal.SetActive(true);
         transition.DoTransitionOnce();
     }
-
-    public void CambiarEquipo()
-    {
-        ScenesManager.instance.UnloadTile(ScenesManager.Scene.Hoguera);
-        SceneManager.LoadScene(ScenesManager.Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
-    }
-
     public void InicioHoguera()
     {
         panelInicial.SetActive(false);

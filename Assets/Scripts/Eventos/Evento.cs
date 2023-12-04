@@ -25,8 +25,8 @@ public class Evento
 
     public void FinalizarEvento() 
     {
-        ControladorEventos.instance.panelFinal.SetActive(true);
-        ControladorEventos.instance.panel.SetActive(false);
+        ControladorEventos.instance.eventoMain.SetActive(false);
+        ControladorEventos.instance.eventoResul.SetActive(true);
     }
 
 }

@@ -14,7 +14,6 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private Slider _waterSlider;
     [SerializeField] private TextMeshProUGUI _waterText;
     [SerializeField] private TextMeshProUGUI goldTxt;
-    [SerializeField] private TextMeshProUGUI travelCostTxt;
 
     // --- PANEL INFO ---
     [SerializeField] private GameObject infoPanel;
@@ -52,7 +51,7 @@ public class Level_UI : MonoBehaviour
         _waterText.text = LevelManager.instance.teamWater.ToString() + "/" + LevelManager.instance.maxWater.ToString();
 
         goldTxt.text = LevelManager.instance.gold.ToString();
-        travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
+        //travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
     }
 
     // Coge informacion del level manager y la muestra en la pantalla de objetos y stats

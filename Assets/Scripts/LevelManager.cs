@@ -3,14 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-//using UnityEditor.PackageManager.Requests;
-//using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-
-// BUG MU RARO --> peta si le das a play seleccionando el objeto con este script
 
 public class LevelManager : MonoBehaviour
 {
@@ -21,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private List<Image> _icons;
 
-    [SerializeField] public List<Image> _eventObjects; //Lista de objetos que se pueden conseguir en eventos
+    [SerializeField] public List<Image> _eventObjects = new List<Image>(); //Lista de objetos que se pueden conseguir en eventos
     public List<Evento> removedEvents = new List<Evento>() { null, null, null, null };
 
     [SerializeField] private GameObject _spritesTeam;
@@ -44,14 +40,19 @@ public class LevelManager : MonoBehaviour
     public Tile[,] _map { get; set; }
     public int _mapWidth { get; set; }
     public int _mapHeight { get; set; }
+    public int _mapPos { get; set; } = 0;
     
     public Transitioner transition;
 
     private void Awake()
     {
         instance = this;
-        //DontDestroyOnLoad(gameObject);
         transition = ScenesManager.instance.transitioner;
+
+        if (SceneManager.GetActiveScene().name != "Level1")
+        {
+            GameManager.instance.SetLevelInfo();
+        }
     }
 
     //Sound
@@ -70,12 +71,8 @@ public class LevelManager : MonoBehaviour
         //Asigna los iconos
         for (int i = 0; i < _team.Count; i++)
         {
-            try
-            {
-                _icons[i].sprite = _team[i].icon.sprite;
-                _sprites[i].sprite = _team[i].sprite.sprite;
-            }
-            catch { Debug.Log("tampoco"); }
+            _icons[i].sprite = _team[i].icon.sprite;
+            _sprites[i].sprite = _team[i].sprite.sprite;
         }
 
         //_icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });
@@ -127,15 +124,16 @@ public class LevelManager : MonoBehaviour
                 return;
             }
         }
-
-        Debug.Log("No caben mas objetos!");
     }
 
-    // Habilita las primeras casillas disponibles al jugador
+    // Habilita las primeras casillas disponibles al jugador, se usa tmb en hoguera al pasar de nivel
     public void StartGame()
     {
-        for (int y = 0; y < _mapHeight; y++)
-            if (_map[0, y].selected) _map[0, y]._clickEvent.enabled = true;
+        GameManager.instance.GetLevelInfo();
+
+        for (int y = 0; y < _mapHeight; y++) 
+            if (_map[_mapPos, y].selected) 
+                _map[_mapPos, y]._clickEvent.enabled = true;
     }
 
     // Se ejecuta antes de cargar la escena de la casilla a la que se viaja
@@ -153,6 +151,8 @@ public class LevelManager : MonoBehaviour
     // Tambien inhabilita las casillas de su misma columna y las pinta 
     public void Travel(int position, int tileType, int index)
     {
+        GameManager.instance.GetLevelInfo();
+
         if (tileType != 1 && tileType != 100) //Evento o casilla final
         {
             _gridRef.gameObject.SetActive(false);
@@ -170,17 +170,15 @@ public class LevelManager : MonoBehaviour
                 _map[position, y].animatorTile.runtimeAnimatorController = null;
             }
         }
+
+        _mapPos += 1;
     }
 
     // Se usa al volver de otra escena (puzzles, eventos, hoguera)
     public void ActivateScene()
     {
-        try 
-        {
-            _gridRef.gameObject.SetActive(true);
-            _cameraMovementScript.enabled = true;
-        }
-        catch { Debug.Log("Nope"); }
+        _gridRef.gameObject.SetActive(true);
+        _cameraMovementScript.enabled = true;
          
     }
 

@@ -58,22 +58,6 @@ public class ScenesManager : MonoBehaviour
         PuzzleGotas,
     }
 
-    public void LoadNextLevel()
-    {
-        if(SceneManager.GetActiveScene().name == "Level1")
-        {
-            //Objetos y personajes
-
-            var team = LevelManager.instance._team;
-
-            SceneManager.LoadScene(Scene.Level2.ToString());
-            AudioManager.instance.OnLevel2();
-            LevelManager.instance.SetTeam(team);
-            
-            //SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive); 
-        }
-    }
-
     public void LoadScene(Scene scene)
     {
         SceneManager.LoadScene(scene.ToString());
@@ -138,6 +122,16 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(waterScenes[nextWaterPuzzle], LoadSceneMode.Additive);
         if (nextWaterPuzzle == 0) { nextWaterPuzzle = 1; }
         else { nextWaterPuzzle = 0; }
+    }
+
+    public void LoadNextLevel()
+    {
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            AudioManager.instance.OnLevel2();
+            SceneManager.LoadScene(Scene.Level2.ToString());
+            SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+        }
     }
 
 }

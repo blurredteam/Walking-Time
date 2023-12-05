@@ -68,8 +68,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
 # Temporary auto-generated Android Assets
-/[Aa]ssets/[Dd]atabaseManager.cs
-/[Aa]ssets/[Dd]atabaseManager.cs.meta
+/[Aa]ssets/[Dd]atabase[Mm]anager.cs
+/[Aa]ssets/[Dd]atabase[Mm]anager.cs.meta
 
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*

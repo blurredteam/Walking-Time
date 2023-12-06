@@ -11,6 +11,9 @@ public class EndScene : MonoBehaviour
     [SerializeField] private Image _defeatImage;
     [SerializeField] private TextMeshProUGUI _finalText;
 
+    [SerializeField] private EvalTimerManager timerManager;
+    [SerializeField] private TextMeshProUGUI _timerText;
+
     private int _finalEnergy;
 
     private void Start()
@@ -18,6 +21,9 @@ public class EndScene : MonoBehaviour
         _menuBtn.onClick.AddListener(delegate { ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu); });
 
         _finalEnergy = GameManager.instance.energy;
+
+        timerManager = FindObjectOfType<EvalTimerManager>();
+        updateTiempo();
 
         if (_finalEnergy > 0) Victory();
         else Defeat();
@@ -40,5 +46,15 @@ public class EndScene : MonoBehaviour
     public void unlockCharacters()
     {
         UnlockManager.Instance.PersonajeDesbloqueado = true;
+    }
+
+    private void updateTiempo()
+    {
+        float tiempo = timerManager.GetTimerValue();
+        timerManager.changeTimerState();
+        float minutos = tiempo / 60f;
+        minutos = Mathf.Round(minutos * 10f) / 10f; //redondeamos para mostrar solo 1 decimal
+
+        _timerText.text = "La partida duró: " + minutos + " minutos";
     }
 }

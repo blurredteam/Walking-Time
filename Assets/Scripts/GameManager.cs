@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         LevelManager.instance.travelCostModifier= modViajar;
         LevelManager.instance.expEnergy = expEnergy;      
 
+        // Objetos
         for (int i = 0; i < removedEvents.Count; i++)
             if(removedEvents[i] != null) LevelManager.instance.AddObject(removedEvents[i], eventObjects[i]);
         

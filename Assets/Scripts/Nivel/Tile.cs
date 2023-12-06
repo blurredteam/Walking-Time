@@ -30,6 +30,8 @@ public class Tile : MonoBehaviour
     public int position;    // Posicion x de la casilla en el mapa, las primeras son 0, las siguientes 1...
     private int energyCost; // Coste de viajar a la casilla, depende del tipo
     private int index;      // Indica el puzzle o evento especifico
+    private int bonfireProb = 0;    //probabilidad de que la casilla sea una hoguera
+    private int waterProb = 0;      //probabilidad de que la casilla sea de agua
 
     public int value { get; set; }
     public bool selected = false;
@@ -44,18 +46,29 @@ public class Tile : MonoBehaviour
         animatorTile = GetComponent<Animator>();
     }
 
-    //Asigna el tipo de casilla aleatoriamente en funcion de random 
-    //Ademas, empiezan todas sin ser interactuables ya que eso se gestiona mas adelante al empezar la partida desde LevelManager
+    //Asigna el tipo de casilla dependiendo de su posicion o aleatoriamente en funcion de random
     public void AssignType(int position)
     {
         this.position = position;
         SetTileInfo();
 
-        int random = Random.Range(0, 100);
-        if (random >= 45) PuzzleTile();
-        else if (random <= 4) BonfireTile();
-        else if (random > 5 && random < 12) WaterTile();
-        else ObstacleTile();
+        // nivel1 buildIndex = 2; nivel2 buildIndex = 3
+        bonfireProb = 5 - SceneManager.GetActiveScene().buildIndex;             //nivel 1 = 3, nivel 2 = 2
+        waterProb = 11 - (SceneManager.GetActiveScene().buildIndex * 2 - 1);    //nivel 1 = 8, nivel 2 = 6
+
+        if (position == 0 || position == 5 || position == 7 || position == 10) PuzzleTile();
+        else if(position == 6) BonfireTile();
+        else
+        {
+            int random = Random.Range(0, 100);
+            if (random >= 55) PuzzleTile();
+            else if (random <= bonfireProb) BonfireTile();
+            else if (random > bonfireProb && random <= waterProb) WaterTile();
+            else ObstacleTile();
+        }
+
+        //if (position != 0 && type != 2 && type != 3) animatorTile.enabled = false;
+        if (position != 0) animatorTile.enabled = false;
     }
 
     public void SetTileInfo()
@@ -63,10 +76,9 @@ public class Tile : MonoBehaviour
         casillaInfo = GameObject.Find("CasillaInfo");      
         textoInfo = casillaInfo.GetComponentInChildren<TextMeshProUGUI>();
         spritesJugador = GameObject.Find("CharacterSprites").GetComponent<MovimientoJugador>();
-
-        _clickEvent.enabled = false;
+        
         _spriteRenderer.sprite = _bonfireImage.sprite; // Imagen/animacion casilla final
-        if (position != 0) animatorTile.enabled = false;
+        _clickEvent.enabled = false;
     }
 
     public void LoadTile()

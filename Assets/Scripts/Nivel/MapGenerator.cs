@@ -68,9 +68,8 @@ public class MapGenerator : MonoBehaviour
                 spawnedTile.name = $"Tile {xGridPos} {yGridPos}";
                 spawnedTile.value = yGridPos;
 
-                spawnedTile.AssignType(xGridPos);
-
                 _map[xGridPos, yGridPos] = spawnedTile;
+                _map[xGridPos, yGridPos].AssignType(xGridPos);
                 yGridPos++;
             }
 
@@ -81,13 +80,13 @@ public class MapGenerator : MonoBehaviour
         // 2. Se crean caminos aleatorios
         for (int caminoIdx = 0; caminoIdx < _numberOfPaths; caminoIdx++) BuildPath(_map);
 
-        // 3. Se borran las casillas que sobran
+        // 3. Asigna el tipo de casilla y se borran las casillas que sobran
         for (int x = 0; x < _map.Length / _height; x++)
             for (int y = 0; y < _map.Length / _width; y++)
-                if (!_map[x, y].selected) Destroy(_map[x, y].gameObject); 
+                if (!_map[x, y].selected) Destroy(_map[x, y].gameObject);
 
         // 4. Se instancia la casilla final
-        var lastTile = Instantiate(_tilePrefab, new Vector3(_width * _xSpacing - 6, -1.7f), Quaternion.identity, this.transform);
+        var lastTile = Instantiate(_tilePrefab, new Vector3(_width * _xSpacing - 6, -2f), Quaternion.identity, this.transform);
         lastTile.name = $"TileFinal";
         lastTile.type = 100;
         lastTile.SetTileInfo();

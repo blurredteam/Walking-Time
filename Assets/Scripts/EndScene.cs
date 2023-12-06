@@ -17,7 +17,7 @@ public class EndScene : MonoBehaviour
     {
         _menuBtn.onClick.AddListener(delegate { ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu); });
 
-        _finalEnergy = LevelManager.instance.teamEnergy;
+        _finalEnergy = GameManager.instance.energy;
 
         if (_finalEnergy > 0) Victory();
         else Defeat();

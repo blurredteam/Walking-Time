@@ -69,7 +69,7 @@ public class ScenesManager : MonoBehaviour
         // Type =0 -> puzzle; =1 -> event; =2 -> bonfire; =3 -> fuente
 
         if (type == 0) LoadPuzzle(index);
-        else if (type == 1) LoadObstacle(index);
+        else if (type == 1) LoadEvent();
         else if(type == 2) LoadBonfire();
         else if(type == 3) LoadWater();
     }
@@ -106,7 +106,7 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(puzzleScenes[index], LoadSceneMode.Additive);
     }
 
-    private void LoadObstacle(int index)
+    private void LoadEvent()
     {
         SceneManager.LoadScene(Scene.EventScene.ToString(), LoadSceneMode.Additive);
     }
@@ -131,6 +131,10 @@ public class ScenesManager : MonoBehaviour
             AudioManager.instance.OnLevel2();
             SceneManager.LoadScene(Scene.Level2.ToString());
             SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+        }
+        else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            SceneManager.LoadScene(Scene.EndScene.ToString());
         }
     }
 

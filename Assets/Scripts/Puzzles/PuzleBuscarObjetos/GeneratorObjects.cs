@@ -1,20 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GeneratorObjects : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject objetoAEncontrar;
-    public List<Vector3> arrayPos;
+    // public GameObject objetoAEncontrar;
+    // public List<Vector3> arrayPos;
     private bool empezar = false;
     public GameObject[] figuras;
     private GameObject figuraElegida;
 
-    [SerializeField] private Camera _puzzleCamera;
+    // [SerializeField] private Camera _puzzleCamera;
     [SerializeField] private Button exitBtn;
 
     public TextMeshProUGUI textoVictoria;
@@ -31,12 +33,12 @@ public class GeneratorObjects : MonoBehaviour
     public Transitioner transition;
     public float transitionTime = 1f;
     
-    public RectTransform canvasRectTransform;
+    private bool botonPulsado;
 
-    // private void Awake()
-    // {
-    //     transition = ScenesManager.instance.transitioner;
-    // }
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
 
     void Start()
     {
@@ -45,6 +47,8 @@ public class GeneratorObjects : MonoBehaviour
         {
             StartCoroutine(EsperarYSalir());
         });
+        
+        
         // ---------------------------------------------
         textoIntentos.text = "Intentos restantes: " + intentos;
         textoVictoria.text = "";
@@ -52,19 +56,33 @@ public class GeneratorObjects : MonoBehaviour
         figuras[index].gameObject.SetActive(true);
 
         figuraElegida = figuras[index];
+        botonPulsado = false;
         
-
-        // Calcula la posición absoluta en función de la posición relativa.
-        Vector2 posicionAbsoluta = new Vector2(
-            figuraElegida.GetComponent<RectTransform>().anchoredPosition.x * canvasRectTransform.rect.width,
-            figuraElegida.GetComponent<RectTransform>().anchoredPosition.y * canvasRectTransform.rect.height
-        );
-
-        // Establece la posición del objeto en el Canvas.
-        figuraElegida.GetComponent<RectTransform>().anchoredPosition = posicionAbsoluta;
-        //imagenFiguraUI.gameObject.SetActive(true);
         imagenFiguraUI.sprite = figuraElegida.GetComponent<Image>().sprite;
         imagenobjetoAEncontrar.sprite = imagenFiguraUI.sprite;
+        figuraElegida.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+        StartCoroutine(GetButton());
+    }
+
+    IEnumerator GetButton()
+    {
+        if (Input.GetMouseButtonDown(0) && intentos > 0 && empezar)
+        {
+            if (!botonPulsado)
+            {
+                intentos--;
+                textoIntentos.text = "Intentos restantes: " + intentos;
+                if (intentos == 0)
+                {
+                    AudioManager.instance.LoseMusic();
+                    textoVictoria.text = "Has Perdido";
+                    StartCoroutine(EsperarYRecompensa(false));
+                }
+            }
+            botonPulsado = false;
+        }
+
+        yield return new WaitForSeconds(0);
     }
     IEnumerator EsperarYSalir()
     {
@@ -81,34 +99,6 @@ public class GeneratorObjects : MonoBehaviour
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 mousePosition = _puzzleCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetMouseButtonDown(0) && intentos > 0 && empezar)
-        {
-            //Esto es para que si pasas el raton por ecnima del objecto sepa que es ese objeto
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject)
-            {
-                textoVictoria.text = "Has ganado";
-                StartCoroutine(EsperarYRecompensa(true));
-            }
-            else
-            {
-                intentos--;
-                textoIntentos.text = "Intentos restantes: " + intentos;
-                if (intentos == 0)
-                {
-                    AudioManager.instance.LoseMusic();
-                    textoVictoria.text = "Has Perdido";
-                    StartCoroutine(EsperarYRecompensa(false));
-                }
-            }
-        }
     }
 
     public void SetEmpezar()
@@ -148,13 +138,25 @@ public class GeneratorObjects : MonoBehaviour
             
         }
         
-        //transition.DoTransitionOnce();
+        transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         exitBtn.gameObject.SetActive(true);
-        //transition.DoTransitionOnce();
+        transition.DoTransitionOnce();
         
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
+    }
+
+    public void ClickarImagen()
+    {
+        botonPulsado = true;
+        if (intentos > 0 && empezar)
+        {
+            textoVictoria.text = "Has ganado";
+            empezar = false;
+            StartCoroutine(EsperarYRecompensa(true));
+            
+        }
     }
 }

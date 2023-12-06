@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Berenjeno : Character
 {
-    public Berenjeno(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Berenjeno(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 0;
         name = "Berenjeno";
@@ -14,7 +14,10 @@ public class Berenjeno : Character
         this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
+        
+
         skillDesc = "[FORZUDO]";
         skillApplied = false;
         energy = 140;

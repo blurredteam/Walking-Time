@@ -72,6 +72,7 @@ public class AudioManager : MonoBehaviour
     public void PlayAmbient()
     {
        musicSrc.Stop();
+        musicSrc.volume = 0.3f;
        levelSrc.Play();
     }
 
@@ -120,7 +121,7 @@ public class AudioManager : MonoBehaviour
     public void OnLevel1()
     {
         levelSrc.clip = backgroundLevel1;
-        levelSrc.Play();
+        //levelSrc.Play();
     }
     public void OnLevel2()
     {
@@ -129,6 +130,7 @@ public class AudioManager : MonoBehaviour
     }
     public void OnSelection()
     {
+        musicSrc.volume = 0.2f;//Para q no se escuche tanto la seleccion
         PlayBackMusic(backgroundSelection);
     }
 }

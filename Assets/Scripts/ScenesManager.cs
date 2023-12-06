@@ -98,7 +98,7 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(Scene.Level1.ToString());
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
         transitioner.DoTransitionOnce();
-        AudioManager.instance.PlayAmbient();
+        AudioManager.instance.OnLevel1();
     }
 
     private void LoadPuzzle(int index)

@@ -12,8 +12,9 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager instance;
 
     [SerializeField] private GameObject characterCard;
+    [SerializeField] private GameObject animationCard;
 
-    [SerializeField] private Button showInfo;   //Boton para darle la vuelta a la carta
+   [SerializeField] private Button showInfo;   //Boton para darle la vuelta a la carta
 
     //Las 5 listas siguientes necesitan ir en orden del ID del personaje
     [SerializeField] private List<Button> _btnList;
@@ -21,6 +22,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private List<Image> _altSpriteList;
     [SerializeField] private List<Image> _frontCardsList;    //Cartas de los personajes con su info
     [SerializeField] private List<Image> _backCardsList;
+    [SerializeField] private List<RuntimeAnimatorController> _animList;
     [SerializeField] private List<Image> _iconList;
 
     public List<Character> characterList;
@@ -52,12 +54,12 @@ public class CharacterManager : MonoBehaviour
     
         instance = this;
 
-        _berenjeno = new Berenjeno(_spriteList[0], _altSpriteList[0], _frontCardsList[0], _backCardsList[0], _iconList[0]);
-        _japaro = new Japaro(_spriteList[1], _altSpriteList[1], _frontCardsList[1], _backCardsList[1], _iconList[1]);
-        _mirabel = new Mirabel(_spriteList[2], _altSpriteList[2], _frontCardsList[2], _backCardsList[2], _iconList[2]);
-        _seta = new Seta(_spriteList[3], _altSpriteList[3], _frontCardsList[3], _backCardsList[3], _iconList[3]);
-        _fauno = new Fausto(_spriteList[4], _altSpriteList[4], _frontCardsList[4], _backCardsList[4], _iconList[4]);
-        _chispa = new Chispa(_spriteList[5], _altSpriteList[5], _frontCardsList[5], _backCardsList[5], _iconList[5]);
+        _berenjeno = new Berenjeno(_spriteList[0], _altSpriteList[0], _frontCardsList[0], _backCardsList[0], _animList[0], _iconList[0]);
+        _japaro = new Japaro(_spriteList[1], _altSpriteList[1], _frontCardsList[1], _backCardsList[1], _animList[1], _iconList[1]);
+        _mirabel = new Mirabel(_spriteList[2], _altSpriteList[2], _frontCardsList[2], _backCardsList[2], _animList[2], _iconList[2]);
+        _seta = new Seta(_spriteList[3], _altSpriteList[3], _frontCardsList[3], _backCardsList[3], _animList[3], _iconList[3]);
+        _fauno = new Fausto(_spriteList[4], _altSpriteList[4], _frontCardsList[4], _backCardsList[4],_animList[4], _iconList[4]);
+        _chispa = new Chispa(_spriteList[5], _altSpriteList[5], _frontCardsList[5], _backCardsList[5], _animList[5], _iconList[5]);
 
         characterList = new List<Character>() { _berenjeno, _japaro, _mirabel, _seta, _fauno, _chispa };
     }
@@ -99,6 +101,8 @@ public class CharacterManager : MonoBehaviour
         characterCard.SetActive(true);
         Image _characterCard = characterCard.GetComponent<Image>();
         _characterCard.sprite = characterList[id].frontCard.sprite;
+        animationCard.SetActive(true);
+        animationCard.GetComponent<Animator>().runtimeAnimatorController = characterList[id].anim;
 
         showInfo.onClick.RemoveAllListeners();
         showInfo.onClick.AddListener(delegate { AudioManager.instance.ButtonSound4(); ShowCharacterInfo(id, _characterCard); });
@@ -107,9 +111,17 @@ public class CharacterManager : MonoBehaviour
     private void ShowCharacterInfo(int id, Image _characterCard)
     {
         if (_characterCard.sprite == characterList[id].frontCard.sprite)
+        {
             _characterCard.sprite = characterList[id].backCard.sprite;
+            animationCard.SetActive(false);
+        }
         else
+        {
             _characterCard.sprite = characterList[id].frontCard.sprite;
+            animationCard.SetActive(true);
+            animationCard.GetComponent<Animator>().runtimeAnimatorController = characterList[id].anim;
+        }
+         
     }
 
 

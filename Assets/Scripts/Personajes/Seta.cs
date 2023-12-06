@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Seta : Character
 {
-    public Seta(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Seta(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 3;
         name = "Seta";
@@ -14,6 +14,7 @@ public class Seta : Character
         this.altSprite= altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
         skillDesc = "[ESPORAS CURATIVAS]";
         energy = 60;

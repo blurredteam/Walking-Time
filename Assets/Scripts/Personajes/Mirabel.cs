@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Mirabel : Character
 {
-    public Mirabel(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Mirabel(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 2;
         name = "Mirabel";
@@ -14,6 +14,7 @@ public class Mirabel : Character
         this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
         skillDesc = "[OBSERVADORA]";
         energy = 100;

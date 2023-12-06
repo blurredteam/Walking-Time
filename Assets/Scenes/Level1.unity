@@ -1726,7 +1726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &207723522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5203,6 +5203,7 @@ GameObject:
   - component: {fileID: 611705355}
   - component: {fileID: 611705357}
   - component: {fileID: 611705356}
+  - component: {fileID: 611705358}
   m_Layer: 5
   m_Name: p0Sprite
   m_TagString: Untagged
@@ -5267,6 +5268,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611705354}
   m_CullTransparentMesh: 1
+--- !u!95 &611705358
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611705354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &626156499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,6 +6122,7 @@ GameObject:
   - component: {fileID: 715125472}
   - component: {fileID: 715125474}
   - component: {fileID: 715125473}
+  - component: {fileID: 715125475}
   m_Layer: 5
   m_Name: p2Sprite
   m_TagString: Untagged
@@ -6164,6 +6187,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715125471}
   m_CullTransparentMesh: 1
+--- !u!95 &715125475
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715125471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &746123565
 GameObject:
   m_ObjectHideFlags: 0
@@ -8595,6 +8639,7 @@ GameObject:
   - component: {fileID: 1066056446}
   - component: {fileID: 1066056448}
   - component: {fileID: 1066056447}
+  - component: {fileID: 1066056449}
   m_Layer: 5
   m_Name: p3Sprite
   m_TagString: Untagged
@@ -8659,6 +8704,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066056445}
   m_CullTransparentMesh: 1
+--- !u!95 &1066056449
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066056445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1067723363
 GameObject:
   m_ObjectHideFlags: 0
@@ -16648,6 +16714,7 @@ GameObject:
   - component: {fileID: 2126473596}
   - component: {fileID: 2126473598}
   - component: {fileID: 2126473597}
+  - component: {fileID: 2126473599}
   m_Layer: 5
   m_Name: p1Sprite
   m_TagString: Untagged
@@ -16712,6 +16779,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126473595}
   m_CullTransparentMesh: 1
+--- !u!95 &2126473599
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126473595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

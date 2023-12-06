@@ -43,7 +43,7 @@ public class TeamComp : MonoBehaviour
     private void Start()
     {
         instance = this;
-        
+        AudioManager.instance.OnSelection();
         _waterTxt.text = "3"; //Agua por defecto
 
         _slotAvailable = new List<bool>() { true, true, true, true};
@@ -207,7 +207,7 @@ public class TeamComp : MonoBehaviour
 
         ScenesManager.instance.UnloadTeamSelect();
 
-        AudioManager.instance.OnLevel1();
+        AudioManager.instance.PlayAmbient();
     }
 
     private void ManageResourceText()

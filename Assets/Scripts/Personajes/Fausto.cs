@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Fausto : Character
 {   
-    public Fausto(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Fausto(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 4;
         name = "Fausto";
@@ -13,6 +13,7 @@ public class Fausto : Character
         this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
         skillDesc = "[TRILERO]";
         energy = 0;                 //Para que no se muestre cuanta energia tiene, se aplica en skill

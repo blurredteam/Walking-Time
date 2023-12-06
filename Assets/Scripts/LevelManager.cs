@@ -73,6 +73,8 @@ public class LevelManager : MonoBehaviour
         {
             _icons[i].sprite = _team[i].icon.sprite;
             _sprites[i].sprite = _team[i].sprite.sprite;
+            _sprites[i].GetComponent<Animator>().runtimeAnimatorController = _team[i].anim;
+            //animationCard.GetComponent<Animator>().runtimeAnimatorController = characterList[id].anim;
         }
 
         //_icons[0].gameObject.GetComponentInParent<Button>().onClick.AddListener(delegate { ShowCharacterCard(0); });

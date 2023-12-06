@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Chispa : Character
 {
-    public Chispa(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Chispa(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 5;
         name = "Chispa";
@@ -16,6 +16,7 @@ public class Chispa : Character
         this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
         skillDesc = "[CHISPA]";
         energy = 80;

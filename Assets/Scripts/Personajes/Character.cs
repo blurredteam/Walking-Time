@@ -13,6 +13,7 @@ public class Character
     public Image altSprite;
     public Image frontCard;
     public Image backCard;
+    public RuntimeAnimatorController anim;
     public Image icon;
     public string skillDesc;
     public bool skillApplied;

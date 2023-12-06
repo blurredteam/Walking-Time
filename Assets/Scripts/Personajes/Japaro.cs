@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Japaro : Character
 {
-    public Japaro(Image sprite, Image altSprite, Image frontCard, Image backCard, Image icon)
+    public Japaro(Image sprite, Image altSprite, Image frontCard, Image backCard, RuntimeAnimatorController anim, Image icon)
     {
         _id = 1;
         name = "Dr. Japaro";
@@ -14,6 +14,7 @@ public class Japaro : Character
         this.altSprite = altSprite;
         this.frontCard = frontCard;
         this.backCard = backCard;
+        this.anim = anim;
         this.icon = icon;
         skillDesc = "[PRECAVIDO]";
         skillApplied= false;

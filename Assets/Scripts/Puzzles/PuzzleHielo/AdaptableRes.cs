@@ -18,12 +18,9 @@ public class AdaptableRes : MonoBehaviour
     {
         anchoResPrevia = Screen.width;
         altoResPrevia = Screen.height;
-        //numObjetos = ObjetosReescalables.Count;
-        //EscalaOriginal = new List<Vector3>(numObjetos);
         for (int i = 0; i < ObjetosReescalables.Count; i++)
         {
-            //ObjetosReescalables[i].transform.localScale *= factorDeEscalado;
-            //EscalaOriginal[i] = ObjetosReescalables[i].transform.localScale;
+
             EscalaOriginal.Add(ObjetosReescalables[i].transform.localScale);
             PosicionOriginal.Add(ObjetosReescalables[i].transform.localPosition);
         }

@@ -20,7 +20,7 @@ public class ScenesManager : MonoBehaviour
     // Lista con todos los puzzles
     public List<string> puzzleScenes = new List<string>()
     {
-        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", "NivelGeometryDash"
+        "PuzzleFinder", "PuzleSumarFiguras", "PuzzleHielo", "PuzleCuadro", "PuzleTimer", "NivelGeometryDash", "PuzzleLaberinto"
     };
 
     public List<string> waterScenes = new List<string>()
@@ -52,6 +52,7 @@ public class ScenesManager : MonoBehaviour
         NivelGeometryDash,
         PuzleSumarFiguras,
         PuzzleHielo,
+        PuzzleLaberinto,
         Hoguera,
         EndScene,
         EventScene,
@@ -70,8 +71,8 @@ public class ScenesManager : MonoBehaviour
 
         if (type == 0) LoadPuzzle(index);
         else if (type == 1) LoadEvent();
-        else if(type == 2) LoadBonfire();
-        else if(type == 3) LoadWater();
+        else if (type == 2) LoadBonfire();
+        else if (type == 3) LoadWater();
     }
 
     public void UnloadTile(Scene scene)

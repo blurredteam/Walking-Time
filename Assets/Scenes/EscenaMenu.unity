@@ -1121,6 +1121,7 @@ MonoBehaviour:
   - PuzleCuadro
   - PuzleTimer
   - NivelGeometryDash
+  - PuzzleLaberinto
   waterScenes:
   - PuzzleFuente
   - PuzzleGotas

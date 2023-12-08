@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SoundSettingsManager : MonoBehaviour
 {
+    [SerializeField] public GameObject SoundPanelSettings;
     [SerializeField] public GameObject PanelSettings;
     [SerializeField] private Button BotonPanelSettings;
 
@@ -109,7 +110,6 @@ public class SoundSettingsManager : MonoBehaviour
 
 
 
-
     public void ActivateSettingsPanel()
     {
         if (PanelSettings.activeSelf) //objeto activo
@@ -119,6 +119,18 @@ public class SoundSettingsManager : MonoBehaviour
         else
         {
             PanelSettings.SetActive(true);
+        }
+
+    }
+    public void ActivateSoundPanel()
+    {
+        if (SoundPanelSettings.activeSelf) //objeto activo
+        {
+            SoundPanelSettings.SetActive(false);
+        }
+        else
+        {
+            SoundPanelSettings.SetActive(true);
         }
 
     }

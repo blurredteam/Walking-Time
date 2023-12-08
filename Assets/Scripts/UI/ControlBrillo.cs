@@ -14,7 +14,7 @@ public class ControlBrillo : MonoBehaviour
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat("brillo", 0.5f);
-        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, slider.value);
+        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, 1-slider.value);
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class ControlBrillo : MonoBehaviour
     {
         valorSlider = valor;
         PlayerPrefs.SetFloat("brillo", slider.value);
-        panelBrillo.color= new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, slider.value);
+        panelBrillo.color= new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, 1-slider.value);
     }
 }

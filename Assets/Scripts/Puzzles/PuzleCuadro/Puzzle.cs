@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -25,11 +24,11 @@ public class Puzzle : MonoBehaviour
     Vector3 offset;
 
     public GameObject panFinal;
-    
+
     public Transitioner transition;
     public float transitionTime = 1f;
-
     private bool ganaste = true;
+
 
     private void Awake()
     {
@@ -44,7 +43,6 @@ public class Puzzle : MonoBehaviour
         {
             StartCoroutine(EsperarYSalir());
         });
-        // ---------------------------------------------
 
         var numbers = new List<int>(9);
 
@@ -59,11 +57,12 @@ public class Puzzle : MonoBehaviour
         {
             for (int j = 0; j < Mathf.Sqrt(listaPiezas.Count); j++)
             {
-                posiciones.Add(new Vector3(-2+2 * j, -2+2 * i, 0));
+                posiciones.Add(new Vector3(-1.8f + 1.8f * j, -1.8f + 1.8f * i, 0));
             }
         }
 
-        do{
+        do
+        {
             listaAux = new List<GameObject>(listaPiezas);
 
             for (int i = 0; i < listaPiezas.Count; i++)
@@ -72,8 +71,8 @@ public class Puzzle : MonoBehaviour
                 listaPiezas[i] = listaAux[numbers[thisNumber]];
                 numbers.RemoveAt(thisNumber);
             }
-        }while (ListasOrdenadasIgualmente(listaPiezas, listaAux));
-        
+        } while (ListasOrdenadasIgualmente(listaPiezas, listaAux));
+
 
         for (int i = 0; i < listaPiezas.Count; i++)
         {
@@ -88,27 +87,28 @@ public class Puzzle : MonoBehaviour
                 col.enabled = true;
             }
         }
+
     }
-    
+
     IEnumerator EsperarYSalir()
     {
         continueBtn.gameObject.SetActive(false);
         AudioManager.instance.ButtonSound();
         AudioManager.instance.LoseMusic();
         AudioManager.instance.PlayAmbient();
-        
+
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        
+
         continueBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
-        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
-        LevelManager.instance.expEnergy+=1;
+        LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy += 1;
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }
-    
+
     private bool ListasOrdenadasIgualmente<T>(List<T> lista1, List<T> lista2)
     {
         // Comprueba si dos listas están ordenadas igualmente.
@@ -124,6 +124,7 @@ public class Puzzle : MonoBehaviour
 
     void Update()
     {
+
         Vector3 mousePosition = _puzzleCamera.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
@@ -166,6 +167,8 @@ public class Puzzle : MonoBehaviour
                         col.enabled = true;
                     }
                 }
+
+                ganaste = true;
             }
             else
                 selectedObject.transform.position = previousPosition;
@@ -191,10 +194,10 @@ public class Puzzle : MonoBehaviour
             StartCoroutine(EsperarYRecompensa(true));
         }
     }
-    
+
     private void Recompensas(int recompensa)
     {
-        if(recompensa>0)
+        if (recompensa > 0)
             LevelManager.instance.gold += recompensa;
         else
         {
@@ -206,11 +209,11 @@ public class Puzzle : MonoBehaviour
     {
         panFinal.SetActive(true);
         continueBtn.gameObject.SetActive(false);
-        
+
         yield return new WaitForSeconds(1.5f);
         if (ganado)
         {
-            
+
             Recompensas(10);
         }
         else
@@ -219,12 +222,12 @@ public class Puzzle : MonoBehaviour
 
             Recompensas(-10);
         }
-        
-        
+
+
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        
+
         continueBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         AudioManager.instance.PlayAmbient();

@@ -18,6 +18,7 @@ public class ControladorEventos : MonoBehaviour
     [SerializeField] public TextMeshProUGUI _opcion2;
     [SerializeField] public TextMeshProUGUI _opcion3;
     [SerializeField] public TextMeshProUGUI _opcion4;
+    [SerializeField] public Image _eventImg;
 
     [SerializeField] public GameObject eventoResul;
     [SerializeField] public TextMeshProUGUI _resultadoTxt;
@@ -35,15 +36,15 @@ public class ControladorEventos : MonoBehaviour
         instance = this;
 
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
-        ViajeroEvento evento0 = new ViajeroEvento(null);
-        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(null, _eventObjects[0]);
-        FinitoEvento evento2 = new FinitoEvento(null);
-        PozoEvento evento3 = new PozoEvento(null);
-        CristalEvento evento4 = new CristalEvento(null);
-        LamentoEvento evento5 = new LamentoEvento(null, _eventObjects[1]);
-        BotellaEvento evento6 = new BotellaEvento(null, _eventObjects[2]);
-        LucierEvento evento7 = new LucierEvento(null);
-        TopoEvento evento8 = new TopoEvento(null, _eventObjects[3]);
+        ViajeroEvento evento0 = new ViajeroEvento(_eventImages[0]);
+        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(_eventImages[0], _eventObjects[0]);
+        FinitoEvento evento2 = new FinitoEvento(_eventImages[0]);
+        PozoEvento evento3 = new PozoEvento(_eventImages[0]);
+        CristalEvento evento4 = new CristalEvento(_eventImages[0]);
+        LamentoEvento evento5 = new LamentoEvento(_eventImages[0], _eventObjects[1]);
+        BotellaEvento evento6 = new BotellaEvento(_eventImages[0], _eventObjects[2]);
+        LucierEvento evento7 = new LucierEvento(_eventImages[0]);
+        TopoEvento evento8 = new TopoEvento(_eventImages[0], _eventObjects[3]);
 
         eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
         
@@ -69,6 +70,7 @@ public class ControladorEventos : MonoBehaviour
         //3. Se asignan la informacion del evento
         _nombreEvento.text = eventos[seleccionado]._nombre.ToString();
         _eventoTxt.text = eventos[seleccionado]._eventoTxt.ToString();
+        _eventImg.sprite = _eventImages[seleccionado].sprite;
 
         _opcion1.text = eventos[seleccionado]._opcionesList[0].ToString();
         _opcion2.text = eventos[seleccionado]._opcionesList[1].ToString();

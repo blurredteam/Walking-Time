@@ -23,14 +23,6 @@ public class LamentoEvento : Evento
         _opcionesList.Add("2.[-70 energía] Mover la piedra entre todos.");
         _opcionesList.Add("3.Ignorar el sonido y seguir con el camino.");
 
-        _resultadosList.Add("1. Al tocar el cristal amarillo, sientes cómo algo fluye dentro de tí, concretamente " +
-            "de tu bolsa de monedas. De repente te mareas y caes al suelo inconsciente. " +
-            "Cuando el equipo te reanima miras tu bolsa y ¡hay más monedas que antes! " +
-            "Por lo menos el mal trago ha merecido la pena.\n[+30 de oro, -15 de energía]");
-        _resultadosList.Add("2. Cuando tocas el cristal azul un cansancio enorme se apodera de ti, " +
-            "mientras observas cómo tu cantimplora comienza a rellenarse sola. Cuando se rellena, " +
-            "sientes que el malestar acaba y valoras cómo la cantimplora está más llena que antes, " +
-            "quizá la necesites en un futuro.\n[+1 de agua, -40 energía]");
         _resultadosList.Add("3. Estaís un rato pensado que hacer, no teneis ni el tiempo ni los recursos para " +
             "desenterrar el misterio tras la pesada roca, decidís no darle importancia y seguir con vuestro camino. " +
             "El misterio no resuelto deja una mala sensación en el equipo. [-20 energía]");
@@ -44,7 +36,7 @@ public class LamentoEvento : Evento
     private string p2res1 = "Dr. Jáparo se pone manos a la obra, sus 7 años de estudios no son moco de pavo, en un" +
         " pis pas la aventurera esta sanada y con fuerzas para seguir el camino. Extremadamente agradecida, " +
         "la aventurera os cuenta que es jardinera profesional, experta en calabacines, y se niega a dejaros ir sin" +
-        " daros algo a cambio. [+30 oro ,max agua] ";
+        " daros algo a cambio. [+30 oro ,+2 agua] ";
     private string p2res2 = "No teneis los conocimientos médicos suficientes para curarla, sin embargo, fieles al " +
         "código de la aventurería, decidís hacer todo lo posible y le dais una gran parte de vuestra agua. Aunque" +
         " todavía debil, la aventurera recupera buena parte de sus fuerzas, las suficientes para el camino de vuelta. " +
@@ -52,7 +44,7 @@ public class LamentoEvento : Evento
     private string p2res3 = "No podeís abandonar a una persona en apuros, decidís cargarla hasta un lugar más seguro." +
         " Cargar con ella os costará mas energía, sin embargo, una vez recupera la conciencia descubrís que es una " +
         "jardinera profesional, experta en calabacines, con bastos conocimientos sobre la humedad de la cueva. " +
-        "[-20 energía, +1 max agua, +10 coste de viajar]";
+        "[-20 energía, +1 max agua, +15 coste de viajar]";
 
     public override void Option1()
     {
@@ -78,7 +70,7 @@ public class LamentoEvento : Evento
             if (c.name == "Dr. Japaro" && LevelManager.instance.teamWater > 0)
             {
                 LevelManager.instance.gold += 30;
-                LevelManager.instance.teamWater = LevelManager.instance.maxWater;
+                LevelManager.instance.teamWater += 2;
                 ControladorEventos.instance._resultadoTxt.text = p2res1;
                 FinalizarEvento();
             }
@@ -118,7 +110,7 @@ public class LamentoEvento : Evento
         
         LevelManager.instance.teamEnergy -= 20;
         LevelManager.instance.maxWater++;
-        LevelManager.instance.travelCostModifier += 10;
+        LevelManager.instance.travelCostModifier += 15;
 
         LevelManager.instance.AddObject(this, objectIcon);
 
@@ -135,7 +127,7 @@ public class LamentoEvento : Evento
 
     public override void RemoveEventoObj()
     {
-        LevelManager.instance.travelCostModifier -= 10;
+        LevelManager.instance.travelCostModifier -= 15;
         LevelManager.instance.maxWater--;
 
         LevelManager.instance.teamEnergy += 30;

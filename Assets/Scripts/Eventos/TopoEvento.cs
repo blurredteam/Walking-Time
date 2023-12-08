@@ -24,7 +24,7 @@ public class TopoEvento : Evento
         _opcionesList.Add("[¡GRATIS!] Una topopiedra");
         _opcionesList.Add("[-60 oro] Topospá");
 
-        _resultadosList.Add("¡Consigues una increible topomochila! [-10 coste de viajar]");
+        _resultadosList.Add("¡Consigues una increible topomochila! \n [-10 coste de viajar]");
         _resultadosList.Add("Comprais un poco de agua, que os hace falta.");
         _resultadosList.Add("Es una piedra, no se que esperabas.");
         _resultadosList.Add("¡Parece que sois un equipo muy ahorrador! ¿Y para que ahorrabais? Justo para esto! " +

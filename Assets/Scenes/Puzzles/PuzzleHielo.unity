@@ -5962,10 +5962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c463962c754d74bac89817a6b7e8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listaLayouts:
-  - {fileID: 839892834}
-  - {fileID: 1603250766}
-  - {fileID: 945966327}
 --- !u!4 &1439297232
 Transform:
   m_ObjectHideFlags: 0
@@ -5993,15 +5989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b0465a373c70e47a888d0057904a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResOriginal: {x: 1920, y: 1080}
-  ObjetosReescalables:
-  - {fileID: 46231123}
-  - {fileID: 1457243959}
-  - {fileID: 839892834}
-  - {fileID: 1603250766}
-  - {fileID: 945966327}
-  EscalaOriginal: []
-  PosicionOriginal: []
 --- !u!1 &1457243959
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class Puzzle : MonoBehaviour
     public Transitioner transition;
     public float transitionTime = 1f;
 
+    private bool ganaste = true;
+
     private void Awake()
     {
         transition = ScenesManager.instance.transitioner;
@@ -170,8 +172,6 @@ public class Puzzle : MonoBehaviour
 
             selectedObject = null;
         }
-
-        bool ganaste=true;
 
         for (int i = 0; i < listaPiezas.Count; i++)
         {

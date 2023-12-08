@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BotellaEvento : Evento
 {
     private List<Character> team = LevelManager.instance._team;
+    
 
     public BotellaEvento(Image imagenEvento, Image objectIcon)
     {
@@ -13,7 +14,7 @@ public class BotellaEvento : Evento
         index = 6;
         _eventImage = imagenEvento;
         this.objectIcon= objectIcon;
-        objectDescription = "[Botella épica] \n[max agua = 10, +20 coste de viajar]";
+        objectDescription = "[Botella épica] \n[max agua = 10, +25 coste de viajar]";
         _avisoQuitarObj = $"{team[0]} piensa que la botella pesa demasiado como para seguir cargándola, pero lo único que teneis para" +
             " reemplazarlo es un frasco roto que habeis encontrado por el camino. ¿Seguro que quieres dejar la" +
             " botella?";
@@ -27,7 +28,7 @@ public class BotellaEvento : Evento
 
         _resultadosList.Add(" Seguís vuestro camino con la nueva épica botella, mas grande que cualquier otra botella" +
             " de la isla. La sonrisa se os borra tras caminar 5 minutos, el peso de la botella es igual de épico que " +
-            "sus dimensiones. [max agua = 10, +20 coste de viajar]");
+            "sus dimensiones. [max agua = 10, +25 coste de viajar]");
         _resultadosList.Add(" ¿Quien es su sano juicio cargaría con una botella tan sospechosa? La dejais donde está" +
             "y seguis por el camino. El desvío os cuesta un poco de energía [-20 energía]");
     }
@@ -35,7 +36,7 @@ public class BotellaEvento : Evento
     public override void Option1()
     {     
         LevelManager.instance.maxWater = 10;
-        LevelManager.instance.travelCostModifier += 20;
+        LevelManager.instance.travelCostModifier += 25;
 
         LevelManager.instance.AddObject(this, objectIcon);
 
@@ -51,7 +52,7 @@ public class BotellaEvento : Evento
 
     public override void RemoveEventoObj()
     {
-        LevelManager.instance.travelCostModifier -= 20;
+        LevelManager.instance.travelCostModifier -= 25;
         LevelManager.instance.maxWater = 1;
     }
 }

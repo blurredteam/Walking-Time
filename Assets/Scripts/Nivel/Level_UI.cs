@@ -20,22 +20,32 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI infoTxt;
 
     // --- MOCHILA ---
-    [SerializeField] private Button showInvBtn;
     [SerializeField] private List<Image> objectIcons;
     [SerializeField] private List<TextMeshProUGUI> objectDescriptions;
 
     // --- STATS ---
-    [SerializeField] private Button showStatsBtn;
     [SerializeField] private TextMeshProUGUI energyDesc;
     [SerializeField] private TextMeshProUGUI modCoste;
     [SerializeField] private TextMeshProUGUI waterHeal;
+
+    // --- LIBRO BTN ---
+    [SerializeField] private Button openBookBtn;
+    [SerializeField] private Button showInvBtn;
+    [SerializeField] private Button showStatsBtn;
+
+    // --- LIBRO ---
+    [SerializeField] private GameObject _libro;
+    [SerializeField] private List<Image> _paginas;
 
     private void Start()
     {
         instance = this;
 
+        openBookBtn.onClick.AddListener(SetEventObjects);
         showInvBtn.onClick.AddListener(SetEventObjects);
         showStatsBtn.onClick.AddListener(SetEventObjects);
+
+        openBookBtn.onClick.AddListener(delegate { StartCoroutine(OpenBook()); });
     }
 
     private void Update()
@@ -52,6 +62,21 @@ public class Level_UI : MonoBehaviour
 
         goldTxt.text = LevelManager.instance.gold.ToString();
         //travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
+    }
+
+    private IEnumerator OpenBook()
+    {
+        var startPos = _libro.GetComponent<RectTransform>().anchoredPosition;
+        Vector2 endPos = new Vector2(0, 0);
+
+        while(_libro.GetComponent<RectTransform>().anchoredPosition != endPos)
+        {
+            _libro.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(
+                _libro.GetComponent<RectTransform>().anchoredPosition,
+                endPos,
+                2000 * Time.deltaTime);
+            yield return 0;
+        }
     }
 
     // Coge informacion del level manager y la muestra en la pantalla de objetos y stats

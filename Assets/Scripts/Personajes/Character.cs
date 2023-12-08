@@ -15,7 +15,8 @@ public class Character
     public Image backCard;
     public RuntimeAnimatorController anim;
     public Image icon;
-    public string skillDesc;
+    public string skillName;
+    public string skillDescription;
     public bool skillApplied;
     public int energy;
     //public int currentEnergy;   //Indica la energia propia del personaje

@@ -18,7 +18,7 @@ public class Berenjeno : Character
         this.icon = icon;
         
 
-        skillDesc = "[FORZUDO]";
+        skillName = "[FORZUDO]";
         skillApplied = false;
         energy = 140;
         //currentEnergy = energy;
@@ -27,6 +27,11 @@ public class Berenjeno : Character
 
     public override void Skill() 
     {
+        skillDescription = $"{name} - {defaultEnergy} energía \n" +
+          $"{skillName} - Hortafuerza \n" +
+          $" - Gran fuerza de verdura \n" +
+          $" - -1 agua máxima";
+
         if (!skillApplied) 
         {
             if (TeamComp.instance._teamCurrentWater == TeamComp.instance._teamMaxWater)

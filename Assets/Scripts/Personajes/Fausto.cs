@@ -15,9 +15,8 @@ public class Fausto : Character
         this.backCard = backCard;
         this.anim = anim;
         this.icon = icon;
-        skillDesc = "[TRILERO]";
+        skillName = "[TRILERO]";
         energy = 0;                 //Para que no se muestre cuanta energia tiene, se aplica en skill
-        //currentEnergy = energy;
         defaultEnergy = energy;
     }
 
@@ -47,6 +46,11 @@ public class Fausto : Character
 
             energy = Random.Range(40, 120);
             float aux = energy;
+
+            skillDescription = $"{name} - {energy} energía \n" +
+                $"{skillName} - Energía y agua aleatoria \n" +
+                $" - Añade o quita uno de agua máxima \n" +
+                $" - Energía aleatoria entre [30-120]"; 
 
             foreach (Character character in _team)
                 if (character.name == "Dr. Japaro") aux *= 1.1f;

@@ -8,6 +8,11 @@ public class Level_UI : MonoBehaviour
 {
     public static Level_UI instance;
 
+    // --- SPRITES E ICONOS ---
+    [SerializeField] private List<Image> _icons;
+    [SerializeField] private GameObject _spritesTeam;
+    [SerializeField] private List<Image> _sprites;
+
     // --- RECURSOS ---
     [SerializeField] private Slider _energySlider;
     [SerializeField] private TextMeshProUGUI _energyText;
@@ -37,6 +42,12 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private GameObject _libro;
     [SerializeField] private List<Image> _paginas;
 
+    // --- PAGINA EQUIPO ---
+    [SerializeField] private List<Image> bookTeamIcons;
+    [SerializeField] private List<Image> bookTeamSprites;
+    [SerializeField] private List<TextMeshProUGUI> bookTeamDesc;
+
+
     private void Start()
     {
         instance = this;
@@ -44,8 +55,6 @@ public class Level_UI : MonoBehaviour
         openBookBtn.onClick.AddListener(SetEventObjects);
         showInvBtn.onClick.AddListener(SetEventObjects);
         showStatsBtn.onClick.AddListener(SetEventObjects);
-
-        openBookBtn.onClick.AddListener(delegate { StartCoroutine(OpenBook()); });
     }
 
     private void Update()
@@ -64,6 +73,11 @@ public class Level_UI : MonoBehaviour
         //travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
     }
 
+    public void OpenBookBtn()
+    {
+        StartCoroutine(OpenBook());
+    }
+
     private IEnumerator OpenBook()
     {
         var startPos = _libro.GetComponent<RectTransform>().anchoredPosition;
@@ -79,30 +93,49 @@ public class Level_UI : MonoBehaviour
         }
     }
 
+    public void SetTeamUI(List<Character> team)
+    {
+        for (int i = 0; i < team.Count; i++)
+        {
+            _icons[i].sprite = team[i].icon.sprite;
+            _sprites[i].sprite = team[i].sprite.sprite;
+            _sprites[i].GetComponent<Animator>().runtimeAnimatorController = team[i].anim;
+        }
+    }
+
     // Coge informacion del level manager y la muestra en la pantalla de objetos y stats
     private void SetEventObjects()
     {
-        List<Evento> events = LevelManager.instance.removedEvents;
+        //List<Evento> events = LevelManager.instance.removedEvents;
 
-        for (int i = 0; i < events.Count; i++)
-        {
-            if(events[i] == null) continue;
-            else
-            {
-                objectIcons[i].sprite = events[i].objectIcon.sprite;
-                objectDescriptions[i].text = events[i].objectDescription;
-            }
-        }
+        //for (int i = 0; i < events.Count; i++)
+        //{
+        //    if(events[i] == null) continue;
+        //    else
+        //    {
+        //        objectIcons[i].sprite = events[i].objectIcon.sprite;
+        //        objectDescriptions[i].text = events[i].objectDescription;
+        //    }
+        //}
+
+        //List<Character> team = LevelManager.instance._team;
+
+        //string teamEnergy = $"{team[0].defaultEnergy} + {team[1].defaultEnergy} + {team[2].defaultEnergy} + {team[3].defaultEnergy}";
+        //energyDesc.text = $"Energia máxima: {teamEnergy} = {LevelManager.instance.maxEnergy}";
+        //foreach(Character c in team)
+        //    if(c.name == "Dr. Japaro") energyDesc.text = $"Energia máxima: ({teamEnergy}) X 1.1 = {LevelManager.instance.maxEnergy}"; ;
+
+        //modCoste.text = $"Modificador de coste de viaje = {LevelManager.instance.travelCostModifier}";
+        //waterHeal.text = $"Curación por uso de cantimplora = {LevelManager.instance.waterRegen}";
 
         List<Character> team = LevelManager.instance._team;
 
-        string teamEnergy = $"{team[0].defaultEnergy} + {team[1].defaultEnergy} + {team[2].defaultEnergy} + {team[3].defaultEnergy}";
-        energyDesc.text = $"Energia máxima: {teamEnergy} = {LevelManager.instance.maxEnergy}";
-        foreach(Character c in team)
-            if(c.name == "Dr. Japaro") energyDesc.text = $"Energia máxima: ({teamEnergy}) X 1.1 = {LevelManager.instance.maxEnergy}"; ;
-
-        modCoste.text = $"Modificador de coste de viaje = {LevelManager.instance.travelCostModifier}";
-        waterHeal.text = $"Curación por uso de cantimplora = {LevelManager.instance.waterRegen}";
+        for(int i = 0; i < team.Count; i++)
+        {
+            bookTeamIcons[i].sprite = team[i].icon.sprite;
+            bookTeamSprites[i].sprite = team[i].sprite.sprite;
+            bookTeamDesc[i].text = team[i].skillDescription;
+        }
 
     }
 

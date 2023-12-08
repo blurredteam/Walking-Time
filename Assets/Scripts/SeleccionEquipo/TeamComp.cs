@@ -76,7 +76,7 @@ public class TeamComp : MonoBehaviour
                 _slotAvailable[i] = false;
                 _slotCharacterId[i] = characterId;
                 _slotButtons[i].image.sprite = selectedCharacter.icon.sprite;
-                _skillsTxt[i].text = selectedCharacter.skillDesc;
+                _skillsTxt[i].text = selectedCharacter.skillName;
                 _teamMaxEnergy += selectedCharacter.energy;
 
                 //Se gestiona la informacion del personaje
@@ -159,7 +159,7 @@ public class TeamComp : MonoBehaviour
             _slotAvailable[i] = false;
             _slotCharacterId[i] = team[i]._id;
             _slotButtons[i].image.sprite = team[i].icon.sprite;
-            _skillsTxt[i].text = team[i].skillDesc;
+            _skillsTxt[i].text = team[i].skillName;
 
             //Se gestiona info del personaje
             CharacterManager.instance.characterList[team[i]._id].selected = true;
@@ -196,6 +196,8 @@ public class TeamComp : MonoBehaviour
         yield return new WaitForSeconds(1); // En este primer yield se visualizan las habilidades (por implementar)
         CharacterManager.instance.transition.DoTransitionTwice();
         yield return new WaitForSeconds(1);
+
+        Level_UI.instance.SetTeamUI(_teamComp);
 
         LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.teamEnergy = _teamCurrentEnergy;

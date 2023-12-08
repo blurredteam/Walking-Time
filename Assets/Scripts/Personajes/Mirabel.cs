@@ -16,7 +16,7 @@ public class Mirabel : Character
         this.backCard = backCard;
         this.anim = anim;
         this.icon = icon;
-        skillDesc = "[OBSERVADORA]";
+        skillName = "[OBSERVADORA]";
         energy = 100;
         //currentEnergy = energy;
         defaultEnergy = energy;
@@ -24,6 +24,11 @@ public class Mirabel : Character
 
     public override void Skill()
     {
+        skillDescription = $"{name} - {defaultEnergy} energía \n" +
+            $"{skillName} - Menos coste de viaje \n" +
+            $" - Habilidades psíquicas \n" +
+            $" - Viajar cuesta 10 menos de energía";
+
         if (!skillApplied)
         {
             LevelManager.instance.travelCostModifier -= 10;

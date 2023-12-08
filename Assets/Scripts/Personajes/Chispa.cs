@@ -18,7 +18,7 @@ public class Chispa : Character
         this.backCard = backCard;
         this.anim = anim;
         this.icon = icon;
-        skillDesc = "[CHISPA]";
+        skillName = "[CHISPA]";
         energy = 80;
         //currentEnergy = energy;
         defaultEnergy = energy;
@@ -26,6 +26,10 @@ public class Chispa : Character
 
     public override void Skill()
     {
+        skillDescription = $"{name} - {defaultEnergy} energía \n" +
+          $"{skillName} - ¡ORO! \n" +
+          $" - +30 oro inicial";
+
         if (!skillApplied) LevelManager.instance.gold += 30;
     }
 

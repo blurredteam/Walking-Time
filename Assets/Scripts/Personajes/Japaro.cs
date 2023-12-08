@@ -16,7 +16,7 @@ public class Japaro : Character
         this.backCard = backCard;
         this.anim = anim;
         this.icon = icon;
-        skillDesc = "[PRECAVIDO]";
+        skillName = "[PRECAVIDO]";
         skillApplied= false;
         energy = 80;
         //currentEnergy = energy;
@@ -25,6 +25,11 @@ public class Japaro : Character
 
     public override void Skill()
     {
+        skillDescription = $"{name} - {defaultEnergy} energía \n" +
+            $"{skillName} - Mas energía total \n" +
+            $" - Conocimientos médicos \n" +
+            $" - Aumenta la energia total un 10%";
+
         energy = defaultEnergy;
 
         var enerPer = (float)TeamComp.instance._teamCurrentEnergy / (float)TeamComp.instance._teamMaxEnergy;

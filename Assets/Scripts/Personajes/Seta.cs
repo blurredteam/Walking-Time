@@ -16,7 +16,7 @@ public class Seta : Character
         this.backCard = backCard;
         this.anim = anim;
         this.icon = icon;
-        skillDesc = "[ESPORAS CURATIVAS]";
+        skillName = "[ESPORAS CURATIVAS]";
         energy = 60;
         //currentEnergy = energy;
         defaultEnergy = energy;
@@ -24,6 +24,11 @@ public class Seta : Character
 
     public override void Skill()
     {
+        skillDescription = $"{name} - {defaultEnergy} energía \n" +
+            $"{skillName} - Más curación \n" +
+            $" - Veterano en la isla \n " +
+            $" - El agua cura 60 de energía";
+
         if (!skillApplied)
         {
             LevelManager.instance.waterRegen = 60;

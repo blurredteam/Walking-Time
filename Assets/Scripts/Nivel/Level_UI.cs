@@ -24,9 +24,6 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private GameObject infoPanel;
     [SerializeField] private TextMeshProUGUI infoTxt;
 
-    // --- MOCHILA ---
-    [SerializeField] private List<Image> objectIcons;
-    [SerializeField] private List<TextMeshProUGUI> objectDescriptions;
 
     // --- STATS ---
     [SerializeField] private TextMeshProUGUI energyDesc;
@@ -47,6 +44,9 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private List<Image> bookTeamSprites;
     [SerializeField] private List<TextMeshProUGUI> bookTeamDesc;
 
+    // --- PAGINA OBJETOS ---
+    [SerializeField] private List<Image> objectIcons;
+    [SerializeField] private List<TextMeshProUGUI> objectDescriptions;
 
     private void Start()
     {
@@ -73,15 +73,15 @@ public class Level_UI : MonoBehaviour
         //travelCostTxt.text = LevelManager.instance.travelCostModifier.ToString();
     }
 
-    public void OpenBookBtn()
+    public void MoveBookBtn(int yPos)
     {
-        StartCoroutine(OpenBook());
+        StartCoroutine(MoveBook(yPos));
     }
 
-    private IEnumerator OpenBook()
+    private IEnumerator MoveBook(int yPos)
     {
         var startPos = _libro.GetComponent<RectTransform>().anchoredPosition;
-        Vector2 endPos = new Vector2(0, 0);
+        Vector2 endPos = new Vector2(0, yPos);
 
         while(_libro.GetComponent<RectTransform>().anchoredPosition != endPos)
         {
@@ -90,6 +90,13 @@ public class Level_UI : MonoBehaviour
                 endPos,
                 2000 * Time.deltaTime);
             yield return 0;
+        }
+
+        if(endPos.y <= -990)
+        {
+            openBookBtn.interactable = true;
+            showInvBtn.interactable = true;
+            showStatsBtn.interactable = true;
         }
     }
 
@@ -106,34 +113,33 @@ public class Level_UI : MonoBehaviour
     // Coge informacion del level manager y la muestra en la pantalla de objetos y stats
     private void SetEventObjects()
     {
-        //List<Evento> events = LevelManager.instance.removedEvents;
+        openBookBtn.interactable= false;
+        showInvBtn.interactable= false;
+        showStatsBtn.interactable= false;
 
-        //for (int i = 0; i < events.Count; i++)
-        //{
-        //    if(events[i] == null) continue;
-        //    else
-        //    {
-        //        objectIcons[i].sprite = events[i].objectIcon.sprite;
-        //        objectDescriptions[i].text = events[i].objectDescription;
-        //    }
-        //}
+        List<Evento> events = LevelManager.instance.removedEvents;
 
-        //List<Character> team = LevelManager.instance._team;
-
-        //string teamEnergy = $"{team[0].defaultEnergy} + {team[1].defaultEnergy} + {team[2].defaultEnergy} + {team[3].defaultEnergy}";
-        //energyDesc.text = $"Energia máxima: {teamEnergy} = {LevelManager.instance.maxEnergy}";
-        //foreach(Character c in team)
-        //    if(c.name == "Dr. Japaro") energyDesc.text = $"Energia máxima: ({teamEnergy}) X 1.1 = {LevelManager.instance.maxEnergy}"; ;
-
-        //modCoste.text = $"Modificador de coste de viaje = {LevelManager.instance.travelCostModifier}";
-        //waterHeal.text = $"Curación por uso de cantimplora = {LevelManager.instance.waterRegen}";
+        for (int i = 0; i < events.Count; i++)
+        {
+            if (events[i] == null)
+            {
+                objectIcons[i].gameObject.SetActive(false);
+                objectDescriptions[i].text = "";
+            }
+            else
+            {
+                objectIcons[i].gameObject.SetActive(true);
+                objectIcons[i].sprite = events[i].objectIcon.sprite;
+                objectDescriptions[i].text = events[i].objectDescription;
+            }
+        }
 
         List<Character> team = LevelManager.instance._team;
 
         for(int i = 0; i < team.Count; i++)
         {
             bookTeamIcons[i].sprite = team[i].icon.sprite;
-            bookTeamSprites[i].sprite = team[i].sprite.sprite;
+            bookTeamSprites[i].sprite = team[i].altSprite.sprite;
             bookTeamDesc[i].text = team[i].skillDescription;
         }
 

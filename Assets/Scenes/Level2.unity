@@ -2718,6 +2718,7 @@ GameObject:
   - component: {fileID: 326435282}
   - component: {fileID: 326435281}
   - component: {fileID: 326435280}
+  - component: {fileID: 326435283}
   m_Layer: 5
   m_Name: p2Sprite
   m_TagString: Untagged
@@ -2782,6 +2783,27 @@ RectTransform:
   m_AnchoredPosition: {x: -11.7, y: 36.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &326435283
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326435279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &335588562
 GameObject:
   m_ObjectHideFlags: 0
@@ -10198,6 +10220,7 @@ GameObject:
   - component: {fileID: 1251020341}
   - component: {fileID: 1251020340}
   - component: {fileID: 1251020339}
+  - component: {fileID: 1251020342}
   m_Layer: 5
   m_Name: p1Sprite
   m_TagString: Untagged
@@ -10262,6 +10285,27 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: -57.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1251020342
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251020338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1251346389
 GameObject:
   m_ObjectHideFlags: 0
@@ -16005,6 +16049,7 @@ GameObject:
   - component: {fileID: 2046400347}
   - component: {fileID: 2046400346}
   - component: {fileID: 2046400345}
+  - component: {fileID: 2046400348}
   m_Layer: 5
   m_Name: p0Sprite
   m_TagString: Untagged
@@ -16069,6 +16114,27 @@ RectTransform:
   m_AnchoredPosition: {x: -51.3, y: 0.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2046400348
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046400344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2067771906
 GameObject:
   m_ObjectHideFlags: 0
@@ -16431,6 +16497,7 @@ GameObject:
   - component: {fileID: 2109402261}
   - component: {fileID: 2109402260}
   - component: {fileID: 2109402259}
+  - component: {fileID: 2109402262}
   m_Layer: 5
   m_Name: p3Sprite
   m_TagString: Untagged
@@ -16495,6 +16562,27 @@ RectTransform:
   m_AnchoredPosition: {x: 52.9, y: -1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2109402262
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109402258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

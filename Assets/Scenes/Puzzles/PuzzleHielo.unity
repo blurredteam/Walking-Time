@@ -5941,7 +5941,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1439297232}
-  - component: {fileID: 1439297231}
   - component: {fileID: 1439297233}
   m_Layer: 0
   m_Name: puzzleHieloManager
@@ -5950,18 +5949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1439297231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439297230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c463962c754d74bac89817a6b7e8f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1439297232
 Transform:
   m_ObjectHideFlags: 0
@@ -5984,11 +5971,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439297230}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b0465a373c70e47a888d0057904a32, type: 3}
+  m_Script: {fileID: 11500000, guid: f5b58639e29812a47afc79c645b31c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listaLayouts:
+  - {fileID: 839892834}
+  - {fileID: 1603250766}
+  - {fileID: 945966327}
 --- !u!1 &1457243959
 GameObject:
   m_ObjectHideFlags: 0

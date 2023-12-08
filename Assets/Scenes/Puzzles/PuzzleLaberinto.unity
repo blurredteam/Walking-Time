@@ -894,8 +894,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: salida, Assembly-CSharp
+      - m_Target: {fileID: 121675476}
+        m_TargetAssemblyTypeName: SalidaLaberinto, Assembly-CSharp
         m_MethodName: SalirDelJuegoDerrota
         m_Mode: 1
         m_Arguments:
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 121675471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cdc01d654f7a84d874b34a7b038dee, type: 3}
+  m_Script: {fileID: 11500000, guid: d272012e59e2e434dbf4869351e08410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1574254385}
@@ -10795,7 +10795,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1439297232}
-  - component: {fileID: 1439297233}
   - component: {fileID: 1439297234}
   m_Layer: 0
   m_Name: puzzleLaberintoManager
@@ -10819,27 +10818,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1439297233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439297230}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b0465a373c70e47a888d0057904a32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResOriginal: {x: 1920, y: 1080}
-  ObjetosReescalables:
-  - {fileID: 46231123}
-  - {fileID: 1457243959}
-  - {fileID: 839892834}
-  - {fileID: 0}
-  - {fileID: 0}
-  EscalaOriginal: []
-  PosicionOriginal: []
 --- !u!114 &1439297234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10849,7 +10827,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1439297230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b458aaec203aa42bf857fd2400e6b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cc52d7932643db4286243473ca90b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   listaLayouts:
@@ -10982,7 +10960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1457243959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e37b92f2172924a93a627964dc5301, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c621e1713d7c9249877d1d7be68356f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}
@@ -14465,7 +14443,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2009205982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e37b92f2172924a93a627964dc5301, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c621e1713d7c9249877d1d7be68356f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}

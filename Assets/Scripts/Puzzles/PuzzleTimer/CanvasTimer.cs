@@ -37,7 +37,7 @@ public class CanvasTimer : MonoBehaviour
     public void Empezar()
     {
         AudioManager.instance.ButtonSound();
-        panelInicio.SetActive(false);   
+        panelInicio.SetActive(false);
         rueda1.SetActive(true);
         rueda2.SetActive(true);
         rueda3.SetActive(true);
@@ -55,18 +55,24 @@ public class CanvasTimer : MonoBehaviour
                 LevelManager.instance.gold += 10;
                 oroActualizado = true;
                 final = true;
+
+                UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
             }
             else if (energiaPerdida == 30)
             {
                 AudioManager.instance.LoseMusic();
                 textoFinal.text = "VAYA, SE TE HA DADO MAL, HAS PERDIDO 30 DE ENERGÍA. APUNTA MEJOR LA PRÓXIMA.";
                 final = true;
+
+                UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
             }
             else
             {
                 AudioManager.instance.KindaLoseMusic();
                 textoFinal.text = "VAYA, NO HAS CONSEGUIDO HACERLO PERFECTO. \nPIERDES " + energiaPerdida + " DE ENERGÍA.";
                 final = true;
+
+                UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
             }
 
         }

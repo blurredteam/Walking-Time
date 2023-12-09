@@ -11,20 +11,31 @@ public class EndScene : MonoBehaviour
     [SerializeField] private Image _defeatImage;
     [SerializeField] private TextMeshProUGUI _finalText;
 
-    [SerializeField] private EvalTimerManager timerManager;
+    [Header("--------------User Performance--------------")]
+    [SerializeField] private UserPerformance UserPerfManager;
     [SerializeField] private TextMeshProUGUI _timerText;
+    [SerializeField] private TextMeshProUGUI _goldText;
+    [SerializeField] private TextMeshProUGUI _puzzlesPlayedText;
+
+    [SerializeField] public GameObject PanelStats;
+    [SerializeField] private Button BotonPanelStats;
+
 
     private int _finalEnergy;
 
     private void Start()
     {
-        _menuBtn.onClick.AddListener(delegate { ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu); });
+        _menuBtn.onClick.AddListener(delegate
+        {
+            UserPerformance.instance.resetStats();
+            ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu);
+        });
 
         _finalEnergy = GameManager.instance.energy;
         Debug.Log(_finalEnergy);
 
-        timerManager = FindObjectOfType<EvalTimerManager>();
-        updateTiempo();
+        UserPerfManager = FindObjectOfType<UserPerformance>();
+        updateUserPerformance();
 
         if (_finalEnergy > 0) Victory();
         else Defeat();
@@ -49,13 +60,35 @@ public class EndScene : MonoBehaviour
         UnlockManager.Instance.PersonajeDesbloqueado = true;
     }
 
-    private void updateTiempo()
+    private void updateUserPerformance()
     {
-        float tiempo = timerManager.GetTimerValue();
-        timerManager.changeTimerState();
+        float tiempo = UserPerfManager.GetTimerValue();
+        UserPerfManager.changeTimerState();
         float minutos = tiempo / 60f;
         minutos = Mathf.Round(minutos * 10f) / 10f; //redondeamos para mostrar solo 1 decimal
 
-        _timerText.text = "La partida duró: " + minutos + " minutos";
+        _timerText.text = "La partida duró " + minutos + " minutos";
+
+        int oro = UserPerformance.instance.totalGoldGained;
+        _goldText.text = "Obtuviste un total de " + oro + " de oro";
+
+        int jugados = UserPerformance.instance.puzzlesPlayed;
+        int ganados = UserPerformance.instance.puzzlesWon;
+        int perdidos = UserPerformance.instance.puzzlesLost;
+        _puzzlesPlayedText.text = "Jugaste " + jugados + " puzles de los cuales ganaste " + ganados;
+
+    }
+
+    public void ActivateStatsPanel()
+    {
+        if (PanelStats.activeSelf) //objeto activo
+        {
+            PanelStats.SetActive(false);
+        }
+        else
+        {
+            PanelStats.SetActive(true);
+        }
+
     }
 }

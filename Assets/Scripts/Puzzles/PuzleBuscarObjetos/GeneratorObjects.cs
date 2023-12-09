@@ -22,17 +22,17 @@ public class GeneratorObjects : MonoBehaviour
     public TextMeshProUGUI textoVictoria;
     public TextMeshProUGUI textoIntentos;
     public GameObject textoExplicativo;
-    
+
     public GameObject panelFinal;
 
     public Image imagenFiguraUI;
     public Image imagenobjetoAEncontrar;
 
     public int intentos = 3;
-    
+
     public Transitioner transition;
     public float transitionTime = 1f;
-    
+
     private bool botonPulsado;
 
     private void Awake()
@@ -46,9 +46,10 @@ public class GeneratorObjects : MonoBehaviour
         exitBtn.onClick.AddListener(delegate
         {
             StartCoroutine(EsperarYSalir());
+
         });
-        
-        
+
+
         // ---------------------------------------------
         textoIntentos.text = "Intentos restantes: " + intentos;
         textoVictoria.text = "";
@@ -57,7 +58,7 @@ public class GeneratorObjects : MonoBehaviour
 
         figuraElegida = figuras[index];
         botonPulsado = false;
-        
+
         imagenFiguraUI.sprite = figuraElegida.GetComponent<Image>().sprite;
         imagenobjetoAEncontrar.sprite = imagenFiguraUI.sprite;
         figuraElegida.GetComponent<Image>().color = new Color(255, 255, 255, 0);
@@ -93,10 +94,13 @@ public class GeneratorObjects : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
         exitBtn.gameObject.SetActive(true);
-        
-        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
-        LevelManager.instance.expEnergy+=1;
+
+        LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy += 1;
         transition.DoTransitionOnce();
+
+        UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
     }
@@ -107,10 +111,10 @@ public class GeneratorObjects : MonoBehaviour
         textoExplicativo.SetActive(true);
         imagenFiguraUI.gameObject.SetActive(true);
     }
-    
+
     private void Recompensas(int recompensa)
     {
-        if(recompensa>0)
+        if (recompensa > 0)
             LevelManager.instance.gold += recompensa;
         else
         {
@@ -122,28 +126,30 @@ public class GeneratorObjects : MonoBehaviour
     {
         panelFinal.SetActive(true);
         exitBtn.gameObject.SetActive(false);
-        
+
         yield return new WaitForSeconds(1.5f);
-        
+
         if (ganado)
         {
             AudioManager.instance.WinMusic();
             Recompensas(10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(1);    //contamos el puzle como ganado
         }
         else
         {
             //AudioManager.instance.LoseMusic();
             Recompensas(-10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(0);    //contamos el puzle como fallado
         }
-        
+
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
         exitBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
-        
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
     }
@@ -156,7 +162,7 @@ public class GeneratorObjects : MonoBehaviour
             textoVictoria.text = "Has ganado";
             empezar = false;
             StartCoroutine(EsperarYRecompensa(true));
-            
+
         }
     }
 }

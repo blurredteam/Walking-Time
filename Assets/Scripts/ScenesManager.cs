@@ -15,7 +15,7 @@ public class ScenesManager : MonoBehaviour
     public Transitioner transitioner;
 
     private int nextWaterPuzzle;
-   
+
 
     // Lista con todos los puzzles
     public List<string> puzzleScenes = new List<string>()
@@ -32,7 +32,7 @@ public class ScenesManager : MonoBehaviour
     {
         instance = this;
         nextWaterPuzzle = Random.Range(0, 2);
-        
+
     }
 
     /*
@@ -78,6 +78,8 @@ public class ScenesManager : MonoBehaviour
     public void UnloadTile(Scene scene)
     {
         SceneManager.UnloadSceneAsync(scene.ToString());
+
+        UserPerformance.instance.updateGold();
     }
 
     public void UnloadTeamSelect()

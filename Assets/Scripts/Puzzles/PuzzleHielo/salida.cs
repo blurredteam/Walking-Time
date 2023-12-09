@@ -8,7 +8,7 @@ public class salida : MonoBehaviour
 {
     public GameObject panel;
     public GameObject botonSalir1;
-    
+
     private Transitioner transition;
     public float transitionTime = 1f;
     [SerializeField] private Button continueBtn;
@@ -32,8 +32,10 @@ public class salida : MonoBehaviour
     public void SalirDelJuegoVictoria()
     {
         AudioManager.instance.ButtonSound();
-        
+
         LevelManager.instance.gold += 10;
+
+        UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
 
         StartCoroutine(FadeHielo());
     }
@@ -45,9 +47,11 @@ public class salida : MonoBehaviour
         LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy += 1;
 
+        UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+
         StartCoroutine(FadeHielo());
     }
-    
+
     IEnumerator FadeHielo()
     {
         continueBtn.interactable = false;

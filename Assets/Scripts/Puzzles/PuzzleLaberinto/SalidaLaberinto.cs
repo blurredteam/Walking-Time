@@ -34,6 +34,8 @@ public class SalidaLaberinto : MonoBehaviour
 
         LevelManager.instance.gold += 10;
 
+        UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
+
         StartCoroutine(FadeLaberinto());
     }
     public void SalirDelJuegoDerrota()
@@ -43,6 +45,8 @@ public class SalidaLaberinto : MonoBehaviour
         AudioManager.instance.LoseMusic();
         LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy += 1;
+
+        UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
 
         StartCoroutine(FadeLaberinto());
     }

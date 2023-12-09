@@ -11,9 +11,9 @@ public class GeneradorPuzleSumar : MonoBehaviour
     public List<Figura> figuras;
     public Pieza[] piezasTotales;
     int numTotalPiezasAPoner = 0;
-    
+
     private Figura figuraElegida;
-    
+
     [SerializeField] private Camera _puzzleCamera;
     private GameObject selectedObject;
     public Button volverBtn;
@@ -21,7 +21,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
     Vector3 offset;
 
     public GameObject panFinal;
-    
+
     public Transitioner transition;
     public float transitionTime = 1f;
 
@@ -36,12 +36,12 @@ public class GeneradorPuzleSumar : MonoBehaviour
     {
         AudioManager.instance.PlayBackMusic(fondo);
         int numfigurasTotales = Random.Range(1, 3);
-        
+
         List<Figura> figurasTotalesDisponibles = new List<Figura>(figurasTotales);
 
         for (int i = 0; i < Mathf.Min(numfigurasTotales, figurasTotales.Count); i++)
         {
-            
+
             int index = Random.Range(0, figurasTotalesDisponibles.Count);
             Figura figura = figurasTotalesDisponibles[index];
             numTotalPiezasAPoner += figura.piezas.Length;
@@ -66,7 +66,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
             StartCoroutine(EsperarYSalir());
         });
     }
-    
+
     IEnumerator EsperarYSalir()
     {
         AudioManager.instance.ButtonSound();
@@ -75,11 +75,14 @@ public class GeneradorPuzleSumar : MonoBehaviour
         transition.DoTransitionOnce();
 
         yield return new WaitForSeconds(transitionTime);
-        
+
         volverBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
-        LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
-        LevelManager.instance.expEnergy+=1;
+        LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
+        LevelManager.instance.expEnergy += 1;
+
+        UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
@@ -93,7 +96,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
         {
             AudioManager.instance.ButtonSound3();
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject && targetObject.gameObject.layer==7)
+            if (targetObject && targetObject.gameObject.layer == 7)
             {
                 selectedObject = targetObject.transform.gameObject;
                 var position = selectedObject.transform.position;
@@ -145,10 +148,10 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
                 }
 
-                
+
             }
 
-            if (estanColocadas==numTotalPiezasAPoner && piezasSobrantes == 0)
+            if (estanColocadas == numTotalPiezasAPoner && piezasSobrantes == 0)
             {
                 StartCoroutine(EsperarYRecompensa(true));
             }
@@ -158,7 +161,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
     }
     private void Recompensas(int recompensa)
     {
-        if(recompensa>0)
+        if (recompensa > 0)
             LevelManager.instance.gold += recompensa;
         else
         {
@@ -171,26 +174,28 @@ public class GeneradorPuzleSumar : MonoBehaviour
         panFinal.SetActive(true);
         volverBtn.gameObject.SetActive(false);
         transition.DoTransitionOnce();
-        
-        
+
+
         yield return new WaitForSeconds(1.5f);
-        
+
         if (ganado)
         {
             AudioManager.instance.WinMusic();
             Recompensas(10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
         }
         else
         {
             AudioManager.instance.LoseMusic();
             Recompensas(-10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
-        
+
 
         yield return new WaitForSeconds(transitionTime);
-        
+
         volverBtn.gameObject.SetActive(true);
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleSumarFiguras);

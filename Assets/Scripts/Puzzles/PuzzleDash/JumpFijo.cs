@@ -12,8 +12,8 @@ public class JumpFijo : MonoBehaviour
 
     //private float tiempoSaltoPresionado = 0.0f;
     private bool enElSuelo = true;
-    
-    public TextMeshProUGUI  textoTiempo;
+
+    public TextMeshProUGUI textoTiempo;
     public float tiempoMaximo = 10.0f; // Tiempo en segundos.
     private float tiempoRestante;
     private bool juegoTerminado = false;
@@ -24,7 +24,7 @@ public class JumpFijo : MonoBehaviour
 
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
-    
+
     // private Transitioner transition;
     // public float transitionTime = 1f;
     //
@@ -34,7 +34,7 @@ public class JumpFijo : MonoBehaviour
     // }
     private void Start()
     {
-         AudioManager.instance.ButtonSound();
+        AudioManager.instance.ButtonSound();
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
         exitBtn.onClick.AddListener(delegate
         {
@@ -43,6 +43,9 @@ public class JumpFijo : MonoBehaviour
 
             LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
             LevelManager.instance.expEnergy += 1;
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
@@ -72,7 +75,7 @@ public class JumpFijo : MonoBehaviour
         // {
         //     
         // }
-        
+
         if (!juegoTerminado)
         {
             tiempoRestante -= Time.deltaTime;
@@ -109,18 +112,19 @@ public class JumpFijo : MonoBehaviour
         }
         else
         {
-            if(!juegoTerminado){
+            if (!juegoTerminado)
+            {
                 JuegoTerminado(false);
             }
         }
     }
-    
+
     private void ActualizarTextoTiempo()
     {
         int segundos = Mathf.CeilToInt(tiempoRestante);
         textoTiempo.text = "Tiempo: " + segundos.ToString();
     }
-    
+
     private void JuegoTerminado(bool ganaste)
     {
         juegoTerminado = true;
@@ -142,10 +146,10 @@ public class JumpFijo : MonoBehaviour
 
         StartCoroutine(EsperarYRecompensa(ganaste));
     }
-    
+
     private void Recompensas(int recompensa)
     {
-        if(recompensa>0)
+        if (recompensa > 0)
             LevelManager.instance.gold += recompensa;
         else
         {
@@ -155,18 +159,20 @@ public class JumpFijo : MonoBehaviour
 
     IEnumerator EsperarYRecompensa(bool ganado)
     {
-        
+
         yield return new WaitForSeconds(1.5f);
-        
+
         if (ganado)
         {
             Recompensas(10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
         }
         else
         {
             Recompensas(-10);
-            
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
         // transition.DoTransitionOnce();
         //

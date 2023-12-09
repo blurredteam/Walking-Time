@@ -19,7 +19,7 @@ public class Rotate : MonoBehaviour
     private bool pulsado;
 
     private int energiaPerdida = 0;//Si hace mal el puzzle perderá
-    
+
     public Transitioner transition;
     public float transitionTime = 1f;
 
@@ -35,14 +35,15 @@ public class Rotate : MonoBehaviour
     private void Start()
     {
         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        _continueBtn.onClick.AddListener(delegate {
+        _continueBtn.onClick.AddListener(delegate
+        {
             StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
 
         pulsado = false;
     }
-    
+
     IEnumerator EsperarYSalir()
     {
         //AudioManager.instance.ButtonSound();
@@ -50,7 +51,7 @@ public class Rotate : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
         transition.DoTransitionOnce();
-        
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleTimer);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
@@ -63,7 +64,7 @@ public class Rotate : MonoBehaviour
         {
             AudioManager.instance.ButtonSound2();
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject&& targetObject.transform==gameObject.transform.parent)
+            if (targetObject && targetObject.transform == gameObject.transform.parent)
             {
                 // Calcular la posición relativa del objeto con respecto al punto objetivo
                 Vector3 posicionRelativaObjetivo = transform.position - puntoObjetivo.position;
@@ -74,7 +75,7 @@ public class Rotate : MonoBehaviour
                 // Asignar una puntuación en función de la distancia
                 int puntuacion = CalcularPuntuacion(distanciaAlObjetivo);
                 Debug.Log("Puntuación: " + puntuacion);
-                
+
                 pulsado = true;
             }
         }
@@ -95,7 +96,7 @@ public class Rotate : MonoBehaviour
             float anguloRotacionPropia = velocidadRotacionPropia * Time.deltaTime;
             transform.Rotate(Vector3.forward * anguloRotacionPropia);
         }
-       
+
     }
 
     int CalcularPuntuacion(float distancia)
@@ -106,7 +107,7 @@ public class Rotate : MonoBehaviour
         {
             CanvasTimer.instance.SetEnergiaPerdida(0);
             return 100;
-            
+
         }
         else if (distancia < 0.7f)
         {
@@ -124,5 +125,5 @@ public class Rotate : MonoBehaviour
         }
     }
 
-    
+
 }

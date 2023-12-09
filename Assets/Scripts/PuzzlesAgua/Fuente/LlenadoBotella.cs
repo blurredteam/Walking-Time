@@ -30,7 +30,7 @@ public class LlenadoBotella : MonoBehaviour
 
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoAgua;
-    
+
     public Transitioner transition;
     public float transitionTime = 1f;
 
@@ -75,7 +75,7 @@ public class LlenadoBotella : MonoBehaviour
 
         velocidadLlenado = Random.Range(valorMinimo, valorMaximo);
     }
-    
+
     IEnumerator EsperarYSalir()
     {
         AudioManager.instance.ButtonSound();
@@ -95,7 +95,7 @@ public class LlenadoBotella : MonoBehaviour
             chorroAgua.SetActive(true);
             // Incrementar la posici�n en el eje Y para elevar el Sprite
             transform.position += Vector3.up * velocidadLlenado * Time.deltaTime;
-            altura = transform.position.y+3.6683866f;//A�adimos lo ultimo para a�adir la diferencia de tama�o
+            altura = transform.position.y + 3.6683866f;//A�adimos lo ultimo para a�adir la diferencia de tama�o
             // Agitar lateralmente con rotaci�n
             tiempo += Time.deltaTime;
             float angulo = amplitudAgitacion * Mathf.Sin(frecuenciaAgitacion * tiempo);
@@ -135,6 +135,8 @@ public class LlenadoBotella : MonoBehaviour
             aguaTexto.text = "GUAU, EN EL BLANCO!\nHAS GANADO 1 USO DE AGUA";
             AudioManager.instance.WinMusic();
             Recompensas(1);
+
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
         }
         //else if ((altura >= -2.0f && altura < referencia - 0.1f) || altura > referencia + 0.1f)
         //{
@@ -146,6 +148,8 @@ public class LlenadoBotella : MonoBehaviour
         {
             AudioManager.instance.LoseMusic();
             aguaTexto.text = "VAYA... NO HAS DADO EN EL BLANCO.\nÉSTA VEZ NO GANAS NADA :(";
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
     }
 
@@ -163,6 +167,6 @@ public class LlenadoBotella : MonoBehaviour
             LevelManager.instance.teamWater += cantAguaGanada;
         }
     }
-    
-    
+
+
 }

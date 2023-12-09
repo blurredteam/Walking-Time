@@ -105,6 +105,9 @@ public class Puzzle : MonoBehaviour
         transition.DoTransitionOnce();
         LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
         LevelManager.instance.expEnergy += 1;
+
+        UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzleCuadro);
         LevelManager.instance.ActivateScene();
     }
@@ -213,14 +216,17 @@ public class Puzzle : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         if (ganado)
         {
-
             Recompensas(10);
+
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
         }
         else
         {
             AudioManager.instance.LoseMusic();
 
             Recompensas(-10);
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
 
 

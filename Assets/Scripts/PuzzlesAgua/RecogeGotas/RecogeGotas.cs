@@ -82,7 +82,7 @@ public class RecogeGotas : MonoBehaviour
         {
             Debug.Log("Fin del juego");
             FinalJuego();
-           
+
         }
 
         MoverConMouse();
@@ -113,7 +113,7 @@ public class RecogeGotas : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             venenoRecogido++;
-            Debug.Log("Mala, has cogido veneno, llevas "+venenoRecogido);
+            Debug.Log("Mala, has cogido veneno, llevas " + venenoRecogido);
             AudioManager.instance.PlaySfx(venenoAudio);
 
         }
@@ -146,29 +146,37 @@ public class RecogeGotas : MonoBehaviour
     private void Recompensas()
     {
         int aguaMinima = gotasTotales - Mathf.RoundToInt(gotasTotales / 3);//Si consigue el 66% de las gotas consigue un uso
-        if((gotasRecogidas==gotasTotales) && (venenoRecogido == 0))
+        if ((gotasRecogidas == gotasTotales) && (venenoRecogido == 0))
         {
             textoFinal.text = "ENHORABUENA, HAS RECOGIDO TODAS LAS GOTAS POSIBLES DE AGUA LIMPIA. ¡GANAS 2 USOS DE AGUA!";
             AudioManager.instance.WinMusic();
             AguaGanada(2);
 
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
+
         }
-        else if(venenoRecogido > 0)
+        else if (venenoRecogido > 0)
         {
             textoFinal.text = "VAYA... HAS MEZCLADO TU AGUA CON VENENO, HAS CONTAMINADO TODA TU AGUA POR LO QUE DEBES TIRARLA.";
             AudioManager.instance.LoseMusic();
             LevelManager.instance.teamWater = 0;
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
-        else if(gotasRecogidas >= aguaMinima)
+        else if (gotasRecogidas >= aguaMinima)
         {
             textoFinal.text = "HAS CONSEGUIDO AGUA SUFICIENTE PARA RECUPERAR UN USO DE AGUA PERO PODRÍAS RECOGER MÁS.";
             AudioManager.instance.KindaLoseMusic();
             AguaGanada(1);
+
+            UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado
         }
         else
         {
             textoFinal.text = "VAYA... NO HAS CONSEGUIDO RECOGER SUFICIENTE AGUA.";
             AudioManager.instance.LoseMusic();
+
+            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
     }
 
@@ -199,5 +207,5 @@ public class RecogeGotas : MonoBehaviour
         AudioManager.instance.PlayAmbient();
     }
 }
-    
+
 

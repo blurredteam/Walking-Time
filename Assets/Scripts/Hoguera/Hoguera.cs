@@ -17,6 +17,8 @@ public class Hoguera : MonoBehaviour
     [SerializeField] private Image iconP1;
     [SerializeField] private Image iconP2;
     [SerializeField] private Image iconP3;
+    [SerializeField] private Slider energySlider;
+    [SerializeField] private Slider waterSlider;
 
     //Objetos
     [SerializeField] private List<Button> objectIcons;
@@ -54,8 +56,14 @@ public class Hoguera : MonoBehaviour
     }
     private void Update()
     {
-        energy.text = LevelManager.instance.teamEnergy.ToString();
-        water.text = LevelManager.instance.teamWater.ToString();
+        energySlider.maxValue = LevelManager.instance.maxEnergy;
+        energySlider.value = LevelManager.instance.teamEnergy;
+
+        waterSlider.maxValue = LevelManager.instance.maxWater;
+        waterSlider.value = LevelManager.instance.teamWater;
+
+        energy.text = LevelManager.instance.teamEnergy.ToString() + "/" + LevelManager.instance.maxEnergy.ToString();
+        water.text = LevelManager.instance.teamWater.ToString() + "/" + LevelManager.instance.maxWater.ToString();
     }
     public void RecargarEnergia()
     {

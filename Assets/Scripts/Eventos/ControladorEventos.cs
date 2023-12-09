@@ -37,14 +37,14 @@ public class ControladorEventos : MonoBehaviour
 
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
         ViajeroEvento evento0 = new ViajeroEvento(_eventImages[0]);
-        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(_eventImages[0], _eventObjects[0]);
-        FinitoEvento evento2 = new FinitoEvento(_eventImages[0]);
-        PozoEvento evento3 = new PozoEvento(_eventImages[0]);
-        CristalEvento evento4 = new CristalEvento(_eventImages[0]);
-        LamentoEvento evento5 = new LamentoEvento(_eventImages[0], _eventObjects[1]);
-        BotellaEvento evento6 = new BotellaEvento(_eventImages[0], _eventObjects[2]);
-        LucierEvento evento7 = new LucierEvento(_eventImages[0]);
-        TopoEvento evento8 = new TopoEvento(_eventImages[0], _eventObjects[3]);
+        PiedraMalditaEvento evento1 = new PiedraMalditaEvento(_eventImages[1], _eventObjects[0]);
+        FinitoEvento evento2 = new FinitoEvento(_eventImages[2]);
+        PozoEvento evento3 = new PozoEvento(_eventImages[3]);
+        CristalEvento evento4 = new CristalEvento(_eventImages[4]);
+        LamentoEvento evento5 = new LamentoEvento(_eventImages[5], _eventObjects[1]);
+        BotellaEvento evento6 = new BotellaEvento(_eventImages[6], _eventObjects[2]);
+        LucierEvento evento7 = new LucierEvento(_eventImages[7]);
+        TopoEvento evento8 = new TopoEvento(_eventImages[8], _eventObjects[3]);
 
         eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
         

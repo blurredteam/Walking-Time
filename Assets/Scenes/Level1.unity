@@ -3787,7 +3787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -727, y: -319}
+  m_AnchoredPosition: {x: -727, y: -310}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252824207
@@ -4015,7 +4015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -616, y: -5}
+  m_AnchoredPosition: {x: -616, y: 2}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282127176
@@ -6956,7 +6956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -613, y: -119}
+  m_AnchoredPosition: {x: -613, y: -218}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &448266734
@@ -7916,8 +7916,8 @@ RectTransform:
   - {fileID: 59807825}
   - {fileID: 151337421}
   - {fileID: 2101540219}
-  - {fileID: 700137772}
   - {fileID: 662826645}
+  - {fileID: 700137772}
   - {fileID: 518908325}
   m_Father: {fileID: 1954339327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8873,8 +8873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Indica cuanta energ\xEDa se regenera tras cada uso de la cantimplora.
-    Si es 40, cada vez que uses el agua, se regenerar\xE1 40 de energ\xEDa."
+  m_text: "Indica la cantidad de energ\xEDa que se regenera tras cada uso de la cantimplora. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -8901,8 +8900,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43
-  m_fontSizeBase: 43
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11790,7 +11789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -726, y: -241}
+  m_AnchoredPosition: {x: -726, y: -105}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822117455
@@ -13015,9 +13014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Valor que se suma al coste de ir a una casilla. Si ir hasta una casilla
-    cuesta 25 y el modificador es +10, el coste total sera 35, \xA1pero tambi\xE9n
-    puede ser negativo!"
+  m_text: Valor que se suma al coste de ir a una casilla. Puede ser negativo o positivo.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -13044,8 +13041,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43
-  m_fontSizeBase: 43
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15660,8 +15657,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 282127175}
-  - {fileID: 448266733}
   - {fileID: 822117454}
+  - {fileID: 448266733}
   - {fileID: 252824206}
   m_Father: {fileID: 700137772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

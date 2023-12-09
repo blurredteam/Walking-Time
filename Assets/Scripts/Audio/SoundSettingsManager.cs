@@ -8,9 +8,7 @@ public class SoundSettingsManager : MonoBehaviour
 {
     [SerializeField] public GameObject SoundPanelSettings;
     [SerializeField] public GameObject PanelSettings;
-    [SerializeField] private Button BotonPanelSettings;
-
-
+    
     [SerializeField] private AudioMixer Mixer;
     [SerializeField] private Slider MasterSlider;
     [SerializeField] private Slider SFXSlider;
@@ -18,10 +16,24 @@ public class SoundSettingsManager : MonoBehaviour
     [SerializeField] private Slider SoundtrackSlider;
     [SerializeField] private Slider BackgroundSlider;
 
+    [SerializeField] private Button buttonSettings;
 
+    //private void Awake()
+    //{
+
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     void Start()
-    {
+    {     
+        //DontDestroyOnLoad(gameObject);
+
+        buttonSettings.onClick.AddListener(delegate
+        {
+           
+            ActivateSettingsPanel();
+        });
+
         if (PlayerPrefs.HasKey("masterVol"))
         {
             LoadMaster();
@@ -112,6 +124,7 @@ public class SoundSettingsManager : MonoBehaviour
 
     public void ActivateSettingsPanel()
     {
+        
         if (PanelSettings.activeSelf) //objeto activo
         {
             PanelSettings.SetActive(false);

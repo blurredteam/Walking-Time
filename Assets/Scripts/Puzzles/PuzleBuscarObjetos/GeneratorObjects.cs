@@ -19,6 +19,8 @@ public class GeneratorObjects : MonoBehaviour
     // [SerializeField] private Camera _puzzleCamera;
     [SerializeField] private Button exitBtn;
 
+    [SerializeField] private AudioClip fondo;
+
     public TextMeshProUGUI textoVictoria;
     public TextMeshProUGUI textoIntentos;
     public GameObject textoExplicativo;
@@ -37,7 +39,9 @@ public class GeneratorObjects : MonoBehaviour
 
     private void Awake()
     {
+
         transition = ScenesManager.instance.transitioner;
+        
     }
 
     void Start()
@@ -48,7 +52,7 @@ public class GeneratorObjects : MonoBehaviour
             StartCoroutine(EsperarYSalir());
 
         });
-
+        AudioManager.instance.PlayBackMusic(fondo);
 
         // ---------------------------------------------
         textoIntentos.text = "Intentos restantes: " + intentos;
@@ -103,6 +107,7 @@ public class GeneratorObjects : MonoBehaviour
 
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 
     public void SetEmpezar()
@@ -138,7 +143,7 @@ public class GeneratorObjects : MonoBehaviour
         }
         else
         {
-            //AudioManager.instance.LoseMusic();
+            AudioManager.instance.LoseMusic();
             Recompensas(-10);
 
             UserPerformance.instance.updatePuzzlesPlayed(0);    //contamos el puzle como fallado
@@ -152,6 +157,7 @@ public class GeneratorObjects : MonoBehaviour
 
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.PuzzleFinder);
         LevelManager.instance.ActivateScene();
+        AudioManager.instance.PlayAmbient();
     }
 
     public void ClickarImagen()

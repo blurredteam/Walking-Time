@@ -1669,6 +1669,7 @@ MonoBehaviour:
   botonSalir: {fileID: 94201410}
   transitionTime: 1
   continueBtn: {fileID: 94201412}
+  fondo: {fileID: 8300000, guid: bc8acee5325061847a09aa561d705b0c, type: 3}
 --- !u!1 &126958191
 GameObject:
   m_ObjectHideFlags: 0

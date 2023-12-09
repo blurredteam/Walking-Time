@@ -12,10 +12,14 @@ public class SalidaLaberinto : MonoBehaviour
     public float transitionTime = 1f;
     [SerializeField] private Button continueBtn;
 
+    [SerializeField] private AudioClip fondo;
+
+
     void Start()
     {
         transition = ScenesManager.instance.transitioner;
         panel.SetActive(false);
+        AudioManager.instance.PlayBackMusic(fondo);
     }
 
     void OnTriggerEnter2D(Collider2D other)

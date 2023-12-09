@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
    
-    [SerializeField] private MapCamaraMovement _cameraMovementScript;
+    [SerializeField] private MapCamaraMovement1 _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
     [SerializeField] public List<Image> _eventObjects = new List<Image>(); //Lista de objetos que se pueden conseguir en eventos
@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    //Se ejecuta desde ciertos eventos, añade un objeto a la mochila y elimina el evento mientras se tenga el objeto
+    //Se ejecuta desde ciertos eventos, aï¿½ade un objeto a la mochila y elimina el evento mientras se tenga el objeto
     public void AddObject(Evento e, Image objectIcon)
     {
         for (int i = 0; i < _eventObjects.Count; i++)

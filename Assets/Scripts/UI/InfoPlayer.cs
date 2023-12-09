@@ -15,25 +15,40 @@ public class InfoPlayer : MonoBehaviour
     [SerializeField] private List<GameObject> _botones = new List<GameObject>();
 
     [SerializeField] private TextMeshProUGUI textoEdad;
+    
+    [SerializeField] private Transitioner transition;
+    [SerializeField] private float transitionTime = 1f;
     //[SerializeField] private TextMeshProUGUI salidaSexo;
     // Start is called before the first frame update
-    public void Empezar()
+    private void Awake()
     {
-        gameObject.SetActive(true);
+        transition = ScenesManager.instance.transitioner;
     }
+    // public void Empezar()
+    // {
+    //     StartCoroutine(DoTransition(0, 0));
+    // }
 
     public void ActPanelEdad()
     {
-        AudioManager.instance.ButtonSound();
-        _paneles[0].SetActive(false);
-        _paneles[1].SetActive(true);
+        StartCoroutine(DoTransition(0, 1));
     }
 
     public void ActPanelSexo()
     {
+        StartCoroutine(DoTransition(1, 2));
+    }
+
+    IEnumerator DoTransition(int from, int to)
+    {
+        transition.DoTransitionOnce();
         AudioManager.instance.ButtonSound();
-        _paneles[1].SetActive(false);
-        _paneles[2].SetActive(true);
+
+        yield return new WaitForSeconds(transitionTime);
+
+        transition.DoTransitionOnce();
+        _paneles[from].SetActive(false);
+        _paneles[to].SetActive(true);
     }
 
     public void SetEdad(float valor)
@@ -50,7 +65,7 @@ public class InfoPlayer : MonoBehaviour
         AudioManager.instance.ButtonSound3();
         Debug.Log(nombre);
         GameManager.instance.nombreJugador = nombre;
-        textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como... Hmmm no sé... ¿Finito quizá?, espléndido. Bueno, espera, así ya me llamo yo JAJAJAJAJAJAJAJA.";
+        textPanelNombre.text = "Vaya vaya, asï¿½ que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegarï¿½a mï¿½s un nombre como... Hmmm no sï¿½... ï¿½Finito quizï¿½?, esplï¿½ndido. Bueno, espera, asï¿½ ya me llamo yo JAJAJAJAJAJAJAJA.";
         _botones[0].SetActive(true);
     }
 
@@ -67,19 +82,19 @@ public class InfoPlayer : MonoBehaviour
                     GameManager.instance.sexoJugador = "Femenino";
                     break;
                 default:
-                    // Lanza una excepción si el valor no es 0 ni 1
+                    // Lanza una excepciï¿½n si el valor no es 0 ni 1
                     throw new ArgumentOutOfRangeException(nameof(val), "El valor debe ser 0 o 1.");
             }
         }
         catch (Exception e)
         {
-            // Maneja la excepción aquí (puedes imprimir un mensaje, registrarla, etc.)
+            // Maneja la excepciï¿½n aquï¿½ (puedes imprimir un mensaje, registrarla, etc.)
             Debug.LogError($"Error al manejar el valor {val}: {e.Message}");
         }
        
         //if (val == 0) { GameManager.instance.sexoJugador = "Masculino"; }
         //if (val == 1) { GameManager.instance.sexoJugador = "Femenino"; }
-        textPanelSexo.text = "Has visto, mi poder es tal que puedo atravesar hasta la cuarta pared AJAJAJAJAJAJAJAJA.\nMe retiro, pero estaré vigilándote " + GameManager.instance.nombreJugador + ", quizá nos encontremos por ahí...\nJAJAJAJAJAJAJAJAJAJA";
+        textPanelSexo.text = "Has visto, mi poder es tal que puedo atravesar hasta la cuarta pared AJAJAJAJAJAJAJAJA.\nMe retiro, pero estarï¿½ vigilï¿½ndote " + GameManager.instance.nombreJugador + ", quizï¿½ nos encontremos por ahï¿½...\nJAJAJAJAJAJAJAJAJAJA";
        _botones[2].SetActive(true);
         AudioManager.instance.RisaFinito();
     }

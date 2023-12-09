@@ -92,6 +92,11 @@ public class ScenesManager : MonoBehaviour
         StartCoroutine(StartNewGameTransition());
     }
 
+    public void StartPanel(GameObject objeto)
+    {
+        StartCoroutine(StartPanelTransition(objeto));
+    }
+
     IEnumerator StartNewGameTransition()
     {
         transition.SetTrigger("Start");
@@ -102,6 +107,16 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
         transitioner.DoTransitionOnce();
         AudioManager.instance.OnLevel1();
+    }
+    
+    IEnumerator StartPanelTransition(GameObject objeto)
+    {
+        transitioner.DoTransitionOnce();
+        
+        yield return new WaitForSeconds(transitionTime);
+
+        objeto.SetActive(!objeto.activeSelf);
+        transitioner.DoTransitionOnce();
     }
 
     private void LoadPuzzle(int index)

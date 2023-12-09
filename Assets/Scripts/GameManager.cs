@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     public int waterRegen;
     public int expEnergy;
 
+    //Atributos jugador
+    public string nombreJugador;
+    public int edadJugador;
+    public string sexoJugador;
+
 
     private void Awake()
     {

@@ -17,10 +17,12 @@ public class AudioManager : MonoBehaviour
     
 
     [Header("--------------Audio Clip--------------")]
-    public AudioClip backgroundMenu;
-    public AudioClip backgroundSelection;
-    public AudioClip backgroundLevel1;
-    public AudioClip backgroundLevel2;
+    [SerializeField] private AudioClip backgroundMenu;
+    [SerializeField] private AudioClip backgroundSelection;
+    [SerializeField] private AudioClip backgroundLevel1;
+    [SerializeField] private AudioClip backgroundLevel2;
+
+    [SerializeField] private AudioClip finitoSound;
 
 
     [Header("--------------Win/Lose Sounds--------------")]
@@ -132,6 +134,11 @@ public class AudioManager : MonoBehaviour
     {
         musicSrc.volume = 0.2f;//Para q no se escuche tanto la seleccion
         PlayBackMusic(backgroundSelection);
+    }
+
+    public void RisaFinito()
+    {
+        PlaySfx(finitoSound);
     }
 }
 

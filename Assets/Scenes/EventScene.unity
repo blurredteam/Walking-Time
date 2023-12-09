@@ -422,14 +422,14 @@ MonoBehaviour:
   eventoResul: {fileID: 151227082}
   _resultadoTxt: {fileID: 1807223056}
   _eventImages:
+  - {fileID: 1818795692770921432, guid: 43ef642f487241f40b0fd0765b413c9f, type: 3}
   - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
   - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
   - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
+  - {fileID: 7854247526728729292, guid: 7a4754595dccbd247a352cd73f6792bc, type: 3}
   - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
-  - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
-  - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
-  - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
-  - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
+  - {fileID: 5376682939089869717, guid: f659d26cf65f16b4d8dba50ba32b75a1, type: 3}
+  - {fileID: 4726611202178995454, guid: 060e50eccae34c942b0e1e7c38f3abaf, type: 3}
   - {fileID: 7242189367777213765, guid: ebccd7d3717cdfb4cb8fd743c27c80e9, type: 3}
   _eventObjects:
   - {fileID: 1802608512224493458, guid: 1385813d67cb0c34999933af49b4fc70, type: 3}

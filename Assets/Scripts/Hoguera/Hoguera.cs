@@ -11,6 +11,7 @@ public class Hoguera : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI energy;
     [SerializeField] private TextMeshProUGUI water;
+    [SerializeField] private TextMeshProUGUI gold;
     [SerializeField] private GameObject panelInicial;
     [SerializeField] private GameObject panelFinal;
     [SerializeField] private Image iconP0;
@@ -64,6 +65,7 @@ public class Hoguera : MonoBehaviour
 
         energy.text = LevelManager.instance.teamEnergy.ToString() + "/" + LevelManager.instance.maxEnergy.ToString();
         water.text = LevelManager.instance.teamWater.ToString() + "/" + LevelManager.instance.maxWater.ToString();
+        gold.text = LevelManager.instance.gold.ToString();
     }
     public void RecargarEnergia()
     {

@@ -47,24 +47,31 @@ public class ControladorEventos : MonoBehaviour
         TopoEvento evento8 = new TopoEvento(_eventImages[8], _eventObjects[3]);
 
         eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
-        
-        //1.1 Se quitan los eventos que ya no se pueden jugar
+    }
+
+    // Asegura que no se repiten dos eventos seguidos y gestiona los eventos eliminados
+    private int SelectEvent(int seleccionado)
+    {
+        while (seleccionado == previousSelected) seleccionado = Random.Range(0, eventos.Count);
+
         var removedEvents = LevelManager.instance.removedEvents;
-        for(int i = 0; i < removedEvents.Count; i++)
+        for (int i = 0; i < removedEvents.Count; i++)
         {
-            for(int j = 0; j < eventos.Count; j++)
+            if (removedEvents[i] != null && eventos[seleccionado]._nombre == removedEvents[i]._nombre)
             {
-                if (removedEvents[i] == null || eventos[j] == null) break;
-                if (removedEvents[i]._nombre == eventos[j]._nombre) eventos.Remove(eventos[j]);
+                seleccionado = Random.Range(0, eventos.Count);
+                seleccionado = SelectEvent(seleccionado);
             }
         }
+
+        return seleccionado;
     }
 
     private void Start()
     {
-        //2. Se selecciona un evento aleatorio
+        //2. Se selecciona un evento aleatorio 
         seleccionado = Random.Range(0, eventos.Count);
-        while(seleccionado == previousSelected) seleccionado = Random.Range(0, eventos.Count);
+        seleccionado = SelectEvent(seleccionado);
         previousSelected = seleccionado;
 
         //3. Se asignan la informacion del evento

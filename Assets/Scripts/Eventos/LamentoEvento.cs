@@ -12,7 +12,7 @@ public class LamentoEvento : Evento
         index = 5;
         _eventImage = imagenEvento;
         this.objectIcon = objectIcon;
-        objectDescription = "[Jardinera experta] \n[+1 max agua, +10 coste de viajar]";
+        objectDescription = "[Jardinera experta] \n[+1 max agua, +15 coste de viajar]";
         _avisoQuitarObj = "Por fin en un lugar seguro, contemplais la opción de dejar a la jardinera aqui. Perdereis" +
             " su compañia, pero os prometió recompensaron con unos deliciosos calabacines.";
         _eventoTxt = "Avanzais por la cueva siguiendo las marcas dejados por otros aventureros, " +

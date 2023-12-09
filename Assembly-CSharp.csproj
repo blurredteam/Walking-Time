@@ -93,6 +93,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Eventos\LamentoEvento.cs" />
      <Compile Include="Assets\Scripts\SeleccionEquipo\CharacterManager.cs" />
+     <Compile Include="Assets\Scripts\BaseDeDatos\DatabaseManager.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleTimer\CanvasTimer.cs" />
      <Compile Include="Assets\Scripts\ScenesManager.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleHielo\PlayerMovement.cs" />
@@ -196,6 +197,7 @@
      <Folder Include="Assets\Animations\Personajes\Berenjeno" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <Folder Include="Assets\Sprites\Personajes\Animaciones\Japaro" />
+     <Folder Include="Assets\Scripts\BaseDeDatos" />
      <Folder Include="Assets\Scripts\Personajes" />
      <Folder Include="Assets\Sprites\Personajes\Finito" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
@@ -211,6 +213,7 @@
      <Folder Include="Assets\Prefabs\Personajes\Seta" />
      <Folder Include="Assets\Sprites\Nivel1\Iconos\Casilla Hoguera" />
      <Folder Include="Assets\TextMesh Pro\Shaders" />
+     <None Include="Assets\Data\config.json" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
      <Folder Include="Assets\Scripts\PuzzlesAgua\RecogeGotas" />
@@ -255,6 +258,7 @@
      <Folder Include="Assets\Scripts\Puzzles" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\SumarFiguras" />
+     <Folder Include="Assets\Data" />
      <Folder Include="Assets\Prefabs\Personajes\MIrabel" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Folder Include="Assets\Sprites\Personajes\Animaciones\Mirabel" />

@@ -44,9 +44,11 @@ public class Level_UI : MonoBehaviour
     [SerializeField] private List<Image> bookTeamSprites;
     [SerializeField] private List<TextMeshProUGUI> bookTeamDesc;
 
-    // --- PAGINA OBJETOS ---
+    // --- PAGINA MOCHILA ---
     [SerializeField] private List<Image> objectIcons;
     [SerializeField] private List<TextMeshProUGUI> objectDescriptions;
+    [SerializeField] private TextMeshProUGUI modCosteTxt;
+    [SerializeField] private TextMeshProUGUI curAguaTxt;
 
     private void Start()
     {
@@ -133,6 +135,9 @@ public class Level_UI : MonoBehaviour
                 objectDescriptions[i].text = events[i].objectDescription;
             }
         }
+
+        modCosteTxt.text = GameManager.instance.modViajar.ToString();
+        curAguaTxt.text = GameManager.instance.waterRegen.ToString();
 
         List<Character> team = LevelManager.instance._team;
 

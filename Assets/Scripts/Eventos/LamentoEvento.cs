@@ -23,6 +23,8 @@ public class LamentoEvento : Evento
         _opcionesList.Add("2.[-70 energía] Mover la piedra entre todos.");
         _opcionesList.Add("3.Ignorar el sonido y seguir con el camino.");
 
+        _resultadosList.Add("a");
+        _resultadosList.Add("b");
         _resultadosList.Add("3. Estaís un rato pensado que hacer, no teneis ni el tiempo ni los recursos para " +
             "desenterrar el misterio tras la pesada roca, decidís no darle importancia y seguir con vuestro camino. " +
             "El misterio no resuelto deja una mala sensación en el equipo. [-20 energía]");

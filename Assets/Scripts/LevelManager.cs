@@ -74,6 +74,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        GameManager.instance.GetLevelInfo();
         CheckResources();
         CheckObjects();
     }
@@ -135,8 +136,6 @@ public class LevelManager : MonoBehaviour
     // Tambien inhabilita las casillas de su misma columna y las pinta 
     public void Travel(int position, int tileType, int index)
     {
-        GameManager.instance.GetLevelInfo();
-
         if (tileType != 1 && tileType != 100) //Evento o casilla final
         {
             _gridRef.gameObject.SetActive(false);

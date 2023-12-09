@@ -21,6 +21,7 @@ public class EndScene : MonoBehaviour
         _menuBtn.onClick.AddListener(delegate { ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu); });
 
         _finalEnergy = GameManager.instance.energy;
+        Debug.Log(_finalEnergy);
 
         timerManager = FindObjectOfType<EvalTimerManager>();
         updateTiempo();

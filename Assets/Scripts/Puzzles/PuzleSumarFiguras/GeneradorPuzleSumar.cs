@@ -7,9 +7,13 @@ using Random = UnityEngine.Random;
 
 public class GeneradorPuzleSumar : MonoBehaviour
 {
-    public Figura[] figuras;
+    public List<Figura> figurasTotales;
+    public List<Figura> figuras;
     public Pieza[] piezasTotales;
+    int numTotalPiezasAPoner = 0;
+    
     private Figura figuraElegida;
+    
     [SerializeField] private Camera _puzzleCamera;
     private GameObject selectedObject;
     public Button volverBtn;
@@ -31,10 +35,30 @@ public class GeneradorPuzleSumar : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayBackMusic(fondo);
-        int index = Random.Range(0, figuras.Length - 1);
-        figuras[index].gameObject.SetActive(true);
+        int numfigurasTotales = Random.Range(1, 3);
+        
+        List<Figura> figurasTotalesDisponibles = new List<Figura>(figurasTotales);
 
-        figuraElegida = figuras[index];
+        for (int i = 0; i < Mathf.Min(numfigurasTotales, figurasTotales.Count); i++)
+        {
+            
+            int index = Random.Range(0, figurasTotalesDisponibles.Count);
+            Figura figura = figurasTotalesDisponibles[index];
+            numTotalPiezasAPoner += figura.piezas.Length;
+            figura.gameObject.SetActive(true);
+            figuras.Add(figura);
+            figurasTotalesDisponibles.RemoveAt(index);
+        }
+        switch (numfigurasTotales)
+        {
+            case 2:
+                figuras[1].transform.position = new Vector3(-6, -2.5f, 1);
+                break;
+            case 3:
+                figuras[1].transform.position = new Vector3(-6, -2.5f, 1);
+                figuras[2].transform.position = new Vector3(6, -2.5f, 1);
+                break;
+        }
 
         volverBtn.onClick.AddListener(delegate
         {
@@ -84,43 +108,47 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
-            if (selectedObject.GetComponent<Collider2D>().OverlapPoint(figuraElegida.transform.position))
-            {
-                selectedObject.transform.position = figuraElegida.transform.position-new Vector3(0.1f,0.07f);
-                
-                foreach (var pieza in figuraElegida.piezas)
-                {
-                    if (pieza.name.Equals(selectedObject.name))
-                    {
-                        pieza.colocada = true;
-                        pieza.GetComponent<Collider2D>().enabled = false;
-                    }
-
-                    
-                }
-
-                
-            }
             int piezasSobrantes = 0;
             int estanColocadas = 0;
-
-            foreach (var pieza in piezasTotales)
+            foreach (var figura in figuras)
             {
-                if (!pieza.colocada)
+                if (selectedObject.GetComponent<Collider2D>().OverlapPoint(figura.transform.position))
                 {
-                    if (Vector3.Distance(pieza.gameObject.transform.position,
-                            figuraElegida.gameObject.transform.position) < 1f)
+                    selectedObject.transform.position = figura.transform.position - new Vector3(0.1f, 0.07f);
+
+                    foreach (var pieza in figura.piezas)
                     {
-                        piezasSobrantes++;
+                        if (pieza.name.Equals(selectedObject.name))
+                        {
+                            pieza.colocada = true;
+                            pieza.GetComponent<Collider2D>().enabled = false;
+                        }
+
+
                     }
+                    foreach (var pieza in piezasTotales)
+                    {
+                        if (!pieza.colocada)
+                        {
+                            if (Vector3.Distance(pieza.gameObject.transform.position,
+                                    figura.gameObject.transform.position) < 1f)
+                            {
+                                piezasSobrantes++;
+                            }
+                        }
+                        else
+                        {
+                            estanColocadas++;
+                        }
+                    }
+
+
                 }
-                else
-                {
-                    estanColocadas++;
-                }
+
+                
             }
 
-            if (estanColocadas==figuraElegida.piezas.Length && piezasSobrantes == 0)
+            if (estanColocadas==numTotalPiezasAPoner && piezasSobrantes == 0)
             {
                 StartCoroutine(EsperarYRecompensa(true));
             }

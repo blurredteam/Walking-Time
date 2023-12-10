@@ -141,6 +141,15 @@ public class AudioManager : MonoBehaviour
     {
         PlaySfx(finitoSound);
     }
+
+    public void LeaveGame()
+    {
+        musicSrc.Stop();
+        sfxSrc.Stop();
+        buttonSfxSrc.Stop();
+        menuSrc.Stop();
+        levelSrc.Stop();
+    }
 }
 
 

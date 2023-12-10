@@ -58,7 +58,7 @@ public class ControlPantallaCoompleta : MonoBehaviour
     }
     public void CambiarResolucion(int id)
     {
-        PlayerPrefs.GetInt("numeroResolucion", opcionesResolucion.value);
+        PlayerPrefs.SetInt("numeroResolucion", opcionesResolucion.value);
         Resolution resolucion = resoluciones[id];
         Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
     }

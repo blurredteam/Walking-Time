@@ -27,6 +27,7 @@ public class EndScene : MonoBehaviour
     {
         _menuBtn.onClick.AddListener(delegate
         {
+            AudioManager.instance.LeaveGame();
             UserPerformance.instance.resetStats();
             ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu);
         });

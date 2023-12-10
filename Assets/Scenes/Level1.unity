@@ -24943,7 +24943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraRef: {fileID: 2049375203}
   mapOriginLimit: 0
-  mapEndLimit: 12
+  mapEndLimit: 36
   bgImgs:
   - {fileID: 764625584}
   - {fileID: 961216922}

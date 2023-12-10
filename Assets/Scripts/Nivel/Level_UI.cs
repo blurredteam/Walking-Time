@@ -8,6 +8,10 @@ public class Level_UI : MonoBehaviour
 {
     public static Level_UI instance;
 
+    // --- IMAGEN ENTRE NIVELES ---
+    [SerializeField] private Image _entreLvlImg;
+    [SerializeField] private Image _winImage;
+
     // --- SPRITES E ICONOS ---
     [SerializeField] private List<Image> _icons;
     [SerializeField] private GameObject _spritesTeam;
@@ -23,12 +27,6 @@ public class Level_UI : MonoBehaviour
     // --- PANEL INFO ---
     [SerializeField] private GameObject infoPanel;
     [SerializeField] private TextMeshProUGUI infoTxt;
-
-
-    // --- STATS ---
-    [SerializeField] private TextMeshProUGUI energyDesc;
-    [SerializeField] private TextMeshProUGUI modCoste;
-    [SerializeField] private TextMeshProUGUI waterHeal;
 
     // --- LIBRO BTN ---
     [SerializeField] private Button openBookBtn;
@@ -57,6 +55,8 @@ public class Level_UI : MonoBehaviour
         openBookBtn.onClick.AddListener(SetEventObjects);
         showInvBtn.onClick.AddListener(SetEventObjects);
         showStatsBtn.onClick.AddListener(SetEventObjects);
+
+        //StartCoroutine(FadeImgEntreNiveles());
     }
 
     private void Update()
@@ -149,6 +149,36 @@ public class Level_UI : MonoBehaviour
             bookTeamDesc[i].text = team[i].skillDescription;
         }
 
+    }
+    public void StartImage()
+    {
+        StartCoroutine(FadeImgEntreNiveles());
+    }
+
+    public IEnumerator FadeImgEntreNiveles()
+    {
+        LevelManager.instance.transition.DoTransitionOnce();
+        yield return new WaitForSeconds(2f);
+        LevelManager.instance.transition.DoTransitionOnce();
+        yield return new WaitForSeconds(1); 
+        LevelManager.instance.transition.DoTransitionOnce();
+        _entreLvlImg.gameObject.SetActive(false);
+    }
+
+    public void WinImage()
+    {
+        StartCoroutine(DoWinImage());
+    }
+
+    private IEnumerator DoWinImage()
+    {
+        LevelManager.instance.transition.DoTransitionOnce();
+        yield return new WaitForSeconds(1);
+        LevelManager.instance.transition.DoTransitionOnce();
+        _winImage.gameObject.SetActive(true); 
+        LevelManager.instance.transition.DoTransitionOnce();
+        yield return new WaitForSeconds(3.5f);
+        ScenesManager.instance.EndGame();
     }
 
     public void HandleWaterUI(int water)

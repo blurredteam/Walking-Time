@@ -56,11 +56,9 @@ public class Tile : MonoBehaviour
         bonfireProb = 5 - SceneManager.GetActiveScene().buildIndex;             //nivel 1 = 3, nivel 2 = 2
         waterProb = 11 - (SceneManager.GetActiveScene().buildIndex * 2 - 1);    //nivel 1 = 8, nivel 2 = 6
 
-        //EventTile();
-
-        if (position == 0 || position == 5 || position == 7 || position == 10
-            || position == 11 || position == 13 || position == 17 || position == 19) PuzzleTile();
-        else if (position == 6 || position == 12 || position == 18) BonfireTile();
+        if (position == 0 || position == 5 || position == 7 || position == 11
+            || position == 13 || position == 17 || position == 15 || position == 24) PuzzleTile();
+        else if (position == 12) BonfireTile();
         else
         {
             int random = Random.Range(0, 100);
@@ -99,7 +97,11 @@ public class Tile : MonoBehaviour
     public void LoadNextTiles()
     {
         //if (AdyacentList.Count <= 0) ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); 
-        if (AdyacentList.Count <= 0) ScenesManager.instance.EndGame();
+        if (AdyacentList.Count <= 0) 
+        {
+            Level_UI.instance.WinImage();
+        }
+        //ScenesManager.instance.EndGame();
 
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {
@@ -111,7 +113,7 @@ public class Tile : MonoBehaviour
     private void PuzzleTile()
     {
         type = 0;
-        energyCost = Random.Range(30, 50);
+        energyCost = Random.Range(30, 45);
         var puzzleList = ScenesManager.instance.puzzleScenes;
         index = Random.Range(0, puzzleList.Count);
 
@@ -122,7 +124,7 @@ public class Tile : MonoBehaviour
     private void EventTile()
     {
         type = 1;
-        energyCost = Random.Range(30, 40);
+        energyCost = Random.Range(30, 45);
 
         _spriteRenderer.sprite = _obstacleImage.sprite;
         animatorTile.runtimeAnimatorController = animationEvent;
@@ -131,7 +133,7 @@ public class Tile : MonoBehaviour
     private void BonfireTile()
     {
         type = 2;
-        energyCost = Random.Range(40, 60);
+        energyCost = Random.Range(20, 40);
 
         _spriteRenderer.sprite = _bonfireImage.sprite;
         animatorTile.runtimeAnimatorController = animationFire;

@@ -198,6 +198,7 @@ public class TeamComp : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         Level_UI.instance.SetTeamUI(_teamComp);
+        Level_UI.instance.StartImage();
 
         LevelManager.instance.SetTeam(_teamComp);
         LevelManager.instance.teamEnergy = _teamCurrentEnergy;

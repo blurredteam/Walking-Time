@@ -12439,7 +12439,7 @@ Transform:
   m_GameObject: {fileID: 961216919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.47, y: -0.17, z: 10}
+  m_LocalPosition: {x: 34.41, y: -0.17, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12491,7 +12491,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 50, y: 11}
+  m_Size: {x: 100, y: 11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -14627,7 +14627,7 @@ Transform:
   m_GameObject: {fileID: 1106809851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.26, y: -0.92, z: 10}
+  m_LocalPosition: {x: 34.2, y: -0.92, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14679,7 +14679,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 50, y: 10}
+  m_Size: {x: 100, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -19357,7 +19357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be00eed51bd45e49823e68bf8ff79dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 12
+  _width: 24
   _height: 5
   _numberOfPaths: 4
   _xSpacing: 2
@@ -24797,7 +24797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraRef: {fileID: 2049375203}
   mapOriginLimit: 0
-  mapEndLimit: 12
+  mapEndLimit: 36
   bgImgs:
   - {fileID: 764625584}
   - {fileID: 961216922}

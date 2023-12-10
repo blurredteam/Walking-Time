@@ -142,18 +142,20 @@ public class ScenesManager : MonoBehaviour
         else { nextWaterPuzzle = 0; }
     }
 
-    public void LoadNextLevel()
+    public void EndGame()
     {
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            AudioManager.instance.OnLevel2();
-            SceneManager.LoadScene(Scene.Level2.ToString());
-            SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
-        }
-        else if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            SceneManager.LoadScene(Scene.EndScene.ToString());
-        }
+        SceneManager.LoadScene(Scene.EndScene.ToString());
+
+        //if (SceneManager.GetActiveScene().name == "Level1")
+        //{
+        //    AudioManager.instance.OnLevel2();
+        //    SceneManager.LoadScene(Scene.Level2.ToString());
+        //    SceneManager.LoadScene(Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
+        //}
+        //else if (SceneManager.GetActiveScene().name == "Level2")
+        //{
+        //    SceneManager.LoadScene(Scene.EndScene.ToString());
+        //}
     }
 
 }

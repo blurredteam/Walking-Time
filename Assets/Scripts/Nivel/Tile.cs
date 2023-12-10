@@ -58,8 +58,9 @@ public class Tile : MonoBehaviour
 
         //EventTile();
 
-        if (position == 0 || position == 5 || position == 7 || position == 10) PuzzleTile();
-        else if (position == 6) BonfireTile();
+        if (position == 0 || position == 5 || position == 7 || position == 10
+            || position == 11 || position == 13 || position == 17 || position == 19) PuzzleTile();
+        else if (position == 6 || position == 12 || position == 18) BonfireTile();
         else
         {
             int random = Random.Range(0, 100);
@@ -98,7 +99,7 @@ public class Tile : MonoBehaviour
     public void LoadNextTiles()
     {
         //if (AdyacentList.Count <= 0) ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); 
-        if (AdyacentList.Count <= 0) ScenesManager.instance.LoadNextLevel();
+        if (AdyacentList.Count <= 0) ScenesManager.instance.EndGame();
 
         for (int i = 0; i <= AdyacentList.Count - 1; i++)
         {

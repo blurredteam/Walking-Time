@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class FinitoEvento : Evento
 {
+    private void Start()
+    {
+        AudioManager.instance.RisaFinito();
+    }
     public FinitoEvento(Image imagenEvento)
     {
         _nombre = "Extraño disfrazado";

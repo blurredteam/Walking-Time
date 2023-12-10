@@ -34,6 +34,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
     void Start()
     {
+        AudioManager.instance.ButtonSound();
         AudioManager.instance.PlayBackMusic(fondo);
         int numfigurasTotales = Random.Range(1, 3);
 

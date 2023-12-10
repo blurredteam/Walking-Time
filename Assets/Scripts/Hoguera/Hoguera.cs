@@ -43,10 +43,10 @@ public class Hoguera : MonoBehaviour
             if(objectIcons[i].image.sprite != null) objectIcons[i].gameObject.SetActive(true);
         }
 
-        objectIcons[0].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[0], 0); });
-        objectIcons[1].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[1], 1); });
-        objectIcons[2].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[2], 2); });
-        objectIcons[3].onClick.AddListener(delegate { Warning(LevelManager.instance.removedEvents[3], 3); });
+        objectIcons[0].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); Warning(LevelManager.instance.removedEvents[0], 0); });
+        objectIcons[1].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); Warning(LevelManager.instance.removedEvents[1], 1); });
+        objectIcons[2].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); Warning(LevelManager.instance.removedEvents[2], 2); });
+        objectIcons[3].onClick.AddListener(delegate { AudioManager.instance.ButtonSound2(); Warning(LevelManager.instance.removedEvents[3], 3); });
 
         transition = ScenesManager.instance.transitioner;
     }
@@ -77,6 +77,7 @@ public class Hoguera : MonoBehaviour
     }
     public void RecargarEnergia()
     {
+        AudioManager.instance.ButtonSound();
         if ((LevelManager.instance.teamEnergy + eneryRegen) >= LevelManager.instance.maxEnergy)
         {
             LevelManager.instance.teamEnergy = LevelManager.instance.maxEnergy;
@@ -91,6 +92,7 @@ public class Hoguera : MonoBehaviour
 
     public void CambiarEquipo()
     {
+        AudioManager.instance.ButtonSound();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.Hoguera);
         SceneManager.LoadScene(ScenesManager.Scene.SeleccionEquipo.ToString(), LoadSceneMode.Additive);
     }
@@ -101,7 +103,7 @@ public class Hoguera : MonoBehaviour
         textoAviso.text = LevelManager.instance.removedEvents[index]._avisoQuitarObj;
 
         _confirmarBtn.onClick.RemoveAllListeners();
-        _confirmarBtn.onClick.AddListener(delegate { RemoveObject(e, index); });
+        _confirmarBtn.onClick.AddListener(delegate { AudioManager.instance.ButtonSound3(); RemoveObject(e, index); });
     }
 
     private void RemoveObject(Evento e, int index)
@@ -130,6 +132,7 @@ public class Hoguera : MonoBehaviour
     }
     public void SalirDelJuego()
     {
+        AudioManager.instance.ButtonSound();
         StartCoroutine(EsperarYSalir());
 
 

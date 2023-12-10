@@ -28,5 +28,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     }
 
+    public void Sonido()
+    {
+        AudioManager.instance.ButtonSound();
+    }
+
 
 }

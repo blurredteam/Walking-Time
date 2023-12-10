@@ -171,4 +171,8 @@ public class GeneratorObjects : MonoBehaviour
 
         }
     }
+    public void Sonido()
+    {
+        AudioManager.instance.ButtonSound();
+    }
 }

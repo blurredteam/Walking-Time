@@ -192,4 +192,9 @@ public class LevelManager : MonoBehaviour
         ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
     }
+
+    public void SonidoBoton()
+    {
+        AudioManager.instance.ButtonSound();
+    }
 }

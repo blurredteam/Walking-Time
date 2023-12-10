@@ -65,7 +65,7 @@ public class InfoPlayer : MonoBehaviour
         AudioManager.instance.ButtonSound3();
         Debug.Log(nombre);
         GameManager.instance.nombreJugador = nombre;
-        textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, expléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
+        textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, exxxpléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
         _botones[0].SetActive(true);
     }
 

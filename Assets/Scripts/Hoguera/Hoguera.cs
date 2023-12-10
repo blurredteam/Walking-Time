@@ -21,6 +21,9 @@ public class Hoguera : MonoBehaviour
     [SerializeField] private Slider energySlider;
     [SerializeField] private Slider waterSlider;
 
+    // Fondo
+    [SerializeField] private List<Image> sleepingCharacters;
+
     //Objetos
     [SerializeField] private List<Button> objectIcons;
     [SerializeField] private GameObject panelQuitarObjeto;
@@ -50,10 +53,15 @@ public class Hoguera : MonoBehaviour
 
     private void Start()
     {
-        iconP0.sprite = LevelManager.instance._team[0].icon.sprite;
-        iconP1.sprite = LevelManager.instance._team[1].icon.sprite;
-        iconP2.sprite = LevelManager.instance._team[2].icon.sprite;
-        iconP3.sprite = LevelManager.instance._team[3].icon.sprite;
+        var team = LevelManager.instance._team;
+
+        iconP0.sprite = team[0].icon.sprite;
+        iconP1.sprite = team[1].icon.sprite;
+        iconP2.sprite = team[2].icon.sprite;
+        iconP3.sprite = team[3].icon.sprite;
+
+        for(int i = 0; i < team.Count; i++) sleepingCharacters[team[i]._id].gameObject.SetActive(true);
+        
     }
     private void Update()
     {

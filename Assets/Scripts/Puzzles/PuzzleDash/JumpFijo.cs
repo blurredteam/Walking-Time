@@ -25,33 +25,33 @@ public class JumpFijo : MonoBehaviour
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
 
-    // private Transitioner transition;
-    // public float transitionTime = 1f;
-    //
-    // private void Awake()
-    // {
-    //     transition = ScenesManager.instance.transitioner;
-    // }
+    private Transitioner transition;
+    public float transitionTime = 1f;
+    
+    private void Awake()
+    {
+        transition = ScenesManager.instance.transitioner;
+    }
     private void Start()
     {
         AudioManager.instance.ButtonSound();
-        // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
-        exitBtn.onClick.AddListener(delegate
-        {
-            AudioManager.instance.ButtonSound();
-            //AudioManager.instance.LoseMusic();
-
-            LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
-            LevelManager.instance.expEnergy += 1;
-
-            UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
-
-            ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
-            LevelManager.instance.ActivateScene();
-            AudioManager.instance.PlayAmbient();
-        });
-        // ---------------------------------------------
-        AudioManager.instance.PlayBackMusic(fondo);
+         // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
+         exitBtn.onClick.AddListener(delegate
+         {
+             AudioManager.instance.ButtonSound();
+             AudioManager.instance.LoseMusic();
+        
+             LevelManager.instance.teamEnergy -= 10 * LevelManager.instance.expEnergy;
+             LevelManager.instance.expEnergy += 1;
+        
+             UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
+        
+             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+             LevelManager.instance.ActivateScene();
+             AudioManager.instance.PlayAmbient();
+         });
+         // ---------------------------------------------
+         AudioManager.instance.PlayBackMusic(fondo);
         tiempoRestante = tiempoMaximo;
         ActualizarTextoTiempo();
     }
@@ -174,10 +174,10 @@ public class JumpFijo : MonoBehaviour
 
             UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         }
-        // transition.DoTransitionOnce();
-        //
-        // yield return new WaitForSeconds(transitionTime);
-        // transition.DoTransitionOnce();
+        transition.DoTransitionOnce();
+        
+        yield return new WaitForSeconds(transitionTime);
+        transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();

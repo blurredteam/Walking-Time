@@ -67,7 +67,6 @@
      <Compile Include="Assets\Scripts\Nivel\MapGenerator.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleCuadro\Puzzle.cs" />
      <Compile Include="Assets\Scripts\SeleccionEquipo\UnlockManager.cs" />
-     <Compile Include="Assets\Scripts\Tutorial\TutorialFunc.cs" />
      <Compile Include="Assets\Scripts\Eventos\LucierEvento.cs" />
      <Compile Include="Assets\Scripts\Personajes\Berenjeno.cs" />
      <Compile Include="Assets\Scripts\SeleccionEquipo\TeamComp.cs" />
@@ -105,6 +104,7 @@
      <Compile Include="Assets\Scripts\EndScene.cs" />
      <Compile Include="Assets\Scripts\Evaluacion\UserPerformance.cs" />
      <Compile Include="Assets\Scripts\Eventos\ControladorEventos.cs" />
+     <Compile Include="Assets\Scripts\UI\MovimientoFondo.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\GeneradorObstaculos.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\JumpFijo.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleSumarFiguras\Figura.cs" />
@@ -156,6 +156,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources" />
      <Folder Include="Assets\Imported_assets\2D Casual UI\Original Artwork" />
+     <Folder Include="Assets\Sprites\Puzzles\SpriteGeometry" />
      <Folder Include="Assets\Prefabs\PuzzleAgua" />
      <Folder Include="Assets\Sprites\UI\MenuSeleccion\ICONOS PERSONAJES SELECCIÓN NUEVA" />
      <Folder Include="Assets\Sounds\Repair" />
@@ -166,7 +167,6 @@
      <Folder Include="Assets\Sounds\Puzzle_sounds\Fuente" />
      <Folder Include="Assets\Scripts\PuzzlesAgua\Fuente" />
      <Folder Include="Assets\Sprites\Eventos" />
-     <Folder Include="Assets\Scripts\Tutorial" />
      <Folder Include="Assets\Sprites\Puzzles\SpriteAgua" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\Ganar" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -248,6 +248,7 @@
      <Folder Include="Assets\Prefabs\Personajes" />
      <Folder Include="Assets\Sprites\Nivel1\Iconos\Casilla Hielo" />
      <Folder Include="Assets\Sprites" />
+     <Folder Include="Assets\Sprites\Puzzles\SpriteGeometry\asset personaje animado puzle geometry" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\Finder" />
      <Folder Include="Assets\Sounds\Background_music" />

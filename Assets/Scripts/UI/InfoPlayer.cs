@@ -65,7 +65,7 @@ public class InfoPlayer : MonoBehaviour
         AudioManager.instance.ButtonSound3();
         Debug.Log(nombre);
         GameManager.instance.nombreJugador = nombre;
-        textPanelNombre.text = "Vaya vaya, as� que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegar�a m�s un nombre como... Hmmm no s�... �Finito quiz�?, espl�ndido. Bueno, espera, as� ya me llamo yo JAJAJAJAJAJAJAJA.";
+        textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, expléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
         _botones[0].SetActive(true);
     }
 
@@ -94,7 +94,7 @@ public class InfoPlayer : MonoBehaviour
        
         //if (val == 0) { GameManager.instance.sexoJugador = "Masculino"; }
         //if (val == 1) { GameManager.instance.sexoJugador = "Femenino"; }
-        textPanelSexo.text = "Has visto, mi poder es tal que puedo atravesar hasta la cuarta pared AJAJAJAJAJAJAJAJA.\nMe retiro, pero estar� vigil�ndote " + GameManager.instance.nombreJugador + ", quiz� nos encontremos por ah�...\nJAJAJAJAJAJAJAJAJAJA";
+        textPanelSexo.text = "Has visto, mi poder es tal que puedo atravesar hasta la cuarta pared\nAJAJAJAJAJAJAJAJA.\nMe retiro, pero estaré vigilándote " + GameManager.instance.nombreJugador + ", quizá nos encontremos por ahí...\nJAJAJAJAJAJAJAJAJAJA";
        _botones[2].SetActive(true);
         AudioManager.instance.RisaFinito();
     }

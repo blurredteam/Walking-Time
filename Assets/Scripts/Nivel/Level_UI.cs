@@ -77,6 +77,7 @@ public class Level_UI : MonoBehaviour
 
     public void MoveBookBtn(int yPos)
     {
+        
         StartCoroutine(MoveBook(yPos));
     }
 
@@ -171,6 +172,14 @@ public class Level_UI : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         infoPanel.SetActive(false);
+    }
+    public void SoundButton()
+    {
+        AudioManager.instance.ButtonSound2();
+    }
+    public void SoundSlide()
+    {
+        AudioManager.instance.ButtonSound3();
     }
 
 }

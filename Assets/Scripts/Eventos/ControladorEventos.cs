@@ -115,6 +115,7 @@ public class ControladorEventos : MonoBehaviour
 
     public void Salir()
     {
+        AudioManager.instance.ButtonSound();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.EventScene);
         LevelManager.instance.ActivateScene();
     }

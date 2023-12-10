@@ -53,8 +53,8 @@ public class Tile : MonoBehaviour
         SetTileInfo();
 
         // nivel1 buildIndex = 2; nivel2 buildIndex = 3
-        bonfireProb = 5 - SceneManager.GetActiveScene().buildIndex;             //nivel 1 = 3, nivel 2 = 2
-        waterProb = 11 - (SceneManager.GetActiveScene().buildIndex * 2 - 1);    //nivel 1 = 8, nivel 2 = 6
+        bonfireProb = 5;            //nivel 1 = 3, nivel 2 = 2
+        waterProb = 15;
 
         if (position == 0 || position == 5 || position == 7 || position == 11
             || position == 13 || position == 17 || position == 15 || position == 24) PuzzleTile();

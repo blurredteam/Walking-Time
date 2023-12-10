@@ -1366,7 +1366,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 881824135}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   aguaTexto: {fileID: 1976515267}
   venenoTexto: {fileID: 1639352957}
   timer: {fileID: 482567361}
-  textoFinal: {fileID: 0}
+  textoFinal: {fileID: 1286985569}
   panelInfo: {fileID: 1994648853}
   panelInicio: {fileID: 228918398}
   panelFinal: {fileID: 1164885734}

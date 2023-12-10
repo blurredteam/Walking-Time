@@ -56,7 +56,7 @@ public class Tile : MonoBehaviour
         bonfireProb = 5 - SceneManager.GetActiveScene().buildIndex;             //nivel 1 = 3, nivel 2 = 2
         waterProb = 11 - (SceneManager.GetActiveScene().buildIndex * 2 - 1);    //nivel 1 = 8, nivel 2 = 6
 
-        EventTile();
+        //EventTile();
 
         if (position == 0 || position == 5 || position == 7 || position == 10) PuzzleTile();
         else if (position == 6) BonfireTile();

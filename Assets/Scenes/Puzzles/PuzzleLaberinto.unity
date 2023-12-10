@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b2a217bfea12c82499e7eeb72bc25fb4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81b763c87de2d9b48b0cdaf64095aa9a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7223,7 +7223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &839892835
 Transform:
   m_ObjectHideFlags: 0
@@ -7287,7 +7287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &886924242
 Transform:
   m_ObjectHideFlags: 0
@@ -10979,7 +10979,7 @@ GameObject:
   - component: {fileID: 1434751552}
   - component: {fileID: 1434751551}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: CameraLaberinto
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11228,6 +11228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c621e1713d7c9249877d1d7be68356f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camaraPuzle: {fileID: 1434751551}
   playerBody: {fileID: 0}
 --- !u!58 &1457243966
 CircleCollider2D:
@@ -14559,7 +14560,7 @@ Transform:
   m_GameObject: {fileID: 2009205982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7, y: 4.21, z: 1.0530725}
+  m_LocalPosition: {x: 4.57, y: 4.35, z: 1.0530725}
   m_LocalScale: {x: 0.24155292, y: 0.24155292, z: 0.24155292}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14577,6 +14578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c621e1713d7c9249877d1d7be68356f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camaraPuzle: {fileID: 1434751551}
   playerBody: {fileID: 0}
 --- !u!50 &2009205987
 Rigidbody2D:

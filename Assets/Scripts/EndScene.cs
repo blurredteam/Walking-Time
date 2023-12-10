@@ -70,7 +70,7 @@ public class EndScene : MonoBehaviour
         _timerText.text = "La partida duró " + minutos + " minutos";
 
         int oro = UserPerformance.instance.totalGoldGained;
-        _goldText.text = "Obtuviste un total de " + oro + " de oro";
+        _goldText.text = "Obtuviste un total de " + oro + " oro";
 
         int jugados = UserPerformance.instance.puzzlesPlayed;
         int ganados = UserPerformance.instance.puzzlesWon;

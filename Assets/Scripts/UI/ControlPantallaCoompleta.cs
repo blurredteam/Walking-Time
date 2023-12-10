@@ -9,12 +9,14 @@ public class ControlPantallaCoompleta : MonoBehaviour
     [SerializeField] private Toggle toggle;
     [SerializeField] TMP_Dropdown opcionesResolucion;
     Resolution[] resoluciones;
-    
+    public static ControlPantallaCoompleta instance;
+
 
     private void Awake()
     {
-        
+        instance = this;
         DontDestroyOnLoad(gameObject);
+        
     }
     void Start()
     {
@@ -61,6 +63,11 @@ public class ControlPantallaCoompleta : MonoBehaviour
         PlayerPrefs.SetInt("numeroResolucion", opcionesResolucion.value);
         Resolution resolucion = resoluciones[id];
         Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
+    }
+
+    public void FinDeJuego()
+    {
+        Destroy(gameObject);
     }
 
 }

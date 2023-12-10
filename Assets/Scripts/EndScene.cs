@@ -29,6 +29,7 @@ public class EndScene : MonoBehaviour
         {
             AudioManager.instance.LeaveGame();
             UserPerformance.instance.resetStats();
+            ControlPantallaCoompleta.instance.FinDeJuego();
             ScenesManager.instance.LoadScene(ScenesManager.Scene.EscenaMenu);
         });
 

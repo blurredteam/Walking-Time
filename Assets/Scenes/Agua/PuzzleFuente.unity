@@ -1715,7 +1715,7 @@ MonoBehaviour:
   panelInicial: {fileID: 1668591757}
   panelFinal: {fileID: 426000558}
   botonLlenar: {fileID: 419719604}
-  aguaTexto: {fileID: 0}
+  aguaTexto: {fileID: 1240130923}
   volverBtn: {fileID: 397557509}
   objetivo: {fileID: 1773108264}
   fondo: {fileID: 8300000, guid: 4e967069a7158254dad9515b1f77ff7a, type: 3}

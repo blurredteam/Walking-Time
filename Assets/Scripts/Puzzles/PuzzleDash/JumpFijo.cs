@@ -25,6 +25,9 @@ public class JumpFijo : MonoBehaviour
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
 
+    [SerializeField]
+    private GameObject botonObj;
+
     private Transitioner transition;
     public float transitionTime = 1f;
     
@@ -127,6 +130,7 @@ public class JumpFijo : MonoBehaviour
 
     private void JuegoTerminado(bool ganaste)
     {
+        botonObj.SetActive(false);
         juegoTerminado = true;
         panFinal.SetActive(true);
 

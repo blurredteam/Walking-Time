@@ -19,6 +19,8 @@ public class RecogeGotas : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textoFinal;
 
+    [SerializeField] private Camera camaraPuzle;
+
     [SerializeField]
     private GameObject panelInfo;
     [SerializeField]
@@ -93,7 +95,7 @@ public class RecogeGotas : MonoBehaviour
     private void MoverConMouse()
     {
         // Obtener la posición del ratón en el mundo
-        Vector3 posicionMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 posicionMouse = camaraPuzle.ScreenToWorldPoint(Input.mousePosition);
 
         // Mantener la posición y fija
         posicionMouse.y = transform.position.y;

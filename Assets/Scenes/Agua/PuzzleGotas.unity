@@ -1797,6 +1797,7 @@ MonoBehaviour:
   venenoTexto: {fileID: 1639352957}
   timer: {fileID: 482567361}
   textoFinal: {fileID: 1286985569}
+  camaraPuzle: {fileID: 2047227261}
   panelInfo: {fileID: 1994648853}
   panelInicio: {fileID: 228918398}
   panelFinal: {fileID: 1164885734}

@@ -41,10 +41,10 @@ public class Chispa : Character
     public override string PuzzleChooseDialogue()
     {
         string frase1 = "Por donde me lleve el viento...";
-        string frase2 = "Dejate llevar... se uno con la naturaleza.";
+        string frase2 = "Déjate llevar... sé uno con la naturaleza.";
         string frase3 = "Despeja tu mente, abre tus chakras, aummmmmmm";
-        string frase4 = "Los pájaros los controla el gobierno";
-        string frase5 = "Todo es contigo uno y un... uno con todo es... como era?";
+        string frase4 = "¡Los pájaros... los controlan, son espías de las megacorporaciones!";
+        string frase5 = "Todo es contigo uno y un... uno contigo es... ¿cómo era?";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

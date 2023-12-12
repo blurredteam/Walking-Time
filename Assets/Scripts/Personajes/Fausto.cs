@@ -77,11 +77,11 @@ public class Fausto : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "Oh yeah molo mogollon!";
-        string frase2 = "Este puzzle parece divertido!";
-        string frase3 = "A toda mecha! Vamos flying loquete!";
+        string frase1 = "¡Oh yeah! Molo mogollón.";
+        string frase2 = "¡Este puzzle parece divertido!";
+        string frase3 = "¡A toda mecha, Vamos flying loquete!";
         string frase4 = "Voy motivadisimo, siempre motivadisimo";
-        string frase5 = "Vamos parrrriba pim pam!";
+        string frase5 = "¡Vamos parrrriba, pim pam pim pam!";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

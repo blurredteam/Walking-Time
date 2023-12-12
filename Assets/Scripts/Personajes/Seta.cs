@@ -45,7 +45,7 @@ public class Seta : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "JAJAJAJAJ soy una seta";
+        string frase1 = "AJAJAJAJAJA soy una seta";
         string frase2 = "Mi comida favorita? Rissoto!";
         string frase3 = "Soy una seta, no se que decir";
         string frase4 = "Jeje no, no soy comestible jeje";

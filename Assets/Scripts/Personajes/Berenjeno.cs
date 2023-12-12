@@ -55,10 +55,10 @@ public class Berenjeno : Character
 
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "Nadie es más fuerte que yo!";
+        string frase1 = "¡Nadie es más fuerte que yo!";
         string frase2 = "Vamos a demostrarles quien es la verdura mas dura.";
         string frase3 = "Uf, este parece complicado compañero...";
-        string frase4 = "Ojala mi mente fuese igual de musculosa que estos brazacos";
+        string frase4 = "Ojalá mi mente fuese igual de musculosa que estos brazacos";
         string frase5 = "Parece que no podré hacer esto de un puñetazo";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };

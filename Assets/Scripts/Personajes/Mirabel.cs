@@ -48,8 +48,8 @@ public class Mirabel : Character
         string frase1 = "A veces veo el futuro, aunque creo que lo vería mejor con unas buenas gafas";
         string frase2 = "Ummmmm veo... veo cosas ummmmmmm";
         string frase3 = "¿Un 7 de picas? ¡¡¿¿Sabes lo que eso significa??!! Ya yo tampoco";
-        string frase4 = "Un 4 de treboles... No se que significa, pero lo he visto en las cartas.";
-        string frase5 = "Aqui cumpliendo la profecia yatusa.";
+        string frase4 = "Un 4 de tréboles... No se que significa, pero lo he visto en las cartas.";
+        string frase5 = "Aqui cumpliendo la profecía yatusa.";
 
         _frases = new List<string> { frase1, frase2, frase3, frase4, frase5 };
 

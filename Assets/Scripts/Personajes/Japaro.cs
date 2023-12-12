@@ -28,7 +28,7 @@ public class Japaro : Character
         skillDescription = $"{name} - {defaultEnergy} energía \n" +
             $"{skillName} - Mas energía total \n" +
             $" - Conocimientos médicos \n" +
-            $" - Aumenta la energia total un 10%";
+            $" - Aumenta la energía total un 10%";
 
         energy = defaultEnergy;
 
@@ -71,9 +71,9 @@ public class Japaro : Character
     }
     public override string PuzzleChooseDialogue()
     {
-        string frase1 = "Mas vale prevenir que curar!";
-        string frase2 = "Estudie medicina en Stanford durante 7 años, aprendí que blah blah blah...";
-        string frase3 = "Gracias a mis bastos conocimientos ahora me llaman 'el Pelma'";
+        string frase1 = "¡Más vale prevenir que curar!";
+        string frase2 = "Estudié medicina en Stanford durante 7 años; aprendí que blah blah blah...";
+        string frase3 = "Gracias a mis vastos conocimientos ahora me llaman 'el Pelma'";
         string frase4 = "Si te fijas en el coseno de la formación blah blah blah...";
         string frase5 = "Mi nuevo libro, 'Primeros Auxilios', ya está a la venta en blah blah blah...";
 

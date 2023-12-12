@@ -15,13 +15,13 @@ public class PiedraMalditaEvento : Evento
         objectDescription = "[Medallón maldito] \n[No podrás volver a ganar oro hasta que te deshagas de él]";
         _avisoQuitarObj = "¡CUIDADO! Estas a punto de deshacerte del medallón maldito, perderás todo tu oro.";
         _eventoTxt = $"{team[3]} encuentra en el suelo un talismán negro que parece brillar de forma extraña, " +
-            "como un brillo apagado. Parece que vale mucho oro pero cuando estas cerca se siente extraño.";
+            "como un brillo apagado. Parece que vale mucho oro pero cuando estás cerca se siente extraño.";
 
         _opcionesList.Add("Coges el extraño medallón y lo llevas durante tu aventura");
         _opcionesList.Add("Lo dejas en el suelo y continúas.");
 
         _resultadosList.Add("Tras recoger el medallón y colgártelo del cuello te sientes más pesado al caminar, " +
-            "como si cada moneda pesase lo mismo que una roca. Sientes que no puedes llevar una moneda mas " +
+            "como si cada moneda pesase lo mismo que una roca. Sientes que no puedes llevar una moneda más. " +
             "[¡Has sido maldecido por el medallón! No podrás volver a ganar oro hasta deshacerte del medallón][+40 oro]");
         _resultadosList.Add("Continuáis vuestro camino mientras miras a la piedra preciosa, aún en el suelo. " +
             $"{team[3]} se queda pensando en qué hubiera podido ser si te la hubieras llevado...");

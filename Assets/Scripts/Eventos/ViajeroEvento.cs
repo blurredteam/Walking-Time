@@ -26,8 +26,8 @@ public class ViajeroEvento : Evento
         _resultadosList.Add("Ignorais al hombre y seguis el sendero, no todos estan de acuerdo con esta decisión, " +
             "pero sabes que vuestros recursos son limitados. El abondono del hombre deja una mala sensación sobre " +
             "los miembros del equipo... [-25 energía]");
-        _resultadosList.Add("Te acercas al hombre y le das algo de oro. No es exactamente lo que necesita " +
-            "pero esperas que pase la TOPOTIENDA pronto y pueda comprarse algo de agua. Seguis por el sendero...");
+        _resultadosList.Add("Te acercas al hombre y le das algo de oro. No es exactamente lo que necesita, " +
+            "pero esperas que pase la TOPOTIENDA pronto y pueda comprarse algo de agua. Continuáis por el sendero...");
     }
 
     public override void Option1()

@@ -15,22 +15,23 @@ public class BotellaEvento : Evento
         _eventImage = imagenEvento;
         this.objectIcon= objectIcon;
         objectDescription = "[Botella épica] \n[max agua = 10, +25 coste de viajar]";
-        _avisoQuitarObj = $"{team[0]} piensa que la botella pesa demasiado como para seguir cargándola, pero lo único que teneis para" +
-            " reemplazarlo es un frasco roto que habeis encontrado por el camino. ¿Seguro que quieres dejar la" +
-            " botella?";
+        _avisoQuitarObj = $"{team[0]} piensa que la botella pesa demasiado como para seguir cargándola, " +
+            $"pero lo único que teneís para reemplazarlo es un frasco roto que habéis encontrado por el " +
+            $"camino. ¿Seguro que quieres dejar la botella?";
         _eventoTxt = $"Durante el camino, {team[1].name} se tropieza con una piedra y cae en una caverna, " +
             $"estupefacto por lo que encuentra, llama a gritos al resto del equipo. Una vez abajo ves a lo que " +
             $"se refería, una botella de cristal de proporciones colosales se alza sobre vosotros. " +
-            $"\n -{team[2].name}: No es posible, es la legendaria botella de Finito, podriamos hasta cargar un oceano de agua fresca con ella...";
+            $"\n -{team[2].name}: No es posible, es la legendaria botella de Finito, podríamos hasta " +
+            $"cargar un océano de agua fresca con ella...";
 
         _opcionesList.Add("1. Coger la botella.");
         _opcionesList.Add("2. Dejar la botella.");
 
-        _resultadosList.Add(" Seguís vuestro camino con la nueva épica botella, mas grande que cualquier otra botella" +
-            " de la isla. La sonrisa se os borra tras caminar 5 minutos, el peso de la botella es igual de épico que " +
-            "sus dimensiones. [max agua = 10, +25 coste de viajar]");
-        _resultadosList.Add(" ¿Quien es su sano juicio cargaría con una botella tan sospechosa? La dejais donde está" +
-            "y seguis por el camino. El desvío os cuesta un poco de energía [-20 energía]");
+        _resultadosList.Add(" Seguís vuestro camino con la nueva épica botella, mas grande que cualquier " +
+            "otra botella de la isla. La sonrisa se os borra de la cara tras caminar 5 minutos, el peso " +
+            "de la botella es igual de épico que sus dimensiones. [max agua = 10, +25 coste de viajar]");
+        _resultadosList.Add(" ¿Quién es su sano juicio cargaría con una botella tan sospechosa? La dejáis" +
+            " donde está y seguís por el camino. El desvío os cuesta un poco de energía. [-20 energía]");
     }
 
     public override void Option1()

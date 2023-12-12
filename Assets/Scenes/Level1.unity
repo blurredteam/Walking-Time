@@ -1041,8 +1041,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "En las casillas de campamento podr\xE1s: deshacerte de objetos que hayas
-    conseguido en eventos y descansar o cambiar uno de los miembros de tu equipo."
+  m_text: "En las casillas de hoguera podr\xE1s deshacerte de objetos que hayas conseguido
+    en eventos, descansar o cambiar a uno de los miembros de tu equipo. \xA1En las
+    casillas de fuente podr\xE1s reponer agua!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -1889,7 +1890,7 @@ GameObject:
   - component: {fileID: 164472478}
   - component: {fileID: 164472477}
   m_Layer: 5
-  m_Name: textDesaf
+  m_Name: textJugar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1911,7 +1912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143, y: 9}
+  m_AnchoredPosition: {x: 143, y: 18}
   m_SizeDelta: {x: 950, y: 401.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164472477
@@ -1934,13 +1935,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El objetivo de Walking Time! es llegar al final de la isla y descubrir
-    sus secretos por el camino. \n\nPara  ello basta con clickar sobre la casilla
-    a la que te quieres mover, esto gastar\xE1 energ\xEDa y si te quedas a 0 perder\xE1s.
-    Asi que ten cuidado al gestionar los recursos.\n\n\xA1Y eso es todo aventurero,
-    ya estas listo para adentrarte en los misteriosos parajes de la isla! Pero por
-    si te quedara alguna duda, siempre puedes consulta el libro del aventurero haciendo
-    click sobre el icono abajo a la derecha.\n"
+  m_text: "\r\nEl objetivo de Walking Time! es llegar al final de la isla y descubrir
+    sus secretos en el camino.\r\n\r\nPara ello, basta con hacer clic sobre la casilla
+    a la que te quieres mover. Viajar cuesta energ\xEDa, asi que  ten cuidado de
+    no gastarla toda.\n\r\n\xA1Y eso es todo, aventurero! Ya est\xE1s listo para
+    adentrarte en los misteriosos parajes de la isla. Pero por si te quedara alguna
+    duda, siempre puedes consultar la gu\xEDa del aventurero haciendo clic sobre
+    el icono abajo a la derecha. \xA1Buena suerte!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -6904,7 +6905,6 @@ GameObject:
   - component: {fileID: 471425246}
   - component: {fileID: 471425249}
   - component: {fileID: 471425248}
-  - component: {fileID: 471425247}
   m_Layer: 5
   m_Name: ButtonAgua
   m_TagString: Untagged
@@ -6931,62 +6931,6 @@ RectTransform:
   m_AnchoredPosition: {x: -184, y: -9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &471425247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 471425245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
-    m_PressedColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 471425248}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1421077707}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: UsingWater
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &471425248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13045,7 +12989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tu agua se muestra en esta barra, \xA1puedes hacer click sobre el icono
+  m_text: "Tu agua se muestra en esta barra. \xA1Puedes hacer clic sobre el icono
     de la botella para regenerar energ\xEDa!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -13657,8 +13601,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Estas son las casillas de desafio, te llevaran por un tramo donde tendr\xE1s
-    que resolver un puzzle para continuar."
+  m_text: "Estas son las casillas de desaf\xEDo. Te llevar\xE1n por un tramo donde
+    tendr\xE1s que resolver un puzle para continuar. \xA1Ganar\xE1s oro si lo hacer
+    bien!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -13991,7 +13936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -259, y: 39}
+  m_AnchoredPosition: {x: -237, y: 39}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062087383
@@ -15378,7 +15323,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Aqui se \xEDndica cuanto oro tienes, puede resultarte util en los eventos."
+  m_text: "Aqu\xED se indica cu\xE1nto oro tienes. Puede resultarte \xFAtil en los
+    eventos."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -16486,7 +16432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143, y: 4}
+  m_AnchoredPosition: {x: 143, y: 11}
   m_SizeDelta: {x: 950, y: 401.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259478657
@@ -16509,8 +16455,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Estas son las casillas de evento! En ellas se pondr\xE1 tu equipo
-    a prueba y podr\xE1s conseguir recursos u objetos para llevar en la aventura."
+  m_text: "\xA1Estas son las casillas de evento! En ellas se pondr\xE1 a prueba tu
+    equipo y podr\xE1s conseguir recursos u objetos para llevar en la aventura."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -16720,186 +16666,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261613734}
-  m_CullTransparentMesh: 1
---- !u!1 &1262975426
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1262975427}
-  - component: {fileID: 1262975430}
-  - component: {fileID: 1262975429}
-  - component: {fileID: 1262975428}
-  m_Layer: 5
-  m_Name: StatsBtn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1262975427
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262975426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1318716320}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48, y: 24}
-  m_SizeDelta: {x: 300, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1262975428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262975426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1262975429}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1954339328}
-        m_TargetAssemblyTypeName: Level_UI, Assembly-CSharp
-        m_MethodName: MoveBookBtn
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2101540216}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 662826644}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 151337420}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1954339328}
-        m_TargetAssemblyTypeName: Level_UI, Assembly-CSharp
-        m_MethodName: SoundSlide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1262975429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262975426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1262975430
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262975426}
   m_CullTransparentMesh: 1
 --- !u!1 &1269592174
 GameObject:
@@ -17417,7 +17183,6 @@ RectTransform:
   - {fileID: 1687229574}
   - {fileID: 718265370}
   - {fileID: 121157990}
-  - {fileID: 1262975427}
   m_Father: {fileID: 1165366766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -18549,7 +18314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143, y: 127}
+  m_AnchoredPosition: {x: 143, y: 130}
   m_SizeDelta: {x: 950, y: 401.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1386419022
@@ -18573,8 +18338,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Tanto tu equipo como tu energ\xEDa se muestran aqu\xED. La energ\xEDa
-    se usa para viajar a otras casillas, \xA1ten cuidado de no gastarla toda! Puedes
-    hacer click para consultar informaci\xF3n de tu equipo en el libro del aventurero."
+    se usa para viajar a otras casillas. \xA1Ten cuidado de no gastarla toda!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -19915,7 +19679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1572805735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23668,7 +23432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -259, y: 39}
+  m_AnchoredPosition: {x: -237, y: 39}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906920209
@@ -25905,7 +25669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2143115145
 RectTransform:
   m_ObjectHideFlags: 0

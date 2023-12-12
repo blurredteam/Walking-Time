@@ -25,11 +25,11 @@ public class TopoEvento : Evento
         _opcionesList.Add("[-60 oro] Topospá");
 
         _resultadosList.Add("¡Consigues una increible topomochila! \n [-10 coste de viajar]");
-        _resultadosList.Add("Comprais un poco de agua, que os hace falta.");
+        _resultadosList.Add("Compráis un poco de agua, que os hace falta.");
         _resultadosList.Add("Es una piedra, no se que esperabas.");
         _resultadosList.Add("¡Parece que sois un equipo muy ahorrador! ¿Y para que ahorrabais? Justo para esto! " +
-            "Bienvenidos a TOPOSPÁ, expertos en topos... y en spas. Os dan un increible topomasaje, os dais un" +
-            " chapuzón en las topotermas y os relajais en la toposauna... Seguis por el camino a tope, o a topo." +
+            "Bienvenidos a TOPOSPÁ, expertos en topos... y en spas. Os dan un increíble topomasaje, os dais un" +
+            " chapuzón en las topotermas y os relajáis en la toposauna... Seguís por el camino a tope, o a topo." +
             " [Todo al máximo]");
     }
 

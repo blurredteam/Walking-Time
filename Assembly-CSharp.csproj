@@ -102,7 +102,6 @@
      <Compile Include="Assets\Scripts\PuzzlesAgua\RecogeGotas\MovimientoGotas.cs" />
      <Compile Include="Assets\Scripts\Eventos\PiedraMalditaEvento.cs" />
      <Compile Include="Assets\Scripts\EndScene.cs" />
-     <Compile Include="Assets\Scripts\Evaluacion\UserPerformance.cs" />
      <Compile Include="Assets\Scripts\Eventos\ControladorEventos.cs" />
      <Compile Include="Assets\Scripts\UI\MovimientoFondo.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\GeneradorObstaculos.cs" />
@@ -110,6 +109,7 @@
      <Compile Include="Assets\Scripts\Puzzles\PuzleSumarFiguras\Figura.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleLaberinto\LabManager.cs" />
+     <Compile Include="Assets\Scripts\BaseDeDatos\UserPerformance.cs" />
      <Compile Include="Assets\Scripts\Hoguera\Hoguera.cs" />
      <Compile Include="Assets\Scripts\Personajes\Fausto.cs" />
      <Compile Include="Assets\Scripts\Personajes\Seta.cs" />
@@ -210,6 +210,7 @@
      <Folder Include="Assets\Sprites\Nivel1\Iconos\Casilla Puzzle Búsqueda" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <Folder Include="Assets\Sprites\Nivel1\Iconos\CasillaLaberinto" />
      <Folder Include="Assets\Sounds\Finito" />
      <Folder Include="Assets\Animations\Personajes\Mirabel" />
      <Folder Include="Assets\Sounds\Warning_Popup" />

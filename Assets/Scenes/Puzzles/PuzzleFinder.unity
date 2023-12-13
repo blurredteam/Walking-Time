@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "BUSCA \xC9STE OBJETO"
+  m_text: BUSCA ESTE OBJETO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}

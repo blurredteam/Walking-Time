@@ -1451,8 +1451,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Florecia apareci\xF3 en la isla movida por el viente, literalmente. Su
     filosof\xEDa de vida siempre ha sido \"dejarse llevar\" y, seg\xFAn ella, siempre
-    le ha ido bien. Est\xE1 tranquila de que va a salir victoriosa de cualquier cosa
-    que ocurra. Claro... con su suerte yo tambi\xE9n lo pensar\xEDa."
+    le ha ido bien. Est\xE1 convencida de que va a salir victoriosa de cualquier
+    cosa que ocurra. Claro... con su suerte, yo tambi\xE9n lo pensar\xEDa."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -2714,9 +2714,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "El Dr. J\xE1paro Curacoraz\xF3n quiere investigar la isla para escribir
-    despues su futuro libro \"Primeros auxilios en situaciones extra\xF1as\", por
-    que una isla llena de parajes extraordinarios le viene de perlas, aunque no cree
-    que pueda explorarla solo."
+    despu\xE9s su futuro libro \"Primeros auxilios en situaciones extra\xF1as\",
+    por lo que una isla llena de parajes extraordinarios le viene de perlas, aunque
+    no cree que pueda explorarla solo."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -7435,12 +7435,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 711382299}
-  - {fileID: 151337421}
+  - {fileID: 59807825}
   - {fileID: 700137772}
+  - {fileID: 151337421}
   - {fileID: 2101540219}
   - {fileID: 662826645}
-  - {fileID: 59807825}
+  - {fileID: 711382299}
   - {fileID: 518908325}
   m_Father: {fileID: 1954339327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9733,8 +9733,8 @@ RectTransform:
   m_LocalScale: {x: 1.00008, y: 1.00008, z: 1.00008}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1073494677}
   - {fileID: 590429079}
+  - {fileID: 1073494677}
   - {fileID: 1253858968}
   - {fileID: 433524420}
   - {fileID: 2128569326}
@@ -15676,10 +15676,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "La vidente mirabel acudi\xF3 a la isla para cumplir con una profec\xEDa
+  m_text: "La vidente Mirabel acudi\xF3 a la isla para cumplir con una profec\xEDa
     que dec\xEDa que deb\xEDa estar all\xED. No necesit\xF3 mucho m\xE1s motivo.
-    Una vez all\xED, decidi\xF3 epxlorar ya que, en sus palabras: \"Lo he visto en
-    las cartas\"."
+    Una vez all\xED, decidi\xF3 explorar, ya que, en sus palabras: \"Lo he visto
+    en las cartas\"."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
   m_sharedMaterial: {fileID: 3676591830705986809, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -17799,8 +17799,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Seta naci\xF3 y creci\xF3 toda su vida en un bosque, sin conocer mas all\xE1,
-    hasta que un d\xEDa Zeta, un peque\xF1o hongo, creci\xF3 ensima suya y le inspir\xF3
-    el valor necesario para irse de aventura. Asi, con superaci\xF3n, Seta y Zeta
+    hasta que un d\xEDa Zeta, un peque\xF1o hongo, creci\xF3 encima suyo y le inspir\xF3
+    el valor necesario para irse de aventura. As\xED, con superaci\xF3n, Seta y Zeta
     han acabado en esta isla tratando de descubrir mundo."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23a39184a0662e1459fa64240076f8d6, type: 2}
@@ -20636,7 +20636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Berenjeno depert\xF3 en la isla sin saber muy bien d\xE9nde estaba, confuso
+  m_text: "Berenjeno depert\xF3 en la isla sin saber muy bien d\xF3nde estaba, confuso
     y algo asustado, pero sobretodo confuso. Siempre se ha dicho que las verduras
     ayudan a crecer sano y fuerte, pues Berenjeno es la prueba viva de ello."
   m_isRightToLeft: 0

@@ -142,7 +142,6 @@
      <Folder Include="Assets\Animations\Casillas" />
      <Folder Include="Assets\Sprites\Personajes" />
      <Folder Include="Assets\Sprites\UI\MenuSeleccion" />
-     <Folder Include="Assets\Scripts\Evaluacion" />
      <Folder Include="Assets\Scripts\Puzzles\PuzzleHielo" />
      <Folder Include="Assets\Imported_assets\Mountain Dusk Artwork\Scenes" />
      <Folder Include="Assets\Sprites\Nivel1\Iconos\Casilla Timing" />

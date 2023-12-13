@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 
 public class DatabaseManager : MonoBehaviour
 {
+    public static DatabaseManager instance;
+    
     string username;
     string password;
     string uri;
@@ -13,33 +15,70 @@ public class DatabaseManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        instance = this;
         LoadCredentials();
-    }
-    void Start()
-    {
-        StartCoroutine(SendPostRequest());
+        CreatePostLogin("juan","ee","11");
     }
 
-    string CreateJSON(string tabla, string name, string start, string end)
+    string CreateJSONLogin(string tabla, string user, string name, string password)
     {
         //Construye JSON para la petición REST         
         string json = $@"{{
             ""username"":""{username}"",
-            ""password"":""{password}"",
+            ""password"":""{this.password}"",
             ""table"":""{tabla}"",
             ""data"": {{
-                ""name"": ""{name}"",
-                ""start"": ""{start}"",
-                ""end"": ""{end}""
+                ""usuario"": ""{user}"",
+                ""nombre"": ""{name}"",
+                ""password"": ""{password}""
             }}
         }}";
 
         return json;
     }
-    IEnumerator SendPostRequest()
+    
+    string CreateJSONSessions(string tabla, string user, string fechaInicioPartida, string fechaFinPartida, int puzlesPerdidos)
     {
-        string data = CreateJSON("test", "quintana", "2024-11-01 00:01:00", "2025-12-10 00:01:00");
+        //Construye JSON para la petición REST         
+        string json = $@"{{
+            ""username"":""{username}"",
+            ""password"":""{this.password}"",
+            ""table"":""{tabla}"",
+            ""data"": {{
+                ""usuario"": ""{user}"",
+                ""fechaFinPartida"": ""{fechaFinPartida}"",
+                ""fechaInicioPartida"": ""{fechaInicioPartida}"",
+                ""puzlesPerdidos"": ""{puzlesPerdidos}""
+            }}
+        }}";
 
+        return json;
+    }
+
+    public void CreatePostLogin(string user, string name, string password)
+    {
+        string data = CreateJSONLogin("WalkingTimeLogin", user, name, password);
+
+        StartCoroutine(SendPostRequest(data));
+        
+    }
+
+    public void CreatePostSessions()
+    {
+        string data = CreateJSONSessions(
+            "WalkingTimeSessions",
+            "juan",
+            DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 
+            UserPerformance.instance.puzzlesLost);
+            
+
+        StartCoroutine(SendPostRequest(data));
+    }
+    
+    IEnumerator SendPostRequest(string data)
+    {
         using (UnityWebRequest www = UnityWebRequest.Post(uri, data, contentType))
         {
             yield return www.SendWebRequest();

@@ -37,6 +37,7 @@ public class EndScene : MonoBehaviour
         Debug.Log(_finalEnergy);
 
         UserPerfManager = FindObjectOfType<UserPerformance>();
+        DatabaseManager.instance.CreatePostSessions();
         updateUserPerformance();
 
         if (_finalEnergy > 0) Victory();
@@ -69,7 +70,7 @@ public class EndScene : MonoBehaviour
         float minutos = tiempo / 60f;
         minutos = Mathf.Round(minutos * 10f) / 10f; //redondeamos para mostrar solo 1 decimal
 
-        _timerText.text = "La partida duró " + minutos + " minutos";
+        _timerText.text = "La partida durï¿½ " + minutos + " minutos";
 
         int oro = UserPerformance.instance.totalGoldGained;
         _goldText.text = "Obtuviste un total de " + oro + " oro";
@@ -78,7 +79,7 @@ public class EndScene : MonoBehaviour
         int ganados = UserPerformance.instance.puzzlesWon;
         int perdidos = UserPerformance.instance.puzzlesLost;
         _puzzlesPlayedText.text = "Jugaste " + jugados + " puzles de los cuales ganaste " + ganados;
-
+        
     }
 
     public void ActivateStatsPanel()

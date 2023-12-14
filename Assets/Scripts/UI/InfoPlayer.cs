@@ -25,6 +25,7 @@ public class InfoPlayer : MonoBehaviour
 
     [SerializeField] private GameObject panelNormal;
     [SerializeField] private GameObject panelTeclado;
+    [SerializeField] private DatabaseManager database;
     //[SerializeField] private TextMeshProUGUI salidaSexo;
     // Start is called before the first frame update
     private void Awake()
@@ -120,5 +121,9 @@ public class InfoPlayer : MonoBehaviour
         AudioManager.instance.ButtonSound2();
         panelNormal.SetActive(true);
         panelTeclado.SetActive(false);
+    }
+    public void SetDatabaseInfo()
+    {
+        database.CreatePostLogin("pepe",GameManager.instance.nombreJugador,"tt", GameManager.instance.edadJugador,GameManager.instance.sexoJugador);
     }
 }

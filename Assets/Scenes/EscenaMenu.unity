@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22410743}
   - component: {fileID: 22410742}
+  - component: {fileID: 22410744}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Audio
@@ -199,6 +200,14 @@ Transform:
   - {fileID: 872118490}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &22410744
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22410741}
+  m_Enabled: 1
 --- !u!1 &28603590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,7 +3855,6 @@ GameObject:
   - component: {fileID: 683620354}
   - component: {fileID: 683620356}
   - component: {fileID: 683620355}
-  - component: {fileID: 683620357}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3904,14 +3912,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!81 &683620357
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683620353}
-  m_Enabled: 1
 --- !u!1 &683855019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,10 +4081,10 @@ RectTransform:
   - {fileID: 1716531453}
   m_Father: {fileID: 1433000406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2156, y: 66}
-  m_SizeDelta: {x: 674.4277, y: 69.0937}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 2.2156, y: -315}
+  m_SizeDelta: {x: 674.4277, y: 69.09369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689457500
 MonoBehaviour:
@@ -12381,9 +12381,9 @@ RectTransform:
   - {fileID: 1241246087}
   m_Father: {fileID: 1433000406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -582, y: -254}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 191, y: 127}
   m_SizeDelta: {x: 304.1293, y: 153.8826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022061964

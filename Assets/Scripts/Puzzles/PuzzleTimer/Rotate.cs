@@ -10,6 +10,7 @@ public class Rotate : MonoBehaviour
 {
     [SerializeField] private Camera _puzzleCamera;
     [SerializeField] private Button _continueBtn;
+    [SerializeField] private GameObject circulo;
 
     public Transform objetoCentral; // El objeto alrededor del cual quieres rotar.
     [SerializeField] private int velocidadRotacion; // Velocidad de rotación en grados por segundo.
@@ -40,7 +41,7 @@ public class Rotate : MonoBehaviour
             StartCoroutine(EsperarYSalir());
         });
         // ---------------------------------------------
-
+       
         pulsado = false;
     }
 
@@ -75,6 +76,8 @@ public class Rotate : MonoBehaviour
                 // Asignar una puntuación en función de la distancia
                 int puntuacion = CalcularPuntuacion(distanciaAlObjetivo);
                 Debug.Log("Puntuación: " + puntuacion);
+
+                circulo.GetComponent<CircleCollider2D>().enabled = false;
 
                 pulsado = true;
             }

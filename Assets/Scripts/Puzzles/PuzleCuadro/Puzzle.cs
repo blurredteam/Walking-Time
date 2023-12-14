@@ -9,6 +9,7 @@ public class Puzzle : MonoBehaviour
 {
     [SerializeField] private Button continueBtn;
     [SerializeField] private Camera _puzzleCamera;
+    [SerializeField] private GameObject botonSalir;
 
     [SerializeField] private AudioClip fondo;
 
@@ -39,6 +40,7 @@ public class Puzzle : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.PlayBackMusic(fondo);
+        botonSalir.SetActive(true);
         continueBtn.onClick.AddListener(delegate
         {
             StartCoroutine(EsperarYSalir());

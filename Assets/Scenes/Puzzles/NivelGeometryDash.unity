@@ -477,6 +477,7 @@ MonoBehaviour:
   estalacBaja: {fileID: 21300000, guid: a7749e870bde5104280eadc874e6fbfe, type: 3}
   rocaAlta: {fileID: 21300000, guid: 7edbe3ac773f6ee4faa5031444567f65, type: 3}
   estalacAlta: {fileID: 21300000, guid: 003ab95a59576f5468d2df88c06944f7, type: 3}
+  SalirBtn: {fileID: 2005761441}
 --- !u!4 &387857886
 Transform:
   m_ObjectHideFlags: 0
@@ -2060,7 +2061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2005761442
 RectTransform:
   m_ObjectHideFlags: 0

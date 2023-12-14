@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puzzleCamera: {fileID: 921711372}
   _continueBtn: {fileID: 115919447}
+  circulo: {fileID: 1995550935}
   objetoCentral: {fileID: 1995550938}
   velocidadRotacion: 80
   velocidadRotacionPropia: 80
@@ -396,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puzzleCamera: {fileID: 921711372}
   _continueBtn: {fileID: 115919447}
+  circulo: {fileID: 1539962427}
   objetoCentral: {fileID: 1539962430}
   velocidadRotacion: 30
   velocidadRotacionPropia: 30
@@ -2010,7 +2012,7 @@ MonoBehaviour:
   rueda2: {fileID: 541426333}
   rueda3: {fileID: 491403271}
   textoFinal: {fileID: 782038255}
-  fondo: {fileID: 8300000, guid: c5d8c7045fa24f843b732e8fa3df3964, type: 3}
+  fondo: {fileID: 8300000, guid: 5365f8454ad9b274a8d2a93009b870ae, type: 3}
 --- !u!1 &1666151265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,6 +2397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puzzleCamera: {fileID: 921711372}
   _continueBtn: {fileID: 115919447}
+  circulo: {fileID: 606588168}
   objetoCentral: {fileID: 606588170}
   velocidadRotacion: 60
   velocidadRotacionPropia: 60

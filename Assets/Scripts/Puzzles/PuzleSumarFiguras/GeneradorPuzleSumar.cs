@@ -17,8 +17,10 @@ public class GeneradorPuzleSumar : MonoBehaviour
     [SerializeField] private Camera _puzzleCamera;
     private GameObject selectedObject;
     public Button volverBtn;
+    [SerializeField]
+    private GameObject salirBtn;
 
-    Vector3 offset;
+   Vector3 offset;
 
     public GameObject panFinal;
 
@@ -36,6 +38,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
     {
         AudioManager.instance.ButtonSound();
         AudioManager.instance.PlayBackMusic(fondo);
+        salirBtn.SetActive(true);
         int numfigurasTotales = Random.Range(1, 3);
 
         List<Figura> figurasTotalesDisponibles = new List<Figura>(figurasTotales);
@@ -154,6 +157,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
             if (estanColocadas == numTotalPiezasAPoner && piezasSobrantes == 0)
             {
+                AudioManager.instance.WinMusic();
                 StartCoroutine(EsperarYRecompensa(true));
             }
 
@@ -181,7 +185,7 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         if (ganado)
         {
-            AudioManager.instance.WinMusic();
+            
             Recompensas(10);
 
             UserPerformance.instance.updatePuzzlesPlayed(1); //contamos el puzle como ganado

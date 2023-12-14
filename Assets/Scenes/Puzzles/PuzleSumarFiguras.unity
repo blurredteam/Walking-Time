@@ -403,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463732023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2678,6 +2678,7 @@ MonoBehaviour:
   - {fileID: 818252571}
   _puzzleCamera: {fileID: 595929177}
   volverBtn: {fileID: 463732024}
+  salirBtn: {fileID: 463732022}
   panFinal: {fileID: 1284360268}
   transition: {fileID: 0}
   transitionTime: 1

@@ -55,7 +55,7 @@ public class CristalEvento : Evento
     }
     public override void Option3()
     {
-        if (LevelManager.instance.gold < 1) return;
+        if (LevelManager.instance.gold < 15) return;
 
         LevelManager.instance.teamEnergy += 30;
         LevelManager.instance.gold -= 15;

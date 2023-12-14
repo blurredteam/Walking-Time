@@ -16,6 +16,9 @@ public class GeneratorObjects : MonoBehaviour
     public GameObject[] figuras;
     private GameObject figuraElegida;
 
+    [SerializeField] private GameObject fondoImg;
+
+
     // [SerializeField] private Camera _puzzleCamera;
     [SerializeField] private Button exitBtn;
 
@@ -159,7 +162,22 @@ public class GeneratorObjects : MonoBehaviour
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
     }
-
+    public void ClickFondo()
+    {
+        if (!botonPulsado)
+        {
+            intentos--;
+            AudioManager.instance.ButtonSoundBlock();
+            textoIntentos.text = "Intentos restantes: " + intentos;
+            if (intentos == 0)
+            {
+                //AudioManager.instance.LoseMusic();
+                textoVictoria.text = "Has Perdido";
+                StartCoroutine(EsperarYRecompensa(false));
+            }
+        }
+        botonPulsado = false;
+    }
     public void ClickarImagen()
     {
         botonPulsado = true;

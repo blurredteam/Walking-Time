@@ -11,10 +11,13 @@ public class GeneradorObstaculos : MonoBehaviour
     [SerializeField] private Sprite estalacBaja;
     [SerializeField] private Sprite rocaAlta;
     [SerializeField] private Sprite estalacAlta;
+    [SerializeField] private GameObject SalirBtn;
 
     void Start()
     {
+        SalirBtn.SetActive(true);
         StartCoroutine(GenerarObstaculos());
+
     }
 
     IEnumerator GenerarObstaculos()

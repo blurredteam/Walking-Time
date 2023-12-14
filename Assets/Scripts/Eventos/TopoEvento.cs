@@ -51,6 +51,7 @@ public class TopoEvento : Evento
     {
         if (LevelManager.instance.gold >= 15)
         {
+            LevelManager.instance.gold -= 15;
             LevelManager.instance.teamWater += 1;
 
             ControladorEventos.instance._resultadoTxt.text = _resultadosList[1].ToString();
@@ -66,7 +67,7 @@ public class TopoEvento : Evento
     public override void Option4()
     {
         if (LevelManager.instance.gold < 60) return;
-
+        LevelManager.instance.gold -= 60;
         LevelManager.instance.teamEnergy = LevelManager.instance.maxEnergy;
         LevelManager.instance.teamWater = LevelManager.instance.maxWater;
 

@@ -7,6 +7,7 @@ using System;
 
 public class InfoPlayer : MonoBehaviour
 {
+    public static InfoPlayer Instance;
     [SerializeField] private TextMeshProUGUI textPanelNombre;
     [SerializeField] private TextMeshProUGUI textPanelEdad;
     [SerializeField] private TextMeshProUGUI textPanelSexo;
@@ -15,13 +16,20 @@ public class InfoPlayer : MonoBehaviour
     [SerializeField] private List<GameObject> _botones = new List<GameObject>();
 
     [SerializeField] private TextMeshProUGUI textoEdad;
-    
+
+    [SerializeField] private TextMeshProUGUI nombreText;
+
+
     [SerializeField] private Transitioner transition;
     [SerializeField] private float transitionTime = 1f;
+
+    [SerializeField] private GameObject panelNormal;
+    [SerializeField] private GameObject panelTeclado;
     //[SerializeField] private TextMeshProUGUI salidaSexo;
     // Start is called before the first frame update
     private void Awake()
     {
+        Instance = this;
         transition = ScenesManager.instance.transitioner;
     }
     // public void Empezar()
@@ -62,6 +70,8 @@ public class InfoPlayer : MonoBehaviour
     }
     public void SetNombre(string nombre)
     {
+        SinTeclado();
+        nombreText.text = nombre;
         AudioManager.instance.ButtonSound3();
         Debug.Log(nombre);
         GameManager.instance.nombreJugador = nombre;
@@ -97,5 +107,18 @@ public class InfoPlayer : MonoBehaviour
         textPanelSexo.text = "Has visto, mi poder es tal que puedo atravesar hasta la cuarta pared\nAJAJAJAJAJAJAJAJA.\nMe retiro, pero estaré vigilándote " + GameManager.instance.nombreJugador + ", quizá nos encontremos por ahí...\nJAJAJAJAJAJAJAJAJAJA";
        _botones[2].SetActive(true);
         AudioManager.instance.RisaFinito();
+    }
+     public void ConTeclado()
+     {
+        AudioManager.instance.ButtonSound2();
+        panelNormal.SetActive(false);
+        panelTeclado.SetActive(true);
+     }
+
+    public void SinTeclado()
+    {
+        AudioManager.instance.ButtonSound2();
+        panelNormal.SetActive(true);
+        panelTeclado.SetActive(false);
     }
 }

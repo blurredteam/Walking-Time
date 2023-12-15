@@ -452,6 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 689457500}
   opcionesResolucion: {fileID: 851408919}
+  botonSalir: {fileID: 2022061964}
 --- !u!114 &107885690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,6 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPanelNombre: {fileID: 683855021}
+  textPanelTeclado: {fileID: 1796150063}
   textPanelEdad: {fileID: 1484302314}
   textPanelSexo: {fileID: 168192746}
   _paneles:
@@ -1462,8 +1464,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energy: 0
   maxEnergy: 0
+  totalEnergyUsed: 0
   water: 0
   maxWater: 0
+  totalWaterUsed: 0
+  gold: 0
+  bonfiresVisited: 0
   eventObjects: []
   modViajar: 0
   waterRegen: 0
@@ -11612,10 +11618,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 188133436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1971, y: 0}
-  m_SizeDelta: {x: 10254.76, y: 3176.0728}
+  m_SizeDelta: {x: 8314.76, y: 2108.0728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510788037
 MonoBehaviour:

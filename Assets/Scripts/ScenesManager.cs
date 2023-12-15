@@ -160,6 +160,9 @@ public class ScenesManager : MonoBehaviour
         //    SceneManager.LoadScene(Scene.EndScene.ToString());
         //}
     }
+    public void Destruir()
+    {
+        Destroy(gameObject);
+    }
 
-    
 }

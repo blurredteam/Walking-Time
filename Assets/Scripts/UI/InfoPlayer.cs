@@ -9,6 +9,7 @@ public class InfoPlayer : MonoBehaviour
 {
     public static InfoPlayer Instance;
     [SerializeField] private TextMeshProUGUI textPanelNombre;
+    [SerializeField] private TextMeshProUGUI textPanelTeclado;
     [SerializeField] private TextMeshProUGUI textPanelEdad;
     [SerializeField] private TextMeshProUGUI textPanelSexo;
 
@@ -71,13 +72,23 @@ public class InfoPlayer : MonoBehaviour
     }
     public void SetNombre(string nombre)
     {
-        SinTeclado();
-        nombreText.text = nombre;
-        AudioManager.instance.ButtonSound3();
-        Debug.Log(nombre);
-        GameManager.instance.nombreJugador = nombre;
-        textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, exxxpléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
-        _botones[0].SetActive(true);
+        if (nombre.Length >= 2)
+        {
+            Debug.Log(nombre.Length);
+            SinTeclado();
+            nombreText.text = nombre;
+            AudioManager.instance.ButtonSound3();
+            Debug.Log(nombre);
+            GameManager.instance.nombreJugador = nombre;
+            textPanelNombre.text = "Vaya vaya, así que te llamas " + nombre + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, exxxpléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
+            textPanelTeclado.text = "¿No te convence "+nombre+"?\n Normal a mí tampoco me gusta\nAJAJAJAJAJAJJAJA\nPero date prisa tengo otros seres inteligentes que observar por el universo.";
+            _botones[0].SetActive(true);
+        }
+        else
+        {
+            textPanelNombre.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+            textPanelTeclado.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+        }
     }
 
     public void SetSexo(int val)

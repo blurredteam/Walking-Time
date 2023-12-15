@@ -150,6 +150,10 @@ public class AudioManager : MonoBehaviour
         menuSrc.Stop();
         levelSrc.Stop();
     }
+    public void Destruir()
+    {
+        Destroy(gameObject);
+    }
 }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovimientoFondo : MonoBehaviour
 {
-    private float intensidad = 550f; // Intensidad de la agitación
+    private float intensidad = 400f; // Intensidad de la agitación
     private float velocidad = 0.5f; // Velocidad de la agitación
 
     private Vector3 posicionInicial;

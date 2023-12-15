@@ -11,12 +11,22 @@ public class ControlPantallaCoompleta : MonoBehaviour
     Resolution[] resoluciones;
     public static ControlPantallaCoompleta instance;
 
+    [SerializeField]
+    private Button botonSalir;
+
 
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
-        
+        botonSalir.onClick.AddListener(delegate
+        {
+            Debug.Log("joder");
+            Destroy(gameObject);
+            AudioManager.instance.Destruir();
+            LevelManager.instance.Destruir();
+            ScenesManager.instance.Destruir();
+        });
     }
     void Start()
     {
@@ -67,7 +77,11 @@ public class ControlPantallaCoompleta : MonoBehaviour
 
     public void FinDeJuego()
     {
+        Debug.Log("joder");
         Destroy(gameObject);
+        AudioManager.instance.Destruir();
+        LevelManager.instance.Destruir();
+        ScenesManager.instance.Destruir();
     }
 
 }

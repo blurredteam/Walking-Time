@@ -90,7 +90,14 @@ public class Tile : MonoBehaviour
 
         _spriteRenderer.color = Color.black;
         animatorTile.runtimeAnimatorController = null;//Desactivamos la anim
-        LoadNextTiles();
+
+        StartCoroutine(LoadNextTilesCoruetine());
+    }
+
+    private IEnumerator LoadNextTilesCoruetine()
+    {
+        yield return new WaitForSeconds(1);
+        LoadNextTiles(); 
     }
 
     //Carga las siguientes casillas disponibles en funcion de la lista de adyacencias 

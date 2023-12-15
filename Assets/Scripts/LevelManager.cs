@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -128,7 +129,6 @@ public class LevelManager : MonoBehaviour
     // Se ejecuta antes de cargar la escena de la casilla a la que se viaja
     public void PreTravel(int energyCost)
     {
-        _cameraMovementScript.enabled = false;
          
         totalEnergyUsed += energyCost + travelCostModifier;
         teamEnergy -= energyCost + travelCostModifier;
@@ -143,9 +143,8 @@ public class LevelManager : MonoBehaviour
     {
         if (tileType != 1 && tileType != 100) //Evento o casilla final
         {
-            _gridRef.gameObject.SetActive(false);
             DoFadeTransition(tileType, index);
-            _cameraMovementScript.enabled = false;
+            //_cameraMovementScript.enabled = false;
         } 
         else ScenesManager.instance.LoadTileScene(tileType, index);
 
@@ -196,8 +195,11 @@ public class LevelManager : MonoBehaviour
         transition.DoTransitionOnce();
         yield return new WaitForSeconds(1f);
         DesactivarLibro();
-        ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
+        ScenesManager.instance.LoadTileScene(tileType, index);
+        yield return new WaitForSeconds(0.5f);
+        _gridRef.gameObject.SetActive(false);
+        _cameraMovementScript.enabled = false;
     }
 
     public void SonidoBoton()

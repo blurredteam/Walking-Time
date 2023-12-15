@@ -18495,6 +18495,8 @@ MonoBehaviour:
   auxGold: 0
   cursed: 0
   transition: {fileID: 0}
+  totalEnergyUsed: 0
+  totalWaterUsed: 0
   losingEnergy: {fileID: 8300000, guid: 08ab2ec7fb4062046adb6e0039239d2e, type: 3}
   usingWater: {fileID: 8300000, guid: 1e53b232782e8344a80cdb59a96cc284, type: 3}
   noMoreWater: {fileID: 8300000, guid: 6bb287c009ef5f74bb092c2c41853483, type: 3}
@@ -19212,7 +19214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be00eed51bd45e49823e68bf8ff79dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 1
+  _width: 24
   _height: 5
   _numberOfPaths: 4
   _xSpacing: 2

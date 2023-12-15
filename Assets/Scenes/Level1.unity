@@ -18486,6 +18486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraMovementScript: {fileID: 2049375208}
   _gridRef: {fileID: 1531376817}
+  botonLibro: {fileID: 384482862}
   _eventObjects:
   - {fileID: 1322705587}
   - {fileID: 1650367911}

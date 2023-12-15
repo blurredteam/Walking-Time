@@ -16,6 +16,8 @@ public class ScenesManager : MonoBehaviour
 
     private int nextWaterPuzzle;
 
+    
+
 
     // Lista con todos los puzzles
     public List<string> puzzleScenes = new List<string>()
@@ -78,6 +80,7 @@ public class ScenesManager : MonoBehaviour
     public void UnloadTile(Scene scene)
     {
         SceneManager.UnloadSceneAsync(scene.ToString());
+        LevelManager.instance.DesactivarLibro();
 
         UserPerformance.instance.updateGold();
     }
@@ -158,4 +161,5 @@ public class ScenesManager : MonoBehaviour
         //}
     }
 
+    
 }

@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private MapCamaraMovement1 _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
+    [SerializeField] private GameObject botonLibro;
+
     [SerializeField] public List<Image> _eventObjects = new List<Image>(); //Lista de objetos que se pueden conseguir en eventos
     public List<Evento> removedEvents = new List<Evento>() { null, null, null, null };
 
@@ -189,6 +191,7 @@ public class LevelManager : MonoBehaviour
     {
         transition.DoTransitionOnce();
         yield return new WaitForSeconds(1f);
+        DesactivarLibro();
         ScenesManager.instance.LoadTileScene(tileType, index);
         transition.DoTransitionOnce();
     }
@@ -196,5 +199,18 @@ public class LevelManager : MonoBehaviour
     public void SonidoBoton()
     {
         AudioManager.instance.ButtonSound();
+    }
+
+    public void DesactivarLibro()
+    {
+        if (botonLibro != null)
+        {
+            botonLibro.SetActive(!botonLibro.activeSelf);
+        }
+        
+    }
+    public void Destuirlo()
+    {
+        Destroy(gameObject);
     }
 }

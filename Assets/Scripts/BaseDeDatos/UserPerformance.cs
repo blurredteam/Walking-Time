@@ -12,6 +12,8 @@ public class UserPerformance : MonoBehaviour
     [SerializeField] public int totalGoldGained = 0;
     private int previousGold = 0;
     private int currentGold = 0;
+    public int totalEnergyUsed = 0;
+    public int totalWaterUsed = 0;
 
     [SerializeField] public int puzzlesPlayed;
     [SerializeField] public int puzzlesWon;
@@ -40,7 +42,7 @@ public class UserPerformance : MonoBehaviour
     }
 
     //////////////////////////////TIMER
-    public void changeTimerState()
+    public void ChangeTimerState()
     {
         if (timerPaused == false)
         {
@@ -56,7 +58,7 @@ public class UserPerformance : MonoBehaviour
 
     /////////////////////////////GOLD
 
-    public void updateGold()
+    public void UpdateResources()
     {
         previousGold = currentGold;
         currentGold = LevelManager.instance.gold;
@@ -88,6 +90,8 @@ public class UserPerformance : MonoBehaviour
         timer = 0f;
         timerPaused = false;
         totalGoldGained = 0;
+        totalEnergyUsed = 0;
+        totalWaterUsed = 0;
         previousGold = 0;
         currentGold = 0;
         puzzlesPlayed = 0;

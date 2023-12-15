@@ -97,10 +97,8 @@ public class Tile : MonoBehaviour
     public void LoadNextTiles()
     {
         //if (AdyacentList.Count <= 0) ScenesManager.instance.LoadScene(ScenesManager.Scene.EndScene); 
-        if (AdyacentList.Count <= 0) 
-        {
-            Level_UI.instance.WinImage();
-        }
+        if (AdyacentList.Count <= 0) Level_UI.instance.WinImage();
+
         //ScenesManager.instance.EndGame();
 
         for (int i = 0; i <= AdyacentList.Count - 1; i++)

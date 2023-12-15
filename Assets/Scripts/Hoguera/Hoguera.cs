@@ -37,6 +37,8 @@ public class Hoguera : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.instance.bonfiresVisited++;
+
         for (int i = 0; i < objectIcons.Count; i++)
         {
             objectIcons[i].image.sprite = LevelManager.instance._eventObjects[i].sprite;

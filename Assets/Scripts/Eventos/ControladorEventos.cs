@@ -31,9 +31,13 @@ public class ControladorEventos : MonoBehaviour
 
     private static int previousSelected;
 
+    // --- PLAYER EVAL ---
+    public int totalEvents = 0;
+
     private void Awake()
     {
         instance = this;
+        totalEvents++;
 
         //1. Se crean los eventos uno a uno y se añaden a la lista de eventos
         ViajeroEvento evento0 = new ViajeroEvento(_eventImages[0]);

@@ -82,7 +82,7 @@ public class ScenesManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(scene.ToString());
         LevelManager.instance.DesactivarLibro();
 
-        UserPerformance.instance.updateGold();
+        UserPerformance.instance.UpdateResources();
     }
 
     public void UnloadTeamSelect()

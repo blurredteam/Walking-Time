@@ -34,11 +34,11 @@ public class EndScene : MonoBehaviour
         });
 
         _finalEnergy = GameManager.instance.energy;
-        Debug.Log(_finalEnergy);
+        //Debug.Log(_finalEnergy);
 
         UserPerfManager = FindObjectOfType<UserPerformance>();
         DatabaseManager.instance.CreatePostSessions();
-        updateUserPerformance();
+        UpdateUserPerformance();
 
         if (_finalEnergy > 0) Victory();
         else Defeat();
@@ -49,7 +49,7 @@ public class EndScene : MonoBehaviour
         _victoryImage.gameObject.SetActive(true);
         _finalText.text = "LLegaste a tu destino!";
 
-        unlockCharacters();     //cuando se alcanza la escena final se desbloquea automaticamente a chispa
+        UnlockCharacters();     //cuando se alcanza la escena final se desbloquea automaticamente a chispa
     }
 
     private void Defeat()
@@ -58,15 +58,15 @@ public class EndScene : MonoBehaviour
         _finalText.text = "Faltaron fuerzas...";
     }
 
-    public void unlockCharacters()
+    public void UnlockCharacters()
     {
         UnlockManager.Instance.PersonajeDesbloqueado = true;
     }
 
-    private void updateUserPerformance()
+    private void UpdateUserPerformance()
     {
         float tiempo = UserPerfManager.GetTimerValue();
-        UserPerfManager.changeTimerState();
+        UserPerfManager.ChangeTimerState();
         float minutos = tiempo / 60f;
         minutos = Mathf.Round(minutos * 10f) / 10f; //redondeamos para mostrar solo 1 decimal
 
@@ -79,7 +79,13 @@ public class EndScene : MonoBehaviour
         int ganados = UserPerformance.instance.puzzlesWon;
         int perdidos = UserPerformance.instance.puzzlesLost;
         _puzzlesPlayedText.text = "Jugaste " + jugados + " puzles de los cuales ganaste " + ganados;
-        
+
+        int energyUsed = GameManager.instance.totalEnergyUsed;
+        int waterUsed = GameManager.instance.totalWaterUsed;
+        int totalEvents = ControladorEventos.instance.totalEvents;
+        int totalBonfires = GameManager.instance.bonfiresVisited;
+        Debug.Log(energyUsed + "; " + waterUsed + "; " );
+        Debug.Log(totalEvents + "; " + totalBonfires+ "; " );
     }
 
     public void ActivateStatsPanel()

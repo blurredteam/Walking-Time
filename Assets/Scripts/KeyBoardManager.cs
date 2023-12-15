@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
     public List<Character> team = new List<Character>();
     public int energy;
     public int maxEnergy;
+    public int totalEnergyUsed = 0;
     public int water;
     public int maxWater;
+    public int totalWaterUsed = 0;
+    public int gold;
+    public int bonfiresVisited = 0;
 
     public List<Image> eventObjects = new List<Image>();
     public List<Evento> removedEvents = new List<Evento>();
@@ -58,6 +62,8 @@ public class GameManager : MonoBehaviour
         maxEnergy = lvl.maxEnergy;
         water = lvl.teamWater;
         maxWater = lvl.maxWater;
+        totalEnergyUsed = lvl.totalEnergyUsed;
+        totalWaterUsed = lvl.totalWaterUsed;
 
         modViajar = lvl.travelCostModifier;
         waterRegen = lvl.waterRegen;

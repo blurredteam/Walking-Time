@@ -42,6 +42,10 @@ public class LevelManager : MonoBehaviour
     
     public Transitioner transition;
 
+    // --- PLAYER EVAL ---
+    public int totalEnergyUsed = 0;
+    public int totalWaterUsed = 0;
+
     private void Awake()
     {
         instance = this;
@@ -116,8 +120,6 @@ public class LevelManager : MonoBehaviour
     // Habilita las primeras casillas disponibles al jugador, se usa tmb en hoguera al pasar de nivel
     public void StartGame()
     {
-        GameManager.instance.GetLevelInfo();
-
         for (int y = 0; y < _mapHeight; y++) 
             if (_map[_mapPos, y].selected) 
                 _map[_mapPos, y]._clickEvent.enabled = true;
@@ -128,7 +130,8 @@ public class LevelManager : MonoBehaviour
     {
         _cameraMovementScript.enabled = false;
          
-        teamEnergy -= (energyCost + travelCostModifier);
+        totalEnergyUsed += energyCost + travelCostModifier;
+        teamEnergy -= energyCost + travelCostModifier;
 
         AudioManager.instance.PlaySfx(losingEnergy);
         Level_UI.instance.HandleEnergyUI(energyCost + travelCostModifier);
@@ -179,6 +182,7 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.PlaySfx(usingWater);
         teamEnergy += waterRegen;
         teamWater--;
+        totalWaterUsed++;
         Level_UI.instance.HandleWaterUI(1);
     }
 

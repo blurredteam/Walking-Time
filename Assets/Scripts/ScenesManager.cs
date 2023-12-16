@@ -80,7 +80,7 @@ public class ScenesManager : MonoBehaviour
     public void UnloadTile(Scene scene)
     {
         SceneManager.UnloadSceneAsync(scene.ToString());
-        LevelManager.instance.DesactivarLibro();
+        LevelManager.instance.ActivarCanvas();
 
         UserPerformance.instance.UpdateResources();
     }

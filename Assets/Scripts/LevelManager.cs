@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
    
     [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
+    [SerializeField] private Canvas _lvlCanvas;
 
     [SerializeField] private GameObject botonLibro;
 
@@ -129,7 +130,6 @@ public class LevelManager : MonoBehaviour
     // Se ejecuta antes de cargar la escena de la casilla a la que se viaja
     public void PreTravel(int energyCost)
     {
-         
         totalEnergyUsed += energyCost + travelCostModifier;
         teamEnergy -= energyCost + travelCostModifier;
 
@@ -194,7 +194,7 @@ public class LevelManager : MonoBehaviour
     {
         transition.DoTransitionOnce();
         yield return new WaitForSeconds(1f);
-        DesactivarLibro();
+        DesactivarCanvas();
         transition.DoTransitionOnce();
         ScenesManager.instance.LoadTileScene(tileType, index);
         yield return new WaitForSeconds(0.5f);
@@ -206,14 +206,13 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.ButtonSound();
     }
 
-    public void DesactivarLibro()
-    {
-        if (botonLibro != null)
-        {
-            botonLibro.SetActive(!botonLibro.activeSelf);
-        }
-        
-    }
+    public void ActivarCanvas() 
+    { 
+        _lvlCanvas.gameObject.SetActive(true);
+        Level_UI.instance.MoveBookBtn(-1000);
+    } 
+    public void DesactivarCanvas() { _lvlCanvas.gameObject.SetActive(false); } 
+
     public void Destruir()
     {
         Destroy(gameObject);

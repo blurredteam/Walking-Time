@@ -43,10 +43,30 @@ public class GeneradorPuzleSumar : MonoBehaviour
 
         List<Figura> figurasTotalesDisponibles = new List<Figura>(figurasTotales);
 
+        //for (int i = 0; i < Mathf.Min(numfigurasTotales, figurasTotales.Count); i++)
+        //{
+
+        //    int index = Random.Range(0, figurasTotalesDisponibles.Count);
+        //    Figura figura = figurasTotalesDisponibles[index];
+        //    numTotalPiezasAPoner += figura.piezas.Length;
+        //    figura.gameObject.SetActive(true);
+        //    figuras.Add(figura);
+        //    figurasTotalesDisponibles.RemoveAt(index);
+        //}
         for (int i = 0; i < Mathf.Min(numfigurasTotales, figurasTotales.Count); i++)
         {
-
             int index = Random.Range(0, figurasTotalesDisponibles.Count);
+
+            // Verifica si figurasTotales[0] o figurasTotales[1] ya han sido seleccionadas
+            bool figura0Seleccionada = figuras.Contains(figurasTotales[0]);
+            bool figura1Seleccionada = figuras.Contains(figurasTotales[1]);
+
+            // Asegura que figurasTotales[0] y figurasTotales[1] no se seleccionen juntas
+            while ((index == 0 && figura1Seleccionada) || (index == 1 && figura0Seleccionada))
+            {
+                index = Random.Range(0, figurasTotalesDisponibles.Count);
+            }
+
             Figura figura = figurasTotalesDisponibles[index];
             numTotalPiezasAPoner += figura.piezas.Length;
             figura.gameObject.SetActive(true);

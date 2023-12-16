@@ -63,7 +63,7 @@ public class LlenadoBotella : MonoBehaviour
         else if (probabilidad >= 0.5f && probabilidad < 0.7f)
         {
             // 20% de probabilidad de q vaya lento
-            valorMinimo = 0.1f;
+            valorMinimo = 0.3f;
             valorMaximo = 1.0f;
         }
         else

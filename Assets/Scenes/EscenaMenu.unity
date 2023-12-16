@@ -1248,6 +1248,8 @@ MonoBehaviour:
   - {fileID: 2143961398}
   textoEdad: {fileID: 953735624}
   nombreText: {fileID: 184854095}
+  nombreText2: {fileID: 1490082600}
+  nombreText3: {fileID: 1773749400}
   transition: {fileID: 0}
   transitionTime: 1
   panelNormal: {fileID: 763952743}

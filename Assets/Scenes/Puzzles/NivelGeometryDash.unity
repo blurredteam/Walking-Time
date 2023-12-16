@@ -477,7 +477,6 @@ MonoBehaviour:
   estalacBaja: {fileID: 21300000, guid: a7749e870bde5104280eadc874e6fbfe, type: 3}
   rocaAlta: {fileID: 21300000, guid: 7edbe3ac773f6ee4faa5031444567f65, type: 3}
   estalacAlta: {fileID: 21300000, guid: 003ab95a59576f5468d2df88c06944f7, type: 3}
-  SalirBtn: {fileID: 2005761441}
 --- !u!4 &387857886
 Transform:
   m_ObjectHideFlags: 0
@@ -982,9 +981,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1640316638}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1640316633}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1783,7 +1782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1640316634
 Rigidbody2D:
   serializedVersion: 4
@@ -1930,7 +1929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640316633}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecbaf779409e9941baa568cb50c110d, type: 3}
   m_Name: 

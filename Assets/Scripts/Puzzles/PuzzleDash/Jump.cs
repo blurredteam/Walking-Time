@@ -42,6 +42,7 @@ public class Jump : MonoBehaviour
 
             LevelManager.instance.teamEnergy -= 10*LevelManager.instance.expEnergy;
             LevelManager.instance.expEnergy+=1;
+            Debug.Log("Que hago aqui");
             ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
             LevelManager.instance.ActivateScene();
             AudioManager.instance.PlayAmbient();
@@ -172,6 +173,7 @@ public class Jump : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+        Debug.Log("Vale");
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
     }

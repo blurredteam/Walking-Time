@@ -19,7 +19,8 @@ public class InfoPlayer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoEdad;
 
     [SerializeField] private TextMeshProUGUI nombreText;
-
+    [SerializeField] private TextMeshProUGUI nombreText2;
+    [SerializeField] private TextMeshProUGUI nombreText3;
 
     [SerializeField] private Transitioner transition;
     [SerializeField] private float transitionTime = 1f;
@@ -77,6 +78,8 @@ public class InfoPlayer : MonoBehaviour
             Debug.Log(nombre.Length);
             SinTeclado();
             nombreText.text = nombre;
+            nombreText2.text = nombre;
+            nombreText3.text = nombre;
             AudioManager.instance.ButtonSound3();
             Debug.Log(nombre);
             GameManager.instance.nombreJugador = nombre;

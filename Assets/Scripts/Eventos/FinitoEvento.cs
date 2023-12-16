@@ -7,10 +7,11 @@ public class FinitoEvento : Evento
 {
     private void Start()
     {
-        AudioManager.instance.RisaFinito();
+        
     }
     public FinitoEvento(Image imagenEvento)
     {
+        
         _nombre = "Extraño disfrazado";
         index = 2;
         _eventImage = imagenEvento;
@@ -38,7 +39,7 @@ public class FinitoEvento : Evento
     public override void Option1()
     {
         LevelManager.instance.gold = 0;
-
+        AudioManager.instance.RisaFinito();
         ControladorEventos.instance._resultadoTxt.text = _resultadosList[0].ToString();
         FinalizarEvento();
     }

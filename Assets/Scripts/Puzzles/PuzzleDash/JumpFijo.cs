@@ -24,7 +24,7 @@ public class JumpFijo : MonoBehaviour
 
     [SerializeField] private AudioClip fondo;
     [SerializeField] private AudioClip sonidoSaltar;
-
+    
     [SerializeField]
     private GameObject botonObj;
 
@@ -38,6 +38,7 @@ public class JumpFijo : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.ButtonSound();
+        botonObj.SetActive(true);
          // TODOS LAS CASILLAS TENDRAN QUE TENER ALGO ASI
          exitBtn.onClick.AddListener(delegate
          {
@@ -50,6 +51,7 @@ public class JumpFijo : MonoBehaviour
              UserPerformance.instance.updatePuzzlesPlayed(0); //contamos el puzle como fallado
         
              ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+             
              LevelManager.instance.ActivateScene();
              AudioManager.instance.PlayAmbient();
          });
@@ -183,6 +185,7 @@ public class JumpFijo : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         transition.DoTransitionOnce();
         ScenesManager.instance.UnloadTile(ScenesManager.Scene.NivelGeometryDash);
+        
         LevelManager.instance.ActivateScene();
         AudioManager.instance.PlayAmbient();
     }

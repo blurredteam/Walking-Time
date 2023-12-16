@@ -28,11 +28,16 @@ public class GameManager : MonoBehaviour
     public string nombreJugador;
     public int edadJugador;
     public string sexoJugador;
+    public string user;
+    public string password;
+    public bool passCorrecta=false;
+    public bool regCorrecto=false;
 
 
     private void Awake()
     {
         instance = this;
+        password = "";
         DontDestroyOnLoad(gameObject);
     }
 

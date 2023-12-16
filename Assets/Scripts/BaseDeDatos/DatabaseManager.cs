@@ -19,7 +19,7 @@ public class DatabaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         instance = this;
         LoadCredentials();
-        CreateGetLogin("juan");
+        //CreateGetLogin("juan");
     }
 
     string CreateJSONLogin(string tabla, string user, string name, string password, int edad, string sexo)
@@ -115,6 +115,7 @@ public class DatabaseManager : MonoBehaviour
             else
             {
                 print("Respuesta: " + www.downloadHandler.text);
+                GameManager.instance.regCorrecto = true;
             }
         }
     }
@@ -128,6 +129,7 @@ public class DatabaseManager : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
             {
                 print("Error: " + www.error);
+                
             }
             else
             {
@@ -137,9 +139,24 @@ public class DatabaseManager : MonoBehaviour
                 DataFields1 aux = JsonUtility.FromJson<DataFields1>(configJson);
 
 
-                foreach (var i in aux.data)
+                if(aux.data.Count!=0){
+                    foreach (var i in aux.data)
+                    {
+
+                        // i.user = data;
+                        // print(i.user);
+                        if (GameManager.instance.password == i.password)
+                        {
+                            GameManager.instance.passCorrecta = true;
+                            GameManager.instance.regCorrecto = false;
+                        }
+                        
+                    }
+                }
+                else
                 {
-                    print(i.nombre);
+                    GameManager.instance.regCorrecto = true;
+                    GameManager.instance.passCorrecta = false;
                 }
             }
         }

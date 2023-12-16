@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\UI\ControlPantallaCoompleta.cs" />
      <Compile Include="Assets\Scripts\Personajes\Character.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\MovimientoObstaculo.cs" />
+     <Compile Include="Assets\Keyboard Package\Scripts\KeyboardButtonController.cs" />
      <Compile Include="Assets\Scripts\UI\ControlAjustes.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleHielo\AdaptableRes.cs" />
      <Compile Include="Assets\Scripts\Personajes\Mirabel.cs" />
@@ -81,6 +82,7 @@
      <Compile Include="Assets\Scripts\PuzzlesAgua\Fuente\AudioPuzzFont.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleSumarFiguras\Pieza.cs" />
      <Compile Include="Assets\Scripts\Personajes\Finito.cs" />
+     <Compile Include="Assets\Scripts\KeyBoardManager.cs" />
      <Compile Include="Assets\Scripts\Nivel\MapCamaraMovement1.cs" />
      <Compile Include="Assets\Scripts\Personajes\Japaro.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDialogue.cs" />
@@ -92,7 +94,6 @@
      <Compile Include="Assets\Scripts\Eventos\PozoEvento.cs" />
      <Compile Include="Assets\Scripts\Eventos\Evento.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\Jump.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Eventos\LamentoEvento.cs" />
      <Compile Include="Assets\Scripts\SeleccionEquipo\CharacterManager.cs" />
      <Compile Include="Assets\Scripts\BaseDeDatos\DatabaseManager.cs" />
@@ -101,10 +102,12 @@
      <Compile Include="Assets\Scripts\Puzzles\PuzzleHielo\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PuzzlesAgua\RecogeGotas\MovimientoGotas.cs" />
      <Compile Include="Assets\Scripts\Eventos\PiedraMalditaEvento.cs" />
+     <Compile Include="Assets\Keyboard Package\Scripts\KeyboardController.cs" />
      <Compile Include="Assets\Scripts\EndScene.cs" />
      <Compile Include="Assets\Scripts\Eventos\ControladorEventos.cs" />
      <Compile Include="Assets\Scripts\UI\MovimientoFondo.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\GeneradorObstaculos.cs" />
+     <Compile Include="Assets\Keyboard Package\Scripts\KeyBoardManager.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleDash\JumpFijo.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleSumarFiguras\Figura.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
@@ -114,6 +117,7 @@
      <Compile Include="Assets\Scripts\Personajes\Fausto.cs" />
      <Compile Include="Assets\Scripts\Personajes\Seta.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzzleLaberinto\SalidaLaberinto.cs" />
+     <Compile Include="Assets\Keyboard Package\Scripts\ColorDataStore.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Imported_assets\Mountain Dusk Artwork\Mountain Dusk" />
      <Folder Include="Assets\Sounds\Hoguera" />
@@ -127,9 +131,11 @@
      <Folder Include="Assets\Animations\Personajes\Seta" />
      <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
+     <Folder Include="Assets\Keyboard Package\Prefabs" />
      <Folder Include="Assets\Sprites\Personajes\Animaciones\Berenjeno" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
      <Folder Include="Assets\Sounds\Puzzle_sounds" />
+     <Folder Include="Assets\Keyboard Package\Scripts" />
      <Folder Include="Assets\Prefabs\Eventos" />
      <Folder Include="Assets\Sprites\Nivel1" />
      <Folder Include="Assets\Sounds" />
@@ -167,6 +173,7 @@
      <Folder Include="Assets\Scripts\PuzzlesAgua\Fuente" />
      <Folder Include="Assets\Sprites\Eventos" />
      <Folder Include="Assets\Sprites\Puzzles\SpriteAgua" />
+     <Folder Include="Assets\Keyboard Package\Prefabs\Keyboard Layouts" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\Ganar" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Sounds\Sliders" />
@@ -193,6 +200,7 @@
      <Folder Include="Assets\Animations\Personajes\Japaro" />
      <Folder Include="Assets\Imported_assets\2D Casual UI\Sprite" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <Folder Include="Assets\Keyboard Package\Prefabs\Base Structure" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <Folder Include="Assets\Animations\Personajes\Chispa" />
      <Folder Include="Assets\Sprites\Puzzles\SpritesTimer" />
@@ -223,11 +231,13 @@
      <Folder Include="Assets\TextMesh Pro\Fonts" />
      <Folder Include="Assets\Scripts\PuzzlesAgua\RecogeGotas" />
      <Folder Include="Assets\Sounds\Buttons" />
+     <Folder Include="Assets\Keyboard Package\Prefabs\Keyboard Rows" />
      <Folder Include="Assets\Sprites\libro" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <Folder Include="Assets\Scripts\Puzzles\PuzzleTimer" />
      <Folder Include="Assets\Animations\Personajes\Fausto" />
      <Folder Include="Assets\Sounds\Ok" />
+     <Folder Include="Assets\Keyboard Package" />
      <Folder Include="Assets\Sprites\UI" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\Timer" />
      <Folder Include="Assets\Sprites\MenuPpl" />
@@ -262,6 +272,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <Folder Include="Assets\Scripts\Puzzles\PuzzleLaberinto" />
      <Folder Include="Assets\Imported_assets\Mountain Dusk Artwork\Music" />
+     <Folder Include="Assets\Keyboard Package\Sprites" />
      <Folder Include="Assets\Scripts\Nivel" />
      <Folder Include="Assets\Scripts\Puzzles" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />

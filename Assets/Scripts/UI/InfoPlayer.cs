@@ -8,6 +8,8 @@ using System;
 public class InfoPlayer : MonoBehaviour
 {
     public static InfoPlayer Instance;
+    [SerializeField] private TextMeshProUGUI textPanelLogin;
+    [SerializeField] private TextMeshProUGUI textPanelReg;
     [SerializeField] private TextMeshProUGUI textPanelNombre;
     [SerializeField] private TextMeshProUGUI textPanelTeclado;
     [SerializeField] private TextMeshProUGUI textPanelEdad;
@@ -21,12 +23,15 @@ public class InfoPlayer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private TextMeshProUGUI nombreText2;
     [SerializeField] private TextMeshProUGUI nombreText3;
+    [SerializeField] private TextMeshProUGUI userText;
+    [SerializeField] private TextMeshProUGUI passText;
 
     [SerializeField] private Transitioner transition;
     [SerializeField] private float transitionTime = 1f;
 
     [SerializeField] private GameObject panelNormal;
     [SerializeField] private GameObject panelTeclado;
+    
     [SerializeField] private DatabaseManager database;
     //[SerializeField] private TextMeshProUGUI salidaSexo;
     // Start is called before the first frame update
@@ -48,6 +53,21 @@ public class InfoPlayer : MonoBehaviour
     public void ActPanelSexo()
     {
         StartCoroutine(DoTransition(1, 2));
+    }
+    
+    public void ActPanelLogin()
+    {
+        StartCoroutine(DoTransition(4, 5));
+    }
+    
+    public void ActPanelReg()
+    {
+        StartCoroutine(DoTransition(4, 6));
+    }
+    
+    public void ActPanelNombre()
+    {
+        StartCoroutine(DoTransition(6, 0));
     }
 
     IEnumerator DoTransition(int from, int to)
@@ -138,6 +158,72 @@ public class InfoPlayer : MonoBehaviour
     }
     public void SetDatabaseInfo()
     {
-        database.CreatePostLogin("pepe",GameManager.instance.nombreJugador,"tt", GameManager.instance.edadJugador,GameManager.instance.sexoJugador);
+        database.CreatePostLogin(GameManager.instance.user,GameManager.instance.nombreJugador,GameManager.instance.password, GameManager.instance.edadJugador,GameManager.instance.sexoJugador);
+    }
+
+    public void SetUsuario(string usuario)
+    {
+        if (usuario.Length >= 2)
+        {
+            Debug.Log(usuario.Length);
+            //SinTeclado();
+            userText.text = usuario;
+            AudioManager.instance.ButtonSound3();
+            Debug.Log(usuario);
+            GameManager.instance.user = usuario;
+            textPanelLogin.text=textPanelReg.text = "Vaya vaya, así que te llamas " + usuario + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, exxxpléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
+            textPanelTeclado.text = "¿No te convence "+usuario+"?\n Normal a mí tampoco me gusta\nAJAJAJAJAJAJJAJA\nPero date prisa tengo otros seres inteligentes que observar por el universo.";
+            // _botones[0].SetActive(true);
+        }
+        else
+        {
+            textPanelLogin.text=textPanelReg.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+            textPanelTeclado.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+        }
+    }
+    
+    public void SetPassword(string pass)
+    {
+        if (pass.Length >= 2)
+        {
+            Debug.Log(pass.Length);
+            //SinTeclado();
+            passText.text = pass;
+            AudioManager.instance.ButtonSound3();
+            Debug.Log(pass);
+            GameManager.instance.password = pass;
+            textPanelLogin.text=textPanelReg.text = "Vaya vaya, así que te llamas " + pass + ", no te pega mucho con la cara la verdad, te pegaría más un nombre como...\nHmmm no sé...\n¿Finito quizá?, exxxpléndido.\nBueno, espera, así ya me llamo yo\nJAJAJAJAJAJAJAJA.";
+            textPanelTeclado.text = "¿No te convence "+pass+"?\n Normal a mí tampoco me gusta\nAJAJAJAJAJAJJAJA\nPero date prisa tengo otros seres inteligentes que observar por el universo.";
+            //_botones[3].SetActive(true);
+            Login();
+        }
+        else
+        {
+            textPanelLogin.text=textPanelReg.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+            textPanelTeclado.text = "Venga humano, pon algo reconocible, puedes engañarme si quieres, pero al menos pon algo.";
+        }
+    }
+    
+    public void Login()
+    {
+        database.CreateGetLogin(GameManager.instance.user);
+    }
+
+    private void Update()
+    {
+        if (GameManager.instance.passCorrecta)
+        {
+            print(true);
+            _botones[3].SetActive(true);
+            _botones[4].SetActive(false);
+            GameManager.instance.passCorrecta = false;
+        }
+
+        if (GameManager.instance.regCorrecto)
+        {
+            _botones[4].SetActive(true);
+            _botones[3].SetActive(false);
+            GameManager.instance.regCorrecto = false;
+        }
     }
 }

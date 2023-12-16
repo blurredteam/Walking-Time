@@ -30,11 +30,16 @@ public class Chispa : Character
           $"{skillName} - ¡ORO! \n" +
           $" - +30 oro inicial";
 
-        if (!skillApplied) LevelManager.instance.gold += 30;
+        if (!skillApplied)
+        {
+            skillApplied = true;
+            LevelManager.instance.gold += 30;
+        }
     }
 
     public override void RevertSkill()
     {
+        skillApplied = false;
         energy = defaultEnergy;
     }
 

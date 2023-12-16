@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
    
-    [SerializeField] private MapCamaraMovement1 _cameraMovementScript;
+    [SerializeField] private MapCamaraMovement _cameraMovementScript;
     [SerializeField] private GameObject _gridRef;
 
     [SerializeField] private GameObject botonLibro;
@@ -143,8 +143,8 @@ public class LevelManager : MonoBehaviour
     {
         if (tileType != 1 && tileType != 100) //Evento o casilla final
         {
+            _cameraMovementScript.enabled = false;
             DoFadeTransition(tileType, index);
-            //_cameraMovementScript.enabled = false;
         } 
         else ScenesManager.instance.LoadTileScene(tileType, index);
 
@@ -199,7 +199,6 @@ public class LevelManager : MonoBehaviour
         ScenesManager.instance.LoadTileScene(tileType, index);
         yield return new WaitForSeconds(0.5f);
         _gridRef.gameObject.SetActive(false);
-        _cameraMovementScript.enabled = false;
     }
 
     public void SonidoBoton()

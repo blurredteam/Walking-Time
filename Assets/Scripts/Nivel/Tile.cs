@@ -97,7 +97,7 @@ public class Tile : MonoBehaviour
     private IEnumerator LoadNextTilesCoruetine()
     {
         yield return new WaitForSeconds(1);
-        LoadNextTiles(); 
+        LoadNextTiles();
     }
 
     //Carga las siguientes casillas disponibles en funcion de la lista de adyacencias 
@@ -113,6 +113,8 @@ public class Tile : MonoBehaviour
             AdyacentList[i]._clickEvent.enabled = true;
             AdyacentList[i].animatorTile.enabled = true;
         }
+
+
     }
 
     private void PuzzleTile()

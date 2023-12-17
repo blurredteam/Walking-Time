@@ -122,7 +122,7 @@ public class LamentoEvento : Evento
 
     private void SetPart2()
     {
-        ControladorEventos.instance._opcion1.text = "[PRECAVIDO, -1 agua] Pedir a Dr. Jáparo la sane";
+        ControladorEventos.instance._opcion1.text = "[PRECAVIDO, -1 agua] Dr. Jáparo da atención médica";
         ControladorEventos.instance._opcion2.text = "[-2 agua] Dar una buena parte de vuestra agua";
         ControladorEventos.instance._opcion3.text = "Cargarla hasta un lugar seguro";
     }

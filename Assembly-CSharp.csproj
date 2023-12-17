@@ -226,10 +226,11 @@
      <Folder Include="Assets\Prefabs\Personajes\Seta" />
      <Folder Include="Assets\Sprites\Nivel1\Iconos\Casilla Hoguera" />
      <Folder Include="Assets\TextMesh Pro\Shaders" />
-     <None Include="Assets\Data\config.json" />
+     <None Include="Assets\Resources\Data\config.json" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
      <Folder Include="Assets\Scripts\PuzzlesAgua\RecogeGotas" />
+     <Folder Include="Assets\Resources" />
      <Folder Include="Assets\Sounds\Buttons" />
      <Folder Include="Assets\Keyboard Package\Prefabs\Keyboard Rows" />
      <Folder Include="Assets\Sprites\libro" />
@@ -277,7 +278,7 @@
      <Folder Include="Assets\Scripts\Puzzles" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
      <Folder Include="Assets\Sounds\Puzzle_sounds\SumarFiguras" />
-     <Folder Include="Assets\Data" />
+     <Folder Include="Assets\Resources\Data" />
      <Folder Include="Assets\Prefabs\Personajes\MIrabel" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Folder Include="Assets\Sprites\Personajes\Animaciones\Mirabel" />

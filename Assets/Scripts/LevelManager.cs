@@ -215,6 +215,6 @@ public class LevelManager : MonoBehaviour
 
     public void Destruir()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

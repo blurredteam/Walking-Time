@@ -21,10 +21,10 @@ public class ControlPantallaCoompleta : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         botonSalir.onClick.AddListener(delegate
         {
-            Debug.Log("joder");
+           
             Destroy(gameObject);
             AudioManager.instance.Destruir();
-            LevelManager.instance.Destruir();
+            //LevelManager.instance.Destruir();
             ScenesManager.instance.Destruir();
         });
     }
@@ -77,11 +77,11 @@ public class ControlPantallaCoompleta : MonoBehaviour
 
     public void FinDeJuego()
     {
-        Debug.Log("joder");
+        
         Destroy(gameObject);
         AudioManager.instance.Destruir();
-        LevelManager.instance.Destruir();
-        ScenesManager.instance.Destruir();
+        //LevelManager.instance.Destruir();
+        //ScenesManager.instance.Destruir();
     }
 
 }

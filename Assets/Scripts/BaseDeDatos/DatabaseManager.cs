@@ -109,6 +109,7 @@ public class DatabaseManager : MonoBehaviour
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
+
             {
                 print("Error: " + www.error);
             }
@@ -174,6 +175,11 @@ public class DatabaseManager : MonoBehaviour
             username = config.username;
             password = config.password;
             uri = config.uri;
+
+            if (!Application.isEditor)
+            {
+                uri = "https://corsproxy.io/?" + uri;
+            }
         }
         else
         {

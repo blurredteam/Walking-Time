@@ -54,6 +54,9 @@ public class InfoPlayer : MonoBehaviour
     [SerializeField]
     private Button registrarse;
 
+    [SerializeField] private GameObject[] arrObjLogin;
+    [SerializeField] private GameObject[] arrObjReg;
+
     [SerializeField] private DatabaseManager database;
     //[SerializeField] private TextMeshProUGUI salidaSexo;
     // Start is called before the first frame update
@@ -338,15 +341,15 @@ public class InfoPlayer : MonoBehaviour
 
     public void Login()
     {
-        textPanelLogin.text = "Has iniciado sesión corréctamente";
+        
         database.CreateGetLogin(GameManager.instance.user);
-        _botones[3].SetActive(true);
+        //_botones[3].SetActive(true);
     }
     public void Reg()
     {
-        textPanelReg.text = "Te has registrado corréctamente";
+        
         database.CreateGetLogin(GameManager.instance.user);
-        _botones[4].SetActive(true);
+        //_botones[4].SetActive(true);
     }
 
     public void CheckLogin()
@@ -372,15 +375,26 @@ public class InfoPlayer : MonoBehaviour
         if (GameManager.instance.passCorrecta)
         {
             print(true);
+
+            foreach (var go in arrObjLogin)
+            {
+                go.SetActive(false);
+            }
+            
             _botones[3].SetActive(true);
-            _botones[4].SetActive(false);
+            textPanelLogin.text = "Has iniciado sesión corréctamente";
             GameManager.instance.passCorrecta = false;
         }
 
         if (GameManager.instance.regCorrecto)
         {
+            foreach (var go in arrObjReg)
+            {
+                go.SetActive(false);
+            }
+            
             _botones[4].SetActive(true);
-            _botones[3].SetActive(false);
+            textPanelReg.text = "Te has registrado corréctamente";
             GameManager.instance.regCorrecto = false;
         }
     }

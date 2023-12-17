@@ -188,12 +188,13 @@ public class DatabaseManager : MonoBehaviour
 
     void LoadCredentials()
     {
-        string configPath = "Assets/Data/config.json";
+        // string configPath = "Assets/Data/config.json";
+        TextAsset configJson = Resources.Load<TextAsset>("Data/config");
 
-        if (File.Exists(configPath))
+        if (configJson!=null)
         {
-            string configJson = File.ReadAllText(configPath);
-            var config = JsonUtility.FromJson<Credentials>(configJson);
+            
+            var config = JsonUtility.FromJson<Credentials>(configJson.text);
 
             username = config.username;
             password = config.password;
@@ -201,7 +202,7 @@ public class DatabaseManager : MonoBehaviour
 
             if (!Application.isEditor)
             {
-                uri = config.uriConfig;
+                uri = config.uriCors;
             }
         }
         else
@@ -216,7 +217,7 @@ public class DatabaseManager : MonoBehaviour
         public string username;
         public string password;
         public string uri;
-        public string uriConfig;
+        public string uriCors;
     }
     
     [System.Serializable]

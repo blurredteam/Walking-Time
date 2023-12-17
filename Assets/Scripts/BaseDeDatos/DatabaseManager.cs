@@ -201,7 +201,7 @@ public class DatabaseManager : MonoBehaviour
 
             if (!Application.isEditor)
             {
-                uri = "https://corsproxy.io/?" + uri;
+                uri = config.uriConfig;
             }
         }
         else
@@ -216,6 +216,7 @@ public class DatabaseManager : MonoBehaviour
         public string username;
         public string password;
         public string uri;
+        public string uriConfig;
     }
     
     [System.Serializable]

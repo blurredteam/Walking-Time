@@ -49,8 +49,8 @@ public class ControladorEventos : MonoBehaviour
         LucierEvento evento7 = new LucierEvento(_eventImages[7]);
         TopoEvento evento8 = new TopoEvento(_eventImages[8], _eventObjects[3]);
 
-        //eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
-        eventos = new List<Evento>() { evento5, evento0 };
+        eventos = new List<Evento>() { evento0, evento1, evento2, evento3, evento4, evento5, evento6, evento7, evento8 };
+  
     }
 
     // Asegura que no se repiten dos eventos seguidos y gestiona los eventos eliminados

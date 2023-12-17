@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public bool passCorrecta=false;
     public bool regCorrecto=false;
 
+    // STATASSS
+    public int totalEvents = 0;
+
 
     private void Awake()
     {
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
         maxWater = lvl.maxWater;
         totalEnergyUsed = lvl.totalEnergyUsed;
         totalWaterUsed = lvl.totalWaterUsed;
+        gold = lvl.gold;
 
         modViajar = lvl.travelCostModifier;
         waterRegen = lvl.waterRegen;

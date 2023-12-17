@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class EndScene : MonoBehaviour
 {
+    public static EndScene instance;
+
     [SerializeField] private Button _menuBtn;
     [SerializeField] private Image _victoryImage;
     [SerializeField] private Image _defeatImage;
@@ -20,11 +22,19 @@ public class EndScene : MonoBehaviour
     [SerializeField] public GameObject PanelStats;
     [SerializeField] private Button BotonPanelStats;
 
+    // STATS ----
+    public int energyUsed;
+    public int waterUsed;
+    public int totalEvents;
+    public int totalBonfires;
+
 
     private int _finalEnergy;
 
     private void Start()
     {
+        instance = this;
+
         _menuBtn.onClick.AddListener(delegate
         {
             AudioManager.instance.LeaveGame();
@@ -35,9 +45,9 @@ public class EndScene : MonoBehaviour
         });
 
         _finalEnergy = GameManager.instance.energy;
-        //Debug.Log(_finalEnergy);
 
         UserPerfManager = FindObjectOfType<UserPerformance>();
+
         DatabaseManager.instance.CreatePostSessions();
         UpdateUserPerformance();
 
@@ -81,10 +91,10 @@ public class EndScene : MonoBehaviour
         int perdidos = UserPerformance.instance.puzzlesLost;
         _puzzlesPlayedText.text = "Jugaste " + jugados + " puzles de los cuales ganaste " + ganados;
 
-        int energyUsed = GameManager.instance.totalEnergyUsed;
-        int waterUsed = GameManager.instance.totalWaterUsed;
-        int totalEvents = ControladorEventos.instance.totalEvents;
-        int totalBonfires = GameManager.instance.bonfiresVisited;
+        energyUsed = GameManager.instance.totalEnergyUsed;
+        waterUsed = GameManager.instance.totalWaterUsed;
+        totalEvents = GameManager.instance.totalEvents;
+        totalBonfires = GameManager.instance.bonfiresVisited;
         Debug.Log(energyUsed + "; " + waterUsed + "; " );
         Debug.Log(totalEvents + "; " + totalBonfires+ "; " );
     }

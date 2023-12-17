@@ -41,8 +41,19 @@ public class DatabaseManager : MonoBehaviour
         return json;
     }
 
-    string CreateJSONSessions(string tabla, string user, string fechaInicioPartida, string fechaFinPartida,
-        int puzlesPerdidos)
+    string CreateJSONSessions(
+        string tabla,
+        string user,
+        string fechaInicioPartida,
+        string fechaFinPartida,
+        int puzlesPerdidos,
+        int puzlesGanados,
+        int energyUsed,
+        int waterUsed,
+        int totalEvents,
+        int totalBonfires,
+        int totalGold
+        )
     {
         //Construye JSON para la petición REST         
         string json = $@"{{
@@ -53,7 +64,13 @@ public class DatabaseManager : MonoBehaviour
                 ""usuario"": ""{user}"",
                 ""fechaFinPartida"": ""{fechaFinPartida}"",
                 ""fechaInicioPartida"": ""{fechaInicioPartida}"",
-                ""puzlesPerdidos"": ""{puzlesPerdidos}""
+                ""puzlesPerdidos"": ""{puzlesPerdidos}"",
+                ""PuzzlesGanados"": ""{puzlesGanados}"",
+                ""EnergyUsed"": ""{energyUsed}"",
+                ""WaterUsed"": ""{waterUsed}"",
+                ""TotalEvents"": ""{totalEvents}"",
+                ""TotalBonfires"": ""{totalBonfires}"",
+                ""TotalGold"": ""{totalGold}""
             }}
         }}";
 
@@ -86,11 +103,17 @@ public class DatabaseManager : MonoBehaviour
     {
         string data = CreateJSONSessions(
             "WalkingTimeSessions",
-            "juan",
+            GameManager.instance.nombreJugador,
             DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
             DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-            UserPerformance.instance.puzzlesLost);
-
+            UserPerformance.instance.puzzlesLost,
+            UserPerformance.instance.puzzlesWon,
+            GameManager.instance.totalEnergyUsed,
+            GameManager.instance.totalWaterUsed,
+            GameManager.instance.totalEvents,
+            GameManager.instance.bonfiresVisited,
+            GameManager.instance.gold
+            );
 
         StartCoroutine(SendPostRequest(data));
     }
